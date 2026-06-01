@@ -1,0 +1,182 @@
+/* East Coast 2026 itinerary - styling */
+:root {
+  --bg: #0f1424;
+  --bg-soft: #171d33;
+  --card: #1d2440;
+  --card-2: #232c4f;
+  --ink: #eef1fb;
+  --muted: #a4adcf;
+  --line: #2c355c;
+  --accent: #5b8cff;
+  --accent-2: #ff5d73;
+  --gold: #f5c451;
+  --green: #36d399;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 80% -10%, #21306b 0%, transparent 60%), var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 18px 80px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 56px 18px 30px;
+  text-align: center;
+  background:
+    radial-gradient(800px 300px at 50% -40%, rgba(91,140,255,.35), transparent 70%);
+}
+.hero .flag { font-size: 40px; letter-spacing: 4px; }
+.hero h1 { font-size: clamp(28px, 6vw, 52px); margin: 8px 0 6px; line-height: 1.05; }
+.hero .route { color: var(--gold); font-weight: 700; font-size: clamp(15px, 3.4vw, 22px); }
+.hero .dates { color: var(--muted); margin-top: 6px; font-size: 15px; }
+
+/* Countdown */
+.countdown { display: flex; gap: 10px; justify-content: center; margin: 22px 0 6px; flex-wrap: wrap; }
+.cd-box {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 16px; min-width: 78px; box-shadow: var(--shadow);
+}
+.cd-box .num { font-size: 26px; font-weight: 800; color: var(--accent); }
+.cd-box .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+.cd-msg { color: var(--gold); font-weight: 700; margin-top: 6px; }
+
+/* ---------- Nav ---------- */
+nav.tabs {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; gap: 6px; overflow-x: auto; padding: 10px;
+  background: rgba(15,20,36,.85); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+nav.tabs button {
+  flex: 0 0 auto; background: transparent; color: var(--muted);
+  border: 1px solid transparent; border-radius: 999px; padding: 8px 16px;
+  font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+nav.tabs button:hover { color: var(--ink); }
+nav.tabs button.active { color: #fff; background: var(--accent); }
+
+/* ---------- Sections / cards ---------- */
+section { display: none; padding-top: 26px; }
+section.active { display: block; animation: fade .25s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+h2.sec-title { font-size: 24px; margin: 6px 0 4px; }
+p.sec-sub { color: var(--muted); margin: 0 0 18px; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 20px; margin: 14px 0; box-shadow: var(--shadow);
+}
+
+/* Highlights */
+.highlight { display: flex; gap: 12px; align-items: flex-start; }
+.highlight + .highlight { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+
+.city-chips { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0 0; }
+.chip {
+  background: var(--card-2); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 16px; flex: 1 1 180px;
+}
+.chip .city { font-weight: 800; font-size: 17px; }
+.chip .meta { color: var(--muted); font-size: 13px; }
+
+/* ---------- Itinerary day ---------- */
+.day { margin: 16px 0; }
+.day-head {
+  display: flex; align-items: center; gap: 14px; cursor: pointer;
+  padding: 16px 18px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.day-head:hover { border-color: var(--accent); }
+.day-num {
+  flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #3b63c9);
+  display: grid; place-items: center; font-weight: 800; font-size: 18px; color: #fff;
+}
+.day-head .dh-main { flex: 1; min-width: 0; }
+.day-head .dh-date { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+.day-head .dh-title { font-weight: 700; font-size: 16px; }
+.day-head .dh-city { font-size: 12px; color: var(--muted); }
+.day-head .caret { color: var(--muted); transition: transform .2s; }
+.day.open .day-head .caret { transform: rotate(90deg); }
+
+.day-body { display: none; padding: 4px 6px 6px; }
+.day.open .day-body { display: block; }
+
+.block { display: flex; gap: 14px; padding: 14px 4px; border-bottom: 1px dashed var(--line); }
+.block:last-of-type { border-bottom: none; }
+.block .when {
+  flex: 0 0 86px; font-weight: 800; font-size: 12px; text-transform: uppercase;
+  letter-spacing: .5px; color: var(--accent); padding-top: 2px;
+}
+.block .what { flex: 1; }
+.block .what .bt { font-weight: 700; }
+.block .what .bd { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.map-link {
+  display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 600;
+  background: var(--card-2); border: 1px solid var(--line); border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.eat, .tips { margin-top: 12px; font-size: 14px; }
+.eat { color: var(--ink); }
+.tips ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); }
+
+.decision {
+  background: linear-gradient(180deg, rgba(245,196,81,.12), rgba(245,196,81,.04));
+  border: 1px solid var(--gold); border-radius: 12px; padding: 14px 16px; margin: 10px 0 14px;
+}
+.decision .dt { font-weight: 800; color: var(--gold); }
+.decision ol { margin: 8px 0 0; padding-left: 18px; }
+.decision li { margin: 4px 0; }
+
+/* ---------- Tables ---------- */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr.total td { font-weight: 800; border-top: 2px solid var(--accent); border-bottom: none; font-size: 15px; }
+.budget-note { color: var(--muted); font-size: 12px; margin-top: 10px; }
+
+/* ---------- Checklists ---------- */
+.check { display: flex; align-items: flex-start; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.check:last-child { border-bottom: none; }
+.check input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--green); flex: 0 0 auto; }
+.check.done span { color: var(--muted); text-decoration: line-through; }
+.pack-group h3 { margin: 16px 0 2px; font-size: 15px; color: var(--gold); }
+.reset-btn {
+  background: transparent; color: var(--muted); border: 1px solid var(--line);
+  border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer; margin-top: 10px;
+}
+.reset-btn:hover { color: var(--ink); border-color: var(--accent); }
+.progress { color: var(--muted); font-size: 13px; margin: 2px 0 10px; }
+
+footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 0 0; }
+
+@media (max-width: 560px) {
+  .block { flex-direction: column; gap: 4px; }
+  .block .when { flex-basis: auto; }
+  .day-head { padding: 12px; }
+}
+
+@media print {
+  nav.tabs, .countdown, .reset-btn { display: none !important; }
+  section { display: block !important; page-break-inside: avoid; }
+  body { background: #fff; color: #000; }
+  .card, .day-head { box-shadow: none; }
+}
