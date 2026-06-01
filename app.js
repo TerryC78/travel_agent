@@ -86,6 +86,26 @@
     root.appendChild(logi);
   }
 
+  // --- stays ---
+  function renderStays() {
+    const root = $("#stays");
+    if (!TRIP.stays) return;
+    const card = el("div", { class: "card" });
+    card.appendChild(el("h2", { class: "sec-title" }, "Where you’re staying"));
+    card.appendChild(el("p", { class: "sec-sub" }, "All confirmed. Tap a hotel to open it in Maps."));
+    TRIP.stays.forEach((s) => {
+      const row = el("div", { class: "highlight" });
+      row.innerHTML =
+        `<div>
+           <div style="font-weight:700">🏨 <a href="${mapUrl(s.hotel + " " + s.city)}" target="_blank" rel="noopener">${esc(s.hotel)}</a></div>
+           <div style="color:var(--gold);font-size:13px">${esc(s.dates)} · ${s.nights} night${s.nights > 1 ? "s" : ""} · ${esc(s.city)}</div>
+           <div style="color:var(--muted);font-size:14px;margin-top:2px">${esc(s.area)}</div>
+         </div>`;
+      card.appendChild(row);
+    });
+    root.appendChild(card);
+  }
+
   // --- itinerary ---
   function renderItinerary() {
     const root = $("#itinerary");
@@ -262,6 +282,7 @@
     document.title = TRIP.title + " · Itinerary";
     renderCountdown();
     renderOverview();
+    renderStays();
     renderItinerary();
     renderBudget();
     renderBookings();
