@@ -16,7 +16,8 @@ const TRIP = {
   // Big-picture context worth knowing before you go.
   highlights: [
     "🎆 July 4, 2026 is the 250th anniversary of US independence (“America250” / Semiquincentennial). Expect once-in-a-lifetime celebrations — and bigger crowds, tighter security, and higher prices in both DC and NYC.",
-    "🗽 You finish in New York ON July 4th. Macy’s 4th of July Fireworks (East River, ~9:25pm) is the marquee event — see the “July 4th decision” note on that day.",
+    "🗽 You finish in New York ON July 4th. For the 250th, Macy’s fireworks launch from BOTH the Hudson and East Rivers (a rare double show) plus an air show, broadcast 8–10pm — the marquee event. See the “July 4th decision” note that day.",
+    "⛵ Sail4th 250 (Jul 3–8): 30+ tall ships and 40+ naval vessels sail into New York Harbor and circle the Statue of Liberty — a once-in-a-generation maritime parade overlapping your NYC days.",
     "🚆 DC and NYC are connected by Amtrak in ~3 hours — no need to fly that leg. Book the train, not a plane.",
     "🏛 Most Smithsonian museums in DC are FREE, but several now need free timed-entry passes booked weeks ahead.",
     "☀️ Late June / early July on the East Coast is hot and humid (high 80s–90s°F, afternoon thunderstorms). Pack light, breathable clothes and stay hydrated."
@@ -93,7 +94,7 @@ const TRIP = {
         { time: "Evening", title: "Times Square after dark", detail: "See Times Square lit up once (then you never have to again). Dinner in Hell’s Kitchen (9th Ave) is far better than anything in the Square itself.", map: "Times Square" }
       ],
       eat: "Hell’s Kitchen on 9th Ave for dinner — huge range, walkable from Times Square.",
-      tips: ["Get a phone-based OMNY tap set up for the subway (just tap your phone/card at turnstiles).", "Penn Station is hectic — know your hotel’s cross streets before you arrive."]
+      tips: ["Get a phone-based OMNY tap set up for the subway (just tap your phone/card at turnstiles).", "Penn Station is hectic — know your hotel’s cross streets before you arrive.", "Heads up: DC’s huge ‘Salute to America’ 250th parade & fireworks are July 4 — after you’ve left for NYC. New York is your July 4th finale."]
     },
     {
       date: "2026-07-01",
@@ -132,7 +133,7 @@ const TRIP = {
         { time: "Evening", title: "Broadway show", detail: "See a Broadway show — book ahead for a specific title, or try the TKTS booth (Times Square) for same-day discounts. Dinner pre/post in the Theater District.", map: "Broadway Theatre District New York" }
       ],
       eat: "Theater District pre-show prix-fixe, or Village classics (pizza, pasta).",
-      tips: ["July 3 gets crowded as the holiday ramps up — reserve dinner.", "Confirm tomorrow’s flight time and how it collides (or not) with fireworks — see Day 9."]
+      tips: ["🎆 Unique to 2026: the Times Square Ball drops on JULY 3 — eight times, marking midnight in every U.S. time zone to kick off the 250th. Worth swinging by.", "Tall ships from the Sail4th 250 parade are in the harbor today through Jul 8.", "July 3 gets crowded as the holiday ramps up — reserve dinner.", "Confirm tomorrow’s flight time and how it collides (or not) with fireworks — see Day 9."]
     },
     {
       date: "2026-07-04",
@@ -141,7 +142,7 @@ const TRIP = {
       summary: "The big day. How you play it depends on your flight — read the decision note first.",
       decision: {
         title: "⚠️ July 4th decision: fireworks vs. flying home",
-        body: "Your trip ends today, but Macy’s Fireworks don’t start until ~9:25pm over the East River — and it’s the 250th, so it’ll be epic and mobbed. A same-day evening flight to SFO means you’ll be in the air during the show. Three options:",
+        body: "Your trip ends today, but the Macy’s Fireworks (this year launching from BOTH the Hudson and East Rivers, broadcast 8–10pm) are the climax — and it’s the 250th, so it’ll be epic and mobbed. A same-day evening flight to SFO means you’ll be in the air during the show. Three options:",
         options: [
           "BEST: Fly home the morning/early afternoon of July 4 (accept missing fireworks), OR",
           "Add one night and fly July 5 so you can watch the 250th fireworks, then sleep before flying, OR",
@@ -151,7 +152,7 @@ const TRIP = {
       blocks: [
         { time: "Morning", title: "Last NYC morning", detail: "Bagels and a final walk. If flying out today, check out and store bags or head to the airport with buffer — holiday traffic and security are heavy.", map: "New York City" },
         { time: "Afternoon", title: "America250 festivities / fly out", detail: "Expect special 250th programming across the city. If you’re on an afternoon flight, leave plenty of time: JFK/EWR/LGA will be busy. Allow 3+ hrs before a holiday flight.", map: "John F. Kennedy International Airport" },
-        { time: "Evening", title: "(If staying) Macy’s 4th of July Fireworks", detail: "If you added July 5 departure: stake out an East River viewing spot in the afternoon (FDR Drive sections, or Brooklyn/LIC waterfronts open up). 250th-anniversary show — worth it.", map: "Macy's Fourth of July Fireworks East River" }
+        { time: "Evening", title: "(If staying) Macy’s 4th of July Fireworks", detail: "If you added a July 5 departure: this year’s show lights up BOTH rivers, so you can stake out either the Hudson (west-side Manhattan / NJ waterfront) or the East River (FDR Drive sections, Brooklyn/LIC waterfronts). Arrive hours early for the 250th crowds. Worth it.", map: "Macy's Fourth of July Fireworks NYC" }
       ],
       eat: "Grab-and-go near the hotel; a proper sit-down won’t fit a travel day.",
       tips: ["Holiday + 250th = leave huge buffers for traffic and airport lines.", "Decide the fireworks-vs-flight question NOW (ideally when booking flights), not on the day."]
