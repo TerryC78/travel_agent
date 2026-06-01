@@ -47,28 +47,30 @@ const TRIP = {
     {
       date: "2026-06-27",
       city: "Washington, DC",
-      title: "The National Mall, monument to monument",
-      summary: "Your big monuments + memorials day on foot. It’s a lot of walking — wear real shoes.",
+      title: "Museums day 1 · Air, space & natural sciences",
+      summary: "South-Mall Smithsonians (Saturday — busiest day, arrive early). Only ONE today needs a reservation: Air & Space.",
       blocks: [
-        { time: "Morning", title: "Capitol end of the Mall", detail: "Start at the US Capitol (book a free guided tour via visitthecapitol.gov in advance), then the Library of Congress (gorgeous Jefferson Building) and a peek at the Supreme Court across the street.", map: "United States Capitol" },
-        { time: "Afternoon", title: "Mall walk west", detail: "Stroll the Mall toward the Washington Monument (timed tickets via recreation.gov if you want to go up). Duck into a Smithsonian to escape the afternoon heat.", map: "Washington Monument" },
-        { time: "Evening", title: "White House & Lafayette Square", detail: "Walk past the White House (north-side view from Pennsylvania Ave / Lafayette Square), then dinner downtown.", map: "White House Washington DC" }
+        { time: "Morning", title: "National Air & Space Museum — ⚠️ FREE timed pass required", detail: "Everyone needs a free timed-entry pass — reserve at airandspace.si.edu (released ~30 days ahead on a rolling basis). Heads-up: as of late June 2026 only about HALF the museum is open (8 all-new galleries + the renovated planetarium); the big 50th-anniversary reopening of 5 more galleries lands July 1, just after you leave. Still a must-see. Doors 10am.", map: "National Air and Space Museum Washington DC" },
+        { time: "Afternoon", title: "National Museum of Natural History — no reservation", detail: "Walk straight in (free, no pass). Hope Diamond, the dinosaur & fossil halls, the rotunda elephant, the ocean hall. Give it ~2 hours.", map: "National Museum of Natural History Washington DC" },
+        { time: "Late afternoon", title: "National Gallery of Art — no reservation", detail: "Free, no pass. West Building old masters (the only Leonardo da Vinci in the Americas) or cool off in the underground concourse and Sculpture Garden. Skip if you’re museumed-out.", map: "National Gallery of Art" },
+        { time: "Evening", title: "Monuments after dark", detail: "The memorials are floodlit, gorgeous, and cooler at night. Stroll the WWII, Lincoln, and Washington Monument grounds, then dinner in Penn Quarter.", map: "Lincoln Memorial Washington DC" }
       ],
-      eat: "Lunch from a Mall food truck or a Smithsonian cafe; dinner around Chinatown / Penn Quarter.",
-      tips: ["The Mall is ~2 miles end to end — pace yourself and refill water.", "Afternoon thunderstorms are common; have a backup indoor museum."]
+      eat: "Quick lunch from a Mall food truck or the Natural History café; dinner in Penn Quarter / Chinatown.",
+      tips: ["Only ONE reservation needed today — Air & Space. Book it the moment 30-day passes open.", "Security/bag lines are shortest right at the 10am opening.", "Saturday is the busiest museum day — get there early."]
     },
     {
       date: "2026-06-28",
       city: "Washington, DC",
-      title: "Smithsonian deep-dive (mostly free!)",
-      summary: "Museum day. Pick 2–3 — don’t try to do them all. Most are free; a couple need timed passes.",
+      title: "Museums day 2 · The American story",
+      summary: "Two reservation museums bookend a free one. NMAAHC is the hardest DC pass to get — book it first.",
       blocks: [
-        { time: "Morning", title: "Air & Space OR American History", detail: "National Air & Space Museum requires a FREE timed-entry pass (book ahead at airandspace.si.edu). Alternative: National Museum of American History (no pass needed).", map: "National Air and Space Museum" },
-        { time: "Afternoon", title: "Natural History + National Gallery", detail: "National Museum of Natural History (Hope Diamond, dinosaurs) and the National Gallery of Art are both free and a few minutes apart on the Mall.", map: "National Museum of Natural History Washington DC" },
-        { time: "Evening", title: "Wharf or U Street", detail: "Head to The Wharf for waterfront dinner, or U Street for live music and a livelier night.", map: "The Wharf Washington DC" }
+        { time: "Morning", title: "African American History & Culture (NMAAHC) — ⚠️ FREE timed pass required", detail: "The toughest DC pass to land — free timed pass required for all ages (tickets.si.edu / nmaahc.si.edu), released 30 days ahead on a rolling basis; same-day passes drop online at 8:15am if you miss the advance batch. Start in the underground History Galleries and work upward. Give it ~3 hours; Sweet Home Café inside is a great lunch.", map: "National Museum of African American History and Culture" },
+        { time: "Afternoon", title: "National Museum of American History — no reservation", detail: "Walk in free, no pass. The Star-Spangled Banner, the First Ladies’ gowns, ‘American Democracy’ — perfectly on-theme for the 250th. ~2 hours.", map: "National Museum of American History" },
+        { time: "Late afternoon", title: "Optional: US Holocaust Memorial Museum — ⚠️ FREE timed pass required", detail: "The Permanent Exhibition needs a free timed pass Mar–Aug (ushmm.org); last entry 4:30pm, museum closes 5:30. Powerful and somber — many give it its own slot rather than pair it with NMAAHC the same day. Prefer to stay light? The Hirshhorn (modern art, no pass) is right across the Mall.", map: "United States Holocaust Memorial Museum" },
+        { time: "Evening", title: "The Wharf or U Street", detail: "Waterfront seafood at The Wharf, or U Street for live jazz and Ben’s Chili Bowl.", map: "The Wharf Washington DC" }
       ],
-      eat: "The Wharf (seafood, waterfront) or U Street (Ethiopian, jazz, Ben’s Chili Bowl).",
-      tips: ["The National Museum of African American History & Culture also uses free timed passes — book early if it’s a priority.", "Museum bag/security lines are shortest right at opening."]
+      eat: "Sweet Home Café inside NMAAHC for lunch; The Wharf or U Street for dinner.",
+      tips: ["Up to two reservations today: NMAAHC (essential — book first) and the Holocaust Museum (optional).", "NMAAHC + Holocaust in one day is emotionally heavy — pace yourself, or split them.", "All these passes are online-only — save them to your phone wallet."]
     },
     {
       date: "2026-06-29",
@@ -187,8 +189,11 @@ const TRIP = {
     "Hotel in DC (4 nights, Jun 26–30)",
     "Hotel in NYC (4–5 nights from Jun 30)",
     "Statue of Liberty / Ellis Island ferry tickets (Statue City Cruises)",
-    "Smithsonian Air & Space FREE timed-entry pass",
-    "Washington Monument timed tickets (recreation.gov) — optional",
+    "⚠️ Air & Space Museum FREE timed pass (Jun 27) — airandspace.si.edu, ~30 days ahead",
+    "⚠️ African American History / NMAAHC FREE timed pass (Jun 28) — hardest to get, book FIRST",
+    "⚠️ Holocaust Museum FREE timed pass (Jun 28, optional) — ushmm.org, required Mar–Aug",
+    "National Archives timed ticket (free or $1) — optional, skips the line to see the Declaration",
+    "Washington Monument timed tickets (recreation.gov) — optional, 90 days ahead",
     "US Capitol guided tour (visitthecapitol.gov) — free",
     "9/11 Museum tickets",
     "One observation deck (Top of the Rock / Empire State / Edge / Summit)",
