@@ -29,6 +29,15 @@
     return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
   };
   const money = (n) => "$" + n.toLocaleString("en-US");
+  const kmBetween = (a, b) => {
+    const R = 6371, toR = (x) => (x * Math.PI) / 180;
+    const dLat = toR(b[0] - a[0]), dLng = toR(b[1] - a[1]);
+    const s = Math.sin(dLat / 2) ** 2 + Math.cos(toR(a[0])) * Math.cos(toR(b[0])) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(s));
+  };
+
+  // Leaflet map instances per day index, lazily initialized when a day opens.
+  const dayMapRecs = [];
 
   // --- countdown ---
   function renderCountdown() {
@@ -106,6 +115,104 @@
     root.appendChild(card);
   }
 
+  // --- per-day map ---
+  // Collect the ordered, de-duplicated stops for a day that have known coords.
+  function dayStops(d) {
+    const seen = new Set();
+    const stops = [];
+    d.blocks.forEach((b) => {
+      if (!b.map || seen.has(b.map) || !PLACES[b.map]) return;
+      seen.add(b.map);
+      stops.push({ label: b.title.replace(/ — .*$/, "").replace(/^[✅⚠️]\s*/, ""), query: b.map, coord: PLACES[b.map] });
+    });
+    return stops;
+  }
+
+  // Build a Google Maps directions URL chaining the day's stops in order.
+  function googleRouteUrl(stops) {
+    if (stops.length < 2) return mapUrl(stops[0].query);
+    const pts = stops.map((s) => s.coord[0] + "," + s.coord[1]);
+    return "https://www.google.com/maps/dir/?api=1&travelmode=walking" +
+      "&origin=" + encodeURIComponent(pts[0]) +
+      "&destination=" + encodeURIComponent(pts[pts.length - 1]) +
+      (pts.length > 2 ? "&waypoints=" + encodeURIComponent(pts.slice(1, -1).join("|")) : "");
+  }
+
+  // Attach a Leaflet map + numbered markers + connecting line into `container`.
+  function initLeafletMap(container, stops) {
+    if (!window.L || !stops.length) return null;
+    const map = L.map(container, { scrollWheelZoom: false });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap", maxZoom: 19
+    }).addTo(map);
+
+    const latlngs = [];
+    stops.forEach((s, i) => {
+      latlngs.push(s.coord);
+      const icon = L.divIcon({
+        className: "pin-icon",
+        html: `<div class="pin"><span>${i + 1}</span></div>`,
+        iconSize: [28, 28], iconAnchor: [14, 26]
+      });
+      L.marker(s.coord, { icon })
+        .addTo(map)
+        .bindPopup(`<strong>${i + 1}. ${esc(s.label)}</strong><br><a href="${mapUrl(s.query)}" target="_blank" rel="noopener">Open in Google Maps</a>`);
+    });
+    if (latlngs.length > 1) {
+      L.polyline(latlngs, { color: "#5b8cff", weight: 3, opacity: 0.7, dashArray: "6 6" }).addTo(map);
+      map.fitBounds(latlngs, { padding: [34, 34] });
+    } else {
+      map.setView(latlngs[0], 14);
+    }
+    return map;
+  }
+
+  // Render the map card for a day: legend + embedded map + route button.
+  function renderDayMap(body, d, idx) {
+    const stops = dayStops(d);
+    if (stops.length < 1) return;
+
+    const wrap = el("div", { class: "daymap" });
+    const header = el("div", { class: "daymap-head" });
+    header.appendChild(el("div", { class: "daymap-title" }, "🗺 Places this day"));
+    if (stops.length >= 2) {
+      const route = el("a", {
+        class: "route-btn", href: googleRouteUrl(stops), target: "_blank", rel: "noopener"
+      }, "↗ Route in Google Maps");
+      header.appendChild(route);
+    }
+    wrap.appendChild(header);
+
+    // numbered legend with rough leg distances
+    const legend = el("ol", { class: "daymap-legend" });
+    stops.forEach((s, i) => {
+      let extra = "";
+      if (i > 0) {
+        const km = kmBetween(stops[i - 1].coord, s.coord);
+        const mi = km * 0.621371;
+        extra = ` <span class="leg">· ${mi < 0.1 ? "next door" : mi.toFixed(1) + " mi from #" + i}</span>`;
+      }
+      const li = el("li", {});
+      li.innerHTML = `<a href="${mapUrl(s.query)}" target="_blank" rel="noopener">${esc(s.label)}</a>${extra}`;
+      legend.appendChild(li);
+    });
+    wrap.appendChild(legend);
+
+    const mapDiv = el("div", { class: "leaflet-day", id: "map-day-" + idx });
+    wrap.appendChild(mapDiv);
+    body.appendChild(wrap);
+
+    dayMapRecs[idx] = { mapDiv, stops, map: null };
+  }
+
+  // Leaflet needs a sized, visible container; init lazily when a day opens.
+  function ensureDayMap(idx) {
+    const rec = dayMapRecs[idx];
+    if (!rec || rec.map) return;
+    rec.map = initLeafletMap(rec.mapDiv, rec.stops);
+    if (rec.map) setTimeout(() => rec.map.invalidateSize(), 60);
+  }
+
   // --- itinerary ---
   function renderItinerary() {
     const root = $("#itinerary");
@@ -119,7 +226,10 @@
          <div class="dh-title">${esc(d.title)}</div>
          <div class="dh-city">📍 ${esc(d.city)}</div>`));
       head.appendChild(el("div", { class: "caret" }, "▶"));
-      head.addEventListener("click", () => day.classList.toggle("open"));
+      head.addEventListener("click", () => {
+        day.classList.toggle("open");
+        if (day.classList.contains("open")) ensureDayMap(i);
+      });
       day.appendChild(head);
 
       const body = el("div", { class: "day-body" });
@@ -148,6 +258,8 @@
         blk.appendChild(what);
         body.appendChild(blk);
       });
+
+      renderDayMap(body, d, i);
 
       if (d.eat) body.appendChild(el("div", { class: "eat" }, `🍴 <strong>Eat:</strong> ${esc(d.eat)}`));
       if (d.tips && d.tips.length) {
@@ -288,5 +400,6 @@
     renderBookings();
     renderPacking();
     setupTabs();
+    ensureDayMap(0); // first day is open by default
   });
 })();

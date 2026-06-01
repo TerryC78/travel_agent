@@ -110,14 +110,15 @@ const TRIP = {
       date: "2026-07-01",
       city: "New York City",
       title: "Lower Manhattan: Liberty, Ellis, 9/11",
-      summary: "The harbor + downtown classics — and you’re based right here in FiDi. Book the Statue ferry for an early slot.",
+      summary: "The harbor + downtown classics, all walkable from your FiDi base. Two fixed times: Statue ferry 11am, 9/11 Museum 4pm.",
       blocks: [
-        { time: "Morning", title: "Statue of Liberty & Ellis Island — ⚠️ ferry reservation", detail: "Ferry departs Battery Park (a short walk/ride from your hotel). Book Statue City Cruises in advance — the ONLY official operator; pedestal/crown access sells out. Ellis Island’s immigration museum is moving and underrated.", map: "Battery Park New York" },
-        { time: "Afternoon", title: "9/11 Memorial & Financial District — ⚠️ museum tickets", detail: "9/11 Memorial reflecting pools (free) and the Museum (timed tickets, book ahead at 911memorial.org), the Oculus, Wall Street & the Charging Bull, then walk the Brooklyn Bridge if you have energy.", map: "9/11 Memorial and Museum" },
-        { time: "Evening", title: "Stone Street / Seaport", detail: "Dinner at historic Stone Street or the South Street Seaport with East River views — both minutes from your hotel.", map: "Stone Street Historic District New York" }
+        { time: "11:00 AM", title: "✅ Statue of Liberty — Pedestal Access Tour (2 tickets booked)", detail: "Booked: 11:00am ferry, NEW YORK departure from Battery Park (a short walk from your hotel) with Pedestal access to the statue. Arrive ~45 min early — airport-style security at the dock. The ferry continues to Ellis Island; tour the moving Immigration Museum, then ferry back to Battery.", map: "Battery Park New York" },
+        { time: "~3:00 PM", title: "Back to Battery + walk to the 9/11 area", detail: "After Ellis Island, the ferry returns to Battery Park. Grab a late lunch nearby, then it’s a ~12-min walk north to the 9/11 site — pass the Charging Bull and the Oculus on the way.", map: "Stone Street Historic District New York" },
+        { time: "4:00 PM", title: "✅ 9/11 Memorial & Museum (2 tickets booked)", detail: "Booked for 4:00pm. See the free Memorial reflecting pools in the footprints of the Twin Towers, then your timed Museum entry. Allow ~2 hrs; it’s powerful and somber. The Oculus transit hall next door is worth a look.", map: "9/11 Memorial and Museum" },
+        { time: "Evening", title: "Stone Street / Seaport dinner", detail: "Dinner at historic Stone Street or the South Street Seaport with East River views — both minutes from your hotel.", map: "Stone Street Historic District New York" }
       ],
-      eat: "Stone Street (cobblestone pedestrian dining) or the Seaport.",
-      tips: ["Earliest ferry slot = smaller crowds and cooler temps.", "Staying in FiDi means you can drop back at the hotel between the harbor and the afternoon.", "Bring a refillable water bottle; downtown gets baking hot."]
+      eat: "Late lunch near Battery after the ferry; dinner at Stone Street (cobblestone patios) or the Seaport.",
+      tips: ["Two fixed times today: Statue ferry 11:00am, 9/11 Museum 4:00pm — the islands fill the middle of the day perfectly.", "Get to Battery Park by ~10:15am for ferry security.", "Pedestal access requires the separate security screening at the dock — it’s included in your booked tour.", "Staying in FiDi means everything today is walkable; drop bags at the hotel if needed."]
     },
     {
       date: "2026-07-02",
@@ -130,15 +131,15 @@ const TRIP = {
         { time: "Evening", title: "✅ Check in: Pod Times Square + sunset deck", detail: "Check into Pod Times Square, then walk to a sunset observation deck nearby — pick ONE and pre-book a timed slot: Top of the Rock (best skyline, Empire State in frame), Summit One Vanderbilt (mirrored/immersive), Edge, or the Empire State Building.", map: "Pod Times Square New York" }
       ],
       eat: "Upper East/West Side near the park for lunch; Midtown after the deck.",
-      tips: ["Observation decks need timed tickets and sunset slots sell out — pre-book one.", "Stash bags at Pod Times Square in the morning so you’re not hauling them through the Met.", "Central Park is huge — pick the Columbus Circle section, don’t try to see it all."]
+      tips: ["Alignment note: the Met is ~2 mi up on the Upper East Side, then your sunset deck is back near Pod in Midtown — so today has one up-and-back. Minimize it by doing Central Park (enter Columbus Circle) → cross to the Met → take the subway straight back down to your Midtown deck.", "Observation decks need timed tickets and sunset slots sell out — pre-book one.", "Stash bags at Pod Times Square in the morning so you’re not hauling them through the Met (FiDi→Pod is ~3.7 mi, one subway ride).", "Prefer zero backtrack? Swap the Met for the American Museum of Natural History — it’s right by Central Park on the west side, closer to your hotel."]
     },
     {
       date: "2026-07-03",
       city: "New York City",
       title: "Downtown cool: High Line, Village, Broadway",
-      summary: "Your most ‘local’ day — neighborhoods, then a show. Eve-of-the-4th energy everywhere, and you’re right in Times Square.",
+      summary: "Your most ‘local’ day, and it flows north-to-south then back: High Line → Village, then up to Broadway by your hotel. All walkable / one subway hop.",
       blocks: [
-        { time: "Morning", title: "High Line + Chelsea Market", detail: "Walk the High Line elevated park (Hudson Yards down to the Meatpacking District) and graze through Chelsea Market.", map: "The High Line New York" },
+        { time: "Morning", title: "High Line + Chelsea Market", detail: "From Times Square it’s ~1 mi to the High Line’s north end (Hudson Yards). Walk the elevated park down to the Meatpacking District and graze through Chelsea Market.", map: "The High Line New York" },
         { time: "Afternoon", title: "Greenwich Village / SoHo / Washington Sq", detail: "Wander Washington Square Park, the Village’s leafy streets, and SoHo’s cast-iron shopping blocks. Optional: Little Italy & Chinatown.", map: "Washington Square Park New York" },
         { time: "Evening", title: "Broadway show — ⚠️ tickets", detail: "See a Broadway show — book a specific title ahead, or try the TKTS booth in Times Square (steps from your hotel) for same-day discounts. Dinner pre/post in the Theater District.", map: "Broadway Theatre District New York" }
       ],
@@ -202,8 +203,8 @@ const TRIP = {
     "✅ DONE — Air & Space passes (Jun 27, 11am)",
     "✅ DONE — NMAAHC passes (Jun 28, 11am)",
     "✅ DONE — Holocaust Museum passes (Jun 28, 3:30pm)",
-    "TODO — Statue of Liberty / Ellis Island ferry (Statue City Cruises — the ONLY official seller; book early, sells out)",
-    "TODO — 9/11 Memorial Museum timed tickets (911memorial.org)",
+    "✅ DONE — Statue of Liberty Pedestal Access ferry (Jul 1, 11am, NY departure)",
+    "✅ DONE — 9/11 Memorial & Museum (Jul 1, 4pm)",
     "TODO — One observation deck, timed sunset slot (Top of the Rock / Summit / Edge / Empire State)",
     "TODO — Broadway show (book a title, or TKTS same-day in Times Square)",
     "Optional — National Archives timed ticket (free/$1) to see the Declaration",
@@ -220,4 +221,41 @@ const TRIP = {
     "Health & comfort": ["Blister plasters / band-aids", "Pain reliever + any meds", "Hand sanitizer + wipes", "Deodorant (you’ll sweat)", "Eye mask + earplugs"],
     "Smart extras": ["Day backpack", "Portable fan / cooling towel", "Snacks for the train", "Downloaded maps + Amtrak/airline apps", "Saved/printed copies of all bookings (offline)"]
   }
+};
+
+/*
+ * Coordinates [lat, lng] for each place referenced by a day block's `map` field.
+ * Used to plot per-day pins and build Google Maps routes. Approximate landmark
+ * points — good for plotting; the Google Maps route button refines real routing.
+ * (San Francisco airport is intentionally omitted so it doesn't blow out the NYC map.)
+ */
+const PLACES = {
+  // ---- Washington, DC ----
+  "Ronald Reagan Washington National Airport": [38.8512, -77.0402],
+  "Hyatt Place Washington DC White House": [38.9026, -77.0381],
+  "The White House": [38.8977, -77.0365],
+  "National Air and Space Museum Washington DC": [38.8882, -77.0199],
+  "National Museum of Natural History Washington DC": [38.8913, -77.0260],
+  "National Gallery of Art": [38.8913, -77.0200],
+  "Lincoln Memorial Washington DC": [38.8893, -77.0502],
+  "National Museum of African American History and Culture": [38.8909, -77.0327],
+  "National Museum of American History": [38.8911, -77.0301],
+  "United States Holocaust Memorial Museum": [38.8867, -77.0329],
+  "The Wharf Washington DC": [38.8785, -77.0256],
+  "Arlington National Cemetery": [38.8783, -77.0687],
+  "Georgetown Washington DC": [38.9048, -77.0626],
+  "Washington Union Station": [38.8973, -77.0063],
+  // ---- New York City ----
+  "Fairfield Inn New York Manhattan Financial District": [40.7069, -74.0072],
+  "Stone Street Historic District New York": [40.7042, -74.0113],
+  "Battery Park New York": [40.7033, -74.0170],
+  "9/11 Memorial and Museum": [40.7115, -74.0134],
+  "Central Park New York": [40.7681, -73.9819],
+  "Metropolitan Museum of Art": [40.7794, -73.9632],
+  "Pod Times Square New York": [40.7588, -73.9925],
+  "The High Line New York": [40.7480, -74.0048],
+  "Washington Square Park New York": [40.7308, -73.9973],
+  "Broadway Theatre District New York": [40.7590, -73.9851],
+  "Times Square New York": [40.7580, -73.9855],
+  "John F. Kennedy International Airport": [40.6413, -73.7781]
 };

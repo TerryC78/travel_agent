@@ -166,6 +166,31 @@ tr.total td { font-weight: 800; border-top: 2px solid var(--accent); border-bott
 .reset-btn:hover { color: var(--ink); border-color: var(--accent); }
 .progress { color: var(--muted); font-size: 13px; margin: 2px 0 10px; }
 
+/* ---------- Per-day map ---------- */
+.daymap {
+  margin: 14px 4px 4px; padding: 14px; border: 1px solid var(--line);
+  border-radius: 12px; background: var(--card-2);
+}
+.daymap-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.daymap-title { font-weight: 800; font-size: 14px; }
+.route-btn {
+  background: var(--accent); color: #fff; border-radius: 8px; padding: 6px 12px;
+  font-size: 13px; font-weight: 700; white-space: nowrap;
+}
+.route-btn:hover { text-decoration: none; filter: brightness(1.08); }
+.daymap-legend { margin: 10px 0 12px; padding-left: 26px; }
+.daymap-legend li { margin: 3px 0; font-size: 14px; }
+.daymap-legend .leg { color: var(--muted); font-size: 12px; }
+.leaflet-day { height: 300px; width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.leaflet-day .leaflet-container { background: #aad3df; }
+.pin-icon { background: transparent; border: none; }
+.pin {
+  width: 28px; height: 28px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  background: var(--accent); border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.4);
+  display: grid; place-items: center;
+}
+.pin > span { transform: rotate(45deg); color: #fff; font-weight: 800; font-size: 13px; }
+
 footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 0 0; }
 
 @media (max-width: 560px) {
@@ -175,7 +200,7 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px
 }
 
 @media print {
-  nav.tabs, .countdown, .reset-btn { display: none !important; }
+  nav.tabs, .countdown, .reset-btn, .leaflet-day { display: none !important; }
   section { display: block !important; page-break-inside: avoid; }
   body { background: #fff; color: #000; }
   .card, .day-head { box-shadow: none; }

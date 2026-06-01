@@ -12,11 +12,14 @@ step, works offline.
 ## ✨ What's inside
 
 - **Overview** — trip-at-a-glance, the cities, and key logistics (flights + the DC→NYC Amtrak).
-- **Itinerary** — 9 collapsible days, each with morning/afternoon/evening plans and one-tap **Open in Maps** links.
-- **Budget** — rough per-person estimate that totals automatically.
-- **Bookings** — a checklist of things to reserve in advance (saves your progress).
+- **Itinerary** — 9 collapsible days, each with morning/afternoon/evening plans, one-tap **Open in Maps** links, and an **embedded per-day map** (numbered pins + walking route) with an **"Open route in Google Maps"** button.
+- **Stays** — your three confirmed hotels and which days they anchor.
+- **Budget** — estimate that totals automatically.
+- **Bookings** — a checklist of reservations, marked DONE vs TODO (saves your progress).
 - **Packing** — a categorized checklist (saves your progress).
 - A live **countdown** to departure on the home screen.
+
+The per-day maps use [Leaflet](https://leafletjs.com/) + OpenStreetMap tiles (loaded from a CDN — so day maps need internet; everything else works offline). Pin coordinates live in the `PLACES` table in `data.js`.
 
 ## 🎆 The big deal about these dates
 
