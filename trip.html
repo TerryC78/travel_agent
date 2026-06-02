@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive itinerary for an East Coast trip: SFO to Washington DC to New York to SFO, June 26 - July 4, 2026." />
+  <title>East Coast 2026 · Itinerary</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <style>
+/* East Coast 2026 itinerary - styling */
+:root {
+  --bg: #0f1424;
+  --bg-soft: #171d33;
+  --card: #1d2440;
+  --card-2: #232c4f;
+  --ink: #eef1fb;
+  --muted: #a4adcf;
+  --line: #2c355c;
+  --accent: #5b8cff;
+  --accent-2: #ff5d73;
+  --gold: #f5c451;
+  --green: #36d399;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 80% -10%, #21306b 0%, transparent 60%), var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 18px 80px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 56px 18px 30px;
+  text-align: center;
+  background:
+    radial-gradient(800px 300px at 50% -40%, rgba(91,140,255,.35), transparent 70%);
+}
+.hero .flag { font-size: 40px; letter-spacing: 4px; }
+.hero h1 { font-size: clamp(28px, 6vw, 52px); margin: 8px 0 6px; line-height: 1.05; }
+.hero .route { color: var(--gold); font-weight: 700; font-size: clamp(15px, 3.4vw, 22px); }
+.hero .dates { color: var(--muted); margin-top: 6px; font-size: 15px; }
+
+/* Countdown */
+.countdown { display: flex; gap: 10px; justify-content: center; margin: 22px 0 6px; flex-wrap: wrap; }
+.cd-box {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 16px; min-width: 78px; box-shadow: var(--shadow);
+}
+.cd-box .num { font-size: 26px; font-weight: 800; color: var(--accent); }
+.cd-box .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+.cd-msg { color: var(--gold); font-weight: 700; margin-top: 6px; }
+
+/* ---------- Nav ---------- */
+nav.tabs {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; gap: 6px; overflow-x: auto; padding: 10px;
+  background: rgba(15,20,36,.85); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+nav.tabs button {
+  flex: 0 0 auto; background: transparent; color: var(--muted);
+  border: 1px solid transparent; border-radius: 999px; padding: 8px 16px;
+  font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+nav.tabs button:hover { color: var(--ink); }
+nav.tabs button.active { color: #fff; background: var(--accent); }
+
+/* ---------- Sections / cards ---------- */
+section { display: none; padding-top: 26px; }
+section.active { display: block; animation: fade .25s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+h2.sec-title { font-size: 24px; margin: 6px 0 4px; }
+p.sec-sub { color: var(--muted); margin: 0 0 18px; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 20px; margin: 14px 0; box-shadow: var(--shadow);
+}
+
+/* Highlights */
+.highlight { display: flex; gap: 12px; align-items: flex-start; }
+.highlight + .highlight { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+
+.city-chips { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0 0; }
+.chip {
+  background: var(--card-2); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 16px; flex: 1 1 180px;
+}
+.chip .city { font-weight: 800; font-size: 17px; }
+.chip .meta { color: var(--muted); font-size: 13px; }
+
+/* ---------- Itinerary day ---------- */
+.day { margin: 16px 0; }
+.day-head {
+  display: flex; align-items: center; gap: 14px; cursor: pointer;
+  padding: 16px 18px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.day-head:hover { border-color: var(--accent); }
+.day-num {
+  flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #3b63c9);
+  display: grid; place-items: center; font-weight: 800; font-size: 18px; color: #fff;
+}
+.day-head .dh-main { flex: 1; min-width: 0; }
+.day-head .dh-date { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+.day-head .dh-title { font-weight: 700; font-size: 16px; }
+.day-head .dh-city { font-size: 12px; color: var(--muted); }
+.day-head .caret { color: var(--muted); transition: transform .2s; }
+.day.open .day-head .caret { transform: rotate(90deg); }
+
+.day-body { display: none; padding: 4px 6px 6px; }
+.day.open .day-body { display: block; }
+
+.block { display: flex; gap: 14px; padding: 14px 4px; border-bottom: 1px dashed var(--line); }
+.block:last-of-type { border-bottom: none; }
+.block .when {
+  flex: 0 0 86px; font-weight: 800; font-size: 12px; text-transform: uppercase;
+  letter-spacing: .5px; color: var(--accent); padding-top: 2px;
+}
+.block .what { flex: 1; }
+.block .what .bt { font-weight: 700; }
+.block .what .bd { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.map-link {
+  display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 600;
+  background: var(--card-2); border: 1px solid var(--line); border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.eat, .tips { margin-top: 12px; font-size: 14px; }
+.eat { color: var(--ink); }
+.tips ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); }
+
+.decision {
+  background: linear-gradient(180deg, rgba(245,196,81,.12), rgba(245,196,81,.04));
+  border: 1px solid var(--gold); border-radius: 12px; padding: 14px 16px; margin: 10px 0 14px;
+}
+.decision .dt { font-weight: 800; color: var(--gold); }
+.decision ol { margin: 8px 0 0; padding-left: 18px; }
+.decision li { margin: 4px 0; }
+
+/* ---------- Tables ---------- */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr.total td { font-weight: 800; border-top: 2px solid var(--accent); border-bottom: none; font-size: 15px; }
+.budget-note { color: var(--muted); font-size: 12px; margin-top: 10px; }
+
+/* ---------- Checklists ---------- */
+.check { display: flex; align-items: flex-start; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.check:last-child { border-bottom: none; }
+.check input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--green); flex: 0 0 auto; }
+.check.done span { color: var(--muted); text-decoration: line-through; }
+.pack-group h3 { margin: 16px 0 2px; font-size: 15px; color: var(--gold); }
+.reset-btn {
+  background: transparent; color: var(--muted); border: 1px solid var(--line);
+  border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer; margin-top: 10px;
+}
+.reset-btn:hover { color: var(--ink); border-color: var(--accent); }
+.progress { color: var(--muted); font-size: 13px; margin: 2px 0 10px; }
+
+/* ---------- Per-day map ---------- */
+.daymap {
+  margin: 14px 4px 4px; padding: 14px; border: 1px solid var(--line);
+  border-radius: 12px; background: var(--card-2);
+}
+.daymap-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.daymap-title { font-weight: 800; font-size: 14px; }
+.route-btn {
+  background: var(--accent); color: #fff; border-radius: 8px; padding: 6px 12px;
+  font-size: 13px; font-weight: 700; white-space: nowrap;
+}
+.route-btn:hover { text-decoration: none; filter: brightness(1.08); }
+.daymap-legend { margin: 10px 0 12px; padding-left: 26px; }
+.daymap-legend li { margin: 3px 0; font-size: 14px; }
+.daymap-legend .leg { color: var(--muted); font-size: 12px; }
+.leaflet-day { height: 300px; width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.leaflet-day .leaflet-container { background: #aad3df; }
+.pin-icon { background: transparent; border: none; }
+.pin {
+  width: 28px; height: 28px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  background: var(--accent); border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.4);
+  display: grid; place-items: center;
+}
+.pin > span { transform: rotate(45deg); color: #fff; font-weight: 800; font-size: 13px; }
+
+footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 0 0; }
+
+@media (max-width: 560px) {
+  .block { flex-direction: column; gap: 4px; }
+  .block .when { flex-basis: auto; }
+  .day-head { padding: 12px; }
+}
+
+@media print {
+  nav.tabs, .countdown, .reset-btn, .leaflet-day { display: none !important; }
+  section { display: block !important; page-break-inside: avoid; }
+  body { background: #fff; color: #000; }
+  .card, .day-head { box-shadow: none; }
+}
+
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="flag">🇺🇸</div>
+    <h1 id="hero-title">East Coast 2026</h1>
+    <div class="route" id="hero-route">SFO → Washington DC → New York → SFO</div>
+    <div class="dates" id="hero-dates">Jun 26 – Jul 4, 2026</div>
+    <div class="countdown" id="countdown"></div>
+  </header>
+
+  <nav class="tabs">
+    <button class="active" data-target="overview">Overview</button>
+    <button data-target="itinerary">Itinerary</button>
+    <button data-target="stays">Stays</button>
+    <button data-target="budget">Budget</button>
+    <button data-target="bookings">Bookings</button>
+    <button data-target="packing">Packing</button>
+  </nav>
+
+  <main class="wrap">
+    <section id="overview" class="active"></section>
+    <section id="itinerary">
+      <h2 class="sec-title">Day by day</h2>
+      <p class="sec-sub">Tap any day to expand. Each stop has an “Open in Maps” link.</p>
+    </section>
+    <section id="stays"></section>
+    <section id="budget"></section>
+    <section id="bookings"></section>
+    <section id="packing"></section>
+  </main>
+
+  <footer class="wrap">
+    Your personal travel agent · Built with Claude Code · Edit <code>data.js</code> to customize the trip.
+  </footer>
+
+  <script>
+/*
+ * Trip data for the East Coast trip: SFO -> Washington DC -> New York -> SFO
+ * Dates: Friday June 26 - Saturday July 4, 2026 (8 nights)
+ *
+ * This is the single source of truth for the itinerary website.
+ * Edit anything here and refresh the page - no build step required.
+ * ✅ = confirmed/booked.  ⚠️ = needs a reservation.
+ */
+
+const TRIP = {
+  title: "East Coast 2026",
+  subtitle: "SFO → Washington DC → New York → SFO",
+  startDate: "2026-06-26", // Friday
+  endDate: "2026-07-04", // Saturday (the 250th of July!)
+  travelers: 2,
+
+  // Big-picture context worth knowing before you go.
+  highlights: [
+    "🎆 July 4, 2026 is the 250th anniversary of US independence (“America250” / Semiquincentennial). Expect once-in-a-lifetime celebrations — and bigger crowds, tighter security, and higher prices in both DC and NYC.",
+    "✈️ Your July 4 is a travel day: JFK → SFO departs 6:55pm, so you’ll be airborne during Macy’s fireworks. That trade-off is already settled by the booking — see the July 4 note.",
+    "⛵ Sail4th 250 (Jul 3–8): 30+ tall ships and 40+ naval vessels sail into New York Harbor and circle the Statue of Liberty — a once-in-a-generation maritime parade overlapping your NYC days.",
+    "🚆 You take the train DC → NYC (Amtrak, ~3½ hrs into the new Moynihan Train Hall) — far better than flying that leg.",
+    "🏛 Most Smithsonian museums in DC are FREE; your three reserved museums (Air & Space, NMAAHC, Holocaust) are all locked in.",
+    "☀️ Late June / early July on the East Coast is hot and humid (high 80s–90s°F, afternoon thunderstorms). Pack light, breathable clothes and stay hydrated."
+  ],
+
+  cities: [
+    { name: "Washington, DC", nights: 4, dates: "Jun 26–30" },
+    { name: "New York City", nights: 4, dates: "Jun 30 – Jul 4" }
+  ],
+
+  // ---- Where you're staying (confirmed) ----
+  stays: [
+    { hotel: "Hyatt Place Washington DC / White House", city: "Washington, DC", dates: "Jun 26–30", nights: 4, area: "Downtown by the White House — walkable to the Mall and Metro." },
+    { hotel: "Fairfield Inn New York Manhattan / Financial District", city: "New York City", dates: "Jun 30 – Jul 2", nights: 2, area: "Lower Manhattan — ideal base for your Statue / Ellis / 9-11 day." },
+    { hotel: "Pod Times Square", city: "New York City", dates: "Jul 2 – Jul 4", nights: 2, area: "Midtown — steps from Broadway and the Times Square energy for your last two nights." }
+  ],
+
+  // ---- Day-by-day itinerary ----
+  // Each block has a Google Maps search query ("map") so you can tap straight into directions.
+  days: [
+    {
+      date: "2026-06-26",
+      city: "Washington, DC",
+      title: "Fly SFO → DC · Arrive at dinnertime",
+      summary: "Cross-country travel day — you land at 5:59pm, so tonight is check-in, dinner, and a gentle first look at the White House nearby.",
+      blocks: [
+        { time: "9:39 AM", title: "✅ Fly SFO → Washington (DCA)", detail: "Booked: SFO → Reagan National (DCA), departs 9:39am PT, arrives 5:59pm ET (~5h20m nonstop + 3h time change). DCA is the closest airport to downtown — ~15 min to your hotel.", map: "Ronald Reagan Washington National Airport" },
+        { time: "Evening", title: "✅ Check in: Hyatt Place DC / White House", detail: "From DCA, take Metro (Blue/Yellow line) or a ~15-min cab to the hotel near the White House. Drop bags and freshen up — you’ll be hungry and a little jet-lagged, so keep tonight easy.", map: "Hyatt Place Washington DC White House" },
+        { time: "Night", title: "Dinner + White House by night", detail: "Dinner downtown near the hotel, then if you’ve got any energy, stroll to the White House (north side, Lafayette Square) — lit up and quiet at night. Summer light lingers past 8:30pm.", map: "The White House" }
+      ],
+      eat: "Dinner near the hotel / downtown (14th St NW has lots of options). First-night-easy — don’t over-plan.",
+      tips: ["Hydrate on the flight — DC humidity hits hard.", "Set up SmarTrip / phone tap for the Metro at the airport.", "You land at dinnertime, so save the big monuments for an evening later in the DC leg."]
+    },
+    {
+      date: "2026-06-27",
+      city: "Washington, DC",
+      title: "Museums day 1 · Air, space & natural sciences",
+      summary: "South-Mall Smithsonians, anchored by your 11am Air & Space tickets. Everything else today is a free walk-in.",
+      blocks: [
+        { time: "11:00 AM", title: "✅ National Air & Space Museum (2 tickets booked)", detail: "Your timed-entry passes are for 11:00am — arrive ~10:50 for security. Heads-up: as of late June 2026 only about HALF the museum is open (8 all-new galleries + the renovated planetarium); the big 50th-anniversary reopening of 5 more galleries lands July 1, just after you leave. Still a must-see.", map: "National Air and Space Museum Washington DC" },
+        { time: "Afternoon", title: "National Museum of Natural History — free walk-in", detail: "Walk straight in (free, no pass). Hope Diamond, the dinosaur & fossil halls, the rotunda elephant, the ocean hall. Give it ~2 hours.", map: "National Museum of Natural History Washington DC" },
+        { time: "Late afternoon", title: "National Gallery of Art — free walk-in", detail: "Free, no pass. West Building old masters (the only Leonardo da Vinci in the Americas) or cool off in the underground concourse and Sculpture Garden. Skip if you’re museumed-out.", map: "National Gallery of Art" },
+        { time: "Evening", title: "Monuments after dark", detail: "The memorials are floodlit, gorgeous, and cooler at night. Stroll the WWII, Lincoln, and Washington Monument grounds, then dinner in Penn Quarter.", map: "Lincoln Memorial Washington DC" }
+      ],
+      eat: "Quick lunch from a Mall food truck or the Natural History café; dinner in Penn Quarter / Chinatown.",
+      tips: ["Air & Space is booked for 11:00am — arrive ~10:50 for security.", "With a late-morning museum slot, do Natural History + the National Gallery after, then monuments at night.", "Saturday is the busiest museum day — the walk-ins are calmer earlier vs. mid-afternoon."]
+    },
+    {
+      date: "2026-06-28",
+      city: "Washington, DC",
+      title: "Museums day 2 · The American story",
+      summary: "Two reserved museums anchor the day: NMAAHC at 11am, the Holocaust Museum at 3:30pm. Both are heavy — pace yourself.",
+      blocks: [
+        { time: "11:00 AM", title: "✅ African American History & Culture / NMAAHC (2 tickets booked)", detail: "Your timed passes are for 11:00am — arrive ~10:50 for security. Start in the underground History Galleries and work upward; it’s chronological and powerful. Give it ~3 hours, with lunch at Sweet Home Café inside.", map: "National Museum of African American History and Culture" },
+        { time: "~2:00 PM", title: "National Museum of American History — free walk-in (if time)", detail: "Right nearby, no reservation. This is today’s flex stop: if NMAAHC runs long, pop in just for the Star-Spangled Banner and ‘American Democracy’ (on-theme for the 250th), or skip it and rest before the Holocaust Museum.", map: "National Museum of American History" },
+        { time: "3:30 PM", title: "✅ US Holocaust Memorial Museum — Permanent Exhibition (2 tickets booked)", detail: "Booked for the 3:30–3:45pm entry window at 100 Raoul Wallenberg Pl SW (~12-min walk from American History). The Permanent Exhibition runs ~2–3 hrs and is deeply moving; last entry 4:30pm, museum closes 5:30. Leave quiet time after.", map: "United States Holocaust Memorial Museum" },
+        { time: "Evening", title: "The Wharf or U Street", detail: "Decompress with waterfront seafood at The Wharf (~15 min away), or U Street for live jazz and Ben’s Chili Bowl.", map: "The Wharf Washington DC" }
+      ],
+      eat: "Sweet Home Café inside NMAAHC for lunch; The Wharf or U Street for dinner.",
+      tips: ["Your two fixed times: NMAAHC 11:00am, Holocaust 3:30pm. American History in between is optional — drop it if you’re running behind.", "NMAAHC + Holocaust in one day is emotionally intense — go easy and leave space after.", "It’s a ~12-min walk to the Holocaust Museum — leave the NMAAHC/American History area by ~3:15pm."]
+    },
+    {
+      date: "2026-06-29",
+      city: "Washington, DC",
+      title: "Arlington, Georgetown & the other DC",
+      summary: "Step off the Mall: solemn history in the morning, charming streets in the afternoon.",
+      blocks: [
+        { time: "Morning", title: "Arlington National Cemetery", detail: "Tomb of the Unknown Soldier changing of the guard, JFK gravesite & eternal flame, Arlington House views back over DC. Reachable by Metro (Blue Line).", map: "Arlington National Cemetery" },
+        { time: "Afternoon", title: "Georgetown", detail: "Historic cobblestone streets, the C&O Canal, waterfront park, and shopping along M St & Wisconsin Ave. Get a cupcake if that’s your thing.", map: "Georgetown Washington DC" },
+        { time: "Evening", title: "Pack & prep for the train", detail: "Early-ish night back near the White House. Your Amtrak is booked for 11:06am tomorrow — download the tickets, repack, and set out clothes for the train.", map: "Hyatt Place Washington DC White House" }
+      ],
+      eat: "Lunch in Georgetown (waterfront patios); casual dinner near your hotel.",
+      tips: ["Arlington involves a lot of walking on hills — comfortable shoes again.", "Save your Amtrak tickets to the app tonight; Union Station is ~10 min from the hotel."]
+    },
+    {
+      date: "2026-06-30",
+      city: "New York City",
+      title: "Amtrak DC → NYC · Hello, New York",
+      summary: "Scenic ~3½-hour train up the Northeast Corridor into the new Moynihan hall, then settle into your Financial District base.",
+      blocks: [
+        { time: "11:06 AM", title: "✅ Amtrak: Washington → New York (2 tickets booked)", detail: "Departs Washington Union Station 11:06am, arrives Moynihan Train Hall at Penn Station ~2:34pm (3h 28m). Moynihan is the stunning skylit hall — far nicer than old Penn. Sit on the left/west side leaving DC for water views. Board ~20 min early.", map: "Washington Union Station" },
+        { time: "~2:45 PM", title: "✅ Check in: Fairfield Inn, Financial District", detail: "From Moynihan, take the subway downtown (A/C/E or 1/2/3) ~20 min to your FiDi hotel. Drop bags and reset — you’re perfectly placed for tomorrow’s Statue of Liberty + 9/11 day.", map: "Fairfield Inn New York Manhattan Financial District" },
+        { time: "Evening", title: "Lower Manhattan at golden hour", detail: "Ease in around your downtown base: Stone Street for dinner, the South Street Seaport on the East River, or walk toward Battery Park for a first glimpse of the harbor and Lady Liberty. (Plenty of Times Square coming once you move there July 2.)", map: "Stone Street Historic District New York" }
+      ],
+      eat: "Dinner downtown — Stone Street’s cobblestone patios or the Seaport.",
+      tips: ["Set up OMNY tap-to-pay (phone/card) for the subway before you arrive.", "Your bags ride with you — Moynihan to FiDi is one easy subway hop.", "Heads up: DC’s ‘Salute to America’ 250th parade & fireworks are July 4 — after you’ve left. New York is your finale."]
+    },
+    {
+      date: "2026-07-01",
+      city: "New York City",
+      title: "Lower Manhattan: Liberty, Ellis, 9/11",
+      summary: "The harbor + downtown classics, all walkable from your FiDi base. Two fixed times: Statue ferry 11am, 9/11 Museum 4pm.",
+      blocks: [
+        { time: "11:00 AM", title: "✅ Statue of Liberty — Pedestal Access Tour (2 tickets booked)", detail: "Booked: 11:00am ferry, NEW YORK departure from Battery Park (a short walk from your hotel) with Pedestal access to the statue. Arrive ~45 min early — airport-style security at the dock. The ferry continues to Ellis Island; tour the moving Immigration Museum, then ferry back to Battery.", map: "Battery Park New York" },
+        { time: "~3:00 PM", title: "Back to Battery + walk to the 9/11 area", detail: "After Ellis Island, the ferry returns to Battery Park. Grab a late lunch nearby, then it’s a ~12-min walk north to the 9/11 site — pass the Charging Bull and the Oculus on the way.", map: "Stone Street Historic District New York" },
+        { time: "4:00 PM", title: "✅ 9/11 Memorial & Museum (2 tickets booked)", detail: "Booked for 4:00pm. See the free Memorial reflecting pools in the footprints of the Twin Towers, then your timed Museum entry. Allow ~2 hrs; it’s powerful and somber. The Oculus transit hall next door is worth a look.", map: "9/11 Memorial and Museum" },
+        { time: "Evening", title: "Stone Street / Seaport dinner", detail: "Dinner at historic Stone Street or the South Street Seaport with East River views — both minutes from your hotel.", map: "Stone Street Historic District New York" }
+      ],
+      eat: "Late lunch near Battery after the ferry; dinner at Stone Street (cobblestone patios) or the Seaport.",
+      tips: ["Two fixed times today: Statue ferry 11:00am, 9/11 Museum 4:00pm — the islands fill the middle of the day perfectly.", "Get to Battery Park by ~10:15am for ferry security.", "Pedestal access requires the separate security screening at the dock — it’s included in your booked tour.", "Staying in FiDi means everything today is walkable; drop bags at the hotel if needed."]
+    },
+    {
+      date: "2026-07-02",
+      city: "New York City",
+      title: "Central Park, the Met & the skyline",
+      summary: "Hotel-switch day (FiDi → Times Square) wrapped around uptown culture and a sunset skyline view.",
+      blocks: [
+        { time: "Morning", title: "Hotel switch → uptown to Central Park", detail: "Check out of the Fairfield Inn (FiDi). Easiest play: stash bags at Pod Times Square (check-in is mid-afternoon), then subway up to Central Park — enter at Columbus Circle for Bethesda Terrace, the Mall, Bow Bridge, Belvedere Castle.", map: "Central Park New York" },
+        { time: "Afternoon", title: "The Met (Museum Mile)", detail: "The Metropolitan Museum of Art is world-class — give it 2–3 hours. No advance pass needed for general admission. Alternatives nearby: the Guggenheim or, across the park, the American Museum of Natural History.", map: "Metropolitan Museum of Art" },
+        { time: "Evening", title: "✅ Check in: Pod Times Square + sunset deck", detail: "Check into Pod Times Square, then walk to a sunset observation deck nearby — pick ONE and pre-book a timed slot: Top of the Rock (best skyline, Empire State in frame), Summit One Vanderbilt (mirrored/immersive), Edge, or the Empire State Building.", map: "Pod Times Square New York" }
+      ],
+      eat: "Upper East/West Side near the park for lunch; Midtown after the deck.",
+      tips: ["Alignment note: the Met is ~2 mi up on the Upper East Side, then your sunset deck is back near Pod in Midtown — so today has one up-and-back. Minimize it by doing Central Park (enter Columbus Circle) → cross to the Met → take the subway straight back down to your Midtown deck.", "Observation decks need timed tickets and sunset slots sell out — pre-book one.", "Stash bags at Pod Times Square in the morning so you’re not hauling them through the Met (FiDi→Pod is ~3.7 mi, one subway ride).", "Prefer zero backtrack? Swap the Met for the American Museum of Natural History — it’s right by Central Park on the west side, closer to your hotel."]
+    },
+    {
+      date: "2026-07-03",
+      city: "New York City",
+      title: "Downtown cool: High Line, Village, Broadway",
+      summary: "Your most ‘local’ day, and it flows north-to-south then back: High Line → Village, then up to Broadway by your hotel. All walkable / one subway hop.",
+      blocks: [
+        { time: "Morning", title: "High Line + Chelsea Market", detail: "From Times Square it’s ~1 mi to the High Line’s north end (Hudson Yards). Walk the elevated park down to the Meatpacking District and graze through Chelsea Market.", map: "The High Line New York" },
+        { time: "Afternoon", title: "Greenwich Village / SoHo / Washington Sq", detail: "Wander Washington Square Park, the Village’s leafy streets, and SoHo’s cast-iron shopping blocks. Optional: Little Italy & Chinatown.", map: "Washington Square Park New York" },
+        { time: "Evening", title: "Broadway show — ⚠️ tickets", detail: "See a Broadway show — book a specific title ahead, or try the TKTS booth in Times Square (steps from your hotel) for same-day discounts. Dinner pre/post in the Theater District.", map: "Broadway Theatre District New York" }
+      ],
+      eat: "Theater District pre-show prix-fixe, or Village classics (pizza, pasta).",
+      tips: ["🎆 Unique to 2026: the Times Square Ball drops on JULY 3 — eight times, marking midnight in every U.S. time zone to kick off the 250th. You’re staying right there — go see it.", "Tall ships from the Sail4th 250 parade are in the harbor today through Jul 8.", "July 3 gets crowded as the holiday ramps up — reserve dinner."]
+    },
+    {
+      date: "2026-07-04",
+      city: "New York City",
+      title: "America’s 250th · July 4th · Fly NYC → SFO",
+      summary: "A travel day. Your JFK flight leaves at 6:55pm, so it’s a relaxed NYC morning, then head to the airport mid-afternoon.",
+      decision: {
+        title: "✈️ Your July 4th is a travel day — the fireworks trade-off is settled",
+        body: "Your flight is booked: JFK → SFO, departs 6:55pm. With the 250th + holiday crowds you’ll need to leave Manhattan by ~3:00pm and be at JFK by ~4:30–5:00pm — which means you’ll be at the airport / in the air during Macy’s 8–10pm fireworks. That’s the trade-off, already decided by the booking. Make the most of the daytime:",
+        options: [
+          "Morning: soak up the 250th daytime energy near Times Square, then check out of Pod Times Square.",
+          "~3:00pm: head to JFK (AirTrain + LIRR/subway, or a car — pad heavily for holiday traffic).",
+          "Want the fireworks instead? The only way would be moving the flight to July 5 — otherwise enjoy the send-off and catch them on NBC/Peacock."
+        ]
+      },
+      blocks: [
+        { time: "Morning", title: "Last NYC morning + 250th buzz", detail: "Bagels and a final wander near Times Square. Expect special America250 daytime programming around the city. Check out of Pod Times Square and store your bags if you want a few untethered hours.", map: "Times Square New York" },
+        { time: "~3:00 PM", title: "Head to JFK", detail: "Leave Manhattan by ~3pm for your 6:55pm flight — July 4 + 250th means heavy traffic and security. From Midtown: subway/LIRR to the JFK AirTrain, or a car service (budget extra time). Aim to be at the gate by ~5pm.", map: "John F. Kennedy International Airport" },
+        { time: "6:55 PM", title: "✅ Fly JFK → SFO", detail: "Booked: JFK → SFO, departs 6:55pm ET, arrives 10:33pm PT (~6h40m + 3h time change). You’ll be airborne during the fireworks — catch them on NBC/Peacock if your flight has TV/Wi-Fi.", map: "San Francisco International Airport" }
+      ],
+      eat: "Grab-and-go near the hotel; a proper sit-down won’t fit a travel day.",
+      tips: ["Leave Manhattan by ~3pm — holiday + 250th = brutal airport traffic and lines.", "Check out of Pod Times Square in the morning; store bags if you want a hands-free last few hours.", "You’ll miss Macy’s fireworks in person (you’re flying) — they broadcast on NBC/Peacock 8–10pm."]
+    }
+  ],
+
+  // ---- Logistics ----
+  logistics: [
+    { label: "Flight out", value: "✅ SFO → Reagan National (DCA), Fri Jun 26: departs 9:39am PT, arrives 5:59pm ET. DCA is ~15 min from your hotel." },
+    { label: "DC → NYC", value: "✅ Amtrak, Tue Jun 30: Washington Union Station 11:06am → Moynihan Train Hall (Penn Sta) ~2:34pm (3h 28m)." },
+    { label: "Flight home", value: "✅ JFK → SFO, Sat Jul 4: departs 6:55pm ET, arrives 10:33pm PT. Leave Manhattan by ~3pm (holiday + 250th crowds)." },
+    { label: "Getting around DC", value: "Metro + walking from your White House–area hotel. SmarTrip / phone tap. The Mall is walkable end to end." },
+    { label: "Getting around NYC", value: "Subway (OMNY tap-to-pay) + walking. FiDi for the first half, Times Square for the second. Citi Bike is great for parks/waterfronts." }
+  ],
+
+  // ---- Budget estimate (per person, rough, USD) ----
+  // These are planning ballparks, NOT quotes. July 4 / 250th will push lodging high.
+  budget: [
+    { item: "Flights (SFO→DC, NYC→SFO)", low: 450, high: 750 },
+    { item: "Amtrak DC → NYC", low: 60, high: 200 },
+    { item: "Lodging – DC (4 nights)", low: 700, high: 1400 },
+    { item: "Lodging – NYC (4 nights)", low: 1000, high: 2200 },
+    { item: "Food (9 days)", low: 540, high: 1080 },
+    { item: "Attractions / tours / show", low: 250, high: 600 },
+    { item: "Local transit + rideshare", low: 100, high: 200 }
+  ],
+
+  // ---- Booking checklist ----
+  // ✅ DONE items are already booked; tick them off. TODO items still need doing.
+  bookings: [
+    "✅ DONE — Flight SFO→DCA (Jun 26, 9:39am)",
+    "✅ DONE — Flight JFK→SFO (Jul 4, 6:55pm)",
+    "✅ DONE — Amtrak DC→NYC (Jun 30, 11:06am)",
+    "✅ DONE — Hyatt Place DC / White House (Jun 26–30)",
+    "✅ DONE — Fairfield Inn FiDi, NYC (Jun 30–Jul 2)",
+    "✅ DONE — Pod Times Square, NYC (Jul 2–4)",
+    "✅ DONE — Air & Space passes (Jun 27, 11am)",
+    "✅ DONE — NMAAHC passes (Jun 28, 11am)",
+    "✅ DONE — Holocaust Museum passes (Jun 28, 3:30pm)",
+    "✅ DONE — Statue of Liberty Pedestal Access ferry (Jul 1, 11am, NY departure)",
+    "✅ DONE — 9/11 Memorial & Museum (Jul 1, 4pm)",
+    "TODO — One observation deck, timed sunset slot (Top of the Rock / Summit / Edge / Empire State)",
+    "TODO — Broadway show (book a title, or TKTS same-day in Times Square)",
+    "Optional — National Archives timed ticket (free/$1) to see the Declaration",
+    "Optional — Washington Monument timed tickets (recreation.gov, 90 days ahead)",
+    "Optional — US Capitol guided tour (visitthecapitol.gov, free)",
+    "Note — The Met, MoMA & Natural History (NYC) don’t require advance passes for general entry, but MoMA & AMNH go smoother if you pre-book a time",
+    "Consider — NYC CityPASS if doing 3+ paid attractions"
+  ],
+
+  // ---- Packing list ----
+  packing: {
+    "Essentials": ["IDs / REAL ID for flights", "🎟️ Google badge — may get you FREE entry to some popular museums in DC & NYC (e.g. via corporate/cultural perks); bring it and ask at admissions", "Phone + charger + power bank", "Cards + a little cash", "Refillable water bottle", "Sunscreen + sunglasses + hat"],
+    "Clothes (hot & humid)": ["Lightweight breathable tops", "Comfortable walking shoes (broken in!)", "1 nicer outfit for Broadway/dinner", "Compact umbrella / packable rain jacket", "Swimwear (hotel pool)"],
+    "Health & comfort": ["Blister plasters / band-aids", "Pain reliever + any meds", "Hand sanitizer + wipes", "Deodorant (you’ll sweat)", "Eye mask + earplugs"],
+    "Smart extras": ["Day backpack", "Portable fan / cooling towel", "Snacks for the train", "Downloaded maps + Amtrak/airline apps", "Saved/printed copies of all bookings (offline)"]
+  }
+};
+
+/*
+ * Coordinates [lat, lng] for each place referenced by a day block's `map` field.
+ * Used to plot per-day pins and build Google Maps routes. Approximate landmark
+ * points — good for plotting; the Google Maps route button refines real routing.
+ * (San Francisco airport is intentionally omitted so it doesn't blow out the NYC map.)
+ */
+const PLACES = {
+  // ---- Washington, DC ----
+  "Ronald Reagan Washington National Airport": [38.8512, -77.0402],
+  "Hyatt Place Washington DC White House": [38.9026, -77.0381],
+  "The White House": [38.8977, -77.0365],
+  "National Air and Space Museum Washington DC": [38.8882, -77.0199],
+  "National Museum of Natural History Washington DC": [38.8913, -77.0260],
+  "National Gallery of Art": [38.8913, -77.0200],
+  "Lincoln Memorial Washington DC": [38.8893, -77.0502],
+  "National Museum of African American History and Culture": [38.8909, -77.0327],
+  "National Museum of American History": [38.8911, -77.0301],
+  "United States Holocaust Memorial Museum": [38.8867, -77.0329],
+  "The Wharf Washington DC": [38.8785, -77.0256],
+  "Arlington National Cemetery": [38.8783, -77.0687],
+  "Georgetown Washington DC": [38.9048, -77.0626],
+  "Washington Union Station": [38.8973, -77.0063],
+  // ---- New York City ----
+  "Fairfield Inn New York Manhattan Financial District": [40.7069, -74.0072],
+  "Stone Street Historic District New York": [40.7042, -74.0113],
+  "Battery Park New York": [40.7033, -74.0170],
+  "9/11 Memorial and Museum": [40.7115, -74.0134],
+  "Central Park New York": [40.7681, -73.9819],
+  "Metropolitan Museum of Art": [40.7794, -73.9632],
+  "Pod Times Square New York": [40.7588, -73.9925],
+  "The High Line New York": [40.7480, -74.0048],
+  "Washington Square Park New York": [40.7308, -73.9973],
+  "Broadway Theatre District New York": [40.7590, -73.9851],
+  "Times Square New York": [40.7580, -73.9855],
+  "John F. Kennedy International Airport": [40.6413, -73.7781]
+};
+
+</script>
+  <script>
+/*
+ * Renders the trip from TRIP (data.js) and wires up interactivity:
+ * countdown, tab navigation, collapsible days, and checklists that
+ * persist in localStorage. No framework, no build step.
+ */
+(function () {
+  "use strict";
+
+  // --- tiny helpers ---
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const el = (tag, attrs = {}, html = "") => {
+    const n = document.createElement(tag);
+    for (const k in attrs) {
+      if (k === "class") n.className = attrs[k];
+      else if (k === "dataset") Object.assign(n.dataset, attrs[k]);
+      else n.setAttribute(k, attrs[k]);
+    }
+    if (html) n.innerHTML = html;
+    return n;
+  };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const mapUrl = (q) => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+  const fmtDate = (iso) => {
+    const d = new Date(iso + "T00:00:00");
+    return d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+  };
+  const fmtShort = (iso) => {
+    const d = new Date(iso + "T00:00:00");
+    return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+  };
+  const money = (n) => "$" + n.toLocaleString("en-US");
+  const kmBetween = (a, b) => {
+    const R = 6371, toR = (x) => (x * Math.PI) / 180;
+    const dLat = toR(b[0] - a[0]), dLng = toR(b[1] - a[1]);
+    const s = Math.sin(dLat / 2) ** 2 + Math.cos(toR(a[0])) * Math.cos(toR(b[0])) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(s));
+  };
+
+  // Leaflet map instances per day index, lazily initialized when a day opens.
+  const dayMapRecs = [];
+
+  // --- countdown ---
+  function renderCountdown() {
+    const box = $("#countdown");
+    const start = new Date(TRIP.startDate + "T00:00:00");
+    const end = new Date(TRIP.endDate + "T23:59:59");
+    const now = new Date();
+    box.innerHTML = "";
+
+    if (now > end) {
+      box.innerHTML = '<div class="cd-msg">Welcome home! Hope it was unforgettable. ✈️</div>';
+      return;
+    }
+    if (now >= start) {
+      box.innerHTML = '<div class="cd-msg">🎉 You’re on the trip right now — go have fun!</div>';
+      return;
+    }
+    const days = Math.ceil((start - now) / 86400000);
+    const parts = [
+      [days, "days"],
+      [TRIP.cities.length, "cities"],
+      [TRIP.days.length, "days planned"]
+    ];
+    parts.forEach(([num, lbl]) => {
+      box.appendChild(el("div", { class: "cd-box" }, `<div class="num">${num}</div><div class="lbl">${lbl}</div>`));
+    });
+  }
+
+  // --- overview ---
+  function renderOverview() {
+    const root = $("#overview");
+    const hl = el("div", { class: "card" });
+    hl.appendChild(el("h2", { class: "sec-title" }, "Trip at a glance"));
+    TRIP.highlights.forEach((h) => {
+      hl.appendChild(el("div", { class: "highlight" }, `<div>${esc(h)}</div>`));
+    });
+    root.appendChild(hl);
+
+    const cityCard = el("div", { class: "card" });
+    cityCard.appendChild(el("h2", { class: "sec-title" }, "Where you’ll be"));
+    const chips = el("div", { class: "city-chips" });
+    TRIP.cities.forEach((c) => {
+      chips.appendChild(el("div", { class: "chip" },
+        `<div class="city">${esc(c.name)}</div><div class="meta">${esc(c.dates)} · ${c.nights} nights</div>`));
+    });
+    cityCard.appendChild(chips);
+    root.appendChild(cityCard);
+
+    const logi = el("div", { class: "card" });
+    logi.appendChild(el("h2", { class: "sec-title" }, "Logistics"));
+    TRIP.logistics.forEach((l) => {
+      logi.appendChild(el("div", { class: "highlight" },
+        `<div><strong>${esc(l.label)}:</strong> <span style="color:var(--muted)">${esc(l.value)}</span></div>`));
+    });
+    root.appendChild(logi);
+  }
+
+  // --- stays ---
+  function renderStays() {
+    const root = $("#stays");
+    if (!TRIP.stays) return;
+    const card = el("div", { class: "card" });
+    card.appendChild(el("h2", { class: "sec-title" }, "Where you’re staying"));
+    card.appendChild(el("p", { class: "sec-sub" }, "All confirmed. Tap a hotel to open it in Maps."));
+    TRIP.stays.forEach((s) => {
+      const row = el("div", { class: "highlight" });
+      row.innerHTML =
+        `<div>
+           <div style="font-weight:700">🏨 <a href="${mapUrl(s.hotel + " " + s.city)}" target="_blank" rel="noopener">${esc(s.hotel)}</a></div>
+           <div style="color:var(--gold);font-size:13px">${esc(s.dates)} · ${s.nights} night${s.nights > 1 ? "s" : ""} · ${esc(s.city)}</div>
+           <div style="color:var(--muted);font-size:14px;margin-top:2px">${esc(s.area)}</div>
+         </div>`;
+      card.appendChild(row);
+    });
+    root.appendChild(card);
+  }
+
+  // --- per-day map ---
+  // Collect the ordered, de-duplicated stops for a day that have known coords.
+  function dayStops(d) {
+    const seen = new Set();
+    const stops = [];
+    d.blocks.forEach((b) => {
+      if (!b.map || seen.has(b.map) || !PLACES[b.map]) return;
+      seen.add(b.map);
+      stops.push({ label: b.title.replace(/ — .*$/, "").replace(/^[✅⚠️]\s*/, ""), query: b.map, coord: PLACES[b.map] });
+    });
+    return stops;
+  }
+
+  // Build a Google Maps directions URL chaining the day's stops in order.
+  function googleRouteUrl(stops) {
+    if (stops.length < 2) return mapUrl(stops[0].query);
+    const pts = stops.map((s) => s.coord[0] + "," + s.coord[1]);
+    return "https://www.google.com/maps/dir/?api=1&travelmode=walking" +
+      "&origin=" + encodeURIComponent(pts[0]) +
+      "&destination=" + encodeURIComponent(pts[pts.length - 1]) +
+      (pts.length > 2 ? "&waypoints=" + encodeURIComponent(pts.slice(1, -1).join("|")) : "");
+  }
+
+  // Attach a Leaflet map + numbered markers + connecting line into `container`.
+  function initLeafletMap(container, stops) {
+    if (!window.L || !stops.length) return null;
+    const map = L.map(container, { scrollWheelZoom: false });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap", maxZoom: 19
+    }).addTo(map);
+
+    const latlngs = [];
+    stops.forEach((s, i) => {
+      latlngs.push(s.coord);
+      const icon = L.divIcon({
+        className: "pin-icon",
+        html: `<div class="pin"><span>${i + 1}</span></div>`,
+        iconSize: [28, 28], iconAnchor: [14, 26]
+      });
+      L.marker(s.coord, { icon })
+        .addTo(map)
+        .bindPopup(`<strong>${i + 1}. ${esc(s.label)}</strong><br><a href="${mapUrl(s.query)}" target="_blank" rel="noopener">Open in Google Maps</a>`);
+    });
+    if (latlngs.length > 1) {
+      L.polyline(latlngs, { color: "#5b8cff", weight: 3, opacity: 0.7, dashArray: "6 6" }).addTo(map);
+      map.fitBounds(latlngs, { padding: [34, 34] });
+    } else {
+      map.setView(latlngs[0], 14);
+    }
+    return map;
+  }
+
+  // Render the map card for a day: legend + embedded map + route button.
+  function renderDayMap(body, d, idx) {
+    const stops = dayStops(d);
+    if (stops.length < 1) return;
+
+    const wrap = el("div", { class: "daymap" });
+    const header = el("div", { class: "daymap-head" });
+    header.appendChild(el("div", { class: "daymap-title" }, "🗺 Places this day"));
+    if (stops.length >= 2) {
+      const route = el("a", {
+        class: "route-btn", href: googleRouteUrl(stops), target: "_blank", rel: "noopener"
+      }, "↗ Route in Google Maps");
+      header.appendChild(route);
+    }
+    wrap.appendChild(header);
+
+    // numbered legend with rough leg distances
+    const legend = el("ol", { class: "daymap-legend" });
+    stops.forEach((s, i) => {
+      let extra = "";
+      if (i > 0) {
+        const km = kmBetween(stops[i - 1].coord, s.coord);
+        const mi = km * 0.621371;
+        extra = ` <span class="leg">· ${mi < 0.1 ? "next door" : mi.toFixed(1) + " mi from #" + i}</span>`;
+      }
+      const li = el("li", {});
+      li.innerHTML = `<a href="${mapUrl(s.query)}" target="_blank" rel="noopener">${esc(s.label)}</a>${extra}`;
+      legend.appendChild(li);
+    });
+    wrap.appendChild(legend);
+
+    const mapDiv = el("div", { class: "leaflet-day", id: "map-day-" + idx });
+    wrap.appendChild(mapDiv);
+    body.appendChild(wrap);
+
+    dayMapRecs[idx] = { mapDiv, stops, map: null };
+  }
+
+  // Leaflet needs a sized, visible container; init lazily when a day opens.
+  function ensureDayMap(idx) {
+    const rec = dayMapRecs[idx];
+    if (!rec || rec.map) return;
+    rec.map = initLeafletMap(rec.mapDiv, rec.stops);
+    if (rec.map) setTimeout(() => rec.map.invalidateSize(), 60);
+  }
+
+  // --- itinerary ---
+  function renderItinerary() {
+    const root = $("#itinerary");
+    TRIP.days.forEach((d, i) => {
+      const day = el("div", { class: "day" + (i === 0 ? " open" : "") });
+
+      const head = el("div", { class: "day-head" });
+      head.appendChild(el("div", { class: "day-num" }, String(i + 1)));
+      head.appendChild(el("div", { class: "dh-main" },
+        `<div class="dh-date">${esc(fmtDate(d.date))}</div>
+         <div class="dh-title">${esc(d.title)}</div>
+         <div class="dh-city">📍 ${esc(d.city)}</div>`));
+      head.appendChild(el("div", { class: "caret" }, "▶"));
+      head.addEventListener("click", () => {
+        day.classList.toggle("open");
+        if (day.classList.contains("open")) ensureDayMap(i);
+      });
+      day.appendChild(head);
+
+      const body = el("div", { class: "day-body" });
+      if (d.summary) body.appendChild(el("p", { class: "sec-sub" }, esc(d.summary)));
+
+      if (d.decision) {
+        const dec = el("div", { class: "decision" });
+        dec.appendChild(el("div", { class: "dt" }, esc(d.decision.title)));
+        dec.appendChild(el("div", {}, esc(d.decision.body)));
+        const ol = el("ol");
+        d.decision.options.forEach((o) => ol.appendChild(el("li", {}, esc(o))));
+        dec.appendChild(ol);
+        body.appendChild(dec);
+      }
+
+      d.blocks.forEach((b) => {
+        const blk = el("div", { class: "block" });
+        blk.appendChild(el("div", { class: "when" }, esc(b.time)));
+        const what = el("div", { class: "what" });
+        what.appendChild(el("div", { class: "bt" }, esc(b.title)));
+        what.appendChild(el("div", { class: "bd" }, esc(b.detail)));
+        if (b.map) {
+          const a = el("a", { class: "map-link", href: mapUrl(b.map), target: "_blank", rel: "noopener" }, "🗺 Open in Maps");
+          what.appendChild(a);
+        }
+        blk.appendChild(what);
+        body.appendChild(blk);
+      });
+
+      renderDayMap(body, d, i);
+
+      if (d.eat) body.appendChild(el("div", { class: "eat" }, `🍴 <strong>Eat:</strong> ${esc(d.eat)}`));
+      if (d.tips && d.tips.length) {
+        const t = el("div", { class: "tips" }, "💡 <strong>Tips</strong>");
+        const ul = el("ul");
+        d.tips.forEach((tip) => ul.appendChild(el("li", {}, esc(tip))));
+        t.appendChild(ul);
+        body.appendChild(t);
+      }
+
+      day.appendChild(body);
+      root.appendChild(day);
+    });
+  }
+
+  // --- budget ---
+  function renderBudget() {
+    const root = $("#budget");
+    const card = el("div", { class: "card" });
+    card.appendChild(el("h2", { class: "sec-title" }, "Budget estimate"));
+    card.appendChild(el("p", { class: "sec-sub" }, `Rough per-person planning ballparks (USD) for ${TRIP.travelers === 1 ? "one traveler" : TRIP.travelers + " travelers"}. Not quotes — the July 4th / 250th window pushes lodging toward the high end.`));
+
+    const table = el("table");
+    table.innerHTML = "<thead><tr><th>Item</th><th class='num'>Low</th><th class='num'>High</th></tr></thead>";
+    const tb = el("tbody");
+    let lo = 0, hi = 0;
+    TRIP.budget.forEach((b) => {
+      lo += b.low; hi += b.high;
+      const tr = el("tr");
+      tr.innerHTML = `<td>${esc(b.item)}</td><td class='num'>${money(b.low)}</td><td class='num'>${money(b.high)}</td>`;
+      tb.appendChild(tr);
+    });
+    const tot = el("tr", { class: "total" });
+    tot.innerHTML = `<td>Estimated total / person</td><td class='num'>${money(lo)}</td><td class='num'>${money(hi)}</td>`;
+    tb.appendChild(tot);
+    table.appendChild(tb);
+    card.appendChild(table);
+    card.appendChild(el("p", { class: "budget-note" }, "Tip: book flights, Amtrak, and hotels early — holiday-weekend prices climb fast. A NYC CityPASS can trim attraction costs."));
+    root.appendChild(card);
+  }
+
+  // --- checklists with localStorage ---
+  function checklist(rootSel, storeKey, makeItems) {
+    const root = $(rootSel);
+    const saved = JSON.parse(localStorage.getItem(storeKey) || "{}");
+    const progress = el("div", { class: "progress" });
+    let boxes = [];
+
+    const updateProgress = () => {
+      const done = boxes.filter((b) => b.checked).length;
+      progress.textContent = `${done} of ${boxes.length} done`;
+    };
+    const save = () => {
+      const state = {};
+      boxes.forEach((b) => (state[b.dataset.key] = b.checked));
+      localStorage.setItem(storeKey, JSON.stringify(state));
+      updateProgress();
+    };
+
+    makeItems(root, (label, key, groupRoot) => {
+      const row = el("label", { class: "check" });
+      const cb = el("input", { type: "checkbox" });
+      cb.dataset.key = key;
+      cb.checked = !!saved[key];
+      const span = el("span", {}, esc(label));
+      if (cb.checked) row.classList.add("done");
+      cb.addEventListener("change", () => {
+        row.classList.toggle("done", cb.checked);
+        save();
+      });
+      row.appendChild(cb);
+      row.appendChild(span);
+      (groupRoot || root).appendChild(row);
+      boxes.push(cb);
+    });
+
+    root.appendChild(progress);
+    const reset = el("button", { class: "reset-btn" }, "Reset list");
+    reset.addEventListener("click", () => {
+      boxes.forEach((b) => { b.checked = false; b.closest(".check").classList.remove("done"); });
+      save();
+    });
+    root.appendChild(reset);
+    updateProgress();
+  }
+
+  function renderBookings() {
+    checklist("#bookings", "ec2026_bookings", (root, add) => {
+      const card = el("div", { class: "card" });
+      card.appendChild(el("h2", { class: "sec-title" }, "Booking checklist"));
+      card.appendChild(el("p", { class: "sec-sub" }, "Lock these in ahead of time — most sell out or get pricey for the holiday."));
+      root.appendChild(card);
+      TRIP.bookings.forEach((b, i) => add(b, "bk" + i, card));
+    });
+  }
+
+  function renderPacking() {
+    checklist("#packing", "ec2026_packing", (root, add) => {
+      const card = el("div", { class: "card" });
+      card.appendChild(el("h2", { class: "sec-title" }, "Packing list"));
+      card.appendChild(el("p", { class: "sec-sub" }, "Hot, humid, lots of walking. Check items off as you pack."));
+      root.appendChild(card);
+      let gi = 0;
+      for (const group in TRIP.packing) {
+        card.appendChild(el("h3", {}, esc(group)));
+        TRIP.packing[group].forEach((item, j) => add(item, "pk" + gi + "_" + j, card));
+        gi++;
+      }
+    });
+  }
+
+  // --- tabs ---
+  function setupTabs() {
+    const buttons = document.querySelectorAll("nav.tabs button");
+    const sections = document.querySelectorAll("main section");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("active"));
+        sections.forEach((s) => s.classList.remove("active"));
+        btn.classList.add("active");
+        $("#" + btn.dataset.target).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  }
+
+  // --- boot ---
+  document.addEventListener("DOMContentLoaded", () => {
+    $("#hero-title").textContent = TRIP.title;
+    $("#hero-route").textContent = TRIP.subtitle;
+    $("#hero-dates").textContent = `${fmtShort(TRIP.startDate)} – ${fmtShort(TRIP.endDate)}, 2026`;
+    document.title = TRIP.title + " · Itinerary";
+    renderCountdown();
+    renderOverview();
+    renderStays();
+    renderItinerary();
+    renderBudget();
+    renderBookings();
+    renderPacking();
+    setupTabs();
+    ensureDayMap(0); // first day is open by default
+  });
+})();
+
+</script>
+</body>
+</html>

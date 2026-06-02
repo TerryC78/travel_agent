@@ -41,6 +41,19 @@ xdg-open index.html
 start index.html
 ```
 
+### 📱 On your phone (private, no hosting)
+
+The repo is private, so it isn't published to GitHub Pages. To use it on your
+phone, build a **single self-contained file** and carry it with you:
+
+```bash
+node build-standalone.js   # creates trip.html (everything inlined)
+```
+
+Then **AirDrop / email `trip.html` to yourself**, or drop it in iCloud/Files,
+and open it in Safari. Nothing is published; the file is entirely yours. (The
+per-day maps still need internet for map tiles; the rest works offline.)
+
 Or serve it locally if you prefer:
 
 ```bash
