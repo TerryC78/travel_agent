@@ -18,8 +18,25 @@ step, works offline.
 - **Bookings** — a checklist of reservations, marked DONE vs TODO (saves your progress).
 - **Packing** — a categorized checklist (saves your progress).
 - A live **countdown** to departure on the home screen.
+- **English / 中文 toggle** (top-right) — switch the whole site to Simplified Chinese; your choice is remembered.
 
 The per-day maps use [Leaflet](https://leafletjs.com/) + OpenStreetMap tiles (loaded from a CDN — so day maps need internet; everything else works offline). Pin coordinates live in the `PLACES` table in `data.js`.
+
+## 🌐 Languages (English is the source of truth)
+
+The site is bilingual. **English (`data.js`) is always the source of truth** —
+edit the trip there. Chinese is an *overlay* in **`lang.js`**:
+
+- `TRIP_ZH` mirrors the `TRIP` structure; app.js deep-merges it onto the English
+  data and **falls back to English for any field you haven't translated**. So
+  you can update `data.js` freely and nothing breaks — untranslated bits just
+  show in English until you add them to `lang.js`.
+- `UICOPY` holds the interface labels (tabs, buttons, headings) for both `en` and `zh`.
+- Map pin keys, coordinates, hotel names, and all numbers stay in English on
+  purpose (so Maps/staff recognize them and totals never get mangled).
+
+To extend or fix a translation, edit the matching entry in `lang.js`. To add a
+third language, add another block to `UICOPY` and a `TRIP_<xx>` overlay.
 
 ## 🎆 The big deal about these dates
 

@@ -1,7 +1,11 @@
 /*
- * Renders the trip from TRIP (data.js) and wires up interactivity:
- * countdown, tab navigation, collapsible days, and checklists that
- * persist in localStorage. No framework, no build step.
+ * Renders the trip and wires up interactivity: countdown, tabs, collapsible
+ * days, per-day maps, and checklists (persisted in localStorage).
+ *
+ * Localization: English (TRIP in data.js) is the SOURCE OF TRUTH. When the
+ * language is set to Chinese, we deep-merge TRIP_ZH (lang.js) onto TRIP with
+ * per-field fallback to English, so any untranslated field still shows in
+ * English. UI chrome (labels/buttons) comes from UICOPY. No framework, no build.
  */
 (function () {
   "use strict";
@@ -20,14 +24,6 @@
   };
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const mapUrl = (q) => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
-  const fmtDate = (iso) => {
-    const d = new Date(iso + "T00:00:00");
-    return d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
-  };
-  const fmtShort = (iso) => {
-    const d = new Date(iso + "T00:00:00");
-    return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
-  };
   const money = (n) => "$" + n.toLocaleString("en-US");
   const kmBetween = (a, b) => {
     const R = 6371, toR = (x) => (x * Math.PI) / 180;
@@ -36,59 +32,83 @@
     return 2 * R * Math.asin(Math.sqrt(s));
   };
 
+  // --- language state ---
+  let LANG = localStorage.getItem("ec2026_lang") || "en";
+  let T = TRIP;          // active (possibly merged) trip data
+  let UI = UICOPY.en;    // active UI dictionary
+
+  const locale = () => (LANG === "zh" ? "zh-CN" : "en-US");
+  const fmtDate = (iso) => new Date(iso + "T00:00:00").toLocaleDateString(locale(), { weekday: "long", month: "long", day: "numeric" });
+  const fmtShort = (iso) => new Date(iso + "T00:00:00").toLocaleDateString(locale(), { weekday: "short", month: "short", day: "numeric" });
+
+  // Deep-merge an English base with a Chinese overlay, falling back to English
+  // for any missing/empty field. English is always the structural source.
+  function deepMerge(en, zh) {
+    if (zh === undefined || zh === null) return en;
+    if (Array.isArray(en)) {
+      if (!Array.isArray(zh)) return en;
+      return en.map((item, i) => deepMerge(item, zh[i]));
+    }
+    if (en && typeof en === "object") {
+      const out = {};
+      for (const k in en) out[k] = deepMerge(en[k], zh[k]);
+      return out;
+    }
+    if (typeof en === "string") return (typeof zh === "string" && zh.trim() !== "") ? zh : en;
+    return zh !== undefined ? zh : en;
+  }
+
+  function applyLang(lang) {
+    LANG = lang === "zh" ? "zh" : "en";
+    localStorage.setItem("ec2026_lang", LANG);
+    UI = UICOPY[LANG];
+    T = (LANG === "zh" && typeof TRIP_ZH !== "undefined") ? deepMerge(TRIP, TRIP_ZH) : TRIP;
+  }
+
   // Leaflet map instances per day index, lazily initialized when a day opens.
   const dayMapRecs = [];
 
   // --- countdown ---
   function renderCountdown() {
     const box = $("#countdown");
-    const start = new Date(TRIP.startDate + "T00:00:00");
-    const end = new Date(TRIP.endDate + "T23:59:59");
+    const start = new Date(T.startDate + "T00:00:00");
+    const end = new Date(T.endDate + "T23:59:59");
     const now = new Date();
     box.innerHTML = "";
 
-    if (now > end) {
-      box.innerHTML = '<div class="cd-msg">Welcome home! Hope it was unforgettable. ✈️</div>';
-      return;
-    }
-    if (now >= start) {
-      box.innerHTML = '<div class="cd-msg">🎉 You’re on the trip right now — go have fun!</div>';
-      return;
-    }
+    if (now > end) { box.innerHTML = `<div class="cd-msg">${esc(UI.cd_home)}</div>`; return; }
+    if (now >= start) { box.innerHTML = `<div class="cd-msg">${esc(UI.cd_during)}</div>`; return; }
+
     const days = Math.ceil((start - now) / 86400000);
-    const parts = [
-      [days, "days"],
-      [TRIP.cities.length, "cities"],
-      [TRIP.days.length, "days planned"]
-    ];
-    parts.forEach(([num, lbl]) => {
-      box.appendChild(el("div", { class: "cd-box" }, `<div class="num">${num}</div><div class="lbl">${lbl}</div>`));
-    });
+    [[days, UI.cd_days], [T.cities.length, UI.cd_cities], [T.days.length, UI.cd_daysPlanned]]
+      .forEach(([num, lbl]) => {
+        box.appendChild(el("div", { class: "cd-box" }, `<div class="num">${num}</div><div class="lbl">${esc(lbl)}</div>`));
+      });
   }
 
   // --- overview ---
   function renderOverview() {
     const root = $("#overview");
+    root.innerHTML = "";
+
     const hl = el("div", { class: "card" });
-    hl.appendChild(el("h2", { class: "sec-title" }, "Trip at a glance"));
-    TRIP.highlights.forEach((h) => {
-      hl.appendChild(el("div", { class: "highlight" }, `<div>${esc(h)}</div>`));
-    });
+    hl.appendChild(el("h2", { class: "sec-title" }, esc(UI.ov_glance)));
+    T.highlights.forEach((h) => hl.appendChild(el("div", { class: "highlight" }, `<div>${esc(h)}</div>`)));
     root.appendChild(hl);
 
     const cityCard = el("div", { class: "card" });
-    cityCard.appendChild(el("h2", { class: "sec-title" }, "Where you’ll be"));
+    cityCard.appendChild(el("h2", { class: "sec-title" }, esc(UI.ov_where)));
     const chips = el("div", { class: "city-chips" });
-    TRIP.cities.forEach((c) => {
+    T.cities.forEach((c) => {
       chips.appendChild(el("div", { class: "chip" },
-        `<div class="city">${esc(c.name)}</div><div class="meta">${esc(c.dates)} · ${c.nights} nights</div>`));
+        `<div class="city">${esc(c.name)}</div><div class="meta">${esc(c.dates)} · ${c.nights} ${esc(c.nights > 1 ? UI.nights : UI.night)}</div>`));
     });
     cityCard.appendChild(chips);
     root.appendChild(cityCard);
 
     const logi = el("div", { class: "card" });
-    logi.appendChild(el("h2", { class: "sec-title" }, "Logistics"));
-    TRIP.logistics.forEach((l) => {
+    logi.appendChild(el("h2", { class: "sec-title" }, esc(UI.ov_logistics)));
+    T.logistics.forEach((l) => {
       logi.appendChild(el("div", { class: "highlight" },
         `<div><strong>${esc(l.label)}:</strong> <span style="color:var(--muted)">${esc(l.value)}</span></div>`));
     });
@@ -98,16 +118,17 @@
   // --- stays ---
   function renderStays() {
     const root = $("#stays");
-    if (!TRIP.stays) return;
+    root.innerHTML = "";
+    if (!T.stays) return;
     const card = el("div", { class: "card" });
-    card.appendChild(el("h2", { class: "sec-title" }, "Where you’re staying"));
-    card.appendChild(el("p", { class: "sec-sub" }, "All confirmed. Tap a hotel to open it in Maps."));
-    TRIP.stays.forEach((s) => {
+    card.appendChild(el("h2", { class: "sec-title" }, esc(UI.stays_title)));
+    card.appendChild(el("p", { class: "sec-sub" }, esc(UI.stays_sub)));
+    T.stays.forEach((s) => {
       const row = el("div", { class: "highlight" });
       row.innerHTML =
         `<div>
            <div style="font-weight:700">🏨 <a href="${mapUrl(s.hotel + " " + s.city)}" target="_blank" rel="noopener">${esc(s.hotel)}</a></div>
-           <div style="color:var(--gold);font-size:13px">${esc(s.dates)} · ${s.nights} night${s.nights > 1 ? "s" : ""} · ${esc(s.city)}</div>
+           <div style="color:var(--gold);font-size:13px">${esc(s.dates)} · ${s.nights} ${esc(s.nights > 1 ? UI.nights : UI.night)} · ${esc(s.city)}</div>
            <div style="color:var(--muted);font-size:14px;margin-top:2px">${esc(s.area)}</div>
          </div>`;
       card.appendChild(row);
@@ -116,19 +137,20 @@
   }
 
   // --- per-day map ---
-  // Collect the ordered, de-duplicated stops for a day that have known coords.
+  // A short label for a stop, derived from its block title (strip dash-suffix + lead markers).
+  const stopLabel = (title) => title.replace(/\s*—.*$/, "").replace(/^[✅⚠️]\s*/, "");
+
   function dayStops(d) {
     const seen = new Set();
     const stops = [];
     d.blocks.forEach((b) => {
       if (!b.map || seen.has(b.map) || !PLACES[b.map]) return;
       seen.add(b.map);
-      stops.push({ label: b.title.replace(/ — .*$/, "").replace(/^[✅⚠️]\s*/, ""), query: b.map, coord: PLACES[b.map] });
+      stops.push({ label: stopLabel(b.title), query: b.map, coord: PLACES[b.map] });
     });
     return stops;
   }
 
-  // Build a Google Maps directions URL chaining the day's stops in order.
   function googleRouteUrl(stops) {
     if (stops.length < 2) return mapUrl(stops[0].query);
     const pts = stops.map((s) => s.coord[0] + "," + s.coord[1]);
@@ -138,7 +160,6 @@
       (pts.length > 2 ? "&waypoints=" + encodeURIComponent(pts.slice(1, -1).join("|")) : "");
   }
 
-  // Attach a Leaflet map + numbered markers + connecting line into `container`.
   function initLeafletMap(container, stops) {
     if (!window.L || !stops.length) return null;
     const map = L.map(container, { scrollWheelZoom: false });
@@ -156,7 +177,7 @@
       });
       L.marker(s.coord, { icon })
         .addTo(map)
-        .bindPopup(`<strong>${i + 1}. ${esc(s.label)}</strong><br><a href="${mapUrl(s.query)}" target="_blank" rel="noopener">Open in Google Maps</a>`);
+        .bindPopup(`<strong>${i + 1}. ${esc(s.label)}</strong><br><a href="${mapUrl(s.query)}" target="_blank" rel="noopener">${esc(UI.openGoogleMaps)}</a>`);
     });
     if (latlngs.length > 1) {
       L.polyline(latlngs, { color: "#5b8cff", weight: 3, opacity: 0.7, dashArray: "6 6" }).addTo(map);
@@ -167,30 +188,26 @@
     return map;
   }
 
-  // Render the map card for a day: legend + embedded map + route button.
   function renderDayMap(body, d, idx) {
     const stops = dayStops(d);
     if (stops.length < 1) return;
 
     const wrap = el("div", { class: "daymap" });
     const header = el("div", { class: "daymap-head" });
-    header.appendChild(el("div", { class: "daymap-title" }, "🗺 Places this day"));
+    header.appendChild(el("div", { class: "daymap-title" }, esc(UI.daymap_places)));
     if (stops.length >= 2) {
-      const route = el("a", {
+      header.appendChild(el("a", {
         class: "route-btn", href: googleRouteUrl(stops), target: "_blank", rel: "noopener"
-      }, "↗ Route in Google Maps");
-      header.appendChild(route);
+      }, esc(UI.daymap_route)));
     }
     wrap.appendChild(header);
 
-    // numbered legend with rough leg distances
     const legend = el("ol", { class: "daymap-legend" });
     stops.forEach((s, i) => {
       let extra = "";
       if (i > 0) {
-        const km = kmBetween(stops[i - 1].coord, s.coord);
-        const mi = km * 0.621371;
-        extra = ` <span class="leg">· ${mi < 0.1 ? "next door" : mi.toFixed(1) + " mi from #" + i}</span>`;
+        const mi = kmBetween(stops[i - 1].coord, s.coord) * 0.621371;
+        extra = ` <span class="leg">· ${mi < 0.1 ? esc(UI.leg_nextdoor) : esc(UI.leg_from(i, mi.toFixed(1)))}</span>`;
       }
       const li = el("li", {});
       li.innerHTML = `<a href="${mapUrl(s.query)}" target="_blank" rel="noopener">${esc(s.label)}</a>${extra}`;
@@ -205,7 +222,6 @@
     dayMapRecs[idx] = { mapDiv, stops, map: null };
   }
 
-  // Leaflet needs a sized, visible container; init lazily when a day opens.
   function ensureDayMap(idx) {
     const rec = dayMapRecs[idx];
     if (!rec || rec.map) return;
@@ -216,7 +232,11 @@
   // --- itinerary ---
   function renderItinerary() {
     const root = $("#itinerary");
-    TRIP.days.forEach((d, i) => {
+    root.innerHTML = "";
+    root.appendChild(el("h2", { class: "sec-title" }, esc(UI.itin_title)));
+    root.appendChild(el("p", { class: "sec-sub" }, esc(UI.itin_sub)));
+
+    T.days.forEach((d, i) => {
       const day = el("div", { class: "day" + (i === 0 ? " open" : "") });
 
       const head = el("div", { class: "day-head" });
@@ -252,8 +272,7 @@
         what.appendChild(el("div", { class: "bt" }, esc(b.title)));
         what.appendChild(el("div", { class: "bd" }, esc(b.detail)));
         if (b.map) {
-          const a = el("a", { class: "map-link", href: mapUrl(b.map), target: "_blank", rel: "noopener" }, "🗺 Open in Maps");
-          what.appendChild(a);
+          what.appendChild(el("a", { class: "map-link", href: mapUrl(b.map), target: "_blank", rel: "noopener" }, esc(UI.openMaps)));
         }
         blk.appendChild(what);
         body.appendChild(blk);
@@ -261,9 +280,9 @@
 
       renderDayMap(body, d, i);
 
-      if (d.eat) body.appendChild(el("div", { class: "eat" }, `🍴 <strong>Eat:</strong> ${esc(d.eat)}`));
+      if (d.eat) body.appendChild(el("div", { class: "eat" }, `🍴 <strong>${esc(UI.eat_label)}:</strong> ${esc(d.eat)}`));
       if (d.tips && d.tips.length) {
-        const t = el("div", { class: "tips" }, "💡 <strong>Tips</strong>");
+        const t = el("div", { class: "tips" }, `💡 <strong>${esc(UI.tips_label)}</strong>`);
         const ul = el("ul");
         d.tips.forEach((tip) => ul.appendChild(el("li", {}, esc(tip))));
         t.appendChild(ul);
@@ -278,40 +297,39 @@
   // --- budget ---
   function renderBudget() {
     const root = $("#budget");
+    root.innerHTML = "";
     const card = el("div", { class: "card" });
-    card.appendChild(el("h2", { class: "sec-title" }, "Budget estimate"));
-    card.appendChild(el("p", { class: "sec-sub" }, `Rough per-person planning ballparks (USD) for ${TRIP.travelers === 1 ? "one traveler" : TRIP.travelers + " travelers"}. Not quotes — the July 4th / 250th window pushes lodging toward the high end.`));
+    card.appendChild(el("h2", { class: "sec-title" }, esc(UI.budget_title)));
+    card.appendChild(el("p", { class: "sec-sub" }, esc(UI.budget_sub(T.travelers))));
 
     const table = el("table");
-    table.innerHTML = "<thead><tr><th>Item</th><th class='num'>Low</th><th class='num'>High</th></tr></thead>";
+    table.innerHTML = `<thead><tr><th>${esc(UI.th_item)}</th><th class='num'>${esc(UI.th_low)}</th><th class='num'>${esc(UI.th_high)}</th></tr></thead>`;
     const tb = el("tbody");
     let lo = 0, hi = 0;
-    TRIP.budget.forEach((b) => {
+    T.budget.forEach((b) => {
       lo += b.low; hi += b.high;
       const tr = el("tr");
       tr.innerHTML = `<td>${esc(b.item)}</td><td class='num'>${money(b.low)}</td><td class='num'>${money(b.high)}</td>`;
       tb.appendChild(tr);
     });
     const tot = el("tr", { class: "total" });
-    tot.innerHTML = `<td>Estimated total / person</td><td class='num'>${money(lo)}</td><td class='num'>${money(hi)}</td>`;
+    tot.innerHTML = `<td>${esc(UI.budget_total)}</td><td class='num'>${money(lo)}</td><td class='num'>${money(hi)}</td>`;
     tb.appendChild(tot);
     table.appendChild(tb);
     card.appendChild(table);
-    card.appendChild(el("p", { class: "budget-note" }, "Tip: book flights, Amtrak, and hotels early — holiday-weekend prices climb fast. A NYC CityPASS can trim attraction costs."));
+    card.appendChild(el("p", { class: "budget-note" }, esc(UI.budget_note)));
     root.appendChild(card);
   }
 
-  // --- checklists with localStorage ---
+  // --- checklists with localStorage (keys are index-based, so state survives language switches) ---
   function checklist(rootSel, storeKey, makeItems) {
     const root = $(rootSel);
+    root.innerHTML = "";
     const saved = JSON.parse(localStorage.getItem(storeKey) || "{}");
     const progress = el("div", { class: "progress" });
-    let boxes = [];
+    const boxes = [];
 
-    const updateProgress = () => {
-      const done = boxes.filter((b) => b.checked).length;
-      progress.textContent = `${done} of ${boxes.length} done`;
-    };
+    const updateProgress = () => { progress.textContent = UI.progress(boxes.filter((b) => b.checked).length, boxes.length); };
     const save = () => {
       const state = {};
       boxes.forEach((b) => (state[b.dataset.key] = b.checked));
@@ -324,20 +342,16 @@
       const cb = el("input", { type: "checkbox" });
       cb.dataset.key = key;
       cb.checked = !!saved[key];
-      const span = el("span", {}, esc(label));
       if (cb.checked) row.classList.add("done");
-      cb.addEventListener("change", () => {
-        row.classList.toggle("done", cb.checked);
-        save();
-      });
+      cb.addEventListener("change", () => { row.classList.toggle("done", cb.checked); save(); });
       row.appendChild(cb);
-      row.appendChild(span);
+      row.appendChild(el("span", {}, esc(label)));
       (groupRoot || root).appendChild(row);
       boxes.push(cb);
     });
 
     root.appendChild(progress);
-    const reset = el("button", { class: "reset-btn" }, "Reset list");
+    const reset = el("button", { class: "reset-btn" }, esc(UI.reset));
     reset.addEventListener("click", () => {
       boxes.forEach((b) => { b.checked = false; b.closest(".check").classList.remove("done"); });
       save();
@@ -349,29 +363,30 @@
   function renderBookings() {
     checklist("#bookings", "ec2026_bookings", (root, add) => {
       const card = el("div", { class: "card" });
-      card.appendChild(el("h2", { class: "sec-title" }, "Booking checklist"));
-      card.appendChild(el("p", { class: "sec-sub" }, "Lock these in ahead of time — most sell out or get pricey for the holiday."));
+      card.appendChild(el("h2", { class: "sec-title" }, esc(UI.book_title)));
+      card.appendChild(el("p", { class: "sec-sub" }, esc(UI.book_sub)));
       root.appendChild(card);
-      TRIP.bookings.forEach((b, i) => add(b, "bk" + i, card));
+      T.bookings.forEach((b, i) => add(b, "bk" + i, card));
     });
   }
 
   function renderPacking() {
     checklist("#packing", "ec2026_packing", (root, add) => {
       const card = el("div", { class: "card" });
-      card.appendChild(el("h2", { class: "sec-title" }, "Packing list"));
-      card.appendChild(el("p", { class: "sec-sub" }, "Hot, humid, lots of walking. Check items off as you pack."));
+      card.appendChild(el("h2", { class: "sec-title" }, esc(UI.pack_title)));
+      card.appendChild(el("p", { class: "sec-sub" }, esc(UI.pack_sub)));
       root.appendChild(card);
       let gi = 0;
-      for (const group in TRIP.packing) {
-        card.appendChild(el("h3", {}, esc(group)));
-        TRIP.packing[group].forEach((item, j) => add(item, "pk" + gi + "_" + j, card));
+      for (const group in T.packing) {
+        const heading = (UI.packGroups && UI.packGroups[group]) || group;
+        card.appendChild(el("h3", {}, esc(heading)));
+        T.packing[group].forEach((item, j) => add(item, "pk" + gi + "_" + j, card));
         gi++;
       }
     });
   }
 
-  // --- tabs ---
+  // --- tabs (listeners attached once; labels refreshed per render) ---
   function setupTabs() {
     const buttons = document.querySelectorAll("nav.tabs button");
     const sections = document.querySelectorAll("main section");
@@ -386,12 +401,43 @@
     });
   }
 
-  // --- boot ---
-  document.addEventListener("DOMContentLoaded", () => {
-    $("#hero-title").textContent = TRIP.title;
-    $("#hero-route").textContent = TRIP.subtitle;
-    $("#hero-dates").textContent = `${fmtShort(TRIP.startDate)} – ${fmtShort(TRIP.endDate)}, 2026`;
-    document.title = TRIP.title + " · Itinerary";
+  function labelTabs() {
+    document.querySelectorAll("nav.tabs button").forEach((btn) => {
+      const key = "tab_" + btn.dataset.target;
+      if (UI[key]) btn.textContent = UI[key];
+    });
+  }
+
+  // --- language switch ---
+  function setupLangSwitch() {
+    document.querySelectorAll("#langSwitch button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (btn.dataset.lang === LANG) return;
+        applyLang(btn.dataset.lang);
+        renderAll();
+      });
+    });
+  }
+  function updateLangButtons() {
+    document.querySelectorAll("#langSwitch button").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.lang === LANG);
+    });
+  }
+
+  // --- render everything (called on boot and on language switch) ---
+  function renderAll() {
+    // tear down old map instances before rebuilding the DOM
+    dayMapRecs.forEach((r) => { if (r && r.map) r.map.remove(); });
+    dayMapRecs.length = 0;
+
+    document.documentElement.lang = LANG === "zh" ? "zh-CN" : "en";
+    document.title = T.title + UI.docTitle;
+    $("#hero-title").textContent = T.title;
+    $("#hero-route").textContent = T.subtitle;
+    $("#hero-dates").textContent = UI.heroDates(fmtShort(T.startDate), fmtShort(T.endDate));
+
+    labelTabs();
+    updateLangButtons();
     renderCountdown();
     renderOverview();
     renderStays();
@@ -399,7 +445,14 @@
     renderBudget();
     renderBookings();
     renderPacking();
-    setupTabs();
     ensureDayMap(0); // first day is open by default
+  }
+
+  // --- boot ---
+  document.addEventListener("DOMContentLoaded", () => {
+    applyLang(LANG);
+    setupTabs();
+    setupLangSwitch();
+    renderAll();
   });
 })();

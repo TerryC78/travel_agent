@@ -21,6 +21,7 @@ const read = (f) => fs.readFileSync(path.join(dir, f), "utf8");
 let html = read("index.html");
 const css = read("styles.css");
 const dataJs = read("data.js");
+const langJs = read("lang.js");
 const appJs = read("app.js");
 
 // Inline the local stylesheet (leave the Leaflet CDN <link> untouched).
@@ -29,10 +30,14 @@ html = html.replace(
   `<style>\n${css}\n</style>`
 );
 
-// Inline the local scripts in order (data before app, matching index.html).
+// Inline the local scripts in order (data, then lang overlay, then app).
 html = html.replace(
   /<script src="data\.js"><\/script>/,
   `<script>\n${dataJs}\n</script>`
+);
+html = html.replace(
+  /<script src="lang\.js"><\/script>/,
+  `<script>\n${langJs}\n</script>`
 );
 html = html.replace(
   /<script src="app\.js"><\/script>/,
@@ -40,7 +45,7 @@ html = html.replace(
 );
 
 // Sanity check: no leftover references to the local files.
-const leftovers = ['href="styles.css"', 'src="data.js"', 'src="app.js"']
+const leftovers = ['href="styles.css"', 'src="data.js"', 'src="lang.js"', 'src="app.js"']
   .filter((ref) => html.includes(ref));
 if (leftovers.length) {
   console.error("Build failed — these local references were not inlined:", leftovers);

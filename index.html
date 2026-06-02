@@ -13,6 +13,10 @@
 </head>
 <body>
   <header class="hero">
+    <div class="lang-switch" id="langSwitch">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="zh">中文</button>
+    </div>
     <div class="flag">🇺🇸</div>
     <h1 id="hero-title">East Coast 2026</h1>
     <div class="route" id="hero-route">SFO → Washington DC → New York → SFO</div>
@@ -31,10 +35,7 @@
 
   <main class="wrap">
     <section id="overview" class="active"></section>
-    <section id="itinerary">
-      <h2 class="sec-title">Day by day</h2>
-      <p class="sec-sub">Tap any day to expand. Each stop has an “Open in Maps” link.</p>
-    </section>
+    <section id="itinerary"></section>
     <section id="stays"></section>
     <section id="budget"></section>
     <section id="bookings"></section>
@@ -46,6 +47,7 @@
   </footer>
 
   <script src="data.js"></script>
+  <script src="lang.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

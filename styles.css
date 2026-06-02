@@ -35,11 +35,26 @@ a:hover { text-decoration: underline; }
 
 /* ---------- Hero ---------- */
 .hero {
+  position: relative;
   padding: 56px 18px 30px;
   text-align: center;
   background:
     radial-gradient(800px 300px at 50% -40%, rgba(91,140,255,.35), transparent 70%);
 }
+
+/* Language switch (EN / 中文) */
+.lang-switch {
+  position: absolute; top: 14px; right: 14px; z-index: 30;
+  display: inline-flex; gap: 2px; padding: 3px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+.lang-switch button {
+  background: transparent; color: var(--muted); border: none; cursor: pointer;
+  font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; line-height: 1;
+}
+.lang-switch button.active { background: var(--accent); color: #fff; }
+.lang-switch button:hover:not(.active) { color: var(--ink); }
 .hero .flag { font-size: 40px; letter-spacing: 4px; }
 .hero h1 { font-size: clamp(28px, 6vw, 52px); margin: 8px 0 6px; line-height: 1.05; }
 .hero .route { color: var(--gold); font-weight: 700; font-size: clamp(15px, 3.4vw, 22px); }
@@ -200,7 +215,7 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px
 }
 
 @media print {
-  nav.tabs, .countdown, .reset-btn, .leaflet-day { display: none !important; }
+  nav.tabs, .countdown, .reset-btn, .leaflet-day, .lang-switch { display: none !important; }
   section { display: block !important; page-break-inside: avoid; }
   body { background: #fff; color: #000; }
   .card, .day-head { box-shadow: none; }
