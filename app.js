@@ -33,9 +33,23 @@
   };
 
   // --- language state ---
-  let LANG = localStorage.getItem("ec2026_lang") || "en";
+  // Default is English; the real starting language is resolved at boot from
+  // (1) a saved explicit choice, else (2) the browser's language.
+  let LANG = "en";
   let T = TRIP;          // active (possibly merged) trip data
   let UI = UICOPY.en;    // active UI dictionary
+
+  // Auto-detect from the browser when the user hasn't explicitly chosen yet.
+  // Any Chinese locale (zh, zh-CN, zh-Hans, zh-TW, …) maps to Chinese.
+  function detectLang() {
+    const list = (navigator.languages && navigator.languages.length)
+      ? navigator.languages
+      : [navigator.language || navigator.userLanguage || ""];
+    for (const code of list) {
+      if (String(code).toLowerCase().startsWith("zh")) return "zh";
+    }
+    return "en";
+  }
 
   const locale = () => (LANG === "zh" ? "zh-CN" : "en-US");
   const fmtDate = (iso) => new Date(iso + "T00:00:00").toLocaleDateString(locale(), { weekday: "long", month: "long", day: "numeric" });
@@ -58,9 +72,11 @@
     return zh !== undefined ? zh : en;
   }
 
-  function applyLang(lang) {
+  // persist=true records an explicit user choice; auto-detected values are not
+  // saved, so detection keeps running each visit until the user picks via the toggle.
+  function applyLang(lang, persist) {
     LANG = lang === "zh" ? "zh" : "en";
-    localStorage.setItem("ec2026_lang", LANG);
+    if (persist) localStorage.setItem("ec2026_lang", LANG);
     UI = UICOPY[LANG];
     T = (LANG === "zh" && typeof TRIP_ZH !== "undefined") ? deepMerge(TRIP, TRIP_ZH) : TRIP;
   }
@@ -413,7 +429,7 @@
     document.querySelectorAll("#langSwitch button").forEach((btn) => {
       btn.addEventListener("click", () => {
         if (btn.dataset.lang === LANG) return;
-        applyLang(btn.dataset.lang);
+        applyLang(btn.dataset.lang, true); // explicit choice — persist it
         renderAll();
       });
     });
@@ -450,7 +466,9 @@
 
   // --- boot ---
   document.addEventListener("DOMContentLoaded", () => {
-    applyLang(LANG);
+    // Precedence: explicit saved choice > browser auto-detect > English.
+    const saved = localStorage.getItem("ec2026_lang");
+    applyLang(saved || detectLang());
     setupTabs();
     setupLangSwitch();
     renderAll();
