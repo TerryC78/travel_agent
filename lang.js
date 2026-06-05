@@ -32,6 +32,16 @@ const UICOPY = {
     weather_sub: "Jun 28 – Jul 4. Shows typical seasonal averages until the dates come within forecast range (~16 days out), then auto-updates to the live forecast when online.",
     weather_loading: "Checking for a live forecast…",
     weather_offline: "Showing seasonal averages (no live forecast — offline or dates still too far out).",
+    weather_packTitle: "What to pack for this weather",
+    weather_updated: (t) => `Updated ${t} · live forecast`,
+    weather_updatedNormal: "Seasonal averages — no live forecast yet",
+    wxAdvice: {
+      rain: "☔ Rain likely — pack a compact umbrella & a packable rain jacket",
+      storm: "⛈ Thunderstorms expected — umbrella + a backup indoor plan for the afternoon",
+      hot: "🥵 Hot days — light breathable clothes, a hat, sunscreen & extra water",
+      mild: "🌤 Pleasant stretches — a light layer for the evenings",
+      sun: "🧴 Strong sun — sunglasses, hat & sunscreen"
+    },
     book_title: "Booking checklist", book_sub: "Lock these in ahead of time — most sell out or get pricey for the holiday.",
     pack_title: "Packing list", pack_sub: "Hot, humid, lots of walking. Check items off as you pack.",
     reset: "Reset list",
@@ -59,6 +69,16 @@ const UICOPY = {
     weather_sub: "6月28日 – 7月4日。在日期进入可预报范围（约提前16天）之前显示常年同期平均值，之后联网时会自动更新为实时预报。",
     weather_loading: "正在获取实时预报…",
     weather_offline: "显示常年同期平均值（暂无实时预报——可能离线，或日期还太远）。",
+    weather_packTitle: "针对天气的行李建议",
+    weather_updated: (t) => `更新于 ${t} · 实时预报`,
+    weather_updatedNormal: "常年同期平均值——暂无实时预报",
+    wxAdvice: {
+      rain: "☔ 大概率有雨——带把折叠伞和可收纳雨衣",
+      storm: "⛈ 预计有雷阵雨——带伞，午后留个室内备选方案",
+      hot: "🥵 天气炎热——穿轻薄透气的衣服，戴帽子、涂防晒、多带水",
+      mild: "🌤 有舒适时段——晚上备一件薄外套",
+      sun: "🧴 日晒较强——墨镜、帽子、防晒霜"
+    },
     book_title: "预订清单", book_sub: "提前把这些订好——大多在节日期间会售罄或涨价。",
     pack_title: "行李清单", pack_sub: "又热又潮、要走很多路。一边收拾一边打勾。",
     reset: "重置清单",

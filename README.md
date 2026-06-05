@@ -14,7 +14,7 @@ step, works offline.
 - **Overview** — trip-at-a-glance, the cities, and key logistics (flights + the DC→NYC Amtrak).
 - **Itinerary** — 9 collapsible days, each with morning/afternoon/evening plans, one-tap **Open in Maps** links, and an **embedded per-day map** (numbered pins + walking route) with an **"Open route in Google Maps"** button.
 - **Stays** — your three confirmed hotels and which days they anchor.
-- **Weather** — Jun 28 – Jul 4 per day (per city). Shows seasonal averages now and auto-upgrades to a live forecast (free Open-Meteo API) once the dates come within ~16 days and you're online; falls back to averages offline.
+- **Weather** — Jun 28 – Jul 4 per day (per city). Shows seasonal averages now and auto-upgrades to a live forecast (free Open-Meteo API) once the dates come within ~16 days and you're online; falls back to averages offline. Includes weather-based **packing advice** (umbrella when rain is likely, etc.) and a **"last updated"** timestamp. Each **itinerary day header shows a small weather chip** that stays in sync with this tab.
 - **Bookings** — a checklist of reservations, marked DONE vs TODO (saves your progress).
 - **Packing** — a categorized checklist (saves your progress).
 - A live **countdown** to departure on the home screen.

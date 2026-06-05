@@ -255,12 +255,15 @@
     T.days.forEach((d, i) => {
       const day = el("div", { class: "day" + (i === 0 ? " open" : "") });
 
-      const head = el("div", { class: "day-head" });
+      const head = el("div", { class: "day-head", dataset: { date: d.date } });
       head.appendChild(el("div", { class: "day-num" }, String(i + 1)));
-      head.appendChild(el("div", { class: "dh-main" },
+      const dhMain = el("div", { class: "dh-main" },
         `<div class="dh-date">${esc(fmtDate(d.date))}</div>
          <div class="dh-title">${esc(d.title)}</div>
-         <div class="dh-city">📍 ${esc(d.city)}</div>`));
+         <div class="dh-city">📍 ${esc(d.city)}</div>`);
+      const badge = wxBadge(d.date); // small weather chip, synced with the Weather tab
+      if (badge) dhMain.appendChild(badge);
+      head.appendChild(dhMain);
       head.appendChild(el("div", { class: "caret" }, "▶"));
       head.addEventListener("click", () => {
         day.classList.toggle("open");
@@ -338,6 +341,52 @@
     return out;
   }
 
+  // Shared weather state: per-date {hi, lo, code, rainChance, live, city}, plus
+  // whether any live data arrived and when. The itinerary badges, packing advice,
+  // and Weather tab all read from here so they stay in sync.
+  const WX = { byDate: {}, anyLive: false, updatedAt: null };
+
+  // Seed WX from seasonal normals (available immediately, works offline).
+  function seedWeatherNormals() {
+    if (typeof WEATHER === "undefined") return;
+    weatherDates().forEach((iso) => {
+      const city = WEATHER.dayCity[iso];
+      const n = WEATHER.normals[city] || {};
+      WX.byDate[iso] = { hi: n.hi, lo: n.lo, code: n.code, rainChance: n.rainChance, live: false, city };
+    });
+  }
+
+  // Turn a day's weather into packing advice keys (rain/storm/hot/sun/mild).
+  function wxAdviceKeys(w) {
+    if (!w) return [];
+    const keys = [];
+    if (w.code >= 95) keys.push("storm");
+    else if ((w.code >= 51 && w.code <= 82) || (w.rainChance != null && w.rainChance >= 40)) keys.push("rain");
+    if (w.hi != null && w.hi >= 85) keys.push("hot");
+    if (w.code <= 1 && w.hi != null && w.hi >= 80) keys.push("sun");
+    if (!keys.length) keys.push("mild");
+    return keys;
+  }
+
+  // A tiny inline badge (emoji + hi/lo + optional rain%) for the itinerary header.
+  function wxBadge(iso) {
+    const w = WX.byDate[iso];
+    if (!w || w.hi == null) return null;
+    const ic = wxIcon(w.code);
+    const badge = el("div", { class: "wx-badge" + (w.live ? " live" : "") });
+    badge.title = ic.label + (w.live ? "" : " · " + UI.weather_normal);
+    badge.innerHTML =
+      `<span class="wxb-emoji">${ic.emoji}</span>` +
+      `<span class="wxb-temp">${Math.round(w.hi)}°/${Math.round(w.lo)}°</span>` +
+      (w.rainChance != null && w.rainChance >= 30 ? `<span class="wxb-rain">💧${Math.round(w.rainChance)}%</span>` : "");
+    return badge;
+  }
+
+  // Format the "last updated" time in the active locale.
+  function fmtUpdated(d) {
+    return d.toLocaleString(locale(), { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  }
+
   // Render one day's weather row. `data` has {hi, lo, code, rainChance, live}.
   function weatherRow(iso, city, data) {
     const ic = wxIcon(data.code);
@@ -359,38 +408,54 @@
     return row;
   }
 
-  // Render the Weather tab from seasonal normals, then try to upgrade to live.
+  // Render the Weather tab from shared WX state (seeded with normals, possibly
+  // upgraded to live), plus a "last updated" line and weather-based packing tips.
   function renderWeather() {
     const root = $("#weather");
     root.innerHTML = "";
     if (typeof WEATHER === "undefined") return;
+    const dates = weatherDates();
 
     const card = el("div", { class: "card" });
     card.appendChild(el("h2", { class: "sec-title" }, "🌦 " + esc(UI.weather_title)));
     card.appendChild(el("p", { class: "sec-sub" }, esc(UI.weather_sub)));
 
     const list = el("div", { class: "wx-list" });
-    const dates = weatherDates();
-    dates.forEach((iso) => {
-      const city = WEATHER.dayCity[iso];
-      const n = WEATHER.normals[city];
-      list.appendChild(weatherRow(iso, city, { hi: n.hi, lo: n.lo, code: n.code, rainChance: n.rainChance, live: false }));
-    });
+    dates.forEach((iso) => list.appendChild(weatherRow(iso, WX.byDate[iso].city, WX.byDate[iso])));
     card.appendChild(list);
 
-    const status = el("p", { class: "wx-status" }, esc(UI.weather_loading));
+    // "Last updated" line: live timestamp, or a note that these are averages.
+    const updated = el("p", { class: "wx-updated" },
+      WX.anyLive && WX.updatedAt ? esc(UI.weather_updated(fmtUpdated(WX.updatedAt))) : esc(UI.weather_updatedNormal));
+    card.appendChild(updated);
+
+    const status = el("p", { class: "wx-status" }, WX.anyLive ? "" : esc(UI.weather_loading));
     card.appendChild(status);
     root.appendChild(card);
 
-    fetchLiveWeather(list, status, dates);
+    // Weather-driven packing advice (deduped across the whole trip window).
+    const adviceCard = el("div", { class: "card" });
+    adviceCard.appendChild(el("h2", { class: "sec-title" }, "🎒 " + esc(UI.weather_packTitle)));
+    const seen = new Set();
+    const ul = el("ul", { class: "wx-advice" });
+    dates.forEach((iso) => wxAdviceKeys(WX.byDate[iso]).forEach((k) => {
+      if (seen.has(k)) return;
+      seen.add(k);
+      ul.appendChild(el("li", {}, esc(UI.wxAdvice[k])));
+    }));
+    adviceCard.appendChild(ul);
+    root.appendChild(adviceCard);
+
+    if (!WX.anyLive) fetchLiveWeather();
   }
 
-  // Try Open-Meteo (free, no key). On success, replace any in-range rows with
-  // the live forecast; on failure/offline, fall back to the normals already shown.
-  function fetchLiveWeather(list, status, dates) {
-    if (!navigator.onLine) { status.textContent = UI.weather_offline; return; }
+  // Try Open-Meteo (free, no key). On success, update shared WX state and refresh
+  // every weather-dependent view; on failure/offline, the normals already shown stay.
+  function fetchLiveWeather() {
+    const status = $("#weather .wx-status");
+    if (!navigator.onLine) { if (status) status.textContent = UI.weather_offline; return; }
 
-    // One request per city (DC + NYC), then map results back onto the dates.
+    const dates = weatherDates();
     const cities = Array.from(new Set(dates.map((iso) => WEATHER.dayCity[iso])));
     const reqs = cities.map((city) => {
       const [lat, lon] = WEATHER.coords[city];
@@ -406,28 +471,44 @@
       results.forEach(({ city, j }) => { if (j && j.daily && j.daily.time) byCity[city] = j.daily; });
 
       let liveCount = 0;
-      const rows = list.querySelectorAll(".wx-row");
-      dates.forEach((iso, idx) => {
-        const city = WEATHER.dayCity[iso];
-        const daily = byCity[city];
+      dates.forEach((iso) => {
+        const daily = byCity[WEATHER.dayCity[iso]];
         if (!daily) return;
         const di = daily.time.indexOf(iso);
         if (di < 0) return;
-        const data = {
-          hi: daily.temperature_2m_max[di],
-          lo: daily.temperature_2m_min[di],
+        const hi = daily.temperature_2m_max[di], lo = daily.temperature_2m_min[di];
+        if (hi == null || lo == null) return;
+        WX.byDate[iso] = {
+          hi, lo,
           code: daily.weather_code[di],
           rainChance: daily.precipitation_probability_max ? daily.precipitation_probability_max[di] : null,
-          live: true
+          live: true, city: WEATHER.dayCity[iso]
         };
-        if (data.hi == null || data.lo == null) return;
-        const fresh = weatherRow(iso, city, data);
-        rows[idx].replaceWith(fresh);
         liveCount++;
       });
 
-      status.textContent = liveCount > 0 ? "" : UI.weather_offline;
-    }).catch(() => { status.textContent = UI.weather_offline; });
+      if (liveCount > 0) {
+        WX.anyLive = true;
+        WX.updatedAt = new Date();
+        renderWeather();         // redraw tab with live rows + timestamp + advice
+        refreshItineraryBadges(); // sync the per-day badges in the Itinerary tab
+      } else if (status) {
+        status.textContent = UI.weather_offline;
+      }
+    }).catch(() => { if (status) status.textContent = UI.weather_offline; });
+  }
+
+  // Update the small weather badge in each itinerary day header in place.
+  function refreshItineraryBadges() {
+    document.querySelectorAll(".day-head").forEach((head) => {
+      const iso = head.dataset.date;
+      if (!iso) return;
+      const old = head.querySelector(".wx-badge");
+      const fresh = wxBadge(iso);
+      if (old && fresh) old.replaceWith(fresh);
+      else if (old && !fresh) old.remove();
+      else if (!old && fresh) head.querySelector(".dh-main").appendChild(fresh);
+    });
   }
 
   // --- checklists with localStorage (keys are index-based, so state survives language switches) ---
@@ -562,6 +643,7 @@
     // Precedence: explicit saved choice > browser auto-detect > English.
     const saved = localStorage.getItem("ec2026_lang");
     applyLang(saved || detectLang());
+    seedWeatherNormals(); // populate WX with averages before first render
     setupTabs();
     setupLangSwitch();
     renderAll();
