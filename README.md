@@ -6,7 +6,7 @@ A self-contained, interactive trip planner for:
 > **Friday June 26 – Saturday July 4, 2026** (8 nights)
 
 Open it on your laptop or phone and you get a tappable day-by-day itinerary,
-budget estimate, booking checklist, and packing list — no install, no build
+weather, booking checklist, and packing list — no install, no build
 step, works offline.
 
 ## ✨ What's inside
@@ -14,7 +14,7 @@ step, works offline.
 - **Overview** — trip-at-a-glance, the cities, and key logistics (flights + the DC→NYC Amtrak).
 - **Itinerary** — 9 collapsible days, each with morning/afternoon/evening plans, one-tap **Open in Maps** links, and an **embedded per-day map** (numbered pins + walking route) with an **"Open route in Google Maps"** button.
 - **Stays** — your three confirmed hotels and which days they anchor.
-- **Budget** — estimate that totals automatically.
+- **Weather** — Jun 28 – Jul 4 per day (per city). Shows seasonal averages now and auto-upgrades to a live forecast (free Open-Meteo API) once the dates come within ~16 days and you're online; falls back to averages offline.
 - **Bookings** — a checklist of reservations, marked DONE vs TODO (saves your progress).
 - **Packing** — a categorized checklist (saves your progress).
 - A live **countdown** to departure on the home screen.
@@ -88,7 +88,7 @@ between visits on the same device.
 ## ✏️ Customizing the trip
 
 Everything you'd want to change lives in **`data.js`** — dates, cities,
-day-by-day blocks, budget rows, booking tasks, and the packing list. Edit it
+day-by-day blocks, weather data, booking tasks, and the packing list. Edit it
 and refresh the page; there's nothing to rebuild.
 
 ```

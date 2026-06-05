@@ -310,31 +310,124 @@
     });
   }
 
-  // --- budget ---
-  function renderBudget() {
-    const root = $("#budget");
-    root.innerHTML = "";
-    const card = el("div", { class: "card" });
-    card.appendChild(el("h2", { class: "sec-title" }, esc(UI.budget_title)));
-    card.appendChild(el("p", { class: "sec-sub" }, esc(UI.budget_sub(T.travelers))));
+  // --- weather ---
+  // Map a WMO weather code (Open-Meteo / our normals) to an emoji + label.
+  function wxIcon(code) {
+    const en = LANG === "en";
+    if (code === 0) return { emoji: "☀️", label: en ? "Clear" : "晴" };
+    if (code <= 2) return { emoji: "🌤", label: en ? "Mostly sunny" : "晴间多云" };
+    if (code === 3) return { emoji: "☁️", label: en ? "Cloudy" : "多云" };
+    if (code >= 45 && code <= 48) return { emoji: "🌫", label: en ? "Fog" : "雾" };
+    if (code >= 51 && code <= 57) return { emoji: "🌦", label: en ? "Drizzle" : "毛毛雨" };
+    if (code >= 61 && code <= 67) return { emoji: "🌧", label: en ? "Rain" : "有雨" };
+    if (code >= 71 && code <= 77) return { emoji: "🌨", label: en ? "Snow" : "雪" };
+    if (code >= 80 && code <= 82) return { emoji: "🌦", label: en ? "Showers" : "阵雨" };
+    if (code >= 95) return { emoji: "⛈", label: en ? "Thunderstorms" : "雷阵雨" };
+    return { emoji: "🌡", label: en ? "Mixed" : "多变" };
+  }
 
-    const table = el("table");
-    table.innerHTML = `<thead><tr><th>${esc(UI.th_item)}</th><th class='num'>${esc(UI.th_low)}</th><th class='num'>${esc(UI.th_high)}</th></tr></thead>`;
-    const tb = el("tbody");
-    let lo = 0, hi = 0;
-    T.budget.forEach((b) => {
-      lo += b.low; hi += b.high;
-      const tr = el("tr");
-      tr.innerHTML = `<td>${esc(b.item)}</td><td class='num'>${money(b.low)}</td><td class='num'>${money(b.high)}</td>`;
-      tb.appendChild(tr);
+  // Build the list of trip dates from WEATHER.startDate..endDate (inclusive).
+  function weatherDates() {
+    const out = [];
+    const d = new Date(WEATHER.startDate + "T00:00:00");
+    const end = new Date(WEATHER.endDate + "T00:00:00");
+    while (d <= end) {
+      out.push(d.toISOString().slice(0, 10));
+      d.setDate(d.getDate() + 1);
+    }
+    return out;
+  }
+
+  // Render one day's weather row. `data` has {hi, lo, code, rainChance, live}.
+  function weatherRow(iso, city, data) {
+    const ic = wxIcon(data.code);
+    const row = el("div", { class: "wx-row" });
+    const tag = data.live
+      ? `<span class="wx-tag live">${esc(UI.weather_live)}</span>`
+      : `<span class="wx-tag">${esc(UI.weather_normal)}</span>`;
+    row.innerHTML =
+      `<div class="wx-emoji">${ic.emoji}</div>
+       <div class="wx-main">
+         <div class="wx-date">${esc(fmtDate(iso))} · ${esc(city)}</div>
+         <div class="wx-cond">${esc(ic.label)} ${tag}</div>
+       </div>
+       <div class="wx-temps">
+         <span class="wx-hi">${Math.round(data.hi)}°</span>
+         <span class="wx-lo">${Math.round(data.lo)}°</span>
+         ${data.rainChance != null ? `<span class="wx-rain">💧${Math.round(data.rainChance)}%</span>` : ""}
+       </div>`;
+    return row;
+  }
+
+  // Render the Weather tab from seasonal normals, then try to upgrade to live.
+  function renderWeather() {
+    const root = $("#weather");
+    root.innerHTML = "";
+    if (typeof WEATHER === "undefined") return;
+
+    const card = el("div", { class: "card" });
+    card.appendChild(el("h2", { class: "sec-title" }, "🌦 " + esc(UI.weather_title)));
+    card.appendChild(el("p", { class: "sec-sub" }, esc(UI.weather_sub)));
+
+    const list = el("div", { class: "wx-list" });
+    const dates = weatherDates();
+    dates.forEach((iso) => {
+      const city = WEATHER.dayCity[iso];
+      const n = WEATHER.normals[city];
+      list.appendChild(weatherRow(iso, city, { hi: n.hi, lo: n.lo, code: n.code, rainChance: n.rainChance, live: false }));
     });
-    const tot = el("tr", { class: "total" });
-    tot.innerHTML = `<td>${esc(UI.budget_total)}</td><td class='num'>${money(lo)}</td><td class='num'>${money(hi)}</td>`;
-    tb.appendChild(tot);
-    table.appendChild(tb);
-    card.appendChild(table);
-    card.appendChild(el("p", { class: "budget-note" }, esc(UI.budget_note)));
+    card.appendChild(list);
+
+    const status = el("p", { class: "wx-status" }, esc(UI.weather_loading));
+    card.appendChild(status);
     root.appendChild(card);
+
+    fetchLiveWeather(list, status, dates);
+  }
+
+  // Try Open-Meteo (free, no key). On success, replace any in-range rows with
+  // the live forecast; on failure/offline, fall back to the normals already shown.
+  function fetchLiveWeather(list, status, dates) {
+    if (!navigator.onLine) { status.textContent = UI.weather_offline; return; }
+
+    // One request per city (DC + NYC), then map results back onto the dates.
+    const cities = Array.from(new Set(dates.map((iso) => WEATHER.dayCity[iso])));
+    const reqs = cities.map((city) => {
+      const [lat, lon] = WEATHER.coords[city];
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+        `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
+        `&temperature_unit=fahrenheit&timezone=America%2FNew_York` +
+        `&start_date=${WEATHER.startDate}&end_date=${WEATHER.endDate}`;
+      return fetch(url).then((r) => r.json()).then((j) => ({ city, j }));
+    });
+
+    Promise.all(reqs).then((results) => {
+      const byCity = {};
+      results.forEach(({ city, j }) => { if (j && j.daily && j.daily.time) byCity[city] = j.daily; });
+
+      let liveCount = 0;
+      const rows = list.querySelectorAll(".wx-row");
+      dates.forEach((iso, idx) => {
+        const city = WEATHER.dayCity[iso];
+        const daily = byCity[city];
+        if (!daily) return;
+        const di = daily.time.indexOf(iso);
+        if (di < 0) return;
+        const data = {
+          hi: daily.temperature_2m_max[di],
+          lo: daily.temperature_2m_min[di],
+          code: daily.weather_code[di],
+          rainChance: daily.precipitation_probability_max ? daily.precipitation_probability_max[di] : null,
+          live: true
+        };
+        if (data.hi == null || data.lo == null) return;
+        const fresh = weatherRow(iso, city, data);
+        rows[idx].replaceWith(fresh);
+        liveCount++;
+      });
+
+      status.textContent = liveCount > 0 ? "" : UI.weather_offline;
+    }).catch(() => { status.textContent = UI.weather_offline; });
   }
 
   // --- checklists with localStorage (keys are index-based, so state survives language switches) ---
@@ -458,7 +551,7 @@
     renderOverview();
     renderStays();
     renderItinerary();
-    renderBudget();
+    renderWeather();
     renderBookings();
     renderPacking();
     ensureDayMap(0); // first day is open by default

@@ -16,7 +16,7 @@
 const UICOPY = {
   en: {
     tab_overview: "Overview", tab_itinerary: "Itinerary", tab_stays: "Stays",
-    tab_budget: "Budget", tab_bookings: "Bookings", tab_packing: "Packing",
+    tab_weather: "Weather", tab_bookings: "Bookings", tab_packing: "Packing",
     cd_days: "days", cd_cities: "cities", cd_daysPlanned: "days planned",
     cd_home: "Welcome home! Hope it was unforgettable. ✈️",
     cd_during: "🎉 You’re on the trip right now — go have fun!",
@@ -27,13 +27,14 @@ const UICOPY = {
     daymap_places: "🗺 Places this day", daymap_route: "↗ Route in Google Maps",
     leg_nextdoor: "next door", eat_label: "Eat", tips_label: "Tips",
     openMaps: "🗺 Open in Maps", openGoogleMaps: "Open in Google Maps",
-    budget_title: "Budget estimate", th_item: "Item", th_low: "Low", th_high: "High",
-    budget_total: "Estimated total / person",
-    budget_note: "Tip: book flights, Amtrak, and hotels early — holiday-weekend prices climb fast. A NYC CityPASS can trim attraction costs.",
+    weather_title: "Weather", weather_high: "High", weather_low: "Low", weather_rain: "Rain",
+    weather_live: "live forecast", weather_normal: "seasonal average",
+    weather_sub: "Jun 28 – Jul 4. Shows typical seasonal averages until the dates come within forecast range (~16 days out), then auto-updates to the live forecast when online.",
+    weather_loading: "Checking for a live forecast…",
+    weather_offline: "Showing seasonal averages (no live forecast — offline or dates still too far out).",
     book_title: "Booking checklist", book_sub: "Lock these in ahead of time — most sell out or get pricey for the holiday.",
     pack_title: "Packing list", pack_sub: "Hot, humid, lots of walking. Check items off as you pack.",
     reset: "Reset list",
-    budget_sub: (n) => `Rough per-person planning ballparks (USD) for ${n === 1 ? "one traveler" : n + " travelers"}. Not quotes — the July 4th / 250th window pushes lodging toward the high end.`,
     progress: (d, t) => `${d} of ${t} done`,
     leg_from: (i, mi) => `${mi} mi from #${i}`,
     heroDates: (fs, fe) => `${fs} – ${fe}, 2026`,
@@ -42,7 +43,7 @@ const UICOPY = {
   },
   zh: {
     tab_overview: "概览", tab_itinerary: "行程", tab_stays: "住宿",
-    tab_budget: "预算", tab_bookings: "预订清单", tab_packing: "行李",
+    tab_weather: "天气", tab_bookings: "预订清单", tab_packing: "行李",
     cd_days: "天", cd_cities: "座城市", cd_daysPlanned: "天行程",
     cd_home: "欢迎回家！希望这趟旅程难以忘怀。✈️",
     cd_during: "🎉 你们正在旅途中——尽情玩吧！",
@@ -53,13 +54,14 @@ const UICOPY = {
     daymap_places: "🗺 当天地点", daymap_route: "↗ 在 Google 地图看路线",
     leg_nextdoor: "就在隔壁", eat_label: "吃", tips_label: "小贴士",
     openMaps: "🗺 在地图中打开", openGoogleMaps: "在 Google 地图中打开",
-    budget_title: "预算估算", th_item: "项目", th_low: "低", th_high: "高",
-    budget_total: "预计总额 / 每人",
-    budget_note: "建议：尽早订机票、Amtrak 和酒店——节日周末价格涨得快。买 NYC CityPASS 能省下部分景点门票。",
+    weather_title: "天气", weather_high: "最高", weather_low: "最低", weather_rain: "降雨",
+    weather_live: "实时预报", weather_normal: "常年平均",
+    weather_sub: "6月28日 – 7月4日。在日期进入可预报范围（约提前16天）之前显示常年同期平均值，之后联网时会自动更新为实时预报。",
+    weather_loading: "正在获取实时预报…",
+    weather_offline: "显示常年同期平均值（暂无实时预报——可能离线，或日期还太远）。",
     book_title: "预订清单", book_sub: "提前把这些订好——大多在节日期间会售罄或涨价。",
     pack_title: "行李清单", pack_sub: "又热又潮、要走很多路。一边收拾一边打勾。",
     reset: "重置清单",
-    budget_sub: (n) => `粗略的人均预算区间（美元），按${n === 1 ? "一位旅客" : n + "位旅客"}估算。仅供规划、并非报价——7月4日 / 250周年这段时间住宿会偏向高位。`,
     progress: (d, t) => `已完成 ${d}/${t}`,
     leg_from: (i, mi) => `距第${i}站 ${mi} 英里`,
     heroDates: (fs, fe) => `2026年 ${fs} – ${fe}`,
@@ -218,16 +220,6 @@ const TRIP_ZH = {
     { label: "回程航班", value: "✅ JFK→旧金山，7月4日（周六）：东部时间晚上6:55起飞，太平洋时间晚上10:33抵达。下午3点左右离开曼哈顿（节日 + 250周年人潮）。" },
     { label: "华盛顿出行", value: "从白宫附近的酒店坐地铁 + 步行。用 SmarTrip / 手机刷卡。国家广场从头走到尾都行。" },
     { label: "纽约出行", value: "地铁（OMNY 刷卡）+ 步行。前半程住金融区，后半程住时代广场。Citi Bike 很适合逛公园和海滨。" }
-  ],
-
-  budget: [
-    { item: "机票（旧金山→华盛顿，纽约→旧金山）" },
-    { item: "Amtrak 华盛顿→纽约" },
-    { item: "住宿 – 华盛顿（4晚）" },
-    { item: "住宿 – 纽约（4晚）" },
-    { item: "餐饮（9天）" },
-    { item: "景点/行程/演出" },
-    { item: "市内交通 + 打车" }
   ],
 
   bookings: [

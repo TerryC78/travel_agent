@@ -178,7 +178,28 @@ th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--lin
 th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
 td.num { text-align: right; font-variant-numeric: tabular-nums; }
 tr.total td { font-weight: 800; border-top: 2px solid var(--accent); border-bottom: none; font-size: 15px; }
-.budget-note { color: var(--muted); font-size: 12px; margin-top: 10px; }
+
+/* ---------- Weather ---------- */
+.wx-list { margin-top: 6px; }
+.wx-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 4px; border-bottom: 1px solid var(--line);
+}
+.wx-row:last-child { border-bottom: none; }
+.wx-emoji { font-size: 30px; flex: 0 0 auto; width: 40px; text-align: center; }
+.wx-main { flex: 1; min-width: 0; }
+.wx-date { font-weight: 700; font-size: 14px; }
+.wx-cond { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.wx-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 999px;
+  background: var(--card-2); color: var(--muted); border: 1px solid var(--line); margin-left: 4px;
+}
+.wx-tag.live { background: rgba(54,211,153,.15); color: var(--green); border-color: var(--green); }
+.wx-temps { flex: 0 0 auto; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.wx-hi { font-weight: 800; font-size: 17px; }
+.wx-lo { color: var(--muted); font-size: 15px; margin-left: 6px; }
+.wx-rain { color: var(--accent); font-size: 12px; margin-left: 8px; }
+.wx-status { color: var(--muted); font-size: 12px; margin-top: 12px; min-height: 1em; }
 
 /* ---------- Checklists ---------- */
 .check { display: flex; align-items: flex-start; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--line); cursor: pointer; }
@@ -252,7 +273,7 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px
     <button class="active" data-target="overview">Overview</button>
     <button data-target="itinerary">Itinerary</button>
     <button data-target="stays">Stays</button>
-    <button data-target="budget">Budget</button>
+    <button data-target="weather">Weather</button>
     <button data-target="bookings">Bookings</button>
     <button data-target="packing">Packing</button>
   </nav>
@@ -261,7 +282,7 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px
     <section id="overview" class="active"></section>
     <section id="itinerary"></section>
     <section id="stays"></section>
-    <section id="budget"></section>
+    <section id="weather"></section>
     <section id="bookings"></section>
     <section id="packing"></section>
   </main>
@@ -452,18 +473,6 @@ const TRIP = {
     { label: "Getting around NYC", value: "Subway (OMNY tap-to-pay) + walking. FiDi for the first half, Times Square for the second. Citi Bike is great for parks/waterfronts." }
   ],
 
-  // ---- Budget estimate (per person, rough, USD) ----
-  // These are planning ballparks, NOT quotes. July 4 / 250th will push lodging high.
-  budget: [
-    { item: "Flights (SFO→DC, NYC→SFO)", low: 450, high: 750 },
-    { item: "Amtrak DC → NYC", low: 60, high: 200 },
-    { item: "Lodging – DC (4 nights)", low: 700, high: 1400 },
-    { item: "Lodging – NYC (4 nights)", low: 1000, high: 2200 },
-    { item: "Food (9 days)", low: 540, high: 1080 },
-    { item: "Attractions / tours / show", low: 250, high: 600 },
-    { item: "Local transit + rideshare", low: 100, high: 200 }
-  ],
-
   // ---- Booking checklist ----
   // ✅ DONE items are already booked; tick them off. TODO items still need doing.
   bookings: [
@@ -542,6 +551,45 @@ const PLACES = {
   "John F. Kennedy International Airport": [40.6413, -73.7781]
 };
 
+/*
+ * Weather for the trip window (Jun 28 – Jul 4, 2026).
+ *
+ * Two layers:
+ *  - `normals`: typical late-June/early-July climate averages per city. These
+ *    show immediately and work OFFLINE — useful now, weeks before the trip,
+ *    when no real forecast exists (forecasts only reach ~16 days out).
+ *  - Live upgrade: app.js calls the free, key-less Open-Meteo API and, for any
+ *    date within forecast range, REPLACES the normals with the real forecast
+ *    (marked "live"). Coordinates below drive that lookup.
+ *
+ * Temps in °F. Each day knows which city you're in (DC through Jun 30 morning,
+ * NYC after the Jun 30 train).
+ */
+const WEATHER = {
+  startDate: "2026-06-28",
+  endDate: "2026-07-04",
+  coords: {
+    "Washington, DC": [38.8951, -77.0364],
+    "New York City": [40.7128, -74.0060]
+  },
+  // City you're physically in on each date (for the right forecast point).
+  dayCity: {
+    "2026-06-28": "Washington, DC",
+    "2026-06-29": "Washington, DC",
+    "2026-06-30": "New York City", // travel day; you sleep in NYC
+    "2026-07-01": "New York City",
+    "2026-07-02": "New York City",
+    "2026-07-03": "New York City",
+    "2026-07-04": "New York City"
+  },
+  // Seasonal-average fallback (used until live data is available).
+  // hi/lo °F, plus a typical late-June/early-July condition for the city.
+  normals: {
+    "Washington, DC": { hi: 89, lo: 71, code: 95, rainChance: 40, note: "炎热潮湿，午后常有雷阵雨" },
+    "New York City": { hi: 84, lo: 70, code: 80, rainChance: 35, note: "温暖潮湿，偶有阵雨" }
+  }
+};
+
 </script>
   <script>
 /*
@@ -562,7 +610,7 @@ const PLACES = {
 const UICOPY = {
   en: {
     tab_overview: "Overview", tab_itinerary: "Itinerary", tab_stays: "Stays",
-    tab_budget: "Budget", tab_bookings: "Bookings", tab_packing: "Packing",
+    tab_weather: "Weather", tab_bookings: "Bookings", tab_packing: "Packing",
     cd_days: "days", cd_cities: "cities", cd_daysPlanned: "days planned",
     cd_home: "Welcome home! Hope it was unforgettable. ✈️",
     cd_during: "🎉 You’re on the trip right now — go have fun!",
@@ -573,13 +621,14 @@ const UICOPY = {
     daymap_places: "🗺 Places this day", daymap_route: "↗ Route in Google Maps",
     leg_nextdoor: "next door", eat_label: "Eat", tips_label: "Tips",
     openMaps: "🗺 Open in Maps", openGoogleMaps: "Open in Google Maps",
-    budget_title: "Budget estimate", th_item: "Item", th_low: "Low", th_high: "High",
-    budget_total: "Estimated total / person",
-    budget_note: "Tip: book flights, Amtrak, and hotels early — holiday-weekend prices climb fast. A NYC CityPASS can trim attraction costs.",
+    weather_title: "Weather", weather_high: "High", weather_low: "Low", weather_rain: "Rain",
+    weather_live: "live forecast", weather_normal: "seasonal average",
+    weather_sub: "Jun 28 – Jul 4. Shows typical seasonal averages until the dates come within forecast range (~16 days out), then auto-updates to the live forecast when online.",
+    weather_loading: "Checking for a live forecast…",
+    weather_offline: "Showing seasonal averages (no live forecast — offline or dates still too far out).",
     book_title: "Booking checklist", book_sub: "Lock these in ahead of time — most sell out or get pricey for the holiday.",
     pack_title: "Packing list", pack_sub: "Hot, humid, lots of walking. Check items off as you pack.",
     reset: "Reset list",
-    budget_sub: (n) => `Rough per-person planning ballparks (USD) for ${n === 1 ? "one traveler" : n + " travelers"}. Not quotes — the July 4th / 250th window pushes lodging toward the high end.`,
     progress: (d, t) => `${d} of ${t} done`,
     leg_from: (i, mi) => `${mi} mi from #${i}`,
     heroDates: (fs, fe) => `${fs} – ${fe}, 2026`,
@@ -588,7 +637,7 @@ const UICOPY = {
   },
   zh: {
     tab_overview: "概览", tab_itinerary: "行程", tab_stays: "住宿",
-    tab_budget: "预算", tab_bookings: "预订清单", tab_packing: "行李",
+    tab_weather: "天气", tab_bookings: "预订清单", tab_packing: "行李",
     cd_days: "天", cd_cities: "座城市", cd_daysPlanned: "天行程",
     cd_home: "欢迎回家！希望这趟旅程难以忘怀。✈️",
     cd_during: "🎉 你们正在旅途中——尽情玩吧！",
@@ -599,13 +648,14 @@ const UICOPY = {
     daymap_places: "🗺 当天地点", daymap_route: "↗ 在 Google 地图看路线",
     leg_nextdoor: "就在隔壁", eat_label: "吃", tips_label: "小贴士",
     openMaps: "🗺 在地图中打开", openGoogleMaps: "在 Google 地图中打开",
-    budget_title: "预算估算", th_item: "项目", th_low: "低", th_high: "高",
-    budget_total: "预计总额 / 每人",
-    budget_note: "建议：尽早订机票、Amtrak 和酒店——节日周末价格涨得快。买 NYC CityPASS 能省下部分景点门票。",
+    weather_title: "天气", weather_high: "最高", weather_low: "最低", weather_rain: "降雨",
+    weather_live: "实时预报", weather_normal: "常年平均",
+    weather_sub: "6月28日 – 7月4日。在日期进入可预报范围（约提前16天）之前显示常年同期平均值，之后联网时会自动更新为实时预报。",
+    weather_loading: "正在获取实时预报…",
+    weather_offline: "显示常年同期平均值（暂无实时预报——可能离线，或日期还太远）。",
     book_title: "预订清单", book_sub: "提前把这些订好——大多在节日期间会售罄或涨价。",
     pack_title: "行李清单", pack_sub: "又热又潮、要走很多路。一边收拾一边打勾。",
     reset: "重置清单",
-    budget_sub: (n) => `粗略的人均预算区间（美元），按${n === 1 ? "一位旅客" : n + "位旅客"}估算。仅供规划、并非报价——7月4日 / 250周年这段时间住宿会偏向高位。`,
     progress: (d, t) => `已完成 ${d}/${t}`,
     leg_from: (i, mi) => `距第${i}站 ${mi} 英里`,
     heroDates: (fs, fe) => `2026年 ${fs} – ${fe}`,
@@ -764,16 +814,6 @@ const TRIP_ZH = {
     { label: "回程航班", value: "✅ JFK→旧金山，7月4日（周六）：东部时间晚上6:55起飞，太平洋时间晚上10:33抵达。下午3点左右离开曼哈顿（节日 + 250周年人潮）。" },
     { label: "华盛顿出行", value: "从白宫附近的酒店坐地铁 + 步行。用 SmarTrip / 手机刷卡。国家广场从头走到尾都行。" },
     { label: "纽约出行", value: "地铁（OMNY 刷卡）+ 步行。前半程住金融区，后半程住时代广场。Citi Bike 很适合逛公园和海滨。" }
-  ],
-
-  budget: [
-    { item: "机票（旧金山→华盛顿，纽约→旧金山）" },
-    { item: "Amtrak 华盛顿→纽约" },
-    { item: "住宿 – 华盛顿（4晚）" },
-    { item: "住宿 – 纽约（4晚）" },
-    { item: "餐饮（9天）" },
-    { item: "景点/行程/演出" },
-    { item: "市内交通 + 打车" }
   ],
 
   bookings: [
@@ -1128,31 +1168,124 @@ const TRIP_ZH = {
     });
   }
 
-  // --- budget ---
-  function renderBudget() {
-    const root = $("#budget");
-    root.innerHTML = "";
-    const card = el("div", { class: "card" });
-    card.appendChild(el("h2", { class: "sec-title" }, esc(UI.budget_title)));
-    card.appendChild(el("p", { class: "sec-sub" }, esc(UI.budget_sub(T.travelers))));
+  // --- weather ---
+  // Map a WMO weather code (Open-Meteo / our normals) to an emoji + label.
+  function wxIcon(code) {
+    const en = LANG === "en";
+    if (code === 0) return { emoji: "☀️", label: en ? "Clear" : "晴" };
+    if (code <= 2) return { emoji: "🌤", label: en ? "Mostly sunny" : "晴间多云" };
+    if (code === 3) return { emoji: "☁️", label: en ? "Cloudy" : "多云" };
+    if (code >= 45 && code <= 48) return { emoji: "🌫", label: en ? "Fog" : "雾" };
+    if (code >= 51 && code <= 57) return { emoji: "🌦", label: en ? "Drizzle" : "毛毛雨" };
+    if (code >= 61 && code <= 67) return { emoji: "🌧", label: en ? "Rain" : "有雨" };
+    if (code >= 71 && code <= 77) return { emoji: "🌨", label: en ? "Snow" : "雪" };
+    if (code >= 80 && code <= 82) return { emoji: "🌦", label: en ? "Showers" : "阵雨" };
+    if (code >= 95) return { emoji: "⛈", label: en ? "Thunderstorms" : "雷阵雨" };
+    return { emoji: "🌡", label: en ? "Mixed" : "多变" };
+  }
 
-    const table = el("table");
-    table.innerHTML = `<thead><tr><th>${esc(UI.th_item)}</th><th class='num'>${esc(UI.th_low)}</th><th class='num'>${esc(UI.th_high)}</th></tr></thead>`;
-    const tb = el("tbody");
-    let lo = 0, hi = 0;
-    T.budget.forEach((b) => {
-      lo += b.low; hi += b.high;
-      const tr = el("tr");
-      tr.innerHTML = `<td>${esc(b.item)}</td><td class='num'>${money(b.low)}</td><td class='num'>${money(b.high)}</td>`;
-      tb.appendChild(tr);
+  // Build the list of trip dates from WEATHER.startDate..endDate (inclusive).
+  function weatherDates() {
+    const out = [];
+    const d = new Date(WEATHER.startDate + "T00:00:00");
+    const end = new Date(WEATHER.endDate + "T00:00:00");
+    while (d <= end) {
+      out.push(d.toISOString().slice(0, 10));
+      d.setDate(d.getDate() + 1);
+    }
+    return out;
+  }
+
+  // Render one day's weather row. `data` has {hi, lo, code, rainChance, live}.
+  function weatherRow(iso, city, data) {
+    const ic = wxIcon(data.code);
+    const row = el("div", { class: "wx-row" });
+    const tag = data.live
+      ? `<span class="wx-tag live">${esc(UI.weather_live)}</span>`
+      : `<span class="wx-tag">${esc(UI.weather_normal)}</span>`;
+    row.innerHTML =
+      `<div class="wx-emoji">${ic.emoji}</div>
+       <div class="wx-main">
+         <div class="wx-date">${esc(fmtDate(iso))} · ${esc(city)}</div>
+         <div class="wx-cond">${esc(ic.label)} ${tag}</div>
+       </div>
+       <div class="wx-temps">
+         <span class="wx-hi">${Math.round(data.hi)}°</span>
+         <span class="wx-lo">${Math.round(data.lo)}°</span>
+         ${data.rainChance != null ? `<span class="wx-rain">💧${Math.round(data.rainChance)}%</span>` : ""}
+       </div>`;
+    return row;
+  }
+
+  // Render the Weather tab from seasonal normals, then try to upgrade to live.
+  function renderWeather() {
+    const root = $("#weather");
+    root.innerHTML = "";
+    if (typeof WEATHER === "undefined") return;
+
+    const card = el("div", { class: "card" });
+    card.appendChild(el("h2", { class: "sec-title" }, "🌦 " + esc(UI.weather_title)));
+    card.appendChild(el("p", { class: "sec-sub" }, esc(UI.weather_sub)));
+
+    const list = el("div", { class: "wx-list" });
+    const dates = weatherDates();
+    dates.forEach((iso) => {
+      const city = WEATHER.dayCity[iso];
+      const n = WEATHER.normals[city];
+      list.appendChild(weatherRow(iso, city, { hi: n.hi, lo: n.lo, code: n.code, rainChance: n.rainChance, live: false }));
     });
-    const tot = el("tr", { class: "total" });
-    tot.innerHTML = `<td>${esc(UI.budget_total)}</td><td class='num'>${money(lo)}</td><td class='num'>${money(hi)}</td>`;
-    tb.appendChild(tot);
-    table.appendChild(tb);
-    card.appendChild(table);
-    card.appendChild(el("p", { class: "budget-note" }, esc(UI.budget_note)));
+    card.appendChild(list);
+
+    const status = el("p", { class: "wx-status" }, esc(UI.weather_loading));
+    card.appendChild(status);
     root.appendChild(card);
+
+    fetchLiveWeather(list, status, dates);
+  }
+
+  // Try Open-Meteo (free, no key). On success, replace any in-range rows with
+  // the live forecast; on failure/offline, fall back to the normals already shown.
+  function fetchLiveWeather(list, status, dates) {
+    if (!navigator.onLine) { status.textContent = UI.weather_offline; return; }
+
+    // One request per city (DC + NYC), then map results back onto the dates.
+    const cities = Array.from(new Set(dates.map((iso) => WEATHER.dayCity[iso])));
+    const reqs = cities.map((city) => {
+      const [lat, lon] = WEATHER.coords[city];
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+        `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
+        `&temperature_unit=fahrenheit&timezone=America%2FNew_York` +
+        `&start_date=${WEATHER.startDate}&end_date=${WEATHER.endDate}`;
+      return fetch(url).then((r) => r.json()).then((j) => ({ city, j }));
+    });
+
+    Promise.all(reqs).then((results) => {
+      const byCity = {};
+      results.forEach(({ city, j }) => { if (j && j.daily && j.daily.time) byCity[city] = j.daily; });
+
+      let liveCount = 0;
+      const rows = list.querySelectorAll(".wx-row");
+      dates.forEach((iso, idx) => {
+        const city = WEATHER.dayCity[iso];
+        const daily = byCity[city];
+        if (!daily) return;
+        const di = daily.time.indexOf(iso);
+        if (di < 0) return;
+        const data = {
+          hi: daily.temperature_2m_max[di],
+          lo: daily.temperature_2m_min[di],
+          code: daily.weather_code[di],
+          rainChance: daily.precipitation_probability_max ? daily.precipitation_probability_max[di] : null,
+          live: true
+        };
+        if (data.hi == null || data.lo == null) return;
+        const fresh = weatherRow(iso, city, data);
+        rows[idx].replaceWith(fresh);
+        liveCount++;
+      });
+
+      status.textContent = liveCount > 0 ? "" : UI.weather_offline;
+    }).catch(() => { status.textContent = UI.weather_offline; });
   }
 
   // --- checklists with localStorage (keys are index-based, so state survives language switches) ---
@@ -1276,7 +1409,7 @@ const TRIP_ZH = {
     renderOverview();
     renderStays();
     renderItinerary();
-    renderBudget();
+    renderWeather();
     renderBookings();
     renderPacking();
     ensureDayMap(0); // first day is open by default

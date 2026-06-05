@@ -166,7 +166,28 @@ th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--lin
 th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
 td.num { text-align: right; font-variant-numeric: tabular-nums; }
 tr.total td { font-weight: 800; border-top: 2px solid var(--accent); border-bottom: none; font-size: 15px; }
-.budget-note { color: var(--muted); font-size: 12px; margin-top: 10px; }
+
+/* ---------- Weather ---------- */
+.wx-list { margin-top: 6px; }
+.wx-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 4px; border-bottom: 1px solid var(--line);
+}
+.wx-row:last-child { border-bottom: none; }
+.wx-emoji { font-size: 30px; flex: 0 0 auto; width: 40px; text-align: center; }
+.wx-main { flex: 1; min-width: 0; }
+.wx-date { font-weight: 700; font-size: 14px; }
+.wx-cond { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.wx-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 999px;
+  background: var(--card-2); color: var(--muted); border: 1px solid var(--line); margin-left: 4px;
+}
+.wx-tag.live { background: rgba(54,211,153,.15); color: var(--green); border-color: var(--green); }
+.wx-temps { flex: 0 0 auto; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.wx-hi { font-weight: 800; font-size: 17px; }
+.wx-lo { color: var(--muted); font-size: 15px; margin-left: 6px; }
+.wx-rain { color: var(--accent); font-size: 12px; margin-left: 8px; }
+.wx-status { color: var(--muted); font-size: 12px; margin-top: 12px; min-height: 1em; }
 
 /* ---------- Checklists ---------- */
 .check { display: flex; align-items: flex-start; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--line); cursor: pointer; }

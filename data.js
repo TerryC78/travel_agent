@@ -179,18 +179,6 @@ const TRIP = {
     { label: "Getting around NYC", value: "Subway (OMNY tap-to-pay) + walking. FiDi for the first half, Times Square for the second. Citi Bike is great for parks/waterfronts." }
   ],
 
-  // ---- Budget estimate (per person, rough, USD) ----
-  // These are planning ballparks, NOT quotes. July 4 / 250th will push lodging high.
-  budget: [
-    { item: "Flights (SFO→DC, NYC→SFO)", low: 450, high: 750 },
-    { item: "Amtrak DC → NYC", low: 60, high: 200 },
-    { item: "Lodging – DC (4 nights)", low: 700, high: 1400 },
-    { item: "Lodging – NYC (4 nights)", low: 1000, high: 2200 },
-    { item: "Food (9 days)", low: 540, high: 1080 },
-    { item: "Attractions / tours / show", low: 250, high: 600 },
-    { item: "Local transit + rideshare", low: 100, high: 200 }
-  ],
-
   // ---- Booking checklist ----
   // ✅ DONE items are already booked; tick them off. TODO items still need doing.
   bookings: [
@@ -267,4 +255,43 @@ const PLACES = {
   "Broadway Theatre District New York": [40.7590, -73.9851],
   "Times Square New York": [40.7580, -73.9855],
   "John F. Kennedy International Airport": [40.6413, -73.7781]
+};
+
+/*
+ * Weather for the trip window (Jun 28 – Jul 4, 2026).
+ *
+ * Two layers:
+ *  - `normals`: typical late-June/early-July climate averages per city. These
+ *    show immediately and work OFFLINE — useful now, weeks before the trip,
+ *    when no real forecast exists (forecasts only reach ~16 days out).
+ *  - Live upgrade: app.js calls the free, key-less Open-Meteo API and, for any
+ *    date within forecast range, REPLACES the normals with the real forecast
+ *    (marked "live"). Coordinates below drive that lookup.
+ *
+ * Temps in °F. Each day knows which city you're in (DC through Jun 30 morning,
+ * NYC after the Jun 30 train).
+ */
+const WEATHER = {
+  startDate: "2026-06-28",
+  endDate: "2026-07-04",
+  coords: {
+    "Washington, DC": [38.8951, -77.0364],
+    "New York City": [40.7128, -74.0060]
+  },
+  // City you're physically in on each date (for the right forecast point).
+  dayCity: {
+    "2026-06-28": "Washington, DC",
+    "2026-06-29": "Washington, DC",
+    "2026-06-30": "New York City", // travel day; you sleep in NYC
+    "2026-07-01": "New York City",
+    "2026-07-02": "New York City",
+    "2026-07-03": "New York City",
+    "2026-07-04": "New York City"
+  },
+  // Seasonal-average fallback (used until live data is available).
+  // hi/lo °F, plus a typical late-June/early-July condition for the city.
+  normals: {
+    "Washington, DC": { hi: 89, lo: 71, code: 95, rainChance: 40, note: "炎热潮湿，午后常有雷阵雨" },
+    "New York City": { hi: 84, lo: 70, code: 80, rainChance: 35, note: "温暖潮湿，偶有阵雨" }
+  }
 };
