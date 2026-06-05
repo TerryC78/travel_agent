@@ -214,7 +214,7 @@ const TRIP = {
   // ---- Packing list ----
   packing: {
     "Essentials": ["IDs / REAL ID for flights", "🎟️ Google badge — may get you FREE entry to some popular museums in DC & NYC (e.g. via corporate/cultural perks); bring it and ask at admissions", "Phone + charger + power bank", "Cards + a little cash", "Refillable water bottle", "Sunscreen + sunglasses + hat"],
-    "Clothes (hot & humid)": ["Lightweight breathable tops", "Comfortable walking shoes (broken in!)", "1 nicer outfit for Broadway/dinner", "Compact umbrella / packable rain jacket", "Swimwear (hotel pool)"],
+    "Clothes (hot & humid)": ["Lightweight breathable tops", "Comfortable walking shoes (broken in!)", "1 nicer outfit for Broadway/dinner", "Compact umbrella / packable rain jacket", "🌧 Waterproof rain jacket with hood (DC afternoon thunderstorms)", "Swimwear (hotel pool)"],
     "Health & comfort": ["Blister plasters / band-aids", "Pain reliever + any meds", "Hand sanitizer + wipes", "Deodorant (you’ll sweat)", "Eye mask + earplugs"],
     "Smart extras": ["Day backpack", "Portable fan / cooling towel", "Snacks for the train", "Downloaded maps + Amtrak/airline apps", "Saved/printed copies of all bookings (offline)"]
   }
