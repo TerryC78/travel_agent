@@ -340,8 +340,7 @@ const TRIP = {
   // ---- Where you're staying (confirmed) ----
   stays: [
     { hotel: "Hyatt Place Washington DC / White House", city: "Washington, DC", dates: "Jun 26–30", nights: 4, area: "Downtown by the White House — walkable to the Mall and Metro." },
-    { hotel: "Fairfield Inn New York Manhattan / Financial District", city: "New York City", dates: "Jun 30 – Jul 2", nights: 2, area: "Lower Manhattan — ideal base for your Statue / Ellis / 9-11 day." },
-    { hotel: "Pod Times Square", city: "New York City", dates: "Jul 2 – Jul 4", nights: 2, area: "Midtown — steps from Broadway and the Times Square energy for your last two nights." }
+    { hotel: "Candlewood Suites New York City Times Square", city: "New York City", dates: "Jun 30 – Jul 4", nights: 4, area: "One Midtown base for all four nights — steps from Times Square, the Empire State Building, and the Theater District. No mid-trip hotel switch." }
   ],
 
   // ---- Day-by-day itinerary ----
@@ -404,42 +403,54 @@ const TRIP = {
     {
       date: "2026-06-30",
       city: "New York City",
-      title: "Amtrak DC → NYC · Hello, New York",
-      summary: "Scenic ~3½-hour train up the Northeast Corridor into the new Moynihan hall, then settle into your Financial District base.",
+      title: "Amtrak DC → NYC · Empire State & Times Square",
+      summary: "Train into Moynihan, check into your Times Square base (home for all 4 nights), then the Empire State Building and Times Square at night.",
       blocks: [
         { time: "11:06 AM", title: "✅ Amtrak: Washington → New York (2 tickets booked)", detail: "Departs Washington Union Station 11:06am, arrives Moynihan Train Hall at Penn Station ~2:34pm (3h 28m). Moynihan is the stunning skylit hall — far nicer than old Penn. Sit on the left/west side leaving DC for water views. Board ~20 min early.", map: "Washington Union Station" },
-        { time: "~2:45 PM", title: "✅ Check in: Fairfield Inn, Financial District", detail: "From Moynihan, take the subway downtown (A/C/E or 1/2/3) ~20 min to your FiDi hotel. Drop bags and reset — you’re perfectly placed for tomorrow’s Statue of Liberty + 9/11 day.", map: "Fairfield Inn New York Manhattan Financial District" },
-        { time: "Evening", title: "Lower Manhattan at golden hour", detail: "Ease in around your downtown base: Stone Street for dinner, the South Street Seaport on the East River, or walk toward Battery Park for a first glimpse of the harbor and Lady Liberty. (Plenty of Times Square coming once you move there July 2.)", map: "Stone Street Historic District New York" }
+        { time: "~2:45 PM", title: "✅ Check in: Candlewood Suites Times Square", detail: "Moynihan/Penn Station to the hotel is a ~10-min walk or one quick subway stop — no downtown transfer. Drop bags and reset. This is your single base for all four NYC nights, so unpack properly.", map: "Candlewood Suites New York City Times Square" },
+        { time: "5:00 PM", title: "Empire State Building — 🎟️ Go City pass", detail: "Walk ~8 min to the Empire State Building (covered by your Go City pass). Late-afternoon into dusk is a great time — you catch daylight, sunset, and the city lighting up from the 86th-floor deck. Reserve a time slot in the Go City app to skip lines.", map: "Empire State Building" },
+        { time: "Evening", title: "Times Square at night + dinner", detail: "First taste of Times Square fully lit (you’re staying right here, so you’ll pass through often). Dinner is far better a few blocks west in Hell’s Kitchen (9th Ave) than in the Square itself.", map: "Times Square New York" }
       ],
-      eat: "Dinner downtown — Stone Street’s cobblestone patios or the Seaport.",
-      tips: ["Set up OMNY tap-to-pay (phone/card) for the subway before you arrive.", "Your bags ride with you — Moynihan to FiDi is one easy subway hop.", "Heads up: DC’s ‘Salute to America’ 250th parade & fireworks are July 4 — after you’ve left. New York is your finale."]
+      eat: "Dinner in Hell’s Kitchen (9th Ave) — huge range, walkable from the hotel.",
+      tips: ["Set up OMNY tap-to-pay (phone/card) for the subway before you arrive.", "Penn Station to the hotel is walkable — no need to figure out the subway with luggage.", "Empire State + One World (Jul 1) + Top of the Rock (Jul 2) are all on your Go City pass — reserve slots in the app.", "Heads up: DC’s ‘Salute to America’ 250th parade & fireworks are July 4 — after you’ve left. New York is your finale."]
     },
     {
       date: "2026-07-01",
       city: "New York City",
-      title: "Lower Manhattan: Liberty, Ellis, 9/11",
-      summary: "The harbor + downtown classics, all walkable from your FiDi base. Two fixed times: Statue ferry 11am, 9/11 Museum 4pm.",
+      title: "Liberty, Ellis, 9/11 & One World",
+      summary: "A full, well-sequenced downtown day with almost no backtracking: early ferry to the islands, 9/11 in the afternoon, then One World Observatory next door — home to Times Square by night.",
       blocks: [
-        { time: "11:00 AM", title: "✅ Statue of Liberty — Pedestal Access Tour (2 tickets booked)", detail: "Booked: 11:00am ferry, NEW YORK departure from Battery Park (a short walk from your hotel) with Pedestal access to the statue. Arrive ~45 min early — airport-style security at the dock. The ferry continues to Ellis Island; tour the moving Immigration Museum, then ferry back to Battery.", map: "Battery Park New York" },
-        { time: "~3:00 PM", title: "Back to Battery + walk to the 9/11 area", detail: "After Ellis Island, the ferry returns to Battery Park. Grab a late lunch nearby, then it’s a ~12-min walk north to the 9/11 site — pass the Charging Bull and the Oculus on the way.", map: "Stone Street Historic District New York" },
-        { time: "4:00 PM", title: "✅ 9/11 Memorial & Museum (2 tickets booked)", detail: "Booked for 4:00pm. See the free Memorial reflecting pools in the footprints of the Twin Towers, then your timed Museum entry. Allow ~2 hrs; it’s powerful and somber. The Oculus transit hall next door is worth a look.", map: "9/11 Memorial and Museum" },
-        { time: "Evening", title: "Stone Street / Seaport dinner", detail: "Dinner at historic Stone Street or the South Street Seaport with East River views — both minutes from your hotel.", map: "Stone Street Historic District New York" }
+        { time: "6:30 AM", title: "Wake up · coffee & a muffin", detail: "Up at 6:30, wash up, grab coffee + a muffin in the lobby. Early start = you ride the very first ferry and beat both the crowds and the midday heat.", map: "Candlewood Suites New York City Times Square" },
+        { time: "7:40 AM", title: "Uber → Battery Park (~18 min)", detail: "Uber down to Battery Park. Early morning traffic is light, so it’s a quick ride from Times Square.", map: "Candlewood Suites New York City Times Square" },
+        { time: "8:00 AM", title: "Arrive Battery Park · find Castle Clinton", detail: "Head to Castle Clinton — the round red-sandstone fort — which is where ferry boarding and ticketing are based.", map: "Battery Park New York" },
+        { time: "8:15 AM", title: "Pick up boarding passes", detail: "Collect your boarding passes for the Pedestal Access tour.", map: "Battery Park New York" },
+        { time: "8:30 AM", title: "Security screening", detail: "Airport-style security before boarding — don’t bring large bags; they’ll slow you down or be turned away.", map: "Battery Park New York" },
+        { time: "9:00 AM", title: "✅ First ferry → Liberty Island", detail: "Booked Pedestal Access tour. Board the first ferry of the day from the New York side to Liberty Island.", map: "Battery Park New York" },
+        { time: "9:20–11:15 AM", title: "Liberty Island: pedestal + museum + photos", detail: "Up to the pedestal for close-up views, the Statue of Liberty Museum, and photos with the harbor and skyline behind you.", map: "Battery Park New York" },
+        { time: "11:15 AM", title: "Ferry → Ellis Island (~20 min)", detail: "Hop the connecting ferry over to Ellis Island.", map: "Battery Park New York" },
+        { time: "11:35 AM–1:00 PM", title: "Ellis Island Immigration Museum", detail: "Tour the moving National Museum of Immigration — underrated and worth the time.", map: "Battery Park New York" },
+        { time: "1:00 PM", title: "Ferry → back to Battery (~20 min)", detail: "Return ferry to Battery Park.", map: "Battery Park New York" },
+        { time: "1:30 PM", title: "Lunch near WTC / Battery", detail: "Late lunch around the World Trade Center / Battery area before the afternoon museum.", map: "Stone Street Historic District New York" },
+        { time: "2:30–4:30 PM", title: "✅ 9/11 Memorial & Museum (2 tickets booked)", detail: "See the outdoor Memorial reflecting pools in the footprints of the Twin Towers first, then your timed Museum entry. Allow ~2 hrs; powerful and somber.", map: "9/11 Memorial and Museum" },
+        { time: "4:30 PM", title: "~3-min walk next door", detail: "Walk the few minutes from the 9/11 Museum to One World Trade Center.", map: "One World Observatory" },
+        { time: "5:00–6:30 PM", title: "One World Observatory — 🎟️ Go City pass", detail: "Daytime views from the tallest building in the Western Hemisphere (covered by your Go City pass). Save the sunset deck for tomorrow’s Top of the Rock so the two don’t overlap.", map: "One World Observatory" },
+        { time: "6:30 PM", title: "Downtown dinner, or ① train back uptown", detail: "Dinner on the cobblestone old streets around Stone Street / FiDi (lots of character), or hop the 1 train straight back up to Times Square and your hotel.", map: "Stone Street Historic District New York" }
       ],
-      eat: "Late lunch near Battery after the ferry; dinner at Stone Street (cobblestone patios) or the Seaport.",
-      tips: ["Two fixed times today: Statue ferry 11:00am, 9/11 Museum 4:00pm — the islands fill the middle of the day perfectly.", "Get to Battery Park by ~10:15am for ferry security.", "Pedestal access requires the separate security screening at the dock — it’s included in your booked tour.", "Staying in FiDi means everything today is walkable; drop bags at the hotel if needed."]
+      eat: "Late lunch near the WTC after the ferry; dinner on Stone Street (cobblestone patios) downtown, or back near the hotel in Midtown.",
+      tips: ["Packed but smooth — almost no backtracking, and One World is right next to the 9/11 Museum.", "Booked anchors: 9:00am first ferry (Pedestal), 9/11 Museum 2:30pm. Be at Castle Clinton by ~8:00am.", "No large bags for ferry security.", "🎟️ One World today + Empire State (Jun 30) + Top of the Rock (Jul 2) are all on your Go City pass.", "The 1 train runs straight from FiDi up to Times Square — easy ride home tonight."]
     },
     {
       date: "2026-07-02",
       city: "New York City",
-      title: "Central Park, the Met & the skyline",
-      summary: "Hotel-switch day (FiDi → Times Square) wrapped around uptown culture and a sunset skyline view.",
+      title: "Central Park, the Met & sunset skyline",
+      summary: "Uptown culture from your Times Square base — no hotel move today. Central Park, the Met, then Top of the Rock at sunset.",
       blocks: [
-        { time: "Morning", title: "Hotel switch → uptown to Central Park", detail: "Check out of the Fairfield Inn (FiDi). Easiest play: stash bags at Pod Times Square (check-in is mid-afternoon), then subway up to Central Park — enter at Columbus Circle for Bethesda Terrace, the Mall, Bow Bridge, Belvedere Castle.", map: "Central Park New York" },
-        { time: "Afternoon", title: "The Met (Museum Mile)", detail: "The Metropolitan Museum of Art is world-class — give it 2–3 hours. No advance pass needed for general admission. Alternatives nearby: the Guggenheim or, across the park, the American Museum of Natural History.", map: "Metropolitan Museum of Art" },
-        { time: "Evening", title: "✅ Check in: Pod Times Square + sunset deck", detail: "Check into Pod Times Square, then walk to a sunset observation deck nearby — pick ONE and pre-book a timed slot: Top of the Rock (best skyline, Empire State in frame), Summit One Vanderbilt (mirrored/immersive), Edge, or the Empire State Building.", map: "Pod Times Square New York" }
+        { time: "Morning", title: "Central Park", detail: "Subway up from Times Square (~10 min). Enter at Columbus Circle for Bethesda Terrace, the Mall, Bow Bridge, and Belvedere Castle. Rent a bike or just wander north.", map: "Central Park New York" },
+        { time: "Afternoon", title: "The Met (Museum Mile)", detail: "The Metropolitan Museum of Art is world-class — give it 2–3 hours. No advance pass needed for general admission. Alternatives nearby: the Guggenheim, or the American Museum of Natural History across the park.", map: "Metropolitan Museum of Art" },
+        { time: "Sunset", title: "Top of the Rock — 🎟️ Go City pass", detail: "Back down to Midtown for sunset at Top of the Rock (covered by your Go City pass) — the classic skyline view with the Empire State Building in frame. Reserve a sunset slot in the Go City app; they sell out. It’s a short walk from your hotel.", map: "Top of the Rock Observation Deck" }
       ],
       eat: "Upper East/West Side near the park for lunch; Midtown after the deck.",
-      tips: ["Alignment note: the Met is ~2 mi up on the Upper East Side, then your sunset deck is back near Pod in Midtown — so today has one up-and-back. Minimize it by doing Central Park (enter Columbus Circle) → cross to the Met → take the subway straight back down to your Midtown deck.", "Observation decks need timed tickets and sunset slots sell out — pre-book one.", "Stash bags at Pod Times Square in the morning so you’re not hauling them through the Met (FiDi→Pod is ~3.7 mi, one subway ride).", "Prefer zero backtrack? Swap the Met for the American Museum of Natural History — it’s right by Central Park on the west side, closer to your hotel."]
+      tips: ["No hotel switch today — you’re already based at Times Square, so this day is relaxed.", "🎟️ Top of the Rock is on your Go City pass — reserve a sunset time slot in the app (sells out).", "You’ve now done three decks across the trip (Empire State, One World, Top of the Rock) — each a different angle on the skyline.", "Central Park is huge — pick the Columbus Circle section, don’t try to see it all."]
     },
     {
       date: "2026-07-03",
@@ -463,18 +474,18 @@ const TRIP = {
         title: "✈️ Your July 4th is a travel day — the fireworks trade-off is settled",
         body: "Your flight is booked: JFK → SFO, departs 6:55pm. With the 250th + holiday crowds you’ll need to leave Manhattan by ~3:00pm and be at JFK by ~4:30–5:00pm — which means you’ll be at the airport / in the air during Macy’s 8–10pm fireworks. That’s the trade-off, already decided by the booking. Make the most of the daytime:",
         options: [
-          "Morning: soak up the 250th daytime energy near Times Square, then check out of Pod Times Square.",
+          "Morning: soak up the 250th daytime energy near Times Square, then check out of the Candlewood Suites.",
           "~3:00pm: head to JFK (AirTrain + LIRR/subway, or a car — pad heavily for holiday traffic).",
           "Want the fireworks instead? The only way would be moving the flight to July 5 — otherwise enjoy the send-off and catch them on NBC/Peacock."
         ]
       },
       blocks: [
-        { time: "Morning", title: "Last NYC morning + 250th buzz", detail: "Bagels and a final wander near Times Square. Expect special America250 daytime programming around the city. Check out of Pod Times Square and store your bags if you want a few untethered hours.", map: "Times Square New York" },
+        { time: "Morning", title: "Last NYC morning + 250th buzz", detail: "Bagels and a final wander near Times Square. Expect special America250 daytime programming around the city. Check out of the Candlewood Suites and store your bags if you want a few untethered hours.", map: "Times Square New York" },
         { time: "~3:00 PM", title: "Head to JFK", detail: "Leave Manhattan by ~3pm for your 6:55pm flight — July 4 + 250th means heavy traffic and security. From Midtown: subway/LIRR to the JFK AirTrain, or a car service (budget extra time). Aim to be at the gate by ~5pm.", map: "John F. Kennedy International Airport" },
         { time: "6:55 PM", title: "✅ Fly JFK → SFO", detail: "Booked: JFK → SFO, departs 6:55pm ET, arrives 10:33pm PT (~6h40m + 3h time change). You’ll be airborne during the fireworks — catch them on NBC/Peacock if your flight has TV/Wi-Fi.", map: "San Francisco International Airport" }
       ],
       eat: "Grab-and-go near the hotel; a proper sit-down won’t fit a travel day.",
-      tips: ["Leave Manhattan by ~3pm — holiday + 250th = brutal airport traffic and lines.", "Check out of Pod Times Square in the morning; store bags if you want a hands-free last few hours.", "You’ll miss Macy’s fireworks in person (you’re flying) — they broadcast on NBC/Peacock 8–10pm."]
+      tips: ["Leave Manhattan by ~3pm — holiday + 250th = brutal airport traffic and lines.", "Check out of the Candlewood Suites in the morning; store bags if you want a hands-free last few hours.", "You’ll miss Macy’s fireworks in person (you’re flying) — they broadcast on NBC/Peacock 8–10pm."]
     }
   ],
 
@@ -484,7 +495,7 @@ const TRIP = {
     { label: "DC → NYC", value: "✅ Amtrak, Tue Jun 30: Washington Union Station 11:06am → Moynihan Train Hall (Penn Sta) ~2:34pm (3h 28m)." },
     { label: "Flight home", value: "✅ JFK → SFO, Sat Jul 4: departs 6:55pm ET, arrives 10:33pm PT. Leave Manhattan by ~3pm (holiday + 250th crowds)." },
     { label: "Getting around DC", value: "Metro + walking from your White House–area hotel. SmarTrip / phone tap. The Mall is walkable end to end." },
-    { label: "Getting around NYC", value: "Subway (OMNY tap-to-pay) + walking. FiDi for the first half, Times Square for the second. Citi Bike is great for parks/waterfronts." }
+    { label: "Getting around NYC", value: "Subway (OMNY tap-to-pay) + walking from your Times Square base (all 4 nights). The 1/2/3 line runs Times Square ↔ downtown. Citi Bike is great for parks/waterfronts." }
   ],
 
   // ---- Booking checklist ----
@@ -494,20 +505,19 @@ const TRIP = {
     "✅ DONE — Flight JFK→SFO (Jul 4, 6:55pm)",
     "✅ DONE — Amtrak DC→NYC (Jun 30, 11:06am)",
     "✅ DONE — Hyatt Place DC / White House (Jun 26–30)",
-    "✅ DONE — Fairfield Inn FiDi, NYC (Jun 30–Jul 2)",
-    "✅ DONE — Pod Times Square, NYC (Jul 2–4)",
+    "✅ DONE — Candlewood Suites Times Square, NYC (Jun 30–Jul 4, all 4 nights)",
     "✅ DONE — Air & Space passes (Jun 27, 11am)",
     "✅ DONE — NMAAHC passes (Jun 28, 11am)",
     "✅ DONE — Holocaust Museum passes (Jun 28, 3:30pm)",
-    "✅ DONE — Statue of Liberty Pedestal Access ferry (Jul 1, 11am, NY departure)",
-    "✅ DONE — 9/11 Memorial & Museum (Jul 1, 4pm)",
-    "TODO — One observation deck, timed sunset slot (Top of the Rock / Summit / Edge / Empire State)",
+    "✅ DONE — Statue of Liberty Pedestal Access ferry (Jul 1, 9am first ferry, NY departure)",
+    "✅ DONE — 9/11 Memorial & Museum (Jul 1, 2:30pm)",
+    "✅ DONE — Go City New York pass (covers Empire State, One World Observatory, Top of the Rock & more)",
+    "🎟️ Reserve Go City time slots in the app: Empire State (Jun 30 eve), One World (Jul 1 ~5pm), Top of the Rock (Jul 2 sunset) — slots sell out",
     "TODO — Broadway show (book a title, or TKTS same-day in Times Square)",
     "Optional — National Archives timed ticket (free/$1) to see the Declaration",
     "Optional — Washington Monument timed tickets (recreation.gov, 90 days ahead)",
     "Optional — US Capitol guided tour (visitthecapitol.gov, free)",
     "Note — The Met, MoMA & Natural History (NYC) don’t require advance passes for general entry, but MoMA & AMNH go smoother if you pre-book a time",
-    "Consider — NYC CityPASS if doing 3+ paid attractions",
     "── PUBLIC TRANSIT & APPS ──────────────",
     "🚇 NYC subway/bus: just TAP your phone (Apple Pay/Google Pay) or contactless card at the turnstile — this is OMNY. MetroCard was fully retired Jan 2026; no card to buy. Tap the SAME phone/card every ride.",
     "💰 NYC fare cap: after $35 of taps in a 7-day window (Mon–Sun), the rest of your rides that week are FREE — so you’ll never overpay. Use one consistent payment method so taps count toward the cap.",
@@ -551,13 +561,15 @@ const PLACES = {
   "Georgetown Washington DC": [38.9048, -77.0626],
   "Washington Union Station": [38.8973, -77.0063],
   // ---- New York City ----
-  "Fairfield Inn New York Manhattan Financial District": [40.7069, -74.0072],
+  "Candlewood Suites New York City Times Square": [40.7596, -73.9894],
   "Stone Street Historic District New York": [40.7042, -74.0113],
   "Battery Park New York": [40.7033, -74.0170],
   "9/11 Memorial and Museum": [40.7115, -74.0134],
+  "One World Observatory": [40.7127, -74.0134],
+  "Empire State Building": [40.7484, -73.9857],
   "Central Park New York": [40.7681, -73.9819],
   "Metropolitan Museum of Art": [40.7794, -73.9632],
-  "Pod Times Square New York": [40.7588, -73.9925],
+  "Top of the Rock Observation Deck": [40.7593, -73.9794],
   "The High Line New York": [40.7480, -74.0048],
   "Washington Square Park New York": [40.7308, -73.9973],
   "Broadway Theatre District New York": [40.7590, -73.9851],
@@ -724,8 +736,7 @@ const TRIP_ZH = {
 
   stays: [
     { city: "华盛顿特区", dates: "6月26–30日", area: "市区，靠近白宫——步行可到国家广场，地铁方便。" },
-    { city: "纽约市", dates: "6月30日 – 7月2日", area: "下曼哈顿——是你们参观自由女神、埃利斯岛、9/11 那天的理想落脚点。" },
-    { city: "纽约市", dates: "7月2日 – 7月4日", area: "中城——离百老汇几步之遥，最后两晚感受时代广场的热闹。" }
+    { city: "纽约市", dates: "6月30日 – 7月4日", area: "中城一家酒店住满四晚——紧邻时代广场、帝国大厦和剧院区，中途不用换酒店。" }
   ],
 
   days: [
@@ -776,38 +787,50 @@ const TRIP_ZH = {
       tips: ["阿灵顿要在坡地上走很多路——还是穿舒服的鞋。", "今晚把 Amtrak 车票存到 App 里；联合车站离酒店约10分钟。"]
     },
     {
-      title: "火车 华盛顿→纽约 · 你好，纽约",
-      summary: "沿东北走廊坐约3.5小时火车，抵达全新的 Moynihan 大厅，然后在下曼哈顿的落脚点安顿下来。",
+      title: "火车 华盛顿→纽约 · 帝国大厦与时代广场",
+      summary: "坐火车抵达 Moynihan 大厅，入住时代广场的酒店（四晚都住这儿），然后去帝国大厦，晚上逛灯火通明的时代广场。",
       blocks: [
         { time: "上午11:06", title: "✅ Amtrak：华盛顿→纽约（已订2张票）", detail: "华盛顿联合车站上午11:06发车，约下午2:34抵达宾州车站的 Moynihan 大厅（3小时28分）。Moynihan 是有天窗的漂亮大厅——比老宾州车站好太多。离开华盛顿时坐左/西侧，能看到水景。提前约20分钟检票上车。" },
-        { time: "约下午2:45", title: "✅ 入住 Fairfield Inn（下曼哈顿金融区）", detail: "从 Moynihan 坐地铁往南（A/C/E 或 1/2/3 线）约20分钟到金融区的酒店。放下行李、休整一下——这里离明天的自由女神 + 9/11 行程非常近。" },
-        { time: "傍晚", title: "黄昏时的下曼哈顿", detail: "在落脚点附近轻松逛逛：Stone Street 吃晚饭、东河边的南街海港，或往炮台公园方向走、第一次远眺海港和自由女神像。（等7月2日搬到时代广场，热闹有的是。）" }
+        { time: "约下午2:45", title: "✅ 入住 Candlewood Suites 时代广场", detail: "从 Moynihan/宾州车站步行约10分钟，或一站地铁就到酒店——不用往下城转车。放下行李、休整一下。这是你们纽约四晚唯一的落脚点，可以好好打开行李。" },
+        { time: "下午5:00", title: "帝国大厦 — 🎟️ Go City 通票", detail: "步行约8分钟到帝国大厦（含在你们的 Go City 通票里）。傍晚到黄昏最棒——在86层观景台能同时看到白天、日落和城市亮灯。在 Go City App 里预约时段可免排队。" },
+        { time: "夜晚", title: "夜晚的时代广场 + 晚餐", detail: "第一次看灯火全开的时代广场（你们就住这儿，会常经过）。晚餐往西几个街区的 Hell’s Kitchen（9th Ave）比广场里好太多。" }
       ],
-      eat: "晚餐在下城——Stone Street 的鹅卵石露台或南街海港。",
-      tips: ["到之前先设置好地铁的手机/银行卡刷卡（OMNY）。", "行李随身——从 Moynihan 到金融区一趟地铁就到。", "提醒：华盛顿的“Salute to America”250周年游行和烟花在7月4日——那时你们已经离开了。纽约才是你们的压轴。"]
+      eat: "晚餐在 Hell’s Kitchen（9th Ave）——选择多，离酒店步行可达。",
+      tips: ["到之前先设置好地铁的手机/银行卡刷卡（OMNY）。", "宾州车站到酒店步行可达——拖着行李也不用研究地铁。", "帝国大厦 + One World（7月1日）+ 洛克菲勒之巅（7月2日）都在 Go City 通票里——记得在 App 里预约时段。", "提醒：华盛顿的“Salute to America”250周年游行和烟花在7月4日——那时你们已经离开了。纽约才是你们的压轴。"]
     },
     {
-      title: "下曼哈顿：自由女神、埃利斯岛、9/11",
-      summary: "海港 + 下城经典，全都从金融区落脚点步行可达。两个固定时间：上午11点渡轮、下午4点9/11博物馆。",
+      title: "自由女神、埃利斯岛、9/11 与 One World",
+      summary: "充实又顺路的下城一天，基本不走回头路：赶首班船游两岛，下午看 9/11，再到隔壁的 One World 观景台——晚上回时代广场。",
       blocks: [
-        { time: "上午11:00", title: "✅ 自由女神像——基座参观团（已订2张票）", detail: "已订：上午11:00从炮台公园（离酒店步行很近）出发的纽约线渡轮，含登上自由女神像基座。提前约45分钟到——码头有类似机场的安检。渡轮接着开往埃利斯岛；参观感人的移民博物馆，再坐渡轮回炮台公园。" },
-        { time: "约下午3:00", title: "回炮台公园 + 步行到9/11一带", detail: "游完埃利斯岛，渡轮回到炮台公园。在附近吃个迟一点的午饭，然后往北步行约12分钟到9/11遗址——路上经过华尔街铜牛和 Oculus。" },
-        { time: "下午4:00", title: "✅ 9/11纪念馆与博物馆（已订2张票）", detail: "预约下午4:00。先看双子塔原址上免费的纪念水池，再凭定时票进博物馆。安排约2小时；很有冲击力、也很肃穆。旁边的 Oculus 交通枢纽值得一看。" },
-        { time: "夜晚", title: "Stone Street / 海港晚餐", detail: "在历史悠久的 Stone Street 或能看东河景的南街海港吃晚饭——都离酒店几分钟。" }
+        { time: "上午6:30", title: "起床 · 咖啡和松饼", detail: "6:30 起床、洗漱，在大堂拿杯咖啡 + 松饼。早出发 = 能赶首班船，避开人潮和正午的暑热。" },
+        { time: "上午7:40", title: "Uber 去 Battery Park（约18分钟）", detail: "Uber 下到 Battery Park。清晨车少，从时代广场过去很快。" },
+        { time: "上午8:00", title: "到 Battery Park · 找 Castle Clinton", detail: "走到 Castle Clinton——那座圆形的红砂岩古堡，登船和取票都在这里。" },
+        { time: "上午8:15", title: "取登船牌", detail: "领取你们基座参观团的登船牌。" },
+        { time: "上午8:30", title: "过安检", detail: "上船前有机场级安检——别带大件行李，会拖慢你们、甚至被拦下。" },
+        { time: "上午9:00", title: "✅ 首班船 → 自由岛", detail: "已订基座参观团。从纽约一侧坐当天首班渡轮前往自由岛。" },
+        { time: "上午9:20–11:15", title: "自由岛：基座 + 博物馆 + 拍照", detail: "登上基座近距离观景，逛自由女神博物馆，以海港和天际线为背景拍照。" },
+        { time: "上午11:15", title: "摆渡 → 埃利斯岛（约20分钟）", detail: "坐接驳渡轮前往埃利斯岛。" },
+        { time: "上午11:35–下午1:00", title: "埃利斯岛移民博物馆", detail: "参观感人的国家移民博物馆——很被低估，值得花时间。" },
+        { time: "下午1:00", title: "摆渡 → 回 Battery（约20分钟）", detail: "坐渡轮回到 Battery Park。" },
+        { time: "下午1:30", title: "世贸/Battery 附近午饭", detail: "在世贸中心 / Battery 一带吃迟一点的午饭，再去下午的博物馆。" },
+        { time: "下午2:30–4:30", title: "✅ 9/11纪念馆与博物馆（已订2张票）", detail: "先看双子塔原址上免费的户外纪念水池，再凭定时票进博物馆。安排约2小时；很有冲击力、也很肃穆。" },
+        { time: "下午4:30", title: "步行约3分钟到隔壁", detail: "从 9/11 博物馆走几分钟到 One World Trade Center。" },
+        { time: "下午5:00–6:30", title: "One World 观景台 — 🎟️ Go City 通票", detail: "在西半球最高楼俯瞰白天的景色（含在你们的 Go City 通票里）。日落留给明天的洛克菲勒之巅，两者不重复。" },
+        { time: "下午6:30", title: "下城晚饭，或坐 ① 号线回中城", detail: "在 Stone Street / 金融区一带很有味道的石板老街吃晚饭，或坐 1 号线直接回时代广场和酒店。" }
       ],
-      eat: "渡轮回来后在炮台公园附近吃迟午餐；晚餐在 Stone Street（鹅卵石露台）或南街海港。",
-      tips: ["今天两个固定时间：渡轮上午11:00，9/11博物馆下午4:00——中间的两个岛刚好填满白天。", "上午10:15左右到炮台公园过渡轮安检。", "基座参观需要在码头单独安检——已含在你们订的团里。", "住在金融区，今天哪儿都能走着去；需要的话回酒店放东西。"]
+      eat: "渡轮回来后在世贸附近吃迟午餐；晚餐在下城 Stone Street（鹅卵石露台），或回中城酒店附近吃。",
+      tips: ["满但顺——基本不走回头路，而且 One World 就在 9/11 博物馆隔壁。", "已订的固定时间：上午9:00首班船（基座），9/11 博物馆下午2:30。大约8:00前到 Castle Clinton。", "过渡轮安检别带大件行李。", "🎟️ 今天的 One World + 帝国大厦（6月30日）+ 洛克菲勒之巅（7月2日）都在 Go City 通票里。", "1 号线从金融区直达时代广场——今晚回去很方便。"]
     },
     {
-      title: "中央公园、大都会博物馆与天际线",
-      summary: "换酒店的一天（金融区→时代广场），中间穿插上城的人文和黄昏天际线。",
+      title: "中央公园、大都会博物馆与黄昏天际线",
+      summary: "从时代广场的落脚点出发逛上城——今天不换酒店。中央公园、大都会，然后黄昏登洛克菲勒之巅。",
       blocks: [
-        { time: "上午", title: "换酒店 → 上城去中央公园", detail: "从 Fairfield Inn（金融区）退房。最省事的做法：先把行李寄存在 Pod 时代广场（下午才能入住），再坐地铁上城去中央公园——从哥伦布圆环进，逛 Bethesda 露台、林荫道、Bow 桥、眺望台城堡。" },
+        { time: "上午", title: "中央公园", detail: "从时代广场坐地铁上城（约10分钟）。从哥伦布圆环进，逛 Bethesda 露台、林荫道、Bow 桥、眺望台城堡。可以租辆自行车，或一路往北闲逛。" },
         { time: "下午", title: "大都会艺术博物馆（博物馆大道）", detail: "大都会艺术博物馆世界一流——安排2–3小时。普通门票无需提前预约。附近备选：古根海姆，或穿过公园到美国自然历史博物馆。" },
-        { time: "傍晚", title: "✅ 入住 Pod 时代广场 + 黄昏观景台", detail: "入住 Pod 时代广场，然后步行去附近的黄昏观景台——挑一个并提前订定时票：洛克菲勒之巅（天际线最佳、帝国大厦入镜）、Summit One Vanderbilt（镜面沉浸式）、Edge，或帝国大厦。" }
+        { time: "日落", title: "洛克菲勒之巅 — 🎟️ Go City 通票", detail: "回到中城，黄昏登洛克菲勒之巅（含在你们的 Go City 通票里）——经典天际线、帝国大厦入镜。在 Go City App 里预约日落时段，会卖光。离酒店步行即到。" }
       ],
       eat: "午餐在公园附近的上东/上西区；看完观景台回中城吃。",
-      tips: ["小提醒：大都会在上东区、离你们时代广场的酒店约2英里，而黄昏观景台又回到中城——所以会有一段折返。把它降到最低：中央公园（哥伦布圆环进）→ 穿过去大都会 → 再坐地铁直接回中城的观景台。", "观景台需要定时票，黄昏时段会卖光——提前订一个。", "上午把行李寄存在 Pod 时代广场，免得拖着行李逛大都会（金融区→Pod 约3.7英里，一趟地铁）。", "完全不想折返？把大都会换成美国自然历史博物馆——它就在中央公园西侧、离你们酒店更近。"]
+      tips: ["今天不换酒店——你们已经住在时代广场，所以这天很轻松。", "🎟️ 洛克菲勒之巅在 Go City 通票里——在 App 里预约日落时段（会卖光）。", "这趟下来你们登了三个观景台（帝国大厦、One World、洛克菲勒之巅）——各是天际线的不同角度。", "中央公园很大——选哥伦布圆环这一片，别想全部走完。"]
     },
     {
       title: "下城的酷：高线公园、格林威治村、百老汇",
@@ -833,12 +856,12 @@ const TRIP_ZH = {
         ]
       },
       blocks: [
-        { time: "上午", title: "纽约最后一个上午 + 250周年气氛", detail: "吃个贝果，在时代广场附近做最后的闲逛。城里到处都有 America250 的白天活动。从 Pod 时代广场退房，想轻松几个小时就把行李寄存好。" },
+        { time: "上午", title: "纽约最后一个上午 + 250周年气氛", detail: "吃个贝果，在时代广场附近做最后的闲逛。城里到处都有 America250 的白天活动。从 Candlewood Suites 退房，想轻松几个小时就把行李寄存好。" },
         { time: "约下午3:00", title: "动身去 JFK", detail: "为晚上6:55的航班，下午3点左右离开曼哈顿——7月4日 + 250周年意味着严重堵车和安检排队。从中城：坐地铁/长岛铁路接 JFK 的 AirTrain，或叫车（多留时间）。争取下午5点左右到登机口。" },
         { time: "晚上6:55", title: "✅ 肯尼迪机场飞旧金山", detail: "已订：JFK 飞 SFO，东部时间晚上6:55起飞，太平洋时间晚上10:33抵达（约6小时40分 + 3小时时差）。烟花时你们在空中——如果航班有电视/Wi-Fi，可以在 NBC/Peacock 上看。" }
       ],
       eat: "在酒店附近买点带走的；赶路这天坐下来正式吃一顿不现实。",
-      tips: ["下午3点左右离开曼哈顿——节日 + 250周年 = 机场堵车和排队极其夸张。", "上午从 Pod 时代广场退房；想空着手过最后几小时就把行李寄存好。", "你们会错过现场的梅西烟花（在飞机上）——NBC/Peacock 晚上8–10点直播。"]
+      tips: ["下午3点左右离开曼哈顿——节日 + 250周年 = 机场堵车和排队极其夸张。", "上午从 Candlewood Suites 退房；想空着手过最后几小时就把行李寄存好。", "你们会错过现场的梅西烟花（在飞机上）——NBC/Peacock 晚上8–10点直播。"]
     }
   ],
 
@@ -847,7 +870,7 @@ const TRIP_ZH = {
     { label: "华盛顿→纽约", value: "✅ Amtrak，6月30日（周二）：华盛顿联合车站上午11:06 → 宾州车站 Moynihan 大厅约下午2:34（3小时28分）。" },
     { label: "回程航班", value: "✅ JFK→旧金山，7月4日（周六）：东部时间晚上6:55起飞，太平洋时间晚上10:33抵达。下午3点左右离开曼哈顿（节日 + 250周年人潮）。" },
     { label: "华盛顿出行", value: "从白宫附近的酒店坐地铁 + 步行。用 SmarTrip / 手机刷卡。国家广场从头走到尾都行。" },
-    { label: "纽约出行", value: "地铁（OMNY 刷卡）+ 步行。前半程住金融区，后半程住时代广场。Citi Bike 很适合逛公园和海滨。" }
+    { label: "纽约出行", value: "从时代广场的落脚点（四晚都住这儿）坐地铁 + 步行。1/2/3 号线连接时代广场↔下城。Citi Bike 很适合逛公园和海滨。" }
   ],
 
   bookings: [
@@ -855,20 +878,19 @@ const TRIP_ZH = {
     "✅ 已完成 — 机票 JFK→旧金山（7月4日 晚上6:55）",
     "✅ 已完成 — Amtrak 华盛顿→纽约（6月30日 上午11:06）",
     "✅ 已完成 — 凯悦嘉轩 华盛顿/白宫店（6月26–30日）",
-    "✅ 已完成 — Fairfield Inn 金融区，纽约（6月30日–7月2日）",
-    "✅ 已完成 — Pod 时代广场，纽约（7月2–4日）",
+    "✅ 已完成 — Candlewood Suites 时代广场，纽约（6月30日–7月4日，共四晚）",
     "✅ 已完成 — 航空航天博物馆门票（6月27日 上午11点）",
     "✅ 已完成 — NMAAHC 门票（6月28日 上午11点）",
     "✅ 已完成 — 大屠杀纪念馆门票（6月28日 下午3:30）",
-    "✅ 已完成 — 自由女神像基座参观渡轮（7月1日 上午11点，纽约出发）",
-    "✅ 已完成 — 9/11纪念馆与博物馆（7月1日 下午4点）",
-    "待办 — 一个观景台，黄昏定时票（洛克菲勒之巅 / Summit / Edge / 帝国大厦）",
+    "✅ 已完成 — 自由女神像基座参观渡轮（7月1日 上午9点首班船，纽约出发）",
+    "✅ 已完成 — 9/11纪念馆与博物馆（7月1日 下午2:30）",
+    "✅ 已完成 — Go City 纽约通票（含帝国大厦、One World 观景台、洛克菲勒之巅等）",
+    "🎟️ 在 Go City App 里预约时段：帝国大厦（6月30日晚）、One World（7月1日约下午5点）、洛克菲勒之巅（7月2日日落）——时段会卖光",
     "待办 — 百老汇演出（订剧目，或在时代广场 TKTS 碰当日票）",
     "可选 — 国家档案馆定时票（免费/1美元）看《独立宣言》",
     "可选 — 华盛顿纪念碑定时票（recreation.gov，提前90天）",
     "可选 — 国会大厦导览（visitthecapitol.gov，免费）",
     "提示 — 大都会、MoMA、自然历史博物馆（纽约）普通入场无需提前预约，但 MoMA 和 AMNH 提前订时段会更顺。",
-    "考虑 — 如果要去3个以上收费景点，可买 NYC CityPASS",
     "── 公共交通与 App ──────────────",
     "🚇 纽约地铁/公交：直接用手机（Apple Pay/Google Pay）或非接触式银行卡在闸机上刷——这就是 OMNY。MetroCard 已于2026年1月彻底停用，不用买卡。每次都刷同一部手机/同一张卡。",
     "💰 纽约车费上限：7天周期内（周一到周日）刷满35美元后，本周余下的行程全部免费——所以不会多花钱。用同一种支付方式，刷卡才会累计到上限。",
