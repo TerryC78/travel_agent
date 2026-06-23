@@ -12,7 +12,7 @@ const TRIP = {
   subtitle: "SFO → Washington DC → New York → SFO",
   startDate: "2026-06-26", // Friday
   endDate: "2026-07-04", // Saturday (the 250th of July!)
-  travelers: 2,
+  travelers: 3,
 
   // Big-picture context worth knowing before you go.
   highlights: [
@@ -72,9 +72,9 @@ const TRIP = {
       summary: "The White House first thing (it’s right by your hotel), then your two reserved museums — NMAAHC at 11am and the Holocaust Museum at 3:30pm. Everything sits in the 15th-Street corridor, so barely any commute.",
       blocks: [
         { time: "9:30 AM", title: "🏛 The White House", detail: "Your hotel is steps away, so start here. Best views: the north side from Pennsylvania Ave / Lafayette Square (the classic front-portico photo), then the south side from the Ellipse. (Inside tours must be arranged months ahead via an embassy/Congress — the exterior is the realistic visit.) From here it’s a ~10-min walk south to NMAAHC.", map: "The White House" },
-        { time: "11:00 AM", title: "✅ African American History & Culture / NMAAHC (2 tickets booked)", detail: "Your timed passes are for 11:00am — arrive ~10:50 for security. Start in the underground History Galleries and work upward; it’s chronological and powerful. Give it ~3 hours, with lunch at Sweet Home Café inside.", map: "National Museum of African American History and Culture" },
+        { time: "11:00 AM", title: "✅ African American History & Culture / NMAAHC (3 tickets booked)", detail: "Your timed passes are for 11:00am — arrive ~10:50 for security. Start in the underground History Galleries and work upward; it’s chronological and powerful. Give it ~3 hours, with lunch at Sweet Home Café inside.", map: "National Museum of African American History and Culture" },
         { time: "~2:00 PM", title: "National Museum of American History — free walk-in (if time)", detail: "Right nearby, no reservation. Today’s flex stop: if NMAAHC runs long, pop in just for the Star-Spangled Banner and ‘American Democracy’ (on-theme for the 250th), or skip it and rest before the Holocaust Museum.", map: "National Museum of American History" },
-        { time: "3:30 PM", title: "✅ US Holocaust Memorial Museum — Permanent Exhibition (2 tickets booked)", detail: "Booked for the 3:30–3:45pm entry window at 100 Raoul Wallenberg Pl SW (~12-min walk from American History). The Permanent Exhibition runs ~2–3 hrs and is deeply moving; last entry 4:30pm, museum closes 5:30. Leave quiet time after.", map: "United States Holocaust Memorial Museum" },
+        { time: "3:30 PM", title: "✅ US Holocaust Memorial Museum — Permanent Exhibition (3 tickets booked)", detail: "Booked for the 3:30–3:45pm entry window at 100 Raoul Wallenberg Pl SW (~12-min walk from American History). The Permanent Exhibition runs ~2–3 hrs and is deeply moving; last entry 4:30pm, museum closes 5:30. Leave quiet time after.", map: "United States Holocaust Memorial Museum" },
         { time: "Evening", title: "The Wharf or U Street", detail: "Decompress with waterfront seafood at The Wharf (~15 min away), or U Street for live jazz and Ben’s Chili Bowl.", map: "The Wharf Washington DC" }
       ],
       eat: "Sweet Home Café inside NMAAHC for lunch; The Wharf or U Street for dinner.",
@@ -100,7 +100,7 @@ const TRIP = {
       title: "Amtrak DC → NYC · UN tour & Empire State",
       summary: "Early train into Penn, check into your Times Square base (home for all 4 nights), a Chinese-language UN tour at 3:15pm, then the Empire State Building and Times Square at night.",
       blocks: [
-        { time: "7:45 AM", title: "✅ Amtrak: Washington → New York (2 tickets booked)", detail: "Departs Washington Union Station 7:45am, arrives Penn Station, New York ~11:14am (~3h 29m). Board ~20 min early; sit on the left/west side leaving DC for water views. Grab coffee + breakfast at Union Station before you board.", map: "Washington Union Station" },
+        { time: "7:45 AM", title: "✅ Amtrak: Washington → New York (3 tickets booked)", detail: "Departs Washington Union Station 7:45am, arrives Penn Station, New York ~11:14am (~3h 29m). Board ~20 min early; sit on the left/west side leaving DC for water views. Grab coffee + breakfast at Union Station before you board.", map: "Washington Union Station" },
         { time: "12:00 PM", title: "✅ Check in: Candlewood Suites Times Square", detail: "Penn Station to the hotel is a ~10-min walk or one quick subway stop — no transfer needed. Drop bags and reset. This is your single base for all four NYC nights, so unpack properly.", map: "Candlewood Suites New York City Times Square" },
         { time: "~12:30 PM", title: "Lunch near Times Square (~1 hr)", detail: "Grab lunch close to the hotel — Hell’s Kitchen (9th Ave) a few blocks west has the best range. Keep it to about an hour so you’re moving toward the UN by ~1:45pm.", map: "Times Square New York" },
         { time: "2:00 PM", title: "Arrive United Nations (2pm) — bring PASSPORT + ID", detail: "Get to UN Headquarters by 2:00pm for your 3:15pm tour. Security screening starts ~2:15pm — it’s airport-style and you MUST bring your passport + photo ID (no passport = no entry). The visitor entrance is at 1st Ave & 46th St.", map: "United Nations Headquarters New York" },
@@ -128,7 +128,7 @@ const TRIP = {
         { time: "11:35 AM–1:00 PM", title: "Ellis Island Immigration Museum", detail: "Tour the moving National Museum of Immigration — underrated and worth the time.", map: "Battery Park New York" },
         { time: "1:00 PM", title: "Ferry → back to Battery (~20 min)", detail: "Return ferry to Battery Park.", map: "Battery Park New York" },
         { time: "1:30 PM", title: "Lunch near WTC / Battery", detail: "Late lunch around the World Trade Center / Battery area before the afternoon museum.", map: "Stone Street Historic District New York" },
-        { time: "2:30–4:30 PM", title: "✅ 9/11 Memorial & Museum (2 tickets booked)", detail: "See the outdoor Memorial reflecting pools in the footprints of the Twin Towers first, then your timed Museum entry. Allow ~2 hrs; powerful and somber.", map: "9/11 Memorial and Museum" },
+        { time: "2:30–4:30 PM", title: "✅ 9/11 Memorial & Museum (3 tickets booked)", detail: "See the outdoor Memorial reflecting pools in the footprints of the Twin Towers first, then your timed Museum entry. Allow ~2 hrs; powerful and somber.", map: "9/11 Memorial and Museum" },
         { time: "4:30 PM", title: "~3-min walk next door", detail: "Walk the few minutes from the 9/11 Museum to One World Trade Center.", map: "One World Observatory" },
         { time: "5:00–6:30 PM", title: "One World Observatory — 🎟️ Go City pass", detail: "Daytime views from the tallest building in the Western Hemisphere (covered by your Go City pass). Save the sunset deck for tomorrow’s Top of the Rock so the two don’t overlap.", map: "One World Observatory" },
         { time: "6:30 PM", title: "Downtown dinner, or ① train back uptown", detail: "Dinner on the cobblestone old streets around Stone Street / FiDi (lots of character), or hop the 1 train straight back up to Times Square and your hotel.", map: "Stone Street Historic District New York" }

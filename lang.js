@@ -148,9 +148,9 @@ const TRIP_ZH = {
       summary: "一早先看白宫（就在你们酒店旁），再去两个预约博物馆——上午11点 NMAAHC、下午3:30大屠杀纪念馆。全都在15街一带，几乎不用通勤。",
       blocks: [
         { time: "上午9:30", title: "🏛 白宫", detail: "你们酒店就在旁边，从这儿开始。最佳视角：北侧从宾州大道/拉法耶特广场（经典的门廊正面照），再到南侧从椭圆草坪（the Ellipse）看。（进内部要提前数月通过使馆/国会安排——现实就是看外观。）从这儿往南步行约10分钟到 NMAAHC。", map: "The White House" },
-        { time: "上午11:00", title: "✅ 非裔美国人历史与文化博物馆（NMAAHC，已订2张票）", detail: "你们的定时票是上午11:00——提前约10分钟到过安检。从地下的历史展厅开始、自下而上参观；按时间顺序、很有震撼力。安排约3小时，在馆内的 Sweet Home Café 吃午饭。", map: "National Museum of African American History and Culture" },
+        { time: "上午11:00", title: "✅ 非裔美国人历史与文化博物馆（NMAAHC，已订3张票）", detail: "你们的定时票是上午11:00——提前约10分钟到过安检。从地下的历史展厅开始、自下而上参观；按时间顺序、很有震撼力。安排约3小时，在馆内的 Sweet Home Café 吃午饭。", map: "National Museum of African American History and Culture" },
         { time: "约下午2:00", title: "国家美国历史博物馆——免预约（有时间的话）", detail: "就在附近，无需预约。今天的机动项：如果 NMAAHC 超时，就只进去看看星条旗和“美国民主”展（很应250周年的景），或者干脆跳过、在去大屠杀纪念馆前歇一歇。", map: "National Museum of American History" },
-        { time: "下午3:30", title: "✅ 大屠杀纪念馆——常设展（已订2张票）", detail: "预约的是3:30–3:45入场，地址 100 Raoul Wallenberg Pl SW（从美国历史博物馆步行约12分钟）。常设展约需2–3小时，非常震撼；最晚入场4:30，闭馆5:30。看完留点安静的时间。", map: "United States Holocaust Memorial Museum" },
+        { time: "下午3:30", title: "✅ 大屠杀纪念馆——常设展（已订3张票）", detail: "预约的是3:30–3:45入场，地址 100 Raoul Wallenberg Pl SW（从美国历史博物馆步行约12分钟）。常设展约需2–3小时，非常震撼；最晚入场4:30，闭馆5:30。看完留点安静的时间。", map: "United States Holocaust Memorial Museum" },
         { time: "夜晚", title: "The Wharf 或 U Street", detail: "去 The Wharf 海滨吃海鲜放松一下（约15分钟），或去 U Street 听现场爵士、吃 Ben’s Chili Bowl。", map: "The Wharf Washington DC" }
       ],
       eat: "午餐在 NMAAHC 馆内的 Sweet Home Café；晚餐在 The Wharf 或 U Street。",
@@ -172,7 +172,7 @@ const TRIP_ZH = {
       title: "火车 华盛顿→纽约 · 联合国导览与帝国大厦",
       summary: "坐早班火车到宾州车站，入住时代广场的酒店（四晚都住这儿），下午3:15联合国中文导览，然后帝国大厦登顶，晚上逛灯火通明的时代广场。",
       blocks: [
-        { time: "上午7:45", title: "✅ Amtrak：华盛顿→纽约（已订2张票）", detail: "华盛顿联合车站上午7:45发车，约上午11:14抵达纽约宾州车站（约3小时29分）。提前约20分钟检票上车；离开华盛顿时坐左/西侧能看到水景。上车前在联合车站买杯咖啡 + 早饭。" },
+        { time: "上午7:45", title: "✅ Amtrak：华盛顿→纽约（已订3张票）", detail: "华盛顿联合车站上午7:45发车，约上午11:14抵达纽约宾州车站（约3小时29分）。提前约20分钟检票上车；离开华盛顿时坐左/西侧能看到水景。上车前在联合车站买杯咖啡 + 早饭。" },
         { time: "中午12:00", title: "✅ 入住 Candlewood Suites 时代广场", detail: "从宾州车站步行约10分钟，或一站地铁就到酒店——不用转车。放下行李、休整一下。这是你们纽约四晚唯一的落脚点，可以好好打开行李。" },
         { time: "约12:30", title: "时代广场附近午饭（约1小时）", detail: "在酒店附近吃午饭——往西几个街区的 Hell’s Kitchen（9th Ave）选择最多。控制在一小时左右，大约1:45往联合国方向走。" },
         { time: "下午2:00", title: "到达联合国（2点）— 带护照 + 证件", detail: "为3:15的导览，下午2:00前到联合国总部。约2:15开始安检——机场级别，**必须带护照 + 带照片的证件**（没护照进不去）。访客入口在 1st Ave 和 46 街路口。" },
@@ -198,7 +198,7 @@ const TRIP_ZH = {
         { time: "上午11:35–下午1:00", title: "埃利斯岛移民博物馆", detail: "参观感人的国家移民博物馆——很被低估，值得花时间。" },
         { time: "下午1:00", title: "摆渡 → 回 Battery（约20分钟）", detail: "坐渡轮回到 Battery Park。" },
         { time: "下午1:30", title: "世贸/Battery 附近午饭", detail: "在世贸中心 / Battery 一带吃迟一点的午饭，再去下午的博物馆。" },
-        { time: "下午2:30–4:30", title: "✅ 9/11纪念馆与博物馆（已订2张票）", detail: "先看双子塔原址上免费的户外纪念水池，再凭定时票进博物馆。安排约2小时；很有冲击力、也很肃穆。" },
+        { time: "下午2:30–4:30", title: "✅ 9/11纪念馆与博物馆（已订3张票）", detail: "先看双子塔原址上免费的户外纪念水池，再凭定时票进博物馆。安排约2小时；很有冲击力、也很肃穆。" },
         { time: "下午4:30", title: "步行约3分钟到隔壁", detail: "从 9/11 博物馆走几分钟到 One World Trade Center。" },
         { time: "下午5:00–6:30", title: "One World 观景台 — 🎟️ Go City 通票", detail: "在西半球最高楼俯瞰白天的景色（含在你们的 Go City 通票里）。日落留给明天的洛克菲勒之巅，两者不重复。" },
         { time: "下午6:30", title: "下城晚饭，或坐 ① 号线回中城", detail: "在 Stone Street / 金融区一带很有味道的石板老街吃晚饭，或坐 1 号线直接回时代广场和酒店。" }
