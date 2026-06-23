@@ -72,6 +72,14 @@
     return zh !== undefined ? zh : en;
   }
 
+  // Localize an English city name (e.g. day.city, weather city) by reusing the
+  // already-translated `cities` array, so it never falls back to English.
+  function cityLabel(enCity) {
+    if (typeof TRIP === "undefined" || !TRIP.cities) return enCity;
+    const idx = TRIP.cities.findIndex((c) => c.name === enCity);
+    return (idx >= 0 && T.cities && T.cities[idx]) ? T.cities[idx].name : enCity;
+  }
+
   // persist=true records an explicit user choice; auto-detected values are not
   // saved, so detection keeps running each visit until the user picks via the toggle.
   function applyLang(lang, persist) {
@@ -260,7 +268,7 @@
       const dhMain = el("div", { class: "dh-main" },
         `<div class="dh-date">${esc(fmtDate(d.date))}</div>
          <div class="dh-title">${esc(d.title)}</div>
-         <div class="dh-city">📍 ${esc(d.city)}</div>`);
+         <div class="dh-city">📍 ${esc(cityLabel(d.city))}</div>`);
       const badge = wxBadge(d.date); // small weather chip, synced with the Weather tab
       if (badge) dhMain.appendChild(badge);
       head.appendChild(dhMain);
@@ -421,7 +429,7 @@
     card.appendChild(el("p", { class: "sec-sub" }, esc(UI.weather_sub)));
 
     const list = el("div", { class: "wx-list" });
-    dates.forEach((iso) => list.appendChild(weatherRow(iso, WX.byDate[iso].city, WX.byDate[iso])));
+    dates.forEach((iso) => list.appendChild(weatherRow(iso, cityLabel(WX.byDate[iso].city), WX.byDate[iso])));
     card.appendChild(list);
 
     // "Last updated" line: live timestamp, or a note that these are averages.
