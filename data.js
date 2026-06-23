@@ -54,43 +54,45 @@ const TRIP = {
     {
       date: "2026-06-27",
       city: "Washington, DC",
-      title: "Museums day 1 · Air, space & natural sciences",
-      summary: "South-Mall Smithsonians, anchored by your 11am Air & Space tickets. Everything else today is a free walk-in.",
+      title: "Capitol, Air & Space & the monuments at night",
+      summary: "An east-to-west sweep along the Mall — all on foot, almost no commute: Capitol Hill, your 11am Air & Space tickets, a museum, then Lincoln Memorial & the monuments lit up at night.",
       blocks: [
-        { time: "11:00 AM", title: "✅ National Air & Space Museum (2 tickets booked)", detail: "Your timed-entry passes are for 11:00am — arrive ~10:50 for security. Heads-up: as of late June 2026 only about HALF the museum is open (8 all-new galleries + the renovated planetarium); the big 50th-anniversary reopening of 5 more galleries lands July 1, just after you leave. Still a must-see.", map: "National Air and Space Museum Washington DC" },
-        { time: "Afternoon", title: "National Museum of Natural History — free walk-in", detail: "Walk straight in (free, no pass). Hope Diamond, the dinosaur & fossil halls, the rotunda elephant, the ocean hall. Give it ~2 hours.", map: "National Museum of Natural History Washington DC" },
-        { time: "Late afternoon", title: "National Gallery of Art — free walk-in", detail: "Free, no pass. West Building old masters (the only Leonardo da Vinci in the Americas) or cool off in the underground concourse and Sculpture Garden. Skip if you’re museumed-out.", map: "National Gallery of Art" },
-        { time: "Evening", title: "Monuments after dark", detail: "The memorials are floodlit, gorgeous, and cooler at night. Stroll the WWII, Lincoln, and Washington Monument grounds, then dinner in Penn Quarter.", map: "Lincoln Memorial Washington DC" }
+        { time: "9:00 AM", title: "🏛 Capitol Hill (the Capitol)", detail: "Start at the east end of the Mall. Walk the US Capitol grounds and its grand west front, the Library of Congress (the gorgeous Jefferson Building), and the Supreme Court across the street. To go INSIDE the Capitol, book the free tour at visitthecapitol.gov ahead — otherwise the exterior & grounds are free to walk. It’s ~10 min from here to Air & Space.", map: "United States Capitol" },
+        { time: "11:00 AM", title: "✅ National Air & Space Museum (2 tickets booked)", detail: "Your timed-entry passes are for 11:00am — arrive ~10:50 for security. Right by the Capitol end of the Mall. Heads-up: as of late June 2026 only about HALF the museum is open (8 all-new galleries + the renovated planetarium); the 50th-anniversary reopening of 5 more galleries lands July 1, just after you leave.", map: "National Air and Space Museum Washington DC" },
+        { time: "Afternoon", title: "National Museum of Natural History — free walk-in", detail: "A short walk across the Mall (free, no pass). Hope Diamond, the dinosaur & fossil halls, the rotunda elephant — a crowd-pleaser for a first visit. The National Gallery of Art next door is also free if you have energy.", map: "National Museum of Natural History Washington DC" },
+        { time: "Evening", title: "🏛 Lincoln Memorial & monuments after dark", detail: "The Mall’s grand finale, and the best time to see it: walk the WWII Memorial, the reflecting pool, and up to the Lincoln Memorial — floodlit, gorgeous, and cooler than midday. The Washington Monument towers behind you. Magical for a first visit.", map: "Lincoln Memorial Washington DC" }
       ],
       eat: "Quick lunch from a Mall food truck or the Natural History café; dinner in Penn Quarter / Chinatown.",
-      tips: ["Air & Space is booked for 11:00am — arrive ~10:50 for security.", "With a late-morning museum slot, do Natural History + the National Gallery after, then monuments at night.", "Saturday is the busiest museum day — the walk-ins are calmer earlier vs. mid-afternoon."]
+      tips: ["Reduced commute: Capitol → Air & Space → Natural History → Lincoln is one east-to-west walk along the Mall — no Metro needed.", "It’s ~2 miles end to end with lots of walking — comfortable shoes, water, and an easy pace for the parents.", "Want to go inside the Capitol? Book the free guided tour at visitthecapitol.gov in advance.", "The Lincoln Memorial after dark is the highlight — save it for the evening when it’s lit and cooler."]
     },
     {
       date: "2026-06-28",
       city: "Washington, DC",
-      title: "Museums day 2 · The American story",
-      summary: "Two reserved museums anchor the day: NMAAHC at 11am, the Holocaust Museum at 3:30pm. Both are heavy — pace yourself.",
+      title: "White House, NMAAHC & the American story",
+      summary: "The White House first thing (it’s right by your hotel), then your two reserved museums — NMAAHC at 11am and the Holocaust Museum at 3:30pm. Everything sits in the 15th-Street corridor, so barely any commute.",
       blocks: [
+        { time: "9:30 AM", title: "🏛 The White House", detail: "Your hotel is steps away, so start here. Best views: the north side from Pennsylvania Ave / Lafayette Square (the classic front-portico photo), then the south side from the Ellipse. (Inside tours must be arranged months ahead via an embassy/Congress — the exterior is the realistic visit.) From here it’s a ~10-min walk south to NMAAHC.", map: "The White House" },
         { time: "11:00 AM", title: "✅ African American History & Culture / NMAAHC (2 tickets booked)", detail: "Your timed passes are for 11:00am — arrive ~10:50 for security. Start in the underground History Galleries and work upward; it’s chronological and powerful. Give it ~3 hours, with lunch at Sweet Home Café inside.", map: "National Museum of African American History and Culture" },
-        { time: "~2:00 PM", title: "National Museum of American History — free walk-in (if time)", detail: "Right nearby, no reservation. This is today’s flex stop: if NMAAHC runs long, pop in just for the Star-Spangled Banner and ‘American Democracy’ (on-theme for the 250th), or skip it and rest before the Holocaust Museum.", map: "National Museum of American History" },
+        { time: "~2:00 PM", title: "National Museum of American History — free walk-in (if time)", detail: "Right nearby, no reservation. Today’s flex stop: if NMAAHC runs long, pop in just for the Star-Spangled Banner and ‘American Democracy’ (on-theme for the 250th), or skip it and rest before the Holocaust Museum.", map: "National Museum of American History" },
         { time: "3:30 PM", title: "✅ US Holocaust Memorial Museum — Permanent Exhibition (2 tickets booked)", detail: "Booked for the 3:30–3:45pm entry window at 100 Raoul Wallenberg Pl SW (~12-min walk from American History). The Permanent Exhibition runs ~2–3 hrs and is deeply moving; last entry 4:30pm, museum closes 5:30. Leave quiet time after.", map: "United States Holocaust Memorial Museum" },
         { time: "Evening", title: "The Wharf or U Street", detail: "Decompress with waterfront seafood at The Wharf (~15 min away), or U Street for live jazz and Ben’s Chili Bowl.", map: "The Wharf Washington DC" }
       ],
       eat: "Sweet Home Café inside NMAAHC for lunch; The Wharf or U Street for dinner.",
-      tips: ["Your two fixed times: NMAAHC 11:00am, Holocaust 3:30pm. American History in between is optional — drop it if you’re running behind.", "NMAAHC + Holocaust in one day is emotionally intense — go easy and leave space after.", "It’s a ~12-min walk to the Holocaust Museum — leave the NMAAHC/American History area by ~3:15pm."]
+      tips: ["Reduced commute: White House → NMAAHC → Holocaust all run down the 15th-Street corridor — White House is even walkable from your hotel.", "Two fixed times: NMAAHC 11:00am, Holocaust 3:30pm. American History in between is optional — drop it if you’re running behind.", "NMAAHC + Holocaust in one day is emotionally intense — go easy and leave space after.", "Leave the NMAAHC/American History area by ~3:15pm for the ~12-min walk to the Holocaust Museum."]
     },
     {
       date: "2026-06-29",
       city: "Washington, DC",
-      title: "Arlington, Georgetown & the other DC",
-      summary: "Step off the Mall: solemn history in the morning, charming streets in the afternoon.",
+      title: "Arlington, the Pentagon & Georgetown",
+      summary: "Across the river to Virginia for the two big sites that sit together — Arlington National Cemetery and the Pentagon 9/11 Memorial — then back to charming Georgetown. Pairing the two Virginia stops keeps commuting down.",
       blocks: [
-        { time: "Morning", title: "Arlington National Cemetery", detail: "Tomb of the Unknown Soldier changing of the guard, JFK gravesite & eternal flame, Arlington House views back over DC. Reachable by Metro (Blue Line).", map: "Arlington National Cemetery" },
-        { time: "Afternoon", title: "Georgetown", detail: "Historic cobblestone streets, the C&O Canal, waterfront park, and shopping along M St & Wisconsin Ave. Get a cupcake if that’s your thing.", map: "Georgetown Washington DC" },
+        { time: "Morning", title: "Arlington National Cemetery", detail: "Tomb of the Unknown Soldier changing of the guard, JFK gravesite & eternal flame, Arlington House views back over DC. Metro (Blue Line) straight to Arlington Cemetery station — go early when it’s cooler and quieter.", map: "Arlington National Cemetery" },
+        { time: "Late morning", title: "🏛 Pentagon 9/11 Memorial (the Pentagon)", detail: "One Metro stop from Arlington (Pentagon station) — so almost no extra commute. The outdoor 9/11 Memorial is FREE, open daily, no reservation, no security — 184 benches for those lost there. You’ll see the Pentagon itself alongside. (Touring inside the building needs a reservation 14–90 days ahead; the memorial is the realistic visit.)", map: "Pentagon 9/11 Memorial Arlington" },
+        { time: "Afternoon", title: "Georgetown", detail: "Back across the river to Georgetown: historic cobblestone streets, the C&O Canal, the waterfront park, and shopping along M St & Wisconsin Ave. Get a cupcake if that’s your thing.", map: "Georgetown Washington DC" },
         { time: "Evening", title: "Pack & prep for the train", detail: "Early night back near the White House — your Amtrak is booked for 7:45am tomorrow, so it’s an early start. Download the tickets, repack, and set out clothes for the train. Union Station is ~10 min from the hotel.", map: "Hyatt Place Washington DC White House" }
       ],
       eat: "Lunch in Georgetown (waterfront patios); casual dinner near your hotel.",
-      tips: ["Arlington involves a lot of walking on hills — comfortable shoes again.", "Save your Amtrak tickets to the app tonight; Union Station is ~10 min from the hotel."]
+      tips: ["Reduced commute: Arlington + the Pentagon Memorial are one Metro stop apart — do them together before crossing back to Georgetown.", "Arlington involves a lot of walking on hills — comfortable shoes again, and an easy pace.", "The Pentagon Memorial is free and needs no booking; touring inside the building would need a reservation weeks ahead.", "Save your Amtrak tickets to the app tonight — it’s an early 7:45am train."]
     },
     {
       date: "2026-06-30",
@@ -253,6 +255,8 @@ const PLACES = {
   "National Museum of Natural History Washington DC": [38.8913, -77.0260],
   "National Gallery of Art": [38.8913, -77.0200],
   "Lincoln Memorial Washington DC": [38.8893, -77.0502],
+  "United States Capitol": [38.8899, -77.0091],
+  "Pentagon 9/11 Memorial Arlington": [38.8704, -77.0558],
   "National Museum of African American History and Culture": [38.8909, -77.0327],
   "National Museum of American History": [38.8911, -77.0301],
   "United States Holocaust Memorial Museum": [38.8867, -77.0329],
