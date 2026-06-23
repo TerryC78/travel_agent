@@ -134,15 +134,16 @@ const TRIP = {
     {
       date: "2026-07-02",
       city: "New York City",
-      title: "Central Park, the Met & sunset skyline",
-      summary: "Uptown culture from your Times Square base — no hotel move today. Central Park, the Met, then Top of the Rock at sunset.",
+      title: "Brooklyn Bridge, Wall St, Central Park & sunset",
+      summary: "Downtown in the morning, uptown by afternoon: Brooklyn Bridge & Wall Street, then Central Park, ending with Top of the Rock at sunset. (The Met moves to Jul 4 to use the BoA free weekend.)",
       blocks: [
-        { time: "Morning", title: "Central Park", detail: "Subway up from Times Square (~10 min). Enter at Columbus Circle for Bethesda Terrace, the Mall, Bow Bridge, and Belvedere Castle. Rent a bike or just wander north.", map: "Central Park New York" },
-        { time: "Afternoon", title: "The Met (Museum Mile)", detail: "The Metropolitan Museum of Art is world-class — give it 2–3 hours. No advance pass needed for general admission. Alternatives nearby: the Guggenheim, or the American Museum of Natural History across the park.", map: "Metropolitan Museum of Art" },
-        { time: "Sunset", title: "Top of the Rock — 🎟️ Go City pass", detail: "Back down to Midtown for sunset at Top of the Rock (covered by your Go City pass) — the classic skyline view with the Empire State Building in frame. Reserve a sunset slot in the Go City app; they sell out. It’s a short walk from your hotel.", map: "Top of the Rock Observation Deck" }
+        { time: "Morning", title: "Brooklyn Bridge walk", detail: "Subway down to City Hall / Brooklyn Bridge. Walk the bridge’s pedestrian promenade for classic skyline + harbor views — go early for cooler temps and fewer crowds. Walk partway and turn back, or cross fully to DUMBO for photos.", map: "Brooklyn Bridge New York" },
+        { time: "Late morning", title: "Wall Street & the Financial District", detail: "Loop back into FiDi: the Charging Bull, the New York Stock Exchange, Federal Hall, and Trinity Church. Compact and walkable — give it ~1 hour.", map: "Wall Street New York" },
+        { time: "Afternoon", title: "Central Park", detail: "Subway up to Columbus Circle (the 2/3 or A/C express makes it quick). Bethesda Terrace, the Mall, Bow Bridge, Belvedere Castle. Rent a bike or just wander — a relaxed contrast to the morning.", map: "Central Park New York" },
+        { time: "Sunset", title: "Top of the Rock — 🎟️ Go City pass", detail: "Sunset at Top of the Rock (covered by your Go City pass) — the classic skyline view with the Empire State Building in frame. Reserve a sunset slot in the Go City app; they sell out. Short walk from your hotel.", map: "Top of the Rock Observation Deck" }
       ],
-      eat: "Upper East/West Side near the park for lunch; Midtown after the deck.",
-      tips: ["No hotel switch today — you’re already based at Times Square, so this day is relaxed.", "🎟️ Top of the Rock is on your Go City pass — reserve a sunset time slot in the app (sells out).", "You’ve now done three decks across the trip (Empire State, One World, Top of the Rock) — each a different angle on the skyline.", "Central Park is huge — pick the Columbus Circle section, don’t try to see it all."]
+      eat: "Stone Street / FiDi for lunch downtown; Midtown after the deck.",
+      tips: ["Downtown-to-uptown flow: do Brooklyn Bridge + Wall Street first, then head up to Central Park, so you’re not crossing the city twice.", "🎟️ Top of the Rock is on your Go City pass — reserve a sunset slot (sells out).", "Walk the Brooklyn Bridge early — it gets hot and packed by midday.", "The Met is now on Jul 4 (free with your BoA card that weekend) — so today skips it."]
     },
     {
       date: "2026-07-03",
@@ -160,24 +161,26 @@ const TRIP = {
     {
       date: "2026-07-04",
       city: "New York City",
-      title: "America’s 250th · July 4th · Fly NYC → SFO",
-      summary: "A travel day. Your JFK flight leaves at 6:55pm, so it’s a relaxed NYC morning, then head to the airport mid-afternoon.",
+      title: "America’s 250th · The Met · Fly NYC → SFO",
+      summary: "The Met first thing (free with your BoA card on the 4th–5th weekend), then check out and head to JFK for the 6:55pm flight. A tight but doable travel day.",
       decision: {
-        title: "✈️ Your July 4th is a travel day — the fireworks trade-off is settled",
-        body: "Your flight is booked: JFK → SFO, departs 6:55pm. With the 250th + holiday crowds you’ll need to leave Manhattan by ~3:00pm and be at JFK by ~4:30–5:00pm — which means you’ll be at the airport / in the air during Macy’s 8–10pm fireworks. That’s the trade-off, already decided by the booking. Make the most of the daytime:",
+        title: "✈️ July 4th is a travel day — fit the Met in the morning, leave by ~3pm",
+        body: "Your flight is booked: JFK → SFO, departs 6:55pm. July 4–5 is the first full weekend of the month, so the Met is FREE with your Bank of America card — but the 4th is also your departure day. Do the Met early, then leave Manhattan by ~3:00pm. You’ll be at the airport / airborne during Macy’s 8–10pm fireworks — that trade-off is set by the booking.",
         options: [
-          "Morning: soak up the 250th daytime energy near Times Square, then check out of the Candlewood Suites.",
-          "~3:00pm: head to JFK (AirTrain + LIRR/subway, or a car — pad heavily for holiday traffic).",
-          "Want the fireworks instead? The only way would be moving the flight to July 5 — otherwise enjoy the send-off and catch them on NBC/Peacock."
+          "Store luggage at the hotel after checkout so you do the Met hands-free.",
+          "Be walking out of the Met by ~12:30pm — Met (E 82nd) to JFK takes a while on a holiday Saturday.",
+          "Want the fireworks instead? Only by moving the flight to July 5 — otherwise catch them on NBC/Peacock."
         ]
       },
       blocks: [
-        { time: "Morning", title: "Last NYC morning + 250th buzz", detail: "Bagels and a final wander near Times Square. Expect special America250 daytime programming around the city. Check out of the Candlewood Suites and store your bags if you want a few untethered hours.", map: "Times Square New York" },
+        { time: "9:00 AM", title: "Check out + store bags", detail: "Breakfast near the hotel, check out of the Candlewood Suites, and leave your bags with the front desk so you’re hands-free for the Met.", map: "Candlewood Suites New York City Times Square" },
+        { time: "10:00 AM", title: "🎟️ The Met — FREE with your BoA card", detail: "The Met opens at 10am. July 4 (Sat) is the first full weekend of the month, so Bank of America ‘Museums on Us’ gets you both in FREE — just show your BoA card + photo ID at admissions (no advance ticket). Beeline your must-sees: Egyptian wing & Temple of Dendur, European paintings, the rooftop if open. Give it ~2–2.5 hrs.", map: "Metropolitan Museum of Art" },
+        { time: "~12:30 PM", title: "Lunch + grab bags", detail: "Quick lunch near the museum or back in Midtown, then collect your bags from the hotel. Aim to have everything by ~2:30pm.", map: "Candlewood Suites New York City Times Square" },
         { time: "~3:00 PM", title: "Head to JFK", detail: "Leave Manhattan by ~3pm for your 6:55pm flight — July 4 + 250th means heavy traffic and security. From Midtown: subway/LIRR to the JFK AirTrain, or a car service (budget extra time). Aim to be at the gate by ~5pm.", map: "John F. Kennedy International Airport" },
         { time: "6:55 PM", title: "✅ Fly JFK → SFO", detail: "Booked: JFK → SFO, departs 6:55pm ET, arrives 10:33pm PT (~6h40m + 3h time change). You’ll be airborne during the fireworks — catch them on NBC/Peacock if your flight has TV/Wi-Fi.", map: "San Francisco International Airport" }
       ],
-      eat: "Grab-and-go near the hotel; a proper sit-down won’t fit a travel day.",
-      tips: ["Leave Manhattan by ~3pm — holiday + 250th = brutal airport traffic and lines.", "Check out of the Candlewood Suites in the morning; store bags if you want a hands-free last few hours.", "You’ll miss Macy’s fireworks in person (you’re flying) — they broadcast on NBC/Peacock 8–10pm."]
+      eat: "Quick lunch near the Met or in Midtown; grab-and-go — a sit-down won’t fit a travel day.",
+      tips: ["🎟️ Bring your physical BoA card + photo ID — that’s what gets you both in free at the Met (first-full-weekend program).", "Be out of the Met by ~12:30pm; Met → JFK on a holiday Saturday needs a big buffer.", "Store bags at the hotel after checkout so the Met is hands-free.", "You’ll miss Macy’s fireworks in person (you’re flying) — they broadcast on NBC/Peacock 8–10pm."]
     }
   ],
 
@@ -209,6 +212,7 @@ const TRIP = {
     "Optional — National Archives timed ticket (free/$1) to see the Declaration",
     "Optional — Washington Monument timed tickets (recreation.gov, 90 days ahead)",
     "Optional — US Capitol guided tour (visitthecapitol.gov, free)",
+    "🎟️ The Met (Jul 4 morning): FREE with your Bank of America card — Jul 4–5 is the first full weekend, so ‘Museums on Us’ applies. Bring the physical BoA card + photo ID; no advance ticket needed.",
     "Note — The Met, MoMA & Natural History (NYC) don’t require advance passes for general entry, but MoMA & AMNH go smoother if you pre-book a time",
     "── PUBLIC TRANSIT & APPS ──────────────",
     "🚇 NYC subway/bus: just TAP your phone (Apple Pay/Google Pay) or contactless card at the turnstile — this is OMNY. MetroCard was fully retired Jan 2026; no card to buy. Tap the SAME phone/card every ride.",
@@ -256,6 +260,8 @@ const PLACES = {
   "Candlewood Suites New York City Times Square": [40.7596, -73.9894],
   "Stone Street Historic District New York": [40.7042, -74.0113],
   "Battery Park New York": [40.7033, -74.0170],
+  "Wall Street New York": [40.7069, -74.0090],
+  "Brooklyn Bridge New York": [40.7061, -73.9969],
   "9/11 Memorial and Museum": [40.7115, -74.0134],
   "One World Observatory": [40.7127, -74.0134],
   "Empire State Building": [40.7484, -73.9857],
