@@ -55,15 +55,15 @@ const TRIP = {
       date: "2026-06-27",
       city: "Washington, DC",
       title: "Capitol, Air & Space & the monuments at night",
-      summary: "An east-to-west sweep along the Mall — all on foot, almost no commute: Capitol Hill, your 11am Air & Space tickets, a museum, then Lincoln Memorial & the monuments lit up at night.",
+      summary: "A relaxed-start Mall day, all on foot with almost no commute: your booked 11:20am Capitol tour, 1pm Air & Space, a museum, then the Lincoln Memorial lit up at night.",
       blocks: [
-        { time: "9:00 AM", title: "🏛 Capitol Hill (the Capitol)", detail: "Start at the east end of the Mall. Walk the US Capitol grounds and its grand west front, the Library of Congress (the gorgeous Jefferson Building), and the Supreme Court across the street. To go INSIDE the Capitol, book the free tour at visitthecapitol.gov ahead — otherwise the exterior & grounds are free to walk. It’s ~10 min from here to Air & Space.", map: "United States Capitol" },
-        { time: "11:00 AM", title: "✅ National Air & Space Museum (2 tickets booked)", detail: "Your timed-entry passes are for 11:00am — arrive ~10:50 for security. Right by the Capitol end of the Mall. Heads-up: as of late June 2026 only about HALF the museum is open (8 all-new galleries + the renovated planetarium); the 50th-anniversary reopening of 5 more galleries lands July 1, just after you leave.", map: "National Air and Space Museum Washington DC" },
+        { time: "11:20 AM", title: "✅ US Capitol — guided tour (3 tickets booked)", detail: "Your guided Capitol tour is booked for 11:20am — arrive ~11:00 at the Capitol Visitor Center (underground, east side) for security. A short orientation film, then the guided tour of the Rotunda & Statuary Hall. The Library of Congress (the gorgeous Jefferson Building) is right across the plaza if you have a few minutes.", map: "United States Capitol" },
+        { time: "1:00 PM", title: "✅ National Air & Space Museum (3 tickets booked)", detail: "Your timed-entry passes are for 1:00pm — it’s a ~12-min walk from the Capitol, so head straight over after the tour. Heads-up: as of late June 2026 only about HALF the museum is open (8 all-new galleries + the renovated planetarium); the 50th-anniversary reopening of 5 more galleries lands July 1, just after you leave.", map: "National Air and Space Museum Washington DC" },
         { time: "Afternoon", title: "National Museum of Natural History — free walk-in", detail: "A short walk across the Mall (free, no pass). Hope Diamond, the dinosaur & fossil halls, the rotunda elephant — a crowd-pleaser for a first visit. The National Gallery of Art next door is also free if you have energy.", map: "National Museum of Natural History Washington DC" },
         { time: "Evening", title: "🏛 Lincoln Memorial & monuments after dark", detail: "The Mall’s grand finale, and the best time to see it: walk the WWII Memorial, the reflecting pool, and up to the Lincoln Memorial — floodlit, gorgeous, and cooler than midday. The Washington Monument towers behind you. Magical for a first visit.", map: "Lincoln Memorial Washington DC" }
       ],
-      eat: "Quick lunch from a Mall food truck or the Natural History café; dinner in Penn Quarter / Chinatown.",
-      tips: ["Reduced commute: Capitol → Air & Space → Natural History → Lincoln is one east-to-west walk along the Mall — no Metro needed.", "It’s ~2 miles end to end with lots of walking — comfortable shoes, water, and an easy pace for the parents.", "Want to go inside the Capitol? Book the free guided tour at visitthecapitol.gov in advance.", "The Lincoln Memorial after dark is the highlight — save it for the evening when it’s lit and cooler."]
+      eat: "Grab-and-go or the Capitol Visitor Center café around the tour; a later lunch after Air & Space; dinner in Penn Quarter / Chinatown.",
+      tips: ["Reduced commute: Capitol → Air & Space → Natural History → Lincoln is one east-to-west Mall walk — no Metro needed.", "Timing: Capitol tour 11:20am (arrive ~11:00 for Visitor Center security), then a ~12-min walk to Air & Space for 1:00pm.", "Relaxed late start — good for the parents. It’s ~2 miles of Mall walking, so comfy shoes, water, and an easy pace.", "The Lincoln Memorial after dark is the highlight — save it for the evening when it’s lit and cooler."]
     },
     {
       date: "2026-06-28",
@@ -206,7 +206,7 @@ const TRIP = {
     "✅ DONE — Amtrak DC→NYC (Jun 30, 7:45am → 11:14am)",
     "✅ DONE — Hyatt Place DC / White House (Jun 26–30)",
     "✅ DONE — Candlewood Suites Times Square, NYC (Jun 30–Jul 4, all 4 nights)",
-    "✅ DONE — Air & Space passes (Jun 27, 11am)",
+    "✅ DONE — Air & Space passes (Jun 27, 1pm, 3 tickets)",
     "✅ DONE — NMAAHC passes (Jun 28, 11am)",
     "✅ DONE — Holocaust Museum passes (Jun 28, 3:30pm)",
     "✅ DONE — Statue of Liberty Pedestal Access ferry (Jul 1, 9am first ferry, NY departure)",
@@ -217,7 +217,7 @@ const TRIP = {
     "TODO — Broadway show (book a title, or TKTS same-day in Times Square)",
     "Optional — National Archives timed ticket (free/$1) to see the Declaration",
     "Optional — Washington Monument timed tickets (recreation.gov, 90 days ahead)",
-    "Optional — US Capitol guided tour (visitthecapitol.gov, free)",
+    "✅ DONE — US Capitol guided tour (Jun 27, 11:20am, 3 tickets)",
     "🎟️ The Met (Jul 4 morning): FREE with your Bank of America card — Jul 4–5 is the first full weekend, so ‘Museums on Us’ applies. Bring the physical BoA card + photo ID; no advance ticket needed.",
     "Note — The Met, MoMA & Natural History (NYC) don’t require advance passes for general entry, but MoMA & AMNH go smoother if you pre-book a time",
     "── PUBLIC TRANSIT & APPS ──────────────",
