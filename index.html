@@ -5,10 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Interactive itinerary for an East Coast trip: SFO to Washington DC to New York to SFO, June 26 - July 4, 2026." />
   <title>East Coast 2026 · Itinerary</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="hero">
+    <div class="lang-switch" id="langSwitch">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="zh">中文</button>
+    </div>
     <div class="flag">🇺🇸</div>
     <h1 id="hero-title">East Coast 2026</h1>
     <div class="route" id="hero-route">SFO → Washington DC → New York → SFO</div>
@@ -19,18 +27,17 @@
   <nav class="tabs">
     <button class="active" data-target="overview">Overview</button>
     <button data-target="itinerary">Itinerary</button>
-    <button data-target="budget">Budget</button>
+    <button data-target="stays">Stays</button>
+    <button data-target="weather">Weather</button>
     <button data-target="bookings">Bookings</button>
     <button data-target="packing">Packing</button>
   </nav>
 
   <main class="wrap">
     <section id="overview" class="active"></section>
-    <section id="itinerary">
-      <h2 class="sec-title">Day by day</h2>
-      <p class="sec-sub">Tap any day to expand. Each stop has an “Open in Maps” link.</p>
-    </section>
-    <section id="budget"></section>
+    <section id="itinerary"></section>
+    <section id="stays"></section>
+    <section id="weather"></section>
     <section id="bookings"></section>
     <section id="packing"></section>
   </main>
@@ -40,6 +47,7 @@
   </footer>
 
   <script src="data.js"></script>
+  <script src="lang.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
