@@ -233,7 +233,7 @@ const TRIP = {
 
   // ---- Packing list ----
   packing: {
-    "Essentials": ["IDs / REAL ID for flights", "🛂 Passport — REQUIRED for the UN tour (Jun 30); also bring it as backup photo ID", "💳 Bank of America card (physical) — free Met admission Jul 4", "🎟️ Google badge — may get you FREE entry to some popular museums in DC & NYC (e.g. via corporate/cultural perks); bring it and ask at admissions", "Phone + charger + power bank", "Cards + a little cash", "Refillable water bottle", "Sunscreen + sunglasses + hat"],
+    "Essentials": ["IDs / REAL ID for flights", "🛂 Passport — REQUIRED for the UN tour (Jun 30); also bring it as backup photo ID", "💳 Bank of America card (physical) — free Met admission Jul 4", "🎟️ Google badge — may get you FREE entry to some popular museums in DC & NYC (e.g. via corporate/cultural perks); bring it and ask at admissions", "Phone + charger + power bank", "🔌 China→US plug adapter (for the parents' Chinese-plug chargers; most phone/laptop chargers are 100–240V and only need the adapter — 220V-only gear needs a voltage converter)", "Cards + a little cash", "Refillable water bottle", "Sunscreen + sunglasses + hat"],
     "Clothes (hot & humid)": ["Lightweight breathable tops", "Comfortable walking shoes (broken in!)", "1 nicer outfit for Broadway/dinner", "Compact umbrella / packable rain jacket", "🌧 Waterproof rain jacket with hood (DC afternoon thunderstorms)", "Swimwear (hotel pool)"],
     "Health & comfort": ["Blister plasters / band-aids", "Pain reliever + any meds", "Hand sanitizer + wipes", "Deodorant (you’ll sweat)", "Eye mask + earplugs"],
     "Smart extras": ["Day backpack", "Portable fan / cooling towel", "Snacks for the train", "Downloaded maps + Amtrak/airline apps", "Saved/printed copies of all bookings (offline)"]
@@ -318,7 +318,7 @@ const WEATHER = {
   // Seasonal-average fallback (used until live data is available).
   // hi/lo °F, plus a typical late-June/early-July condition for the city.
   normals: {
-    "Washington, DC": { hi: 89, lo: 71, code: 95, rainChance: 40, note: "炎热潮湿，午后常有雷阵雨" },
-    "New York City": { hi: 84, lo: 70, code: 80, rainChance: 35, note: "温暖潮湿，偶有阵雨" }
+    "Washington, DC": { hi: 91, lo: 73, code: 95, rainChance: 40, note: "炎热，午后可能有雷阵雨" },
+    "New York City": { hi: 90, lo: 74, code: 80, rainChance: 45, note: "炎热潮湿，越接近7月4日越可能下雨" }
   }
 };
