@@ -182,7 +182,8 @@ const TRIP = {
         { time: "10:00 AM", title: "🎟️ The Met — FREE with your BoA card", detail: "The Met opens at 10am. July 4 (Sat) is the first full weekend of the month, so Bank of America ‘Museums on Us’ gets you both in FREE — just show your BoA card + photo ID at admissions (no advance ticket). Beeline your must-sees: Egyptian wing & Temple of Dendur, European paintings, the rooftop if open. Give it ~2–2.5 hrs.", map: "Metropolitan Museum of Art" },
         { time: "~12:30 PM", title: "Lunch + grab bags", detail: "Quick lunch near the museum or back in Midtown, then collect your bags from the hotel. Aim to have everything by ~2:30pm.", map: "Candlewood Suites New York City Times Square" },
         { time: "~3:00 PM", title: "Head to JFK", detail: "Leave Manhattan by ~3pm for your 6:55pm flight — July 4 + 250th means heavy traffic and security. From Midtown: subway/LIRR to the JFK AirTrain, or a car service (budget extra time). Aim to be at the gate by ~5pm.", map: "John F. Kennedy International Airport" },
-        { time: "6:55 PM", title: "✅ Fly JFK → SFO", detail: "Booked: JFK → SFO, departs 6:55pm ET, arrives 10:33pm PT (~6h40m + 3h time change). You’ll be airborne during the fireworks — catch them on NBC/Peacock if your flight has TV/Wi-Fi.", map: "San Francisco International Airport" }
+        { time: "6:55 PM", title: "✅ Fly JFK → SFO", detail: "Booked: JFK → SFO, departs 6:55pm ET, arrives 10:33pm PT (~6h40m + 3h time change). You’ll be airborne during the fireworks — catch them on NBC/Peacock if your flight has TV/Wi-Fi.", map: "San Francisco International Airport" },
+        { time: "10:33 PM", title: "✅ Land at SFO → Lyft home (booked)", detail: "Touch down at SFO 10:33pm PT. Your Lyft home is pre-booked — after grabbing bags, head to the rideshare pickup area (follow the ‘Ride App’ signs). Nice to have the ride sorted after a long cross-country day. Welcome home!", map: "San Francisco International Airport" }
       ],
       eat: "Quick lunch near the Met or in Midtown; grab-and-go — a sit-down won’t fit a travel day.",
       tips: ["🎟️ Bring your physical BoA card + photo ID — that’s what gets you both in free at the Met (first-full-weekend program).", "Be out of the Met by ~12:30pm; Met → JFK on a holiday Saturday needs a big buffer.", "Store bags at the hotel after checkout so the Met is hands-free.", "You’ll miss Macy’s fireworks in person (you’re flying) — they broadcast on NBC/Peacock 8–10pm."]
@@ -203,6 +204,7 @@ const TRIP = {
   bookings: [
     "✅ DONE — Flight SFO→DCA (Jun 26, 9:39am)",
     "✅ DONE — Flight JFK→SFO (Jul 4, 6:55pm)",
+    "✅ DONE — Lyft from SFO to home (Jul 4 night, after landing ~10:33pm)",
     "✅ DONE — Amtrak DC→NYC (Jun 30, 7:45am → 11:14am)",
     "✅ DONE — Hyatt Place DC / White House (Jun 26–30)",
     "✅ DONE — Candlewood Suites Times Square, NYC (Jun 30–Jul 4, all 4 nights)",

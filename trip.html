@@ -280,7 +280,6 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px
     <h1 id="hero-title">美东之旅 2026</h1>
     <div class="route" id="hero-route">旧金山 → 华盛顿特区 → 纽约 → 旧金山</div>
     <div class="dates" id="hero-dates">2026年 6月26日 – 7月4日</div>
-    <div class="countdown" id="countdown"></div>
   </header>
 
   <nav class="tabs">
@@ -488,7 +487,8 @@ const TRIP = {
         { time: "10:00 AM", title: "🎟️ The Met — FREE with your BoA card", detail: "The Met opens at 10am. July 4 (Sat) is the first full weekend of the month, so Bank of America ‘Museums on Us’ gets you both in FREE — just show your BoA card + photo ID at admissions (no advance ticket). Beeline your must-sees: Egyptian wing & Temple of Dendur, European paintings, the rooftop if open. Give it ~2–2.5 hrs.", map: "Metropolitan Museum of Art" },
         { time: "~12:30 PM", title: "Lunch + grab bags", detail: "Quick lunch near the museum or back in Midtown, then collect your bags from the hotel. Aim to have everything by ~2:30pm.", map: "Candlewood Suites New York City Times Square" },
         { time: "~3:00 PM", title: "Head to JFK", detail: "Leave Manhattan by ~3pm for your 6:55pm flight — July 4 + 250th means heavy traffic and security. From Midtown: subway/LIRR to the JFK AirTrain, or a car service (budget extra time). Aim to be at the gate by ~5pm.", map: "John F. Kennedy International Airport" },
-        { time: "6:55 PM", title: "✅ Fly JFK → SFO", detail: "Booked: JFK → SFO, departs 6:55pm ET, arrives 10:33pm PT (~6h40m + 3h time change). You’ll be airborne during the fireworks — catch them on NBC/Peacock if your flight has TV/Wi-Fi.", map: "San Francisco International Airport" }
+        { time: "6:55 PM", title: "✅ Fly JFK → SFO", detail: "Booked: JFK → SFO, departs 6:55pm ET, arrives 10:33pm PT (~6h40m + 3h time change). You’ll be airborne during the fireworks — catch them on NBC/Peacock if your flight has TV/Wi-Fi.", map: "San Francisco International Airport" },
+        { time: "10:33 PM", title: "✅ Land at SFO → Lyft home (booked)", detail: "Touch down at SFO 10:33pm PT. Your Lyft home is pre-booked — after grabbing bags, head to the rideshare pickup area (follow the ‘Ride App’ signs). Nice to have the ride sorted after a long cross-country day. Welcome home!", map: "San Francisco International Airport" }
       ],
       eat: "Quick lunch near the Met or in Midtown; grab-and-go — a sit-down won’t fit a travel day.",
       tips: ["🎟️ Bring your physical BoA card + photo ID — that’s what gets you both in free at the Met (first-full-weekend program).", "Be out of the Met by ~12:30pm; Met → JFK on a holiday Saturday needs a big buffer.", "Store bags at the hotel after checkout so the Met is hands-free.", "You’ll miss Macy’s fireworks in person (you’re flying) — they broadcast on NBC/Peacock 8–10pm."]
@@ -509,6 +509,7 @@ const TRIP = {
   bookings: [
     "✅ DONE — Flight SFO→DCA (Jun 26, 9:39am)",
     "✅ DONE — Flight JFK→SFO (Jul 4, 6:55pm)",
+    "✅ DONE — Lyft from SFO to home (Jul 4 night, after landing ~10:33pm)",
     "✅ DONE — Amtrak DC→NYC (Jun 30, 7:45am → 11:14am)",
     "✅ DONE — Hyatt Place DC / White House (Jun 26–30)",
     "✅ DONE — Candlewood Suites Times Square, NYC (Jun 30–Jul 4, all 4 nights)",
@@ -739,7 +740,7 @@ const TRIP_ZH = {
     "🎆 2026年7月4日是美国独立250周年纪念日（“America250”半千禧庆典）。华盛顿和纽约都会有空前盛大的庆祝——同时也意味着更多人潮、更严的安检和更高的物价。",
     "✈️ 你们的7月4日是赶飞机的一天：肯尼迪机场（JFK）飞旧金山的航班晚上6:55起飞，所以梅西烟花表演时你们正在飞机上。这个取舍已由订票决定——见7月4日的说明。",
     "⛵ Sail4th 250（7月3–8日）：30多艘高桅帆船和40多艘海军舰艇驶入纽约港、环绕自由女神像——难得一遇的海上巡游，正好赶上你们在纽约的几天。",
-    "🚆 华盛顿到纽约你们坐火车（Amtrak，约3.5小时，抵达全新的 Moynihan 车站大厅）——比这一段坐飞机方便太多。",
+    "🚆 华盛顿到纽约你们坐火车（Amtrak，约3.5小时，抵达纽约宾州车站）——比这一段坐飞机方便太多。",
     "🏛 华盛顿大多数史密森尼博物馆都免费；你们预约的三家（航空航天、非裔美国人历史、大屠杀纪念馆）都已订好。",
     "☀️ 6月底到7月初的美东又热又潮（最高约30–35°C，午后常有雷阵雨）。穿轻便透气的衣服，多补水。"
   ],
@@ -881,7 +882,8 @@ const TRIP_ZH = {
         { time: "上午10:00", title: "🎟️ 大都会博物馆 — 凭 BOA 卡免门票", detail: "大都会10点开门。7月4日（周六）是当月第一个完整周末，所以 Bank of America「Museums on Us」让你们俩免费入场——在售票处出示 BOA 卡 + 带照片的证件即可（无需提前订票）。直奔必看：埃及馆与丹铎神庙、欧洲绘画、（开放的话）屋顶花园。安排约2–2.5小时。" },
         { time: "约12:30", title: "午饭 + 取行李", detail: "在博物馆附近或回中城快速吃个午饭，再回酒店取行李。争取2:30前一切就绪。" },
         { time: "约下午3:00", title: "动身去 JFK", detail: "为晚上6:55的航班，下午3点左右离开曼哈顿——7月4日 + 250周年意味着严重堵车和安检排队。从中城：坐地铁/长岛铁路接 JFK 的 AirTrain，或叫车（多留时间）。争取下午5点左右到登机口。" },
-        { time: "晚上6:55", title: "✅ 肯尼迪机场飞旧金山", detail: "已订：JFK 飞 SFO，东部时间晚上6:55起飞，太平洋时间晚上10:33抵达（约6小时40分 + 3小时时差）。烟花时你们在空中——如果航班有电视/Wi-Fi，可以在 NBC/Peacock 上看。" }
+        { time: "晚上6:55", title: "✅ 肯尼迪机场飞旧金山", detail: "已订：JFK 飞 SFO，东部时间晚上6:55起飞，太平洋时间晚上10:33抵达（约6小时40分 + 3小时时差）。烟花时你们在空中——如果航班有电视/Wi-Fi，可以在 NBC/Peacock 上看。" },
+        { time: "晚上10:33", title: "✅ 落地旧金山 → Lyft 回家（已预约）", detail: "太平洋时间晚上10:33落地旧金山。回家的 Lyft 已经约好——取完行李，按“Ride App / 网约车”指示牌走到上车点即可。横跨美国飞了一天，回家的车提前订好最省心。欢迎回家！" }
       ],
       eat: "在大都会附近或中城快速午餐；赶路这天买点带走的，正式坐下来吃不现实。",
       tips: ["🎟️ 带上实体 BOA 卡 + 带照片的证件——靠这个在大都会免费入场（第一个完整周末项目）。", "大约12:30前离开大都会；节日周六从大都会到 JFK 要多留缓冲。", "退房后把行李寄存在酒店，空手逛大都会。", "你们会错过现场的梅西烟花（在飞机上）——NBC/Peacock 晚上8–10点直播。"]
@@ -890,7 +892,7 @@ const TRIP_ZH = {
 
   logistics: [
     { label: "去程航班", value: "✅ 旧金山→里根国家机场（DCA），6月26日（周五）：太平洋时间上午9:39起飞，东部时间下午5:59抵达。DCA 离酒店约15分钟。" },
-    { label: "华盛顿→纽约", value: "✅ Amtrak，6月30日（周二）：华盛顿联合车站上午11:06 → 宾州车站 Moynihan 大厅约下午2:34（3小时28分）。" },
+    { label: "华盛顿→纽约", value: "✅ Amtrak，6月30日（周二）：华盛顿联合车站上午7:45 → 纽约宾州车站约上午11:14（约3小时29分）。" },
     { label: "回程航班", value: "✅ JFK→旧金山，7月4日（周六）：东部时间晚上6:55起飞，太平洋时间晚上10:33抵达。下午3点左右离开曼哈顿（节日 + 250周年人潮）。" },
     { label: "华盛顿出行", value: "从白宫附近的酒店坐地铁 + 步行。用 SmarTrip / 手机刷卡。国家广场从头走到尾都行。" },
     { label: "纽约出行", value: "从时代广场的落脚点（四晚都住这儿）坐地铁 + 步行。1/2/3 号线连接时代广场↔下城。Citi Bike 很适合逛公园和海滨。" }
@@ -899,7 +901,8 @@ const TRIP_ZH = {
   bookings: [
     "✅ 已完成 — 机票 旧金山→DCA（6月26日 上午9:39）",
     "✅ 已完成 — 机票 JFK→旧金山（7月4日 晚上6:55）",
-    "✅ 已完成 — Amtrak 华盛顿→纽约（6月30日 上午11:06）",
+    "✅ 已完成 — 旧金山机场回家的 Lyft（7月4日晚，落地约10:33后）",
+    "✅ 已完成 — Amtrak 华盛顿→纽约（6月30日 上午7:45 → 11:14）",
     "✅ 已完成 — 凯悦嘉轩 华盛顿/白宫店（6月26–30日）",
     "✅ 已完成 — Candlewood Suites 时代广场，纽约（6月30日–7月4日，共四晚）",
     "✅ 已完成 — 航空航天博物馆门票（6月27日 下午1点，3张票）",
@@ -923,7 +926,7 @@ const TRIP_ZH = {
     "📲 出发前装好的 App：Google 地图 + Apple 地图（都有实时公交线路和发车时间）、Citymapper（纽约/华盛顿最好用的公交 App——线路、出口、晚点都清楚）、Transit（实时到站很好用）。",
     "📲 现在就把银行卡加到 Apple Pay / Google 钱包，并用你真正会随身带的那部手机刷卡（包里带个充电宝——刷卡要有电！）。",
     "🚗 Uber/Lyft：不要预充 Uber Cash。预充余额不退、没有折扣、还可能用不完；绑卡按次扣费没有任何坏处。Uber 和 Lyft 都装上、比价。纽约黄色出租可用 Curb，应对7月4日的加价。",
-    "🚆 Amtrak App：把华盛顿→纽约的车票（6月30日 上午11:06）存进 App，方便离线查看。",
+    "🚆 Amtrak App：把华盛顿→纽约的车票（6月30日 上午7:45）存进 App，方便离线查看。",
     "✈️ 7月4日去 JFK：节日堵车时，AirTrain + 地铁/长岛铁路最靠谱；用 Uber/Lyft 会大幅加价——多留预算、下午3点左右就出发。"
   ],
 
@@ -938,7 +941,7 @@ const TRIP_ZH = {
 </script>
   <script>
 /*
- * Renders the trip and wires up interactivity: countdown, tabs, collapsible
+ * Renders the trip and wires up interactivity: tabs, collapsible
  * days, per-day maps, and checklists (persisted in localStorage).
  *
  * Localization: English (TRIP in data.js) is the SOURCE OF TRUTH. When the
@@ -1018,24 +1021,6 @@ const TRIP_ZH = {
 
   // Leaflet map instances per day index, lazily initialized when a day opens.
   const dayMapRecs = [];
-
-  // --- countdown ---
-  function renderCountdown() {
-    const box = $("#countdown");
-    const start = new Date(T.startDate + "T00:00:00");
-    const end = new Date(T.endDate + "T23:59:59");
-    const now = new Date();
-    box.innerHTML = "";
-
-    if (now > end) { box.innerHTML = `<div class="cd-msg">${esc(UI.cd_home)}</div>`; return; }
-    if (now >= start) { box.innerHTML = `<div class="cd-msg">${esc(UI.cd_during)}</div>`; return; }
-
-    const days = Math.ceil((start - now) / 86400000);
-    [[days, UI.cd_days], [T.cities.length, UI.cd_cities], [T.days.length, UI.cd_daysPlanned]]
-      .forEach(([num, lbl]) => {
-        box.appendChild(el("div", { class: "cd-box" }, `<div class="num">${num}</div><div class="lbl">${esc(lbl)}</div>`));
-      });
-  }
 
   // --- overview ---
   function renderOverview() {
@@ -1565,7 +1550,6 @@ const TRIP_ZH = {
 
     labelTabs();
     updateLangButtons();
-    renderCountdown();
     renderOverview();
     renderStays();
     renderItinerary();
