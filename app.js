@@ -1,5 +1,5 @@
 /*
- * Renders the trip and wires up interactivity: countdown, tabs, collapsible
+ * Renders the trip and wires up interactivity: tabs, collapsible
  * days, per-day maps, and checklists (persisted in localStorage).
  *
  * Localization: English (TRIP in data.js) is the SOURCE OF TRUTH. When the
@@ -79,24 +79,6 @@
 
   // Leaflet map instances per day index, lazily initialized when a day opens.
   const dayMapRecs = [];
-
-  // --- countdown ---
-  function renderCountdown() {
-    const box = $("#countdown");
-    const start = new Date(T.startDate + "T00:00:00");
-    const end = new Date(T.endDate + "T23:59:59");
-    const now = new Date();
-    box.innerHTML = "";
-
-    if (now > end) { box.innerHTML = `<div class="cd-msg">${esc(UI.cd_home)}</div>`; return; }
-    if (now >= start) { box.innerHTML = `<div class="cd-msg">${esc(UI.cd_during)}</div>`; return; }
-
-    const days = Math.ceil((start - now) / 86400000);
-    [[days, UI.cd_days], [T.cities.length, UI.cd_cities], [T.days.length, UI.cd_daysPlanned]]
-      .forEach(([num, lbl]) => {
-        box.appendChild(el("div", { class: "cd-box" }, `<div class="num">${num}</div><div class="lbl">${esc(lbl)}</div>`));
-      });
-  }
 
   // --- overview ---
   function renderOverview() {
@@ -626,7 +608,6 @@
 
     labelTabs();
     updateLangButtons();
-    renderCountdown();
     renderOverview();
     renderStays();
     renderItinerary();
