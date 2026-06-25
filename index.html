@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Interactive itinerary for an East Coast trip: SFO to Washington DC to New York to SFO, June 26 - July 4, 2026." />
-  <title>East Coast 2026 · Itinerary</title>
+  <meta name="description" content="美东之旅行程：旧金山 → 华盛顿特区 → 纽约 → 旧金山，2026年6月26日 – 7月4日。" />
+  <title>美东之旅 2026 · 行程</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -14,23 +14,23 @@
 <body>
   <header class="hero">
     <div class="lang-switch" id="langSwitch">
-      <button data-lang="en" class="active">EN</button>
-      <button data-lang="zh">中文</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="zh" class="active">中文</button>
     </div>
     <div class="flag">🇺🇸</div>
-    <h1 id="hero-title">East Coast 2026</h1>
-    <div class="route" id="hero-route">SFO → Washington DC → New York → SFO</div>
-    <div class="dates" id="hero-dates">Jun 26 – Jul 4, 2026</div>
+    <h1 id="hero-title">美东之旅 2026</h1>
+    <div class="route" id="hero-route">旧金山 → 华盛顿特区 → 纽约 → 旧金山</div>
+    <div class="dates" id="hero-dates">2026年 6月26日 – 7月4日</div>
     <div class="countdown" id="countdown"></div>
   </header>
 
   <nav class="tabs">
-    <button class="active" data-target="overview">Overview</button>
-    <button data-target="itinerary">Itinerary</button>
-    <button data-target="stays">Stays</button>
-    <button data-target="weather">Weather</button>
-    <button data-target="bookings">Bookings</button>
-    <button data-target="packing">Packing</button>
+    <button class="active" data-target="overview">概览</button>
+    <button data-target="itinerary">行程</button>
+    <button data-target="stays">住宿</button>
+    <button data-target="weather">天气</button>
+    <button data-target="bookings">预订清单</button>
+    <button data-target="packing">行李</button>
   </nav>
 
   <main class="wrap">
@@ -42,9 +42,7 @@
     <section id="packing"></section>
   </main>
 
-  <footer class="wrap">
-    Your personal travel agent · Built with Claude Code · Edit <code>data.js</code> to customize the trip.
-  </footer>
+  <footer class="wrap" id="siteFooter">你的专属旅行助手 · 行程会自动更新</footer>
 
   <script src="data.js"></script>
   <script src="lang.js"></script>

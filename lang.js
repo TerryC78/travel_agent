@@ -49,6 +49,7 @@ const UICOPY = {
     leg_from: (i, mi) => `${mi} mi from #${i}`,
     heroDates: (fs, fe) => `${fs} – ${fe}, 2026`,
     docTitle: " · Itinerary",
+    footer: "Your personal travel agent · the itinerary updates itself",
     packGroups: {} // identity in English; keys are already English
   },
   zh: {
@@ -86,6 +87,7 @@ const UICOPY = {
     leg_from: (i, mi) => `距第${i}站 ${mi} 英里`,
     heroDates: (fs, fe) => `2026年 ${fs} – ${fe}`,
     docTitle: " · 行程",
+    footer: "你的专属旅行助手 · 行程会自动更新",
     packGroups: {
       "Essentials": "必备物品",
       "Clothes (hot & humid)": "衣物（炎热潮湿）",
