@@ -18,7 +18,7 @@ step, works offline.
 - **Bookings** — a checklist of reservations, marked DONE vs TODO (saves your progress).
 - **Packing** — a categorized checklist (saves your progress).
 - A live **countdown** to departure on the home screen.
-- **English / 中文 toggle** (top-right) — the site **auto-detects** the browser/device language on first visit (any Chinese locale → 中文, otherwise English); tap the toggle to override, and your explicit choice is remembered from then on.
+- **English / 中文 toggle** (top-right) — the site **defaults to Chinese (中文)**; tap **EN** for English. Your explicit choice is remembered from then on.
 
 The per-day maps use [Leaflet](https://leafletjs.com/) + OpenStreetMap tiles (loaded from a CDN — so day maps need internet; everything else works offline). Pin coordinates live in the `PLACES` table in `data.js`.
 
@@ -36,9 +36,8 @@ edit the trip there. Chinese is an *overlay* in **`lang.js`**:
   purpose (so Maps/staff recognize them and totals never get mangled).
 
 **Language resolution order** on load: a saved explicit choice (from tapping the
-toggle) wins; otherwise the browser language is auto-detected (`navigator.languages`,
-any `zh*` → Chinese); otherwise English. Auto-detected values are *not* persisted,
-so detection keeps working each visit until the user makes an explicit choice.
+toggle) wins; otherwise the site **defaults to Chinese**. To change the default,
+edit the `applyLang(saved || "zh")` line in `app.js`.
 
 To extend or fix a translation, edit the matching entry in `lang.js`. To add a
 third language, add another block to `UICOPY` and a `TRIP_<xx>` overlay.

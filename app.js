@@ -33,23 +33,11 @@
   };
 
   // --- language state ---
-  // Default is English; the real starting language is resolved at boot from
-  // (1) a saved explicit choice, else (2) the browser's language.
-  let LANG = "en";
+  // Default language is CHINESE. The actual starting language at boot is:
+  //   (1) the user's saved explicit toggle choice, else (2) Chinese.
+  let LANG = "zh";
   let T = TRIP;          // active (possibly merged) trip data
-  let UI = UICOPY.en;    // active UI dictionary
-
-  // Auto-detect from the browser when the user hasn't explicitly chosen yet.
-  // Any Chinese locale (zh, zh-CN, zh-Hans, zh-TW, …) maps to Chinese.
-  function detectLang() {
-    const list = (navigator.languages && navigator.languages.length)
-      ? navigator.languages
-      : [navigator.language || navigator.userLanguage || ""];
-    for (const code of list) {
-      if (String(code).toLowerCase().startsWith("zh")) return "zh";
-    }
-    return "en";
-  }
+  let UI = UICOPY.zh;    // active UI dictionary
 
   const locale = () => (LANG === "zh" ? "zh-CN" : "en-US");
   const fmtDate = (iso) => new Date(iso + "T00:00:00").toLocaleDateString(locale(), { weekday: "long", month: "long", day: "numeric" });
@@ -633,6 +621,8 @@
     $("#hero-title").textContent = T.title;
     $("#hero-route").textContent = T.subtitle;
     $("#hero-dates").textContent = UI.heroDates(fmtShort(T.startDate), fmtShort(T.endDate));
+    const footer = $("#siteFooter");
+    if (footer && UI.footer) footer.textContent = UI.footer;
 
     labelTabs();
     updateLangButtons();
@@ -648,9 +638,9 @@
 
   // --- boot ---
   document.addEventListener("DOMContentLoaded", () => {
-    // Precedence: explicit saved choice > browser auto-detect > English.
+    // Default to Chinese; a saved explicit toggle choice still wins.
     const saved = localStorage.getItem("ec2026_lang");
-    applyLang(saved || detectLang());
+    applyLang(saved || "zh");
     seedWeatherNormals(); // populate WX with averages before first render
     setupTabs();
     setupLangSwitch();
