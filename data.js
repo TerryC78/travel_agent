@@ -55,31 +55,31 @@ const TRIP = {
       date: "2026-06-27",
       city: "Washington, DC",
       title: "Capitol, Air & Space & the monuments at night",
-      summary: "A relaxed-start day, east-to-west across the Mall: your 11:20am Capitol tour, 1pm Air & Space, the new (free) People's House White House experience, then the Lincoln Memorial lit up at night.",
+      summary: "A relaxed-start Mall day, all on foot with almost no commute: your booked 11:20am Capitol tour, 1pm Air & Space, a museum, then the Lincoln Memorial lit up at night.",
       blocks: [
         { time: "11:20 AM", title: "✅ US Capitol — guided tour (3 tickets booked)", detail: "Your guided Capitol tour is booked for 11:20am — arrive ~11:00 at the Capitol Visitor Center (underground, east side) for security. A short orientation film, then the guided tour of the Rotunda & Statuary Hall. The Library of Congress (the gorgeous Jefferson Building) is right across the plaza if you have a few minutes.", map: "United States Capitol" },
         { time: "1:00 PM", title: "✅ National Air & Space Museum (3 tickets booked)", detail: "Your timed-entry passes are for 1:00pm — it’s a ~12-min walk from the Capitol, so head straight over after the tour. Heads-up: as of late June 2026 only about HALF the museum is open (8 all-new galleries + the renovated planetarium); the 50th-anniversary reopening of 5 more galleries lands July 1, just after you leave.", map: "National Air and Space Museum Washington DC" },
-        { time: "~3:15 PM", title: "🏛 The People's House: A White House Experience", detail: "Right after Air & Space, head to this immersive, FREE White House museum at 1700 Pennsylvania Ave NW (entrance on 17th St), steps from the real White House and across from the Eisenhower Building. Interactive exhibits, a to-scale Oval Office & State Floor, and the story of the Executive Mansion and the people who run it. ⚠️ Reserve a free timed pass at thepeopleshouse.org — open 9am–5pm but LAST ENTRY is 4:00pm, so don't dawdle after Air & Space.", map: "The People's House Washington DC" },
-        { time: "Late afternoon", title: "National Museum of Natural History — free walk-in (optional)", detail: "If you've still got energy, Natural History is back on the Mall (free, no pass, open till 5:30) — Hope Diamond, dinosaurs, the rotunda elephant. It's today's flex item: with the People's House 4pm cutoff, skip it guilt-free if you're running short.", map: "National Museum of Natural History Washington DC" },
+        { time: "Afternoon", title: "National Museum of Natural History — free walk-in", detail: "A short walk across the Mall (free, no pass). Hope Diamond, the dinosaur & fossil halls, the rotunda elephant — a crowd-pleaser for a first visit. The National Gallery of Art next door is also free if you have energy.", map: "National Museum of Natural History Washington DC" },
         { time: "Evening", title: "🏛 Lincoln Memorial & monuments after dark", detail: "The Mall’s grand finale, and the best time to see it: walk the WWII Memorial, the reflecting pool, and up to the Lincoln Memorial — floodlit, gorgeous, and cooler than midday. The Washington Monument towers behind you. Magical for a first visit.", map: "Lincoln Memorial Washington DC" }
       ],
       eat: "Grab-and-go or the Capitol Visitor Center café around the tour; a later lunch after Air & Space; dinner in Penn Quarter / Chinatown.",
-      tips: ["Order matters today: the People's House LAST ENTRY is 4:00pm, so go straight there after Air & Space — Natural History is the drop-it-if-needed item.", "Reserve a FREE timed pass for the People's House at thepeopleshouse.org (suggested $15 donation, not required).", "It flows east-to-west — Capitol → Air & Space → People's House (by the White House) → Lincoln — mostly on foot.", "The Lincoln Memorial after dark is the highlight — save it for the evening when it’s lit and cooler. Comfy shoes + water; easy pace for the parents."]
+      tips: ["Reduced commute: Capitol → Air & Space → Natural History → Lincoln is one east-to-west Mall walk — no Metro needed.", "Timing: Capitol tour 11:20am (arrive ~11:00 for Visitor Center security), then a ~12-min walk to Air & Space for 1:00pm.", "Relaxed late start — good for the parents. It’s ~2 miles of Mall walking, so comfy shoes, water, and an easy pace.", "The Lincoln Memorial after dark is the highlight — save it for the evening when it’s lit and cooler."]
     },
     {
       date: "2026-06-28",
       city: "Washington, DC",
       title: "White House, NMAAHC & the American story",
-      summary: "The White House first thing (it’s right by your hotel), then your two reserved museums — NMAAHC at 11am and the Holocaust Museum at 3:30pm. Everything sits in the 15th-Street corridor, so barely any commute.",
+      summary: "A White House morning steps from your hotel — the People's House experience (9am) and the White House itself — then your two reserved museums: NMAAHC at 11am and the Holocaust Museum at 3:30pm. All in the 15th-Street corridor, barely any commute.",
       blocks: [
-        { time: "9:30 AM", title: "🏛 The White House", detail: "Your hotel is steps away, so start here. Best views: the north side from Pennsylvania Ave / Lafayette Square (the classic front-portico photo), then the south side from the Ellipse. (Inside tours must be arranged months ahead via an embassy/Congress — the exterior is the realistic visit.) From here it’s a ~10-min walk south to NMAAHC.", map: "The White House" },
+        { time: "9:00 AM", title: "🏛 The People's House: A White House Experience", detail: "Reserve the FREE 9:00am opening slot at thepeopleshouse.org so you finish well before NMAAHC at 11. This immersive White House museum (1700 Pennsylvania Ave NW, entrance on 17th St) has interactive exhibits, a to-scale Oval Office & State Floor, and the story of the Executive Mansion and the people who run it. ~60–90 min, steps from your hotel.", map: "The People's House Washington DC" },
+        { time: "~10:20 AM", title: "🏛 The White House (exterior)", detail: "A couple of blocks east of the People's House. Best views: the north side from Pennsylvania Ave / Lafayette Square (the classic front-portico photo), then the south side from the Ellipse. (Inside tours need to be arranged months ahead — the exterior is the realistic visit.) From here it’s a ~10-min walk south to NMAAHC.", map: "The White House" },
         { time: "11:00 AM", title: "✅ African American History & Culture / NMAAHC (3 tickets booked)", detail: "Your timed passes are for 11:00am — arrive ~10:50 for security. Start in the underground History Galleries and work upward; it’s chronological and powerful. Give it ~3 hours, with lunch at Sweet Home Café inside.", map: "National Museum of African American History and Culture" },
         { time: "~2:00 PM", title: "National Museum of American History — free walk-in (if time)", detail: "Right nearby, no reservation. Today’s flex stop: if NMAAHC runs long, pop in just for the Star-Spangled Banner and ‘American Democracy’ (on-theme for the 250th), or skip it and rest before the Holocaust Museum.", map: "National Museum of American History" },
         { time: "3:30 PM", title: "✅ US Holocaust Memorial Museum — Permanent Exhibition (3 tickets booked)", detail: "Booked for the 3:30–3:45pm entry window at 100 Raoul Wallenberg Pl SW (~12-min walk from American History). The Permanent Exhibition runs ~2–3 hrs and is deeply moving; last entry 4:30pm, museum closes 5:30. Leave quiet time after.", map: "United States Holocaust Memorial Museum" },
         { time: "Evening", title: "The Wharf or U Street", detail: "Decompress with waterfront seafood at The Wharf (~15 min away), or U Street for live jazz and Ben’s Chili Bowl.", map: "The Wharf Washington DC" }
       ],
       eat: "Sweet Home Café inside NMAAHC for lunch; The Wharf or U Street for dinner.",
-      tips: ["Reduced commute: White House → NMAAHC → Holocaust all run down the 15th-Street corridor — White House is even walkable from your hotel.", "Two fixed times: NMAAHC 11:00am, Holocaust 3:30pm. American History in between is optional — drop it if you’re running behind.", "NMAAHC + Holocaust in one day is emotionally intense — go easy and leave space after.", "Leave the NMAAHC/American History area by ~3:15pm for the ~12-min walk to the Holocaust Museum."]
+      tips: ["🎟️ Reserve the People's House FREE 9:00am opening slot (thepeopleshouse.org) so you finish before NMAAHC at 11 — it’s steps from your hotel.", "Reduced commute: People's House → White House → NMAAHC → Holocaust all run down the 15th-Street corridor.", "Two fixed times: NMAAHC 11:00am, Holocaust 3:30pm. American History in between is optional — drop it if you’re running behind.", "NMAAHC + Holocaust in one day is emotionally intense — go easy; leave the museum area by ~3:15pm for the ~12-min walk to the Holocaust Museum."]
     },
     {
       date: "2026-06-29",
@@ -124,9 +124,9 @@ const TRIP = {
         { time: "8:15 AM", title: "Pick up boarding passes", detail: "Collect your boarding passes for the Pedestal Access tour.", map: "Battery Park New York" },
         { time: "8:30 AM", title: "Security screening", detail: "Airport-style security before boarding — don’t bring large bags; they’ll slow you down or be turned away.", map: "Battery Park New York" },
         { time: "9:00 AM", title: "✅ First ferry → Liberty Island", detail: "Booked Pedestal Access tour. Board the first ferry of the day from the New York side to Liberty Island.", map: "Battery Park New York" },
-        { time: "9:20–11:15 AM", title: "Liberty Island: pedestal + museum + photos", detail: "Up to the pedestal for close-up views, the Statue of Liberty Museum, and photos with the harbor and skyline behind you.", map: "Battery Park New York" },
+        { time: "9:20–11:15 AM", title: "Liberty Island: pedestal + museum + photos", detail: "Up to the pedestal for close-up views, the Statue of Liberty Museum, and photos with the harbor and skyline behind you.", map: "Statue of Liberty" },
         { time: "11:15 AM", title: "Ferry → Ellis Island (~20 min)", detail: "Hop the connecting ferry over to Ellis Island.", map: "Battery Park New York" },
-        { time: "11:35 AM–1:00 PM", title: "Ellis Island Immigration Museum", detail: "Tour the moving National Museum of Immigration — underrated and worth the time.", map: "Battery Park New York" },
+        { time: "11:35 AM–1:00 PM", title: "Ellis Island Immigration Museum", detail: "Tour the moving National Museum of Immigration — underrated and worth the time.", map: "Ellis Island" },
         { time: "1:00 PM", title: "Ferry → back to Battery (~20 min)", detail: "Return ferry to Battery Park.", map: "Battery Park New York" },
         { time: "1:30 PM", title: "Lunch near WTC / Battery", detail: "Late lunch around the World Trade Center / Battery area before the afternoon museum.", map: "Stone Street Historic District New York" },
         { time: "2:30–4:30 PM", title: "✅ 9/11 Memorial & Museum (3 tickets booked)", detail: "See the outdoor Memorial reflecting pools in the footprints of the Twin Towers first, then your timed Museum entry. Allow ~2 hrs; powerful and somber.", map: "9/11 Memorial and Museum" },
@@ -222,7 +222,7 @@ const TRIP = {
     "Optional — Washington Monument timed tickets (recreation.gov, 90 days ahead)",
     "✅ DONE — US Capitol guided tour (Jun 27, 11:20am, 3 tickets)",
     "🎟️ The Met (Jul 4 morning): FREE with your Bank of America card — Jul 4–5 is the first full weekend, so ‘Museums on Us’ applies. Bring the physical BoA card + photo ID; no advance ticket needed.",
-    "🎟️ The People's House (Jun 27 afternoon): reserve a FREE timed pass at thepeopleshouse.org — last entry 4:00pm.",
+    "🎟️ The People's House (Jun 28): reserve the FREE 9:00am opening slot at thepeopleshouse.org — finish before NMAAHC at 11.",
     "Note — The Met, MoMA & Natural History (NYC) don’t require advance passes for general entry, but MoMA & AMNH go smoother if you pre-book a time",
     "── PUBLIC TRANSIT & APPS ──────────────",
     "🚇 NYC subway/bus: just TAP your phone (Apple Pay/Google Pay) or contactless card at the turnstile — this is OMNY. MetroCard was fully retired Jan 2026; no card to buy. Tap the SAME phone/card every ride.",
@@ -274,6 +274,8 @@ const PLACES = {
   "United Nations Headquarters New York": [40.7489, -73.9680],
   "Stone Street Historic District New York": [40.7042, -74.0113],
   "Battery Park New York": [40.7033, -74.0170],
+  "Statue of Liberty": [40.6892, -74.0445],
+  "Ellis Island": [40.6995, -74.0396],
   "Wall Street New York": [40.7069, -74.0090],
   "Brooklyn Bridge New York": [40.7061, -73.9969],
   "9/11 Memorial and Museum": [40.7115, -74.0134],

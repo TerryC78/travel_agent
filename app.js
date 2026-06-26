@@ -136,12 +136,22 @@
 
   function dayStops(d) {
     const seen = new Set();
-    const stops = [];
+    let stops = [];
     d.blocks.forEach((b) => {
       if (!b.map || seen.has(b.map) || !PLACES[b.map]) return;
       seen.add(b.map);
       stops.push({ label: stopLabel(b.title), query: b.map, coord: PLACES[b.map] });
     });
+    // Drop cross-city outliers (e.g. the DC departure point on the NYC arrival
+    // day) so each day's map stays focused on that day's city. Uses the median
+    // point as the anchor, then keeps stops within ~1.2° (~80 mi).
+    if (stops.length > 2) {
+      const median = (xs) => { const s = [...xs].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
+      const mlat = median(stops.map((s) => s.coord[0]));
+      const mlng = median(stops.map((s) => s.coord[1]));
+      const near = stops.filter((s) => Math.abs(s.coord[0] - mlat) < 1.2 && Math.abs(s.coord[1] - mlng) < 1.2);
+      if (near.length >= 2) stops = near;
+    }
     return stops;
   }
 
