@@ -155,11 +155,13 @@ const TRIP = {
       date: "2026-07-03",
       city: "New York City",
       title: "Downtown cool: High Line, Village, Broadway",
-      summary: "Your most ‘local’ day, and it flows north-to-south then back: High Line → Village, then up to Broadway by your hotel. All walkable / one subway hop.",
+      summary: "Your most ‘local’ day, flowing north-to-south then back: High Line → Chelsea Market → Greenwich Village → SoHo, then up to Broadway by your hotel. All walkable / one subway hop.",
       blocks: [
-        { time: "Morning", title: "High Line + Chelsea Market", detail: "From Times Square it’s ~1 mi to the High Line’s north end (Hudson Yards). Walk the elevated park down to the Meatpacking District and graze through Chelsea Market.", map: "The High Line New York" },
-        { time: "Afternoon", title: "Greenwich Village / SoHo / Washington Sq", detail: "Wander Washington Square Park, the Village’s leafy streets, and SoHo’s cast-iron shopping blocks. Optional: Little Italy & Chinatown.", map: "Washington Square Park New York" },
-        { time: "Evening", title: "Broadway show — ⚠️ tickets", detail: "See a Broadway show — book a specific title ahead, or try the TKTS booth in Times Square (steps from your hotel) for same-day discounts. Dinner pre/post in the Theater District.", map: "Broadway Theatre District New York" }
+        { time: "Morning", title: "The High Line", detail: "From Times Square it’s ~1 mi to the High Line’s north end (Hudson Yards). Walk the elevated park south through Chelsea to the Meatpacking District — city + Hudson River views the whole way.", map: "The High Line New York" },
+        { time: "Late morning", title: "Chelsea Market", detail: "At the south end of the High Line: a buzzing indoor food hall in a former Nabisco factory. Graze your way through — tacos, lobster rolls, bakeries, more.", map: "Chelsea Market New York" },
+        { time: "Afternoon", title: "Greenwich Village & Washington Square", detail: "Wander south into the Village’s leafy streets and Washington Square Park — the arch, the fountain, street performers. Classic NYU / bohemian New York.", map: "Washington Square Park New York" },
+        { time: "~3:30 PM", title: "SoHo", detail: "Just south: SoHo’s cast-iron architecture and cobblestone blocks, full of shopping and galleries. Optional: keep going to Little Italy & Chinatown next door.", map: "SoHo New York" },
+        { time: "Evening", title: "Broadway show — ⚠️ tickets", detail: "Back up to the Theater District for a Broadway show — book a title ahead, or try the TKTS booth in Times Square (steps from your hotel) for same-day discounts. Dinner pre/post nearby.", map: "Broadway Theatre District New York" }
       ],
       eat: "Theater District pre-show prix-fixe, or Village classics (pizza, pasta).",
       tips: ["🎆 Unique to 2026: the Times Square Ball drops on JULY 3 — eight times, marking midnight in every U.S. time zone to kick off the 250th. You’re staying right there — go see it.", "Tall ships from the Sail4th 250 parade are in the harbor today through Jul 8.", "July 3 gets crowded as the holiday ramps up — reserve dinner."]
@@ -285,7 +287,9 @@ const PLACES = {
   "Metropolitan Museum of Art": [40.7794, -73.9632],
   "Top of the Rock Observation Deck": [40.7593, -73.9794],
   "The High Line New York": [40.7480, -74.0048],
+  "Chelsea Market New York": [40.7424, -74.0061],
   "Washington Square Park New York": [40.7308, -73.9973],
+  "SoHo New York": [40.7233, -74.0030],
   "Broadway Theatre District New York": [40.7590, -73.9851],
   "Times Square New York": [40.7580, -73.9855],
   "John F. Kennedy International Airport": [40.6413, -73.7781]
