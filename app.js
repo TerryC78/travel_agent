@@ -199,11 +199,19 @@
     const wrap = el("div", { class: "daymap" });
     const header = el("div", { class: "daymap-head" });
     header.appendChild(el("div", { class: "daymap-title" }, esc(UI.daymap_places)));
+    const btns = el("div", { class: "daymap-btns" });
+    // One-tap navigation to the day's first stop (from the user's current location)
+    btns.appendChild(el("a", {
+      class: "route-btn nav-btn",
+      href: "https://www.google.com/maps/dir/?api=1&destination=" + stops[0].coord[0] + "," + stops[0].coord[1],
+      target: "_blank", rel: "noopener"
+    }, esc(UI.daymap_nav)));
     if (stops.length >= 2) {
-      header.appendChild(el("a", {
+      btns.appendChild(el("a", {
         class: "route-btn", href: googleRouteUrl(stops), target: "_blank", rel: "noopener"
       }, esc(UI.daymap_route)));
     }
+    header.appendChild(btns);
     wrap.appendChild(header);
 
     const legend = el("ol", { class: "daymap-legend" });

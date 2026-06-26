@@ -24,7 +24,7 @@ const UICOPY = {
     stays_title: "Where you’re staying", stays_sub: "All confirmed. Tap a hotel to open it in Maps.",
     night: "night", nights: "nights",
     itin_title: "Day by day", itin_sub: "Tap any day to expand. Each stop has an “Open in Maps” link.",
-    daymap_places: "🗺 Places this day", daymap_route: "↗ Route in Google Maps",
+    daymap_places: "🗺 Places this day", daymap_route: "↗ Route in Google Maps", daymap_nav: "🧭 Navigate to start",
     leg_nextdoor: "next door", eat_label: "Eat", tips_label: "Tips",
     openMaps: "🗺 Open in Maps", openGoogleMaps: "Open in Google Maps",
     weather_title: "Weather", weather_high: "High", weather_low: "Low", weather_rain: "Rain",
@@ -62,7 +62,7 @@ const UICOPY = {
     stays_title: "住宿安排", stays_sub: "全部已确认。点酒店名可在地图中打开。",
     night: "晚", nights: "晚",
     itin_title: "逐日行程", itin_sub: "点任意一天展开。每个地点都有“在地图中打开”的链接。",
-    daymap_places: "🗺 当天地点", daymap_route: "↗ 在 Google 地图看路线",
+    daymap_places: "🗺 当天地点", daymap_route: "↗ 在 Google 地图看路线", daymap_nav: "🧭 导航到第一站",
     leg_nextdoor: "就在隔壁", eat_label: "吃", tips_label: "小贴士",
     openMaps: "🗺 在地图中打开", openGoogleMaps: "在 Google 地图中打开",
     weather_title: "天气", weather_high: "最高", weather_low: "最低", weather_rain: "降雨",
@@ -223,11 +223,13 @@ const TRIP_ZH = {
     },
     {
       title: "下城的酷：高线公园、格林威治村、百老汇",
-      summary: "最有“在地感”的一天，路线由北到南再折回：高线公园→村子，再上去酒店旁的百老汇。全程步行/一趟地铁可达。",
+      summary: "最有“在地感”的一天，路线由北到南再折回：高线公园 → 切尔西市场 → 格林威治村 → SoHo，再上去酒店旁的百老汇。全程步行/一趟地铁可达。",
       blocks: [
-        { time: "上午", title: "高线公园 + 切尔西市场", detail: "从时代广场到高线公园北端（Hudson Yards）约1英里。沿这座高架公园一路向南走到肉库区，在切尔西市场边走边吃。" },
-        { time: "下午", title: "格林威治村 / SoHo / 华盛顿广场", detail: "在华盛顿广场公园、村子绿树成荫的街道、SoHo 的铸铁建筑购物街区闲逛。可选：小意大利和中国城。" },
-        { time: "傍晚", title: "百老汇演出——⚠️ 需购票", detail: "看一场百老汇演出——提前订某个剧目，或到时代广场的 TKTS 亭（离酒店几步）碰当日折扣票。演出前后在剧院区吃饭。" }
+        { time: "上午", title: "高线公园", detail: "从时代广场到高线公园北端（Hudson Yards）约1英里。沿这座高架公园一路向南穿过切尔西走到肉库区——一路都是城市和哈德逊河的景色。", map: "The High Line New York" },
+        { time: "上午晚些", title: "切尔西市场", detail: "在高线公园南端：由旧 Nabisco 饼干厂改建的热闹室内美食市场。一路边走边吃——塔可、龙虾卷、烘焙……应有尽有。", map: "Chelsea Market New York" },
+        { time: "下午", title: "格林威治村与华盛顿广场", detail: "往南走进村子绿树成荫的街道和华盛顿广场公园——拱门、喷泉、街头艺人。经典的 NYU / 波西米亚式纽约。", map: "Washington Square Park New York" },
+        { time: "约下午3:30", title: "SoHo", detail: "再往南：SoHo 的铸铁建筑和鹅卵石街区，购物和画廊云集。可选：继续到隔壁的小意大利和中国城。", map: "SoHo New York" },
+        { time: "傍晚", title: "百老汇演出——⚠️ 需购票", detail: "回到剧院区看一场百老汇演出——提前订某个剧目，或到时代广场的 TKTS 亭（离酒店几步）碰当日折扣票。演出前后在附近吃饭。", map: "Broadway Theatre District New York" }
       ],
       eat: "演出前在剧院区吃套餐，或在村里吃经典（披萨、意面）。",
       tips: ["2026年独有：时代广场的水晶球在7月3日落下——连落八次，对应美国每个时区的午夜，为250周年揭幕。你们就住在那儿——一定去看。", "Sail4th 250 的高桅帆船今天到7月8日都停在港里。", "7月3日随着节日临近会很挤——晚饭记得订位。"]
