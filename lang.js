@@ -147,17 +147,17 @@ const TRIP_ZH = {
     },
     {
       title: "白宫、非裔美国人历史博物馆与美国的故事",
-      summary: "一早是白宫主题（都在酒店旁）：先去白宫体验馆 The People's House（9点开门场），再看白宫本身，然后两个预约博物馆——上午11点 NMAAHC、下午3:30大屠杀纪念馆。全都在15街一带，几乎不用通勤。",
+      summary: "一早是白宫主题（都在酒店旁）：先去白宫体验馆 The People's House（9点开门场），再看白宫本身，然后两个预约博物馆（上午11点 NMAAHC、下午3:30大屠杀纪念馆）；中间挤进自然历史博物馆，把昨天没去的补上。全都在国家广场一带，几乎不用通勤。",
       blocks: [
         { time: "上午9:00", title: "🏛 The People's House：白宫体验馆", detail: "在 thepeopleshouse.org 预约免费的 9:00 开门场，这样能赶在11点 NMAAHC 之前看完。沉浸式的免费白宫博物馆（1700 Pennsylvania Ave NW，入口在17街）：互动展览、等比例的椭圆形办公室和国宴楼层、讲述白宫及其幕后工作人员的故事。约60–90分钟，离你们酒店几步。", map: "The People's House Washington DC" },
         { time: "约上午10:20", title: "🏛 白宫（外观）", detail: "在 The People's House 往东几个街区。最佳视角：北侧从宾州大道/拉法耶特广场（经典的门廊正面照），再到南侧从椭圆草坪（the Ellipse）。（进内部要提前数月安排——现实就是看外观。）从这儿往南步行约10分钟到 NMAAHC。", map: "The White House" },
         { time: "上午11:00", title: "✅ 非裔美国人历史与文化博物馆（NMAAHC，已订3张票）", detail: "你们的定时票是上午11:00——提前约10分钟到过安检。从地下的历史展厅开始、自下而上参观；按时间顺序、很有震撼力。安排约3小时，在馆内的 Sweet Home Café 吃午饭。", map: "National Museum of African American History and Culture" },
-        { time: "约下午2:00", title: "国家美国历史博物馆——免预约（有时间的话）", detail: "就在附近，无需预约。今天的机动项：如果 NMAAHC 超时，就只进去看看星条旗和“美国民主”展（很应250周年的景），或者干脆跳过、在去大屠杀纪念馆前歇一歇。", map: "National Museum of American History" },
+        { time: "约下午2:00", title: "🦕 国家自然历史博物馆——免预约（补上昨天没去的）", detail: "就是昨天没去、今天补上的那个——免费、无需门票。尽量在下午1:45–2:00前离开 NMAAHC，往西步行约8分钟就到。用约1小时看精华：希望钻石、恐龙与化石展厅、圆厅大象、海洋馆。（隔壁就是国家美国历史博物馆，要是还有富余时间可以顺便看看。）大约3:15前出发，步行约12分钟到大屠杀纪念馆。", map: "National Museum of Natural History Washington DC" },
         { time: "下午3:30", title: "✅ 大屠杀纪念馆——常设展（已订3张票）", detail: "预约的是3:30–3:45入场，地址 100 Raoul Wallenberg Pl SW（从美国历史博物馆步行约12分钟）。常设展约需2–3小时，非常震撼；最晚入场4:30，闭馆5:30。看完留点安静的时间。", map: "United States Holocaust Memorial Museum" },
         { time: "夜晚", title: "The Wharf 或 U Street", detail: "去 The Wharf 海滨吃海鲜放松一下（约15分钟），或去 U Street 听现场爵士、吃 Ben’s Chili Bowl。", map: "The Wharf Washington DC" }
       ],
       eat: "午餐在 NMAAHC 馆内的 Sweet Home Café；晚餐在 The Wharf 或 U Street。",
-      tips: ["🎟️ 在 thepeopleshouse.org 预约 The People's House 的免费 9:00 开门场，这样能赶在11点 NMAAHC 之前看完——离酒店几步。", "减少通勤：The People's House → 白宫 → NMAAHC → 大屠杀纪念馆都沿15街一线。", "两个固定时间：NMAAHC 上午11:00，大屠杀纪念馆下午3:30。中间的美国历史博物馆可选——来不及就放弃。", "NMAAHC + 大屠杀纪念馆放在同一天情绪上很重——慢慢来；大约下午3:15前从博物馆一带出发，步行约12分钟到大屠杀纪念馆。"]
+      tips: ["🎟️ 在 thepeopleshouse.org 预约 The People's House 的免费 9:00 开门场，这样能赶在11点 NMAAHC 之前看完——离酒店几步。", "减少通勤：The People's House → 白宫 → NMAAHC → 大屠杀纪念馆都沿15街一线。", "两个固定时间：NMAAHC 上午11:00，大屠杀纪念馆下午3:30。中间补上自然历史博物馆（约1小时看精华）——下午2:00前离开 NMAAHC，约3:15前离开博物馆一带。", "NMAAHC + 大屠杀纪念馆放在同一天情绪上很重——慢慢来；大约下午3:15前从博物馆一带出发，步行约12分钟到大屠杀纪念馆。"]
     },
     {
       title: "阿灵顿、五角大楼与乔治城",
