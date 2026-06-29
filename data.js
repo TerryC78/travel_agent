@@ -84,16 +84,18 @@ const TRIP = {
     {
       date: "2026-06-29",
       city: "Washington, DC",
-      title: "Arlington, the Pentagon & Georgetown",
-      summary: "Across the river to Virginia for the two big sites that sit together — Arlington National Cemetery and the Pentagon 9/11 Memorial — then back to charming Georgetown. Pairing the two Virginia stops keeps commuting down.",
+      title: "Arlington, the Pentagon & American history",
+      summary: "A morning across the river in Virginia — Arlington National Cemetery and the Pentagon 9/11 Memorial, one Metro stop apart — then an American-history afternoon on the Mall: the founding documents at the National Archives and a focused return to the American History Museum, with optional Georgetown before an early night ahead of the 7:45am train.",
       blocks: [
         { time: "Morning", title: "Arlington National Cemetery", detail: "Tomb of the Unknown Soldier changing of the guard, JFK gravesite & eternal flame, Arlington House views back over DC. Metro (Blue Line) straight to Arlington Cemetery station — go early when it’s cooler and quieter.", map: "Arlington National Cemetery" },
         { time: "Late morning", title: "🏛 Pentagon 9/11 Memorial (the Pentagon)", detail: "One Metro stop from Arlington (Pentagon station) — so almost no extra commute. The outdoor 9/11 Memorial is FREE, open daily, no reservation, no security — 184 benches for those lost there. You’ll see the Pentagon itself alongside. (Touring inside the building needs a reservation 14–90 days ahead; the memorial is the realistic visit.)", map: "Pentagon 9/11 Memorial Arlington" },
-        { time: "Afternoon", title: "Georgetown", detail: "Back across the river to Georgetown: historic cobblestone streets, the C&O Canal, the waterfront park, and shopping along M St & Wisconsin Ave. Get a cupcake if that’s your thing.", map: "Georgetown Washington DC" },
+        { time: "~1:00 PM", title: "📜 National Archives — the founding documents", detail: "Back across the river to the Mall. Reserve a $1 timed-entry on recreation.gov for ~1:00pm to skip the summer line. In the Rotunda you’ll stand before the ORIGINALS — the Declaration of Independence, the U.S. Constitution, and the Bill of Rights, the most ‘American history’ thing in the city. The Public Vaults gallery downstairs is excellent too. ~1–1.5 hrs.", map: "National Archives Washington DC" },
+        { time: "~2:45 PM", title: "🏛 American History Museum — the history floors (revisit)", detail: "A ~10-min walk west along the Mall. This time go straight to where the history actually is: 2nd floor for the Star-Spangled Banner (the real 1814 flag) and ‘American Democracy’ with Jefferson’s writing desk; 3rd floor for ‘The American Presidency’ (Lincoln’s top hat), the First Ladies’ gowns, and ‘The Price of Freedom: Americans at War.’ (The 1st floor you likely saw is transportation & invention.) The free National Gallery of Art is right next door if you’d rather.", map: "National Museum of American History" },
+        { time: "Late afternoon", title: "Georgetown (optional)", detail: "If you still have energy: cobblestone streets, the C&O Canal, the waterfront, and shopping on M St & Wisconsin Ave (Georgetown Cupcake if that’s your thing). Or skip it and head back to rest before the early train.", map: "Georgetown Washington DC" },
         { time: "Evening", title: "Pack & prep for the train", detail: "Early night back near the White House — your Amtrak is booked for 7:45am tomorrow, so it’s an early start. Download the tickets, repack, and set out clothes for the train. Union Station is ~10 min from the hotel.", map: "Hyatt Place Washington DC White House" }
       ],
       eat: "Lunch in Georgetown (waterfront patios); casual dinner near your hotel.",
-      tips: ["Reduced commute: Arlington + the Pentagon Memorial are one Metro stop apart — do them together before crossing back to Georgetown.", "Arlington involves a lot of walking on hills — comfortable shoes again, and an easy pace.", "The Pentagon Memorial is free and needs no booking; touring inside the building would need a reservation weeks ahead.", "Save your Amtrak tickets to the app tonight — it’s an early 7:45am train."]
+      tips: ["🎟️ National Archives: reserve a $1 timed-entry for ~1pm on recreation.gov — summer Rotunda lines are long. Inside are the originals: the Declaration of Independence, the U.S. Constitution, and the Bill of Rights.", "🏛 American History, done right: the real history is upstairs — the Star-Spangled Banner & Jefferson’s desk (2nd floor) and the American Presidency, First Ladies & ‘The Price of Freedom’ (3rd floor). The 1st floor is transportation & invention.", "Reduced commute: Arlington + the Pentagon are one Metro stop apart in the morning; the Archives & American History sit side-by-side on the Mall, ~10 min from your hotel.", "Last DC night: save your Amtrak tickets to the app and repack — it’s an early 7:45am train tomorrow."]
     },
     {
       date: "2026-06-30",
@@ -266,6 +268,7 @@ const PLACES = {
   "Pentagon 9/11 Memorial Arlington": [38.8704, -77.0558],
   "National Museum of African American History and Culture": [38.8909, -77.0327],
   "National Museum of American History": [38.8911, -77.0301],
+  "National Archives Washington DC": [38.8927, -77.0229],
   "United States Holocaust Memorial Museum": [38.8867, -77.0329],
   "The Wharf Washington DC": [38.8785, -77.0256],
   "Arlington National Cemetery": [38.8783, -77.0687],
