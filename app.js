@@ -145,7 +145,9 @@
     // Drop cross-city outliers (e.g. the DC departure point on the NYC arrival
     // day) so each day's map stays focused on that day's city. Uses the median
     // point as the anchor, then keeps stops within ~1.2° (~80 mi).
-    if (stops.length > 2) {
+    // Days flagged `multiCity` (e.g. the DC→Baltimore→Philly→NYC drive) keep
+    // every stop so the road-trip route renders end to end.
+    if (stops.length > 2 && !d.multiCity) {
       const median = (xs) => { const s = [...xs].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
       const mlat = median(stops.map((s) => s.coord[0]));
       const mlng = median(stops.map((s) => s.coord[1]));
