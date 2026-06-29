@@ -19,7 +19,7 @@ const TRIP = {
     "🎆 July 4, 2026 is the 250th anniversary of US independence (“America250” / Semiquincentennial). Expect once-in-a-lifetime celebrations — and bigger crowds, tighter security, and higher prices in both DC and NYC.",
     "✈️ Your July 4 is a travel day: JFK → SFO departs 6:55pm, so you’ll be airborne during Macy’s fireworks. That trade-off is already settled by the booking — see the July 4 note.",
     "⛵ Sail4th 250 (Jul 3–8): 30+ tall ships and 40+ naval vessels sail into New York Harbor and circle the Statue of Liberty — a once-in-a-generation maritime parade overlapping your NYC days.",
-    "🚆 You take the train DC → NYC (Amtrak, ~3½ hrs into Penn Station) — far better than flying that leg.",
+    "🚗 You drive DC → NYC up the I-95 corridor in a one-way rental car, with quick stops in Baltimore & Philadelphia — the 7:45am Amtrak was cancelled.",
     "🏛 Most Smithsonian museums in DC are FREE; your three reserved museums (Air & Space, NMAAHC, Holocaust) are all locked in.",
     "☀️ Late June / early July on the East Coast is hot and humid (high 80s–90s°F, afternoon thunderstorms). Pack light, breathable clothes and stay hydrated."
   ],
@@ -76,43 +76,43 @@ const TRIP = {
         { time: "11:00 AM", title: "✅ African American History & Culture / NMAAHC (3 tickets booked)", detail: "Your timed passes are for 11:00am — arrive ~10:50 for security. Start in the underground History Galleries and work upward; it’s chronological and powerful. Give it ~3 hours, with lunch at Sweet Home Café inside.", map: "National Museum of African American History and Culture" },
         { time: "~2:00 PM", title: "🦕 National Museum of Natural History — free walk-in (yesterday’s make-up stop)", detail: "The museum you’re catching up on from yesterday — free, no pass. Aim to leave NMAAHC by ~1:45–2:00; it’s a ~8-min walk west. Hit the highlights in ~1 hour: the Hope Diamond, the dinosaur & fossil halls, the rotunda elephant, and the Ocean Hall. (The National Museum of American History is right next door if you somehow have extra time.) Leave by ~3:15 for the ~12-min walk to the Holocaust Museum.", map: "National Museum of Natural History Washington DC" },
         { time: "3:30 PM", title: "✅ US Holocaust Memorial Museum — Permanent Exhibition (3 tickets booked)", detail: "Booked for the 3:30–3:45pm entry window at 100 Raoul Wallenberg Pl SW (~12-min walk from American History). The Permanent Exhibition runs ~2–3 hrs and is deeply moving; last entry 4:30pm, museum closes 5:30. Leave quiet time after.", map: "United States Holocaust Memorial Museum" },
-        { time: "Evening", title: "The Wharf or U Street", detail: "Decompress with waterfront seafood at The Wharf (~15 min away), or U Street for live jazz and Ben’s Chili Bowl.", map: "The Wharf Washington DC" }
+        { time: "Evening", title: "🏛 Georgetown University & the Washington Monument grounds", detail: "An evening out west and on the Mall: stroll the historic Georgetown University campus (the Healy Hall spires and leafy quads), then head to the base of the Washington Monument for the lit obelisk and the long open views down the Mall to the Lincoln Memorial and the Capitol.", map: "Washington Monument" }
       ],
-      eat: "Sweet Home Café inside NMAAHC for lunch; The Wharf or U Street for dinner.",
+      eat: "Sweet Home Café inside NMAAHC for lunch; casual dinner near Georgetown or back by the hotel.",
       tips: ["🎟️ Reserve the People's House FREE 9:00am opening slot (thepeopleshouse.org) so you finish before NMAAHC at 11 — it’s steps from your hotel.", "Reduced commute: People's House → White House → NMAAHC → Holocaust all run down the 15th-Street corridor.", "Two fixed times: NMAAHC 11:00am, Holocaust 3:30pm. In between, catch up on the Natural History Museum (~1 hr of highlights) — leave NMAAHC by ~2:00 and the museum area by ~3:15.", "NMAAHC + Holocaust in one day is emotionally intense — go easy; leave the museum area by ~3:15pm for the ~12-min walk to the Holocaust Museum."]
     },
     {
       date: "2026-06-29",
       city: "Washington, DC",
-      title: "Arlington, the Pentagon & American history",
-      summary: "A morning across the river in Virginia — Arlington National Cemetery and the Pentagon 9/11 Memorial, one Metro stop apart — then an American-history afternoon on the Mall: the founding documents at the National Archives and a focused return to the American History Museum, with optional Georgetown before an early night ahead of the 7:45am train.",
+      title: "Arlington, American History & the Tidal Basin at dusk",
+      summary: "A morning across the river in Virginia — Arlington National Cemetery and the Pentagon 9/11 Memorial (about 3 hours together) — then the American History Museum on the Mall in the afternoon, and an evening walk around the Tidal Basin to the FDR and Jefferson Memorials, beautiful lit up at dusk.",
       blocks: [
         { time: "Morning", title: "Arlington National Cemetery", detail: "Tomb of the Unknown Soldier changing of the guard, JFK gravesite & eternal flame, Arlington House views back over DC. Metro (Blue Line) straight to Arlington Cemetery station — go early when it’s cooler and quieter.", map: "Arlington National Cemetery" },
         { time: "Late morning", title: "🏛 Pentagon 9/11 Memorial (the Pentagon)", detail: "One Metro stop from Arlington (Pentagon station) — so almost no extra commute. The outdoor 9/11 Memorial is FREE, open daily, no reservation, no security — 184 benches for those lost there. You’ll see the Pentagon itself alongside. (Touring inside the building needs a reservation 14–90 days ahead; the memorial is the realistic visit.)", map: "Pentagon 9/11 Memorial Arlington" },
-        { time: "~1:00 PM", title: "📜 National Archives — the founding documents", detail: "Back across the river to the Mall. Reserve a $1 timed-entry on recreation.gov for ~1:00pm to skip the summer line. In the Rotunda you’ll stand before the ORIGINALS — the Declaration of Independence, the U.S. Constitution, and the Bill of Rights, the most ‘American history’ thing in the city. The Public Vaults gallery downstairs is excellent too. ~1–1.5 hrs.", map: "National Archives Washington DC" },
-        { time: "~2:45 PM", title: "🏛 American History Museum — the history floors (revisit)", detail: "A ~10-min walk west along the Mall. This time go straight to where the history actually is: 2nd floor for the Star-Spangled Banner (the real 1814 flag) and ‘American Democracy’ with Jefferson’s writing desk; 3rd floor for ‘The American Presidency’ (Lincoln’s top hat), the First Ladies’ gowns, and ‘The Price of Freedom: Americans at War.’ (The 1st floor you likely saw is transportation & invention.) The free National Gallery of Art is right next door if you’d rather.", map: "National Museum of American History" },
-        { time: "Late afternoon", title: "Georgetown (optional)", detail: "If you still have energy: cobblestone streets, the C&O Canal, the waterfront, and shopping on M St & Wisconsin Ave (Georgetown Cupcake if that’s your thing). Or skip it and head back to rest before the early train.", map: "Georgetown Washington DC" },
-        { time: "Evening", title: "Pack & prep for the train", detail: "Early night back near the White House — your Amtrak is booked for 7:45am tomorrow, so it’s an early start. Download the tickets, repack, and set out clothes for the train. Union Station is ~10 min from the hotel.", map: "Hyatt Place Washington DC White House" }
+        { time: "Afternoon", title: "🏛 National Museum of American History", detail: "Back across the Mall for the afternoon. The real history is upstairs: 2nd floor for the Star-Spangled Banner (the actual 1814 flag) and ‘American Democracy’ with Jefferson’s writing desk; 3rd floor for ‘The American Presidency’ (Lincoln’s top hat), the First Ladies’ gowns, and ‘The Price of Freedom: Americans at War.’ The 1st floor is transportation & invention. The free National Gallery of Art is right next door if you have energy.", map: "National Museum of American History" },
+        { time: "Evening", title: "🌅 Tidal Basin at dusk — FDR & Jefferson Memorials", detail: "End the DC leg with the prettiest evening walk in the city. Loop the Tidal Basin: the FDR Memorial (cascading waterfalls and quote-carved granite ‘rooms’), the MLK Memorial right beside it, and the domed Jefferson Memorial — stunning lit up and mirrored in the water at sunset (~8:36pm). Uber over (~$12–15) and walk the loop. Pack tonight — tomorrow you drive to New York.", map: "Thomas Jefferson Memorial" }
       ],
-      eat: "Lunch in Georgetown (waterfront patios); casual dinner near your hotel.",
-      tips: ["🎟️ National Archives: reserve a $1 timed-entry for ~1pm on recreation.gov — summer Rotunda lines are long. Inside are the originals: the Declaration of Independence, the U.S. Constitution, and the Bill of Rights.", "🏛 American History, done right: the real history is upstairs — the Star-Spangled Banner & Jefferson’s desk (2nd floor) and the American Presidency, First Ladies & ‘The Price of Freedom’ (3rd floor). The 1st floor is transportation & invention.", "Reduced commute: Arlington + the Pentagon are one Metro stop apart in the morning; the Archives & American History sit side-by-side on the Mall, ~10 min from your hotel.", "Last DC night: save your Amtrak tickets to the app and repack — it’s an early 7:45am train tomorrow."]
+      eat: "Lunch on or near the Mall; casual dinner near the Tidal Basin or back by the hotel.",
+      tips: ["Arlington + the Pentagon Memorial are one Metro stop apart — do them together in the morning (~3 hrs, lots of walking on hills, so comfy shoes).", "🏛 American History, done right: the real history is on floors 2–3 — the Star-Spangled Banner & Jefferson’s desk (2nd) and the American Presidency, First Ladies & ‘The Price of Freedom’ (3rd). The 1st floor is transportation & invention.", "🌅 The Tidal Basin memorials (FDR, MLK, Jefferson) are best at dusk — lit, cooler, and reflected in the water; sunset is ~8:36pm. It’s a flat, easy ~1.5-mi loop.", "Pack tonight — tomorrow is the drive to New York, not the train (the 7:45am Amtrak is cancelled)."]
     },
     {
       date: "2026-06-30",
       city: "New York City",
-      title: "Amtrak DC → NYC · UN tour & Empire State",
-      summary: "Early train into Penn, check into your Times Square base (home for all 4 nights), a Chinese-language UN tour at 3:15pm, then the Empire State Building and Times Square at night.",
+      multiCity: true,
+      title: "Drive DC → NYC via Baltimore & Philly · UN tour & Empire State",
+      summary: "Road trip instead of the train: a one-way rental car up I-95 with quick 30-min stops in Baltimore (Inner Harbor) and Philadelphia (Liberty Bell & Independence Hall), timed to reach the UN by 2:15pm for your 3:15 Chinese-language tour — then return the car, check in at Times Square, and finish with the Empire State Building and Times Square at night. (The 7:45am Amtrak is cancelled, kept as a fallback in your bookings.)",
       blocks: [
-        { time: "7:45 AM", title: "✅ Amtrak: Washington → New York (3 tickets booked)", detail: "Departs Washington Union Station 7:45am, arrives Penn Station, New York ~11:14am (~3h 29m). Board ~20 min early; sit on the left/west side leaving DC for water views. Grab coffee + breakfast at Union Station before you board.", map: "Washington Union Station" },
-        { time: "12:00 PM", title: "✅ Check in: Candlewood Suites Times Square", detail: "Penn Station to the hotel is a ~10-min walk or one quick subway stop — no transfer needed. Drop bags and reset. This is your single base for all four NYC nights, so unpack properly.", map: "Candlewood Suites New York City Times Square" },
-        { time: "~12:30 PM", title: "Lunch near Times Square (~1 hr)", detail: "Grab lunch close to the hotel — Hell’s Kitchen (9th Ave) a few blocks west has the best range. Keep it to about an hour so you’re moving toward the UN by ~1:45pm.", map: "Times Square New York" },
-        { time: "2:00 PM", title: "Arrive United Nations (2pm) — bring PASSPORT + ID", detail: "Get to UN Headquarters by 2:00pm for your 3:15pm tour. Security screening starts ~2:15pm — it’s airport-style and you MUST bring your passport + photo ID (no passport = no entry). The visitor entrance is at 1st Ave & 46th St.", map: "United Nations Headquarters New York" },
-        { time: "3:15 PM", title: "✅ United Nations — Chinese guided tour (booked)", detail: "Your reserved Chinese-language guided tour starts at 3:15pm — the General Assembly Hall, Security Council chamber, and donated artworks. About 1 hour.", map: "United Nations Headquarters New York" },
-        { time: "5:45 PM", title: "Empire State Building — 🎟️ Go City pass", detail: "From the UN it’s ~20–25 min over to the Empire State Building (covered by your Go City pass). 5:45pm into dusk is a great time — daylight, sunset, and the city lighting up from the 86th-floor deck. Reserve a time slot in the Go City app to skip lines.", map: "Empire State Building" },
-        { time: "Evening", title: "Times Square at night + dinner", detail: "Wander Times Square fully lit (you’re staying right here, so you’ll pass through often). Dinner is far better a few blocks west in Hell’s Kitchen than in the Square itself.", map: "Times Square New York" }
+        { time: "~7:30 AM", title: "🚗 Pick up rental car & depart DC (train cancelled)", detail: "The 7:45am Amtrak is cancelled — you’re driving instead. Pick up a one-way rental in DC (reserve DC pickup → NYC drop-off in advance), load up, and aim to be on I-95 North by ~8:00am. It’s ~225 mi / ~4 hrs of driving plus two short stops, so an early start keeps you on time for the UN.", map: "Hyatt Place Washington DC White House" },
+        { time: "~9:00 AM", title: "🦀 Baltimore — Inner Harbor (30-min stretch)", detail: "First stop, ~1 hr from DC. Walk the Inner Harbor waterfront — the USS Constellation, the skyline, maybe a coffee. Park at a harbor garage. (History tie-in: Fort McHenry, where the Star-Spangled Banner flew, is ~10 min away if you’d rather.) Back on the road by ~9:30.", map: "Baltimore Inner Harbor" },
+        { time: "~11:15 AM", title: "🔔 Philadelphia — Liberty Bell & Independence Hall (30 min)", detail: "~1h45 from Baltimore. The birthplace of the country: the Liberty Bell (free — visible through the glass even without going in) and Independence Hall across the street, where the Declaration of Independence and the Constitution were signed — a perfect follow-on to the National Archives. Grab a cheesesteak to go if you like. Roll out by ~11:45.", map: "Philadelphia Independence Hall" },
+        { time: "2:15 PM", title: "🛂 Arrive United Nations — bring PASSPORT + ID", detail: "~2h15 from Philadelphia (Manhattan traffic + parking is the wild card — leave a buffer). Park in a garage near the UN / Midtown East. Be at the visitor entrance (1st Ave & 46th St) by ~2:15 for your 3:15 tour; security is airport-style and you MUST have your passport + photo ID.", map: "United Nations Headquarters New York" },
+        { time: "3:15 PM", title: "✅ United Nations — Chinese guided tour (booked)", detail: "Your reserved Chinese-language tour starts 3:15pm — the General Assembly Hall, Security Council chamber, and donated artworks. About 1 hour.", map: "United Nations Headquarters New York" },
+        { time: "~5:00 PM", title: "🚗 Return the rental car & check in: Candlewood Suites Times Square", detail: "After the tour, drive ~15 min to drop the one-way rental near Times Square / Penn Station (far cheaper than parking in Manhattan for 4 nights), then check into Candlewood Suites — your single base for all four NYC nights.", map: "Candlewood Suites New York City Times Square" },
+        { time: "5:45 PM", title: "Empire State Building — 🎟️ Go City pass", detail: "A ~10-min walk or cab from the hotel. 5:45pm into dusk is the magic window — daylight, sunset, and the city lighting up from the 86th-floor deck. Reserve a slot in the Go City app to skip lines (flex the time if the drive runs late).", map: "Empire State Building" },
+        { time: "Evening", title: "Times Square at night + dinner", detail: "Wander Times Square fully lit — you’re staying right here, so you’ll pass through often. Dinner is far better a few blocks west in Hell’s Kitchen (9th Ave) than in the Square itself.", map: "Times Square New York" }
       ],
-      eat: "Lunch near the hotel (~1 hr) before the UN; dinner in Hell’s Kitchen (9th Ave) after the Empire State Building.",
-      tips: ["⚠️ UN tour: bring your PASSPORT + photo ID — required for entry. Be there by ~2:00pm, security ~2:15pm, tour 3:15pm.", "Timing works: UN tour (~1 hr) ends ~4:15–4:30pm, then ~20 min to the Empire State for 5:45pm — no rush.", "Penn Station to the hotel is walkable — no need to figure out the subway with luggage.", "Empire State + One World (Jul 1) + Top of the Rock (Jul 2) are all on your Go City pass — reserve slots in the app."]
+      eat: "Grab a cheesesteak in Philadelphia (or a snack en route); dinner in Hell’s Kitchen (9th Ave) after the Empire State Building.",
+      tips: ["🚗 Reserve a ONE-WAY rental (DC pickup → NYC drop-off) ahead of time — one-way fees apply, and returning near Times Square/Penn Station beats parking in Manhattan for 4 nights.", "⏱ Tight but doable: leave DC by ~8:00am and keep each stop to ~30 min. If you’re running late, skip Baltimore — Philadelphia is the one not to miss. Manhattan traffic + parking can eat 30+ min, so leave a buffer.", "🛂 UN tour: bring your PASSPORT + photo ID (required). Be at 1st Ave & 46th St by ~2:15pm; tour 3:15pm, ~1 hr.", "🔔 Philadelphia ties right into your DC days — the Liberty Bell & Independence Hall are where the Declaration and Constitution were signed.", "🎟️ Empire State + One World (Jul 1) + Top of the Rock (Jul 2) are all on your Go City pass — reserve slots in the app."]
     },
     {
       date: "2026-07-01",
@@ -198,7 +198,7 @@ const TRIP = {
   // ---- Logistics ----
   logistics: [
     { label: "Flight out", value: "✅ SFO → Reagan National (DCA), Fri Jun 26: departs 9:39am PT, arrives 5:59pm ET. DCA is ~15 min from your hotel." },
-    { label: "DC → NYC", value: "✅ Amtrak, Tue Jun 30: Washington Union Station 7:45am → Penn Station, New York ~11:14am (~3h 29m)." },
+    { label: "DC → NYC", value: "🚗 Driving (one-way rental), Tue Jun 30: DC → NYC up I-95 with 30-min stops in Baltimore & Philadelphia, reaching the UN by ~2:15pm. (The 7:45am Amtrak — Union Station → Penn Station ~11:14am — was CANCELLED; kept as a fallback.)" },
     { label: "Flight home", value: "✅ JFK → SFO, Sat Jul 4: departs 6:55pm ET, arrives 10:33pm PT. Leave Manhattan by ~3pm (holiday + 250th crowds)." },
     { label: "Getting around DC", value: "Metro + walking from your White House–area hotel. SmarTrip / phone tap. The Mall is walkable end to end." },
     { label: "Getting around NYC", value: "Subway (OMNY tap-to-pay) + walking from your Times Square base (all 4 nights). The 1/2/3 line runs Times Square ↔ downtown. Citi Bike is great for parks/waterfronts." }
@@ -210,7 +210,7 @@ const TRIP = {
     "✅ DONE — Flight SFO→DCA (Jun 26, 9:39am)",
     "✅ DONE — Flight JFK→SFO (Jul 4, 6:55pm)",
     "✅ DONE — Lyft from SFO to home (Jul 4 night, after landing ~10:33pm)",
-    "✅ DONE — Amtrak DC→NYC (Jun 30, 7:45am → 11:14am)",
+    "🚗 CHANGED — DC→NYC now by one-way rental car (Jun 30) via Baltimore & Philadelphia; reserve the car. The 7:45am Amtrak was CANCELLED (kept as a fallback).",
     "✅ DONE — Hyatt Place DC / White House (Jun 26–30)",
     "✅ DONE — Candlewood Suites Times Square, NYC (Jun 30–Jul 4, all 4 nights)",
     "✅ DONE — Air & Space passes (Jun 27, 1pm, 3 tickets)",
@@ -235,7 +235,7 @@ const TRIP = {
     "📲 Apps to install before you go: Google Maps + Apple Maps (both have live transit directions & departures), Citymapper (best NYC/DC transit app — clear routes, exits, delays), Transit app (great real-time arrivals).",
     "📲 Add your payment card to Apple Pay / Google Wallet now, and ride with the phone you’ll actually carry (power bank in the bag — tapping needs battery!).",
     "🚗 Uber/Lyft: DON’T pre-load Uber Cash. Pre-paid balance is non-refundable, gives no discount, and risks leftover funds; a card on file charges per ride with no downside. Install both Uber & Lyft and price-compare. Also try Curb (NYC yellow cabs) for July 4 surge.",
-    "🚆 Amtrak app: have your DC→NYC ticket (Jun 30, 7:45am) saved in the app for offline access.",
+    "🚗 Rental car: confirm the one-way DC→NYC reservation (DC pickup, NYC drop-off) and download offline driving directions for the I-95 route with the Baltimore & Philadelphia stops.",
     "✈️ Day-of-July-4 to JFK: AirTrain + subway/LIRR is most reliable in holiday traffic; if using Uber/Lyft, expect heavy surge — budget extra and leave by ~3pm."
   ],
 
@@ -244,7 +244,7 @@ const TRIP = {
     "Essentials": ["IDs / REAL ID for flights", "🛂 Passport — REQUIRED for the UN tour (Jun 30); also bring it as backup photo ID", "💳 Bank of America card (physical) — free Met admission Jul 4", "🎟️ Google badge — may get you FREE entry to some popular museums in DC & NYC (e.g. via corporate/cultural perks); bring it and ask at admissions", "Phone + charger + power bank", "🔌 China→US plug adapter (for the parents' Chinese-plug chargers; most phone/laptop chargers are 100–240V and only need the adapter — 220V-only gear needs a voltage converter)", "Cards + a little cash", "Refillable water bottle", "Sunscreen + sunglasses + hat"],
     "Clothes (hot & humid)": ["Lightweight breathable tops", "Comfortable walking shoes (broken in!)", "1 nicer outfit for Broadway/dinner", "Compact umbrella / packable rain jacket", "🌧 Waterproof rain jacket with hood (DC afternoon thunderstorms)", "Swimwear (hotel pool)"],
     "Health & comfort": ["Blister plasters / band-aids", "Pain reliever + any meds", "Hand sanitizer + wipes", "Deodorant (you’ll sweat)", "Eye mask + earplugs"],
-    "Smart extras": ["Day backpack", "Portable fan / cooling towel", "Snacks for the train", "Downloaded maps + Amtrak/airline apps", "Saved/printed copies of all bookings (offline)"]
+    "Smart extras": ["Day backpack", "Portable fan / cooling towel", "Snacks for the drive", "Downloaded maps + driving directions + airline apps", "Saved/printed copies of all bookings (offline)"]
   }
 };
 
@@ -273,7 +273,12 @@ const PLACES = {
   "The Wharf Washington DC": [38.8785, -77.0256],
   "Arlington National Cemetery": [38.8783, -77.0687],
   "Georgetown Washington DC": [38.9048, -77.0626],
+  "Washington Monument": [38.8895, -77.0353],
+  "Thomas Jefferson Memorial": [38.8814, -77.0365],
   "Washington Union Station": [38.8973, -77.0063],
+  // ---- Road-trip stops (DC → NYC drive) ----
+  "Baltimore Inner Harbor": [39.2857, -76.6093],
+  "Philadelphia Independence Hall": [39.9489, -75.1500],
   // ---- New York City ----
   "Candlewood Suites New York City Times Square": [40.7596, -73.9894],
   "United Nations Headquarters New York": [40.7489, -73.9680],
