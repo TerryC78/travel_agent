@@ -19,7 +19,7 @@ const TRIP = {
     "🎆 July 4, 2026 is the 250th anniversary of US independence (“America250” / Semiquincentennial). Expect once-in-a-lifetime celebrations — and bigger crowds, tighter security, and higher prices in both DC and NYC.",
     "✈️ Your July 4 is a travel day: JFK → SFO departs 6:55pm, so you’ll be airborne during Macy’s fireworks. That trade-off is already settled by the booking — see the July 4 note.",
     "⛵ Sail4th 250 (Jul 3–8): 30+ tall ships and 40+ naval vessels sail into New York Harbor and circle the Statue of Liberty — a once-in-a-generation maritime parade overlapping your NYC days.",
-    "🚗 You drive DC → NYC up the I-95 corridor in a one-way rental car, with quick stops in Baltimore & Philadelphia — the 7:45am Amtrak was cancelled.",
+    "🚗 You drive DC → NYC up the I-95 corridor in a one-way rental car, with a quick stop in Philadelphia — the 7:45am Amtrak was cancelled.",
     "🏛 Most Smithsonian museums in DC are FREE; your three reserved museums (Air & Space, NMAAHC, Holocaust) are all locked in.",
     "☀️ Late June / early July on the East Coast is hot and humid (high 80s–90s°F, afternoon thunderstorms). Pack light, breathable clothes and stay hydrated."
   ],
@@ -99,20 +99,19 @@ const TRIP = {
       date: "2026-06-30",
       city: "New York City",
       multiCity: true,
-      title: "Drive DC → NYC via Baltimore & Philly · UN tour & Empire State",
-      summary: "Road trip instead of the train: a one-way rental car up I-95 with quick 30-min stops in Baltimore (Inner Harbor) and Philadelphia (Liberty Bell & Independence Hall), timed to reach the UN by 2:15pm for your 3:15 Chinese-language tour — then return the car, check in at Times Square, and finish with the Empire State Building and Times Square at night. (The 7:45am Amtrak is cancelled, kept as a fallback in your bookings.)",
+      title: "Drive DC → NYC via Philadelphia · UN tour & Empire State",
+      summary: "Road trip instead of the train: a one-way rental car straight up I-95 to Philadelphia (Liberty Bell & Independence Hall) for a ~30–45 min stop — skipping Baltimore and lunch — then on to the UN by 2:15pm for your 3:15 Chinese-language tour, before returning the car, checking in at Times Square, and finishing with the Empire State Building and Times Square at night. (The 7:45am Amtrak is cancelled, kept as a fallback in your bookings.)",
       blocks: [
-        { time: "~7:30 AM", title: "🚗 Pick up rental car & depart DC (train cancelled)", detail: "The 7:45am Amtrak is cancelled — you’re driving instead. Pick up a one-way rental in DC (reserve DC pickup → NYC drop-off in advance), load up, and aim to be on I-95 North by ~8:00am. It’s ~225 mi / ~4 hrs of driving plus two short stops, so an early start keeps you on time for the UN.", map: "Hyatt Place Washington DC White House" },
-        { time: "~9:00 AM", title: "🦀 Baltimore — Inner Harbor (30-min stretch)", detail: "First stop, ~1 hr from DC. Walk the Inner Harbor waterfront — the USS Constellation, the skyline, maybe a coffee. Park at a harbor garage. (History tie-in: Fort McHenry, where the Star-Spangled Banner flew, is ~10 min away if you’d rather.) Back on the road by ~9:30.", map: "Baltimore Inner Harbor" },
-        { time: "~11:15 AM", title: "🔔 Philadelphia — Liberty Bell & Independence Hall (30 min)", detail: "~1h45 from Baltimore. The birthplace of the country: the Liberty Bell (free — visible through the glass even without going in) and Independence Hall across the street, where the Declaration of Independence and the Constitution were signed — a perfect follow-on to the National Archives. Grab a cheesesteak to go if you like. Roll out by ~11:45.", map: "Philadelphia Independence Hall" },
+        { time: "~8:00 AM", title: "🚗 Pick up rental car & depart DC (train cancelled)", detail: "The 7:45am Amtrak is cancelled — you’re driving instead. Pick up a one-way rental in DC (reserve DC pickup → NYC drop-off in advance), load up, and head straight for Philadelphia — skipping Baltimore and any lunch stop. It’s ~140 mi / ~2.5–3 hrs, so leaving by ~8:00am gives a comfortable buffer for the UN.", map: "Hyatt Place Washington DC White House" },
+        { time: "~11:00 AM", title: "🔔 Philadelphia — Liberty Bell & Independence Hall (your one stop)", detail: "~2.5–3 hrs straight from DC. The birthplace of the country: the Liberty Bell (free — visible through the glass even without going in) and Independence Hall across the street, where the Declaration of Independence and the Constitution were signed — a perfect follow-on to your DC history days. With Baltimore and lunch skipped you have a little buffer, so ~30–45 min is fine; grab a cheesesteak to go if you want a bite. Aim to roll out by ~11:45.", map: "Philadelphia Independence Hall" },
         { time: "2:15 PM", title: "🛂 Arrive United Nations — bring PASSPORT + ID", detail: "~2h15 from Philadelphia (Manhattan traffic + parking is the wild card — leave a buffer). Park in a garage near the UN / Midtown East. Be at the visitor entrance (1st Ave & 46th St) by ~2:15 for your 3:15 tour; security is airport-style and you MUST have your passport + photo ID.", map: "United Nations Headquarters New York" },
         { time: "3:15 PM", title: "✅ United Nations — Chinese guided tour (booked)", detail: "Your reserved Chinese-language tour starts 3:15pm — the General Assembly Hall, Security Council chamber, and donated artworks. About 1 hour.", map: "United Nations Headquarters New York" },
         { time: "~5:00 PM", title: "🚗 Return the rental car & check in: Candlewood Suites Times Square", detail: "After the tour, drive ~15 min to drop the one-way rental near Times Square / Penn Station (far cheaper than parking in Manhattan for 4 nights), then check into Candlewood Suites — your single base for all four NYC nights.", map: "Candlewood Suites New York City Times Square" },
         { time: "5:45 PM", title: "Empire State Building — 🎟️ Go City pass", detail: "A ~10-min walk or cab from the hotel. 5:45pm into dusk is the magic window — daylight, sunset, and the city lighting up from the 86th-floor deck. Reserve a slot in the Go City app to skip lines (flex the time if the drive runs late).", map: "Empire State Building" },
         { time: "Evening", title: "Times Square at night + dinner", detail: "Wander Times Square fully lit — you’re staying right here, so you’ll pass through often. Dinner is far better a few blocks west in Hell’s Kitchen (9th Ave) than in the Square itself.", map: "Times Square New York" }
       ],
-      eat: "Grab a cheesesteak in Philadelphia (or a snack en route); dinner in Hell’s Kitchen (9th Ave) after the Empire State Building.",
-      tips: ["🚗 Reserve a ONE-WAY rental (DC pickup → NYC drop-off) ahead of time — one-way fees apply, and returning near Times Square/Penn Station beats parking in Manhattan for 4 nights.", "⏱ Tight but doable: leave DC by ~8:00am and keep each stop to ~30 min. If you’re running late, skip Baltimore — Philadelphia is the one not to miss. Manhattan traffic + parking can eat 30+ min, so leave a buffer.", "🛂 UN tour: bring your PASSPORT + photo ID (required). Be at 1st Ave & 46th St by ~2:15pm; tour 3:15pm, ~1 hr.", "🔔 Philadelphia ties right into your DC days — the Liberty Bell & Independence Hall are where the Declaration and Constitution were signed.", "🎟️ Empire State + One World (Jul 1) + Top of the Rock (Jul 2) are all on your Go City pass — reserve slots in the app."]
+      eat: "No real lunch stop today — grab a cheesesteak to go in Philadelphia if you want a bite; dinner in Hell’s Kitchen (9th Ave) after the Empire State Building.",
+      tips: ["🚗 Reserve a ONE-WAY rental (DC pickup → NYC drop-off) ahead of time — one-way fees apply, and returning near Times Square/Penn Station beats parking in Manhattan for 4 nights.", "⏱ Just one stop now (Baltimore and lunch skipped), so the day’s relaxed — leave DC by ~8:00am and reach Philadelphia ~11:00 with buffer to spare. Manhattan traffic + parking near the end is the only wild card.", "🛂 UN tour: bring your PASSPORT + photo ID (required). Be at 1st Ave & 46th St by ~2:15pm; tour 3:15pm, ~1 hr.", "🔔 Philadelphia ties right into your DC days — the Liberty Bell & Independence Hall are where the Declaration and Constitution were signed.", "🎟️ Empire State + One World (Jul 1) + Top of the Rock (Jul 2) are all on your Go City pass — reserve slots in the app."]
     },
     {
       date: "2026-07-01",
@@ -198,7 +197,7 @@ const TRIP = {
   // ---- Logistics ----
   logistics: [
     { label: "Flight out", value: "✅ SFO → Reagan National (DCA), Fri Jun 26: departs 9:39am PT, arrives 5:59pm ET. DCA is ~15 min from your hotel." },
-    { label: "DC → NYC", value: "🚗 Driving (one-way rental), Tue Jun 30: DC → NYC up I-95 with 30-min stops in Baltimore & Philadelphia, reaching the UN by ~2:15pm. (The 7:45am Amtrak — Union Station → Penn Station ~11:14am — was CANCELLED; kept as a fallback.)" },
+    { label: "DC → NYC", value: "🚗 Driving (one-way rental), Tue Jun 30: DC → NYC up I-95 with a 30-min stop in Philadelphia (Baltimore & lunch skipped), reaching the UN by ~2:15pm. (The 7:45am Amtrak — Union Station → Penn Station ~11:14am — was CANCELLED; kept as a fallback.)" },
     { label: "Flight home", value: "✅ JFK → SFO, Sat Jul 4: departs 6:55pm ET, arrives 10:33pm PT. Leave Manhattan by ~3pm (holiday + 250th crowds)." },
     { label: "Getting around DC", value: "Metro + walking from your White House–area hotel. SmarTrip / phone tap. The Mall is walkable end to end." },
     { label: "Getting around NYC", value: "Subway (OMNY tap-to-pay) + walking from your Times Square base (all 4 nights). The 1/2/3 line runs Times Square ↔ downtown. Citi Bike is great for parks/waterfronts." }
@@ -210,7 +209,7 @@ const TRIP = {
     "✅ DONE — Flight SFO→DCA (Jun 26, 9:39am)",
     "✅ DONE — Flight JFK→SFO (Jul 4, 6:55pm)",
     "✅ DONE — Lyft from SFO to home (Jul 4 night, after landing ~10:33pm)",
-    "🚗 CHANGED — DC→NYC now by one-way rental car (Jun 30) via Baltimore & Philadelphia; reserve the car. The 7:45am Amtrak was CANCELLED (kept as a fallback).",
+    "🚗 CHANGED — DC→NYC now by one-way rental car (Jun 30) via Philadelphia; reserve the car. The 7:45am Amtrak was CANCELLED (kept as a fallback).",
     "✅ DONE — Hyatt Place DC / White House (Jun 26–30)",
     "✅ DONE — Candlewood Suites Times Square, NYC (Jun 30–Jul 4, all 4 nights)",
     "✅ DONE — Air & Space passes (Jun 27, 1pm, 3 tickets)",
@@ -235,7 +234,7 @@ const TRIP = {
     "📲 Apps to install before you go: Google Maps + Apple Maps (both have live transit directions & departures), Citymapper (best NYC/DC transit app — clear routes, exits, delays), Transit app (great real-time arrivals).",
     "📲 Add your payment card to Apple Pay / Google Wallet now, and ride with the phone you’ll actually carry (power bank in the bag — tapping needs battery!).",
     "🚗 Uber/Lyft: DON’T pre-load Uber Cash. Pre-paid balance is non-refundable, gives no discount, and risks leftover funds; a card on file charges per ride with no downside. Install both Uber & Lyft and price-compare. Also try Curb (NYC yellow cabs) for July 4 surge.",
-    "🚗 Rental car: confirm the one-way DC→NYC reservation (DC pickup, NYC drop-off) and download offline driving directions for the I-95 route with the Baltimore & Philadelphia stops.",
+    "🚗 Rental car: confirm the one-way DC→NYC reservation (DC pickup, NYC drop-off) and download offline driving directions for the I-95 route with the Philadelphia stop.",
     "✈️ Day-of-July-4 to JFK: AirTrain + subway/LIRR is most reliable in holiday traffic; if using Uber/Lyft, expect heavy surge — budget extra and leave by ~3pm."
   ],
 
@@ -276,8 +275,7 @@ const PLACES = {
   "Washington Monument": [38.8895, -77.0353],
   "Thomas Jefferson Memorial": [38.8814, -77.0365],
   "Washington Union Station": [38.8973, -77.0063],
-  // ---- Road-trip stops (DC → NYC drive) ----
-  "Baltimore Inner Harbor": [39.2857, -76.6093],
+  // ---- Road-trip stop (DC → NYC drive) ----
   "Philadelphia Independence Hall": [39.9489, -75.1500],
   // ---- New York City ----
   "Candlewood Suites New York City Times Square": [40.7596, -73.9894],
