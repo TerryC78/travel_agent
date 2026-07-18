@@ -1,0 +1,75 @@
+name: South Bay Weekend Events
+
+# Trigger the pipeline every Wednesday to generate the report for the upcoming
+# weekend (Friday, Saturday, Sunday). Also runnable on demand.
+on:
+  schedule:
+    # 16:00 UTC on Wednesdays = 8:00 AM Pacific during PST / 9:00 AM during PDT.
+    # cron day-of-week: 3 = Wednesday.
+    - cron: "0 16 * * 3"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Reference date (YYYY-MM-DD) to resolve the weekend from. Blank = today."
+        required: false
+        default: ""
+
+# Allow the workflow to commit the generated report back to the branch.
+permissions:
+  contents: write
+
+concurrency:
+  group: south-bay-events
+  cancel-in-progress: false
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: south-bay-events-agent
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate weekend event report
+        id: generate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            REPORT_PATH="$(python agent.py --date "${{ github.event.inputs.date }}")"
+          else
+            REPORT_PATH="$(python agent.py)"
+          fi
+          echo "report_path=$REPORT_PATH" >> "$GITHUB_OUTPUT"
+
+      - name: Add report to job summary
+        run: cat "${{ steps.generate.outputs.report_path }}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: south-bay-weekend-report
+          path: south-bay-events-agent/reports/*.md
+
+      - name: Commit report
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add south-bay-events-agent/reports/
+          if git diff --cached --quiet; then
+            echo "No report changes to commit."
+          else
+            git commit -m "Add South Bay weekend event report ($(date -u +%Y-%m-%d))"
+            git push
+          fi
