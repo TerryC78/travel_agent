@@ -55,6 +55,16 @@ a:hover { text-decoration: underline; }
 }
 .lang-switch button.active { background: var(--accent); color: #fff; }
 .lang-switch button:hover:not(.active) { color: var(--ink); }
+
+/* Trip switch (link to the other trip page: East Coast <-> Yellowstone) */
+.trip-switch {
+  position: absolute; top: 14px; left: 14px; z-index: 30;
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+  box-shadow: var(--shadow); color: var(--muted); font-size: 13px; font-weight: 700;
+  text-decoration: none; line-height: 1;
+}
+.trip-switch:hover { color: var(--ink); }
 .hero .flag { font-size: 40px; letter-spacing: 4px; }
 .hero h1 { font-size: clamp(28px, 6vw, 52px); margin: 8px 0 6px; line-height: 1.05; }
 .hero .route { color: var(--gold); font-weight: 700; font-size: clamp(15px, 3.4vw, 22px); }
