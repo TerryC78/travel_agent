@@ -34,7 +34,7 @@ const TRIP = {
   // ---- Where you're staying ----
   stays: [
     { hotel: "Salt Lake City hotel (night 1)", city: "Salt Lake City", dates: "Sep 13", nights: 1, area: "Late-evening arrival — near the airport or the South State St shops is easiest." },
-    { hotel: "West Yellowstone rental with kitchen", city: "West Yellowstone", dates: "Sep 14–19", nights: 5, area: "Right outside the West Entrance (14 mi to Madison Junction). You’re cooking, so confirm the place has a kitchen. Starlink Mini works from the driveway / parking lot." },
+    { hotel: "Dude & Roundup Motel, West Yellowstone", city: "West Yellowstone", dates: "Sep 14–19", nights: 5, area: "3 Madison Ave — ONE BLOCK from Yellowstone’s West Entrance, so every park day starts immediately (14 mi to Madison Junction) and the after-dark drives home end fast. Kitchens are available here but not in every room — confirm yours has one, since you’re cooking all week. Starlink Mini works from the parking lot." },
     { hotel: "Downtown Salt Lake City hotel (race eve)", city: "Salt Lake City", dates: "Sep 19", nights: 1, area: "Walking distance to the Salt Palace Convention Center (90 S West Temple) — you have no car after the Sep 19 return." }
   ],
 
@@ -74,7 +74,7 @@ const TRIP = {
         { time: "~4:10 PM", title: "🏞 Jenny Lake — only if you’re ahead of schedule", detail: "The prettiest lake in the park, but it’s a ~20-min detour each way. Do a short lakeshore stroll only if you reached Mormon Row by 3:15; otherwise skip it — the light at Oxbow and getting through the park before dark matter more.", map: "Jenny Lake" },
         { time: "~4:30 PM", title: "🦌 Oxbow Bend", detail: "Mount Moran reflected in the Snake River; moose and elk in the afternoon light. Northernmost stop — from here it’s straight north to Yellowstone.", map: "Oxbow Bend Turnout" },
         { time: "4:45 PM", title: "🚗 North through the South Entrance → West Thumb", detail: "Leave Oxbow by 4:45pm. Yellowstone’s South Entrance is ~40 min, then West Thumb Geyser Basin (20–30 min: lakeside geysers, Fishing Cone) — you won’t need to come back here later. Then west past Old Faithful → Madison → West Yellowstone. Sunset ~7:35pm; the last stretch is at dusk, so drive slowly — animals are on the road.", map: "West Thumb Geyser Basin" },
-        { time: "~8:00 PM", title: "🏠 Check in at West Yellowstone", detail: "Your base for 5 nights, right outside the West Entrance. Unpack the kitchen, cook a simple dinner, set up the Starlink Mini with a clear view of the sky.", map: "West Yellowstone Montana" }
+        { time: "~8:00 PM", title: "🏠 Check in: Dude & Roundup Motel", detail: "3 Madison Ave, one block from the West Entrance — your base for 5 nights. Unpack the kitchen, cook a simple dinner, and set the Starlink Mini somewhere with a clear view of the sky.", map: "Dude and Roundup Motel West Yellowstone" }
       ],
       eat: "Breakfast at Whole Foods; lunch in Jackson (fuel stop); cook dinner at the rental.",
       tips: [
@@ -157,7 +157,7 @@ const TRIP = {
       blocks: [
         { time: "~10:30 AM", title: "♨️ Norris Geyser Basin — Porcelain & Back Basin", detail: "Two boardwalk loops (~2 hrs, flat): Porcelain Basin’s milky-blue pools and Back Basin with Steamboat, the world’s tallest active geyser (unpredictable, but it steams impressively).", map: "Norris Geyser Basin" },
         { time: "~1:00 PM", title: "🎨 Artists Paintpots & Gibbon Falls", detail: "A 1.6 km loop to colourful mud pots, then Gibbon Falls from the roadside pullout on the way home.", map: "Artists Paintpots" },
-        { time: "~2:30 PM", title: "🏠 Lunch & rest in West Yellowstone", detail: "Big carb lunch, feet up. Tidy the rental and start packing — checkout is tomorrow morning.", map: "West Yellowstone Montana" },
+        { time: "~2:30 PM", title: "🏠 Lunch & rest at the motel", detail: "Big carb lunch, feet up. Tidy the room and start packing — checkout is tomorrow morning.", map: "Dude and Roundup Motel West Yellowstone" },
         { time: "~4:30 PM", title: "🥾 Optional: Mystic Falls short hike or a last geyser", detail: "Mystic Falls from Biscuit Basin is a gentle 3.5 km round trip — or just revisit Old Faithful for Grand / Riverside if you missed them. Skip Mount Washburn (1,400 ft of climbing) — wrong week for it.", map: "Biscuit Basin" },
         { time: "Evening", title: "🌇 Sunset at Madison, then pack", detail: "Last light on the Madison meadows (sunset ~7:30). Home for a carb-heavy dinner (rice, noodles, steamed buns), pack the car, early-ish night — tomorrow leaves at 11am, no alarm needed.", map: "Madison Junction" }
       ],
@@ -175,7 +175,7 @@ const TRIP = {
       title: "Drive back to Salt Lake City · Returns & race eve",
       summary: "Out at 11am, the easy 5-hour run down US-20 and I-15 to Salt Lake City, return the car and everything else in the afternoon, check in downtown near the Salt Palace, and do the race-eve routine.",
       blocks: [
-        { time: "11:00 AM", title: "🚗 Depart West Yellowstone", detail: "US-20 south through Island Park and Ashton → Idaho Falls → I-15 south. ~320 miles, ~5 hrs with a stop. Descending from 6,600 ft to 4,300 ft — you’ll feel lighter.", map: "West Yellowstone Montana" },
+        { time: "11:00 AM", title: "🚗 Check out & depart West Yellowstone", detail: "US-20 south through Island Park and Ashton → Idaho Falls → I-15 south. ~320 miles, ~5 hrs with a stop. Descending from 6,600 ft to 4,300 ft — you’ll feel lighter.", map: "Dude and Roundup Motel West Yellowstone" },
         { time: "~1:00 PM", title: "⛽ Fuel & stretch at Idaho Falls", detail: "Halfway. Gas, restroom, a 10-minute walk, refill water. Lunch from the cooler (rice + chicken) — keep it familiar and low-fibre.", map: "Idaho Falls Idaho" },
         { time: "~4:00 PM", title: "🔁 Arrive SLC — return the car & everything else", detail: "Return the rental (airport or a downtown branch), plus the Starlink Mini and anything else you planned to return — keep receipts and packaging together. Then Uber downtown.", map: "Salt Lake City International Airport" },
         { time: "~5:30 PM", title: "🏨 Check in downtown near the Salt Palace", detail: "Walking distance to 90 S West Temple means no logistics on race morning. Pick up your race packet if it’s available today.", map: "Salt Palace Convention Center" },
@@ -214,7 +214,7 @@ const TRIP = {
     { label: "Flight out", value: "Sep 13 (Sun): fly to Salt Lake City, evening arrival. Rental car pickup at SLC that night." },
     { label: "Rental car", value: "SLC pickup Sep 13 night → return Sep 19 afternoon (6 days). Round trip ~900 miles: SLC → Grand Teton → West Yellowstone (park loops) → SLC." },
     { label: "SLC → Grand Teton", value: "Sep 14: ~280 miles / ~5 hrs via I-15 → US-89 (Star Valley → Jackson) or I-15 → Idaho Falls → US-26. Then north through Yellowstone’s South Entrance to West Yellowstone (~3 hrs incl. West Thumb)." },
-    { label: "Yellowstone base", value: "West Yellowstone (West Entrance), 5 nights Sep 14–19. Madison Junction is 14 miles in; Old Faithful ~45 min, Canyon ~1h15, Mammoth ~1h30, Lamar Valley ~2.5 hrs." },
+    { label: "Yellowstone base", value: "Dude & Roundup Motel, 3 Madison Ave, West Yellowstone — one block from the West Entrance, 5 nights Sep 14–19. Madison Junction is 14 miles in; Old Faithful ~45 min, Canyon ~1h15, Mammoth ~1h30, Lamar Valley ~2.5 hrs." },
     { label: "West Yellowstone → SLC", value: "Sep 19: 11am departure, ~320 miles / ~5 hrs via US-20 → I-15 (Idaho Falls stop). Return the car + everything else in the afternoon." },
     { label: "HYROX", value: "Sep 20 (Sun) at the Salt Palace Convention Center, 90 S West Temple, downtown SLC. Waves 07:00–16:40 by category — confirm yours. No car: walk from the hotel, Uber to the airport (~15 min)." },
     { label: "Flight home", value: "Sep 20 (Sun) evening: SLC → LAX. Be at the airport 2 hrs before departure." }
@@ -226,7 +226,7 @@ const TRIP = {
     "TODO — Flight SLC → LAX (Sep 20, evening)",
     "TODO — Rental car: SLC Sep 13 night → Sep 19 afternoon (confirm one location, or airport pickup / downtown return)",
     "TODO — Salt Lake City hotel, Sep 13 (1 night)",
-    "TODO — West Yellowstone rental WITH KITCHEN, Sep 14–19 (5 nights) — confirm the reservation",
+    "✅ Dude & Roundup Motel, West Yellowstone (3 Madison Ave), Sep 14–19 — ⚠️ confirm your room has a KITCHEN (they’re available but not in every room) since you’re cooking all week",
     "TODO — Downtown SLC hotel near the Salt Palace, Sep 19 (1 night)",
     "✅ HYROX Salt Lake City registration (Sep 20) — confirm your wave time in the app",
     "📦 Whole Foods package pickup (Sep 14 morning) — have the pickup code ready",
@@ -272,7 +272,7 @@ const PLACES = {
   "Oxbow Bend Turnout": [43.8665, -110.5520],
   // ---- Yellowstone ----
   "West Thumb Geyser Basin": [44.4163, -110.5727],
-  "West Yellowstone Montana": [44.6621, -111.1041],
+  "Dude and Roundup Motel West Yellowstone": [44.6592, -111.0951],
   "Madison Junction": [44.6425, -110.8590],
   "Firehole Falls": [44.6296, -110.8620],
   "Fountain Paint Pot": [44.5498, -110.8085],

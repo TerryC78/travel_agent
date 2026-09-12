@@ -116,7 +116,7 @@ const TRIP_ZH = {
 
   stays: [
     { hotel: "盐湖城酒店（第一晚）", city: "盐湖城", dates: "9月13日", area: "傍晚到达——住机场附近或 South State St 商店一带最方便。" },
-    { hotel: "西黄石带厨房的民宿/小屋", city: "西黄石", dates: "9月14–19日", area: "就在西门外（到 Madison Junction 14 英里）。你要做饭，确认住处有厨房。Starlink Mini 在车道/停车场能用。" },
+    { hotel: "Dude & Roundup Motel（西黄石）", city: "西黄石", dates: "9月14–19日", area: "3 Madison Ave——离黄石西门只有**一个街区**，所以每天进园立刻就出发（到 Madison Junction 14 英里），晚上摸黑回来也很快到。这里有带厨房的房型，但不是每间都有——你整周都要做饭，记得确认自己订的那间有厨房。Starlink Mini 在停车场能用。" },
     { hotel: "盐湖城市中心酒店（赛前夜）", city: "盐湖城", dates: "9月19日", area: "步行可到 Salt Palace 会展中心（90 S West Temple）——9月19日还车后就没车了。" }
   ],
 
@@ -149,7 +149,7 @@ const TRIP_ZH = {
         { time: "约下午4:10", title: "🏞 Jenny Lake——只在时间充裕时去", detail: "园里最美的湖，但来回各要绕约20分钟。只有3:15前到了 Mormon Row 才去湖边短走一下；否则跳过——Oxbow 的光线和天黑前穿过公园更重要。" },
         { time: "约下午4:30", title: "🦌 Oxbow Bend", detail: "Moran 山倒映在 Snake River 里；午后光线下有驼鹿和麋鹿。最北的一站——从这儿直接北上黄石。" },
         { time: "下午4:45", title: "🚗 穿黄石南门北上 → West Thumb", detail: "4:45pm 前离开 Oxbow。黄石南门约40分钟，然后 West Thumb 间歇泉盆地（20–30分钟：湖边间歇泉、Fishing Cone）——之后就不用再绕回来了。再往西经老忠实 → Madison → 西黄石。日落约7:35pm；最后一段在黄昏，慢开——路上有动物。" },
-        { time: "约晚上8:00", title: "🏠 入住西黄石", detail: "5晚的大本营，就在西门外。打开厨房，简单做个晚饭，把 Starlink Mini 架在能看到开阔天空的地方。" }
+        { time: "约晚上8:00", title: "🏠 入住 Dude & Roundup Motel", detail: "3 Madison Ave，离西门一个街区——5晚的大本营。打开厨房，简单做个晚饭，把 Starlink Mini 放在能看到开阔天空的地方。" }
       ],
       eat: "早餐在 Whole Foods；午餐在 Jackson（加油站）；晚餐在住处做。",
       tips: [
@@ -224,7 +224,7 @@ const TRIP_ZH = {
       blocks: [
         { time: "约上午10:30", title: "♨️ Norris 间歇泉盆地——Porcelain 与 Back Basin", detail: "两条木栈道环线（约2小时，平路）：Porcelain Basin 的乳蓝色池子，和 Back Basin 里的 Steamboat——世界最高的活跃间歇泉（无法预测，但蒸汽很壮观）。" },
         { time: "约下午1:00", title: "🎨 Artists Paintpots 与 Gibbon 瀑布", detail: "1.6公里环线看彩色泥泉，回程在路边停车位看 Gibbon 瀑布。" },
-        { time: "约下午2:30", title: "🏠 回西黄石吃午饭、休息", detail: "大份碳水午餐，把脚翘起来。收拾住处、开始打包——明早退房。" },
+        { time: "约下午2:30", title: "🏠 回酒店吃午饭、休息", detail: "大份碳水午餐，把脚翘起来。收拾房间、开始打包——明早退房。" },
         { time: "约下午4:30", title: "🥾 可选：Mystic Falls 短步道或最后一个间歇泉", detail: "从 Biscuit Basin 到 Mystic Falls 往返3.5公里很平缓——或者回老忠实补看错过的 Grand/Riverside。别爬 Mount Washburn（爬升430米）——这周不合适。" },
         { time: "傍晚", title: "🌇 Madison 看日落，然后打包", detail: "Madison 草甸的最后一抹光（日落约7:30）。回家吃碳水大餐（米饭、面、馒头），把车装好，别太晚睡——明天11点出发，不用闹钟。" }
       ],
@@ -239,7 +239,7 @@ const TRIP_ZH = {
       title: "开回盐湖城 · 退还物品与赛前夜",
       summary: "11点出发，沿 US-20 和 I-15 轻松5小时到盐湖城，下午还车并退还所有东西，入住 Salt Palace 附近的市中心，做赛前夜的例行准备。",
       blocks: [
-        { time: "上午11:00", title: "🚗 离开西黄石", detail: "US-20 南下经 Island Park、Ashton → Idaho Falls → I-15 南。约320英里，含一次停车约5小时。从2,000米降到1,300米——会觉得轻松。" },
+        { time: "上午11:00", title: "🚗 退房、离开西黄石", detail: "US-20 南下经 Island Park、Ashton → Idaho Falls → I-15 南。约320英里，含一次停车约5小时。从2,000米降到1,300米——会觉得轻松。" },
         { time: "约下午1:00", title: "⛽ Idaho Falls 加油、伸展", detail: "半程。加油、洗手间、走10分钟、补水。午饭吃保温袋里的（米饭+鸡肉）——熟悉、低纤维。" },
         { time: "约下午4:00", title: "🔁 到达 SLC——还车和退还所有东西", detail: "还租车（机场或市中心网点），还有 Starlink Mini 和其它计划退回的东西——收据和包装放在一起。然后打 Uber 去市中心。" },
         { time: "约下午5:30", title: "🏨 入住 Salt Palace 附近的市中心酒店", detail: "步行能到 90 S West Temple，比赛早上就不用操心交通。今天能领的话把参赛包领了。" },
@@ -275,7 +275,7 @@ const TRIP_ZH = {
     { label: "去程航班", value: "9月13日（周日）：飞盐湖城，傍晚到达。当晚在 SLC 取租车。" },
     { label: "租车", value: "9月13日夜在 SLC 取车 → 9月19日下午还车（6天）。往返约900英里：SLC → 大提顿 → 西黄石（园内环线）→ SLC。" },
     { label: "SLC → 大提顿", value: "9月14日：约280英里/约5小时，走 I-15 → US-89（Star Valley → Jackson）或 I-15 → Idaho Falls → US-26。然后从黄石南门北上到西黄石（含 West Thumb 约3小时）。" },
-    { label: "黄石大本营", value: "西黄石（西门），9月14–19日共5晚。Madison Junction 在园内14英里；老忠实约45分钟、Canyon 约1小时15分、Mammoth 约1.5小时、拉马尔谷约2.5小时。" },
+    { label: "黄石大本营", value: "Dude & Roundup Motel，3 Madison Ave，西黄石——离西门一个街区，9月14–19日共5晚。Madison Junction 在园内14英里；老忠实约45分钟、Canyon 约1小时15分、Mammoth 约1.5小时、拉马尔谷约2.5小时。" },
     { label: "西黄石 → SLC", value: "9月19日：11点出发，约320英里/约5小时，走 US-20 → I-15（Idaho Falls 停一次）。下午还车并退还所有东西。" },
     { label: "HYROX", value: "9月20日（周日）在 Salt Palace 会展中心，90 S West Temple，盐湖城市中心。各组别波次 07:00–16:40——确认你的。没有车：从酒店步行，去机场打 Uber（约15分钟）。" },
     { label: "回程航班", value: "9月20日（周日）晚上：SLC → LAX。提前2小时到机场。" }
@@ -286,7 +286,7 @@ const TRIP_ZH = {
     "待办 — 机票 SLC → LAX（9月20日晚）",
     "待办 — 租车：9月13日夜 SLC 取 → 9月19日下午还（确认同一网点，或机场取/市中心还）",
     "待办 — 盐湖城酒店，9月13日（1晚）",
-    "待办 — 西黄石带厨房的住处，9月14–19日（5晚）——确认预订",
+    "✅ Dude & Roundup Motel，西黄石（3 Madison Ave），9月14–19日 — ⚠️ 确认你订的房间有厨房（有带厨房的房型，但不是每间都有），因为你整周都要做饭",
     "待办 — Salt Palace 附近的市中心酒店，9月19日（1晚）",
     "✅ HYROX 盐湖城报名（9月20日）——在 App 里确认波次时间",
     "📦 Whole Foods 取快递（9月14日早上）——准备好取件码",
