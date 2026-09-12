@@ -17,7 +17,8 @@ const TRIP = {
 
   // Big-picture context worth knowing before you go.
   highlights: [
-    "🐻 Grizzly country: carry bear spray on every trail (buy it in Jackson or West Yellowstone — it can’t fly) and keep 100 yards from bears/wolves, 25 from bison and elk. The September elk rut at Mammoth is a highlight — and the bulls charge.",
+    "🐻 Grizzly country: carry bear spray on every trail. RENT it in Jackson on the way in (~$28 for the 5 days) and drop it in West Yellowstone — cheaper than buying, and it can’t fly home anyway. Keep 100 yards from bears and wolves, 25 from bison and elk; the September elk rut at Mammoth is a highlight, and the bulls charge.",
+    "🛣 Four park days, each on its own arm of the figure-8, so you rarely drive the same road twice: geyser basins south of Madison (Sep 15), Norris + Canyon + Hayden to the east (Sep 16), Mammoth + Tower + Lamar in the north (Sep 17), and a short local day near town (Sep 18). Every ‘extra’ sight sits on a road you already have to drive.",
     "🧥 Mid-September Yellowstone: days 55–65°F, mornings 25–35°F, snow possible any day at 6,600–8,900 ft. Fleece + shell + beanie every morning; strong sun at altitude.",
     "🛣 All park roads are open, including Dunraven Pass (closes Oct 12) — but the Yellowstone River Bridge at Tower Junction has single-lane work with up to 30-min waits through Sep 30, right on your Lamar Valley day.",
     "🏋️ It’s HYROX taper week: Yellowstone is active recovery (boardwalks, one short hike), not training — and there are no predawn starts: every day leaves around 9:30–10am and wildlife is scheduled at sunset instead. The hard work is done; carb-loading starts Sep 17.",
@@ -67,7 +68,7 @@ const TRIP = {
       blocks: [
         { time: "~9:00 AM", title: "📦 Whole Foods — package pickup", detail: "Eat the free hotel breakfast first (6:30–9:00 on weekdays), then grab the package at the customer-service / Amazon counter.", map: "Whole Foods Market Salt Lake City" },
         { time: "~9:45 AM", title: "📡 Pick up the Starlink Mini", detail: "Power it up in the car and make sure the app is signed in before you leave cell coverage — there’s almost no service inside the park." },
-        { time: "10:00 AM", title: "🚗 Depart SLC → Grand Teton (~5 hrs)", detail: "I-15 North → US-89 through Star Valley into Jackson (scenic), or I-15 → Idaho Falls → US-26 (a touch faster). Fuel up in Jackson and buy BEAR SPRAY here (~$45–50) — it’s grizzly country from here on. Aim to be in Jackson by ~3pm.", map: "Jackson Wyoming" },
+        { time: "10:00 AM", title: "🚗 Depart SLC → Grand Teton (~5 hrs)", detail: "I-15 North → US-89 through Star Valley into Jackson (scenic), or I-15 → Idaho Falls → US-26 (a touch faster). Fuel up in Jackson and RENT bear spray from Bear Aware / Teton Backcountry Rentals here (~$28 for the 5 days) — it’s grizzly country from here on, and you can drop the canister in West Yellowstone instead of driving back. Aim to be in Jackson by ~3pm.", map: "Jackson Wyoming" },
         { time: "~3:15 PM", title: "🏔 Mormon Row — the Moulton barns", detail: "The postcard: weathered barns with the Teton range behind. 20 minutes, right off Antelope Flats Road. Bison often graze nearby — stay 25 yards back.", map: "Mormon Row Historic District" },
         { time: "~3:50 PM", title: "📸 Snake River Overlook", detail: "Ansel Adams’ viewpoint — the river bend with the peaks beyond. A quick stop on US-89 heading north.", map: "Snake River Overlook" },
         { time: "~4:10 PM", title: "🏞 Jenny Lake — only if you’re ahead of schedule", detail: "The prettiest lake in the park, but it’s a ~20-min detour each way. Do a short lakeshore stroll only if you reached Mormon Row by 3:15; otherwise skip it — the light at Oxbow and getting through the park before dark matter more.", map: "Jenny Lake" },
@@ -79,7 +80,7 @@ const TRIP = {
       tips: [
         "Leaving Oxbow after ~5:15pm? Take the Idaho route instead: Jackson → Teton Pass → Victor → Ashton → Island Park → West Yellowstone (~2h45, no wildlife jams, lit highway) — you’d skip West Thumb, which is fine.",
         "Park passes: Grand Teton $35 + Yellowstone $35 per vehicle (7 days each) = $70; buy the $80 America the Beautiful annual pass only if you’ll visit another park within a year.",
-        "Buy bear spray in Jackson and carry it on every trail from now on.",
+        "Rent bear spray in Jackson (Bear Aware, ~$28 for 5 days) and carry it on every trail from now on — you can drop it in West Yellowstone, so there’s no backtrack.",
         "Taper week: keep today to easy walking — the drive is the workout."
       ]
     },
@@ -95,7 +96,7 @@ const TRIP = {
         { time: "~12:30 PM", title: "🥾 Fairy Falls Trail → Grand Prismatic Overlook", detail: "From the Fairy Falls trailhead, 1.2 km each way on a flat trail then a short climb to the overlook — THE aerial view of the rainbow rings, best with the midday sun overhead. ~1 hour round trip.", map: "Fairy Falls Trailhead" },
         { time: "~2:00 PM", title: "⛲ Old Faithful + Old Faithful Inn (lunch here)", detail: "Check the next predicted eruption at the visitor center or in the NPS app (every ~90 min, ±10). Grab a bench 15 min early. Eat your packed lunch, then the historic Inn lobby next door.", map: "Old Faithful" },
         { time: "~3:00 PM", title: "🚶 Upper Geyser Basin boardwalk — Morning Glory Pool", detail: "The 2.4 km boardwalk past Castle, Grand and Riverside geysers to Morning Glory Pool. Grand Geyser’s predicted window is on the visitor-center board — worth waiting if it’s within 30 min.", map: "Morning Glory Pool" },
-        { time: "~5:00 PM", title: "🧿 Biscuit Basin & Black Sand Basin", detail: "Two small, colourful basins on the way back — Sapphire Pool and Emerald Pool. 20 minutes each.", map: "Biscuit Basin" },
+        { time: "~5:00 PM", title: "🧿 Biscuit Basin & Black Sand Basin", detail: "Two small, colourful basins on the way back — Sapphire Pool and Emerald Pool, 20 minutes each. Still got energy? The gentle 3.5 km round trip to Mystic Falls starts from Biscuit Basin, and today is the day for it — you won’t come back down this road.", map: "Biscuit Basin" },
         { time: "~6:30 PM", title: "🦬 Madison meadows at dusk — bison & elk", detail: "Your first sunset wildlife session, 15 min from home: bison and elk graze the Madison River meadows in the last light (sunset ~7:35). Pull over at the turnouts; stay in or beside the car.", map: "Madison Junction" }
       ],
       eat: "Late rice-cooker breakfast at the motel; packed lunch (rice + protein) at Old Faithful; dinner back at the motel after dusk.",
@@ -109,23 +110,23 @@ const TRIP = {
     {
       date: "2026-09-16",
       city: "West Yellowstone",
-      title: "Yellowstone Day 2 · Grand Canyon, the Lake & Hayden Valley at sunset",
-      summary: "East to the Grand Canyon of the Yellowstone for the Lower Falls from both rims, down to the Mud Volcano and Yellowstone Lake, then back into Hayden Valley for the main event — the sunset wildlife session — and a careful drive home in the dark.",
+      title: "Yellowstone Day 2 · Norris, the Grand Canyon & Hayden Valley at sunset",
+      summary: "One clean line east and back, with nothing driven twice: Norris Geyser Basin on the way out, the Grand Canyon of the Yellowstone from both rims, the Mud Volcano, then Hayden Valley for the sunset wildlife session and a slow drive home in the dark.",
       blocks: [
-        { time: "~9:30 AM", title: "🚗 Depart → Canyon Village", detail: "Madison → Norris → Canyon, ~1.5 hrs. Norris gets its own morning on Day 4, so pass it today.", map: "Canyon Village" },
-        { time: "~11:00 AM", title: "💦 North Rim — Brink of the Lower Falls & Lookout Point", detail: "Brink of the Lower Falls: a steep 1 km round trip (180 m down and back up) to stand at the lip of the 94 m waterfall — today’s one leg workout. Then Lookout Point and Grand View from the rim road.", map: "Brink of the Lower Falls" },
-        { time: "~12:45 PM", title: "🎨 South Rim — Artist Point (lunch at Canyon Village)", detail: "The classic painting view of the Lower Falls and the yellow canyon walls. A 5-minute walk from the parking lot. Lunch at the Canyon Village picnic area after.", map: "Artist Point" },
-        { time: "~2:30 PM", title: "🌋 Mud Volcano & Dragon’s Mouth Spring", detail: "Drive south straight through Hayden Valley (a quick look — you’re coming back for the sunset) to the sulphurous, churning mud features on a short boardwalk loop. 30 minutes.", map: "Mud Volcano" },
-        { time: "~3:15 PM", title: "🏞 Fishing Bridge & Lake Yellowstone Hotel", detail: "The huge alpine lake (7,733 ft). Walk the shore, peek into the 1891 Lake Hotel sunroom. 45 minutes.", map: "Lake Yellowstone Hotel" },
+        { time: "~9:30 AM", title: "🚗 Depart → Norris (14 mi)", detail: "In through the West Entrance and along the Madison–Norris road. You drive this stretch again tomorrow, so today takes the stop that needs real time." },
+        { time: "~10:15 AM", title: "♨️ Norris Geyser Basin — Porcelain & Back Basin", detail: "The park’s hottest and oldest thermal area, and it sits right on today’s route. Two flat boardwalk loops (~2 hrs): Porcelain Basin’s milky-blue pools, and Back Basin with Steamboat — the world’s tallest active geyser (unpredictable, but it steams impressively).", map: "Norris Geyser Basin" },
+        { time: "~12:45 PM", title: "💦 Canyon North Rim — Brink of the Lower Falls", detail: "Norris → Canyon is 12 mi. Lunch at the Canyon Village picnic area first, then Brink of the Lower Falls: a steep 1 km round trip (180 m down and back up) to stand at the lip of the 94 m waterfall — today’s one leg workout. Then Lookout Point and Grand View from the rim road.", map: "Brink of the Lower Falls" },
+        { time: "~2:45 PM", title: "🎨 Canyon South Rim — Artist Point", detail: "The classic painting view of the Lower Falls and the yellow canyon walls, a 5-minute walk from the parking lot.", map: "Artist Point" },
+        { time: "~3:45 PM", title: "🌋 Mud Volcano & Dragon’s Mouth Spring", detail: "10 mi south through Hayden Valley — a first look, since you come straight back for the sunset. Sulphurous, churning mud on a short boardwalk loop. 30 minutes.", map: "Mud Volcano" },
         { time: "~4:30 PM", title: "🌅 Hayden Valley — the sunset wildlife session", detail: "Back north into Hayden Valley for the last three hours of light (sunset ~7:30). Drive it slowly, then settle at a turnout (Grizzly Overlook or the Alum Creek pullouts) with binoculars and a thermos: bison herds, elk, and this is when grizzlies and wolves come out. Never approach; 25 yards from bison, 100 from bears.", map: "Hayden Valley" },
         { time: "~7:45 PM", title: "🌙 Home in the dark via Canyon → Norris → Madison", detail: "~2 hrs. Drive slowly (45 mph max), high beams when the road is empty — bison stand on the asphalt for the warmth. Late dinner at the motel." }
       ],
       eat: "Lunch at the Canyon Village picnic area; thermos + buns at Hayden Valley; late dinner at the motel.",
       tips: [
+        "Norris moved onto today’s route on purpose — it sits on the Madison–Norris road you already drive, so it costs no extra miles instead of needing a day of its own.",
+        "Yellowstone Lake is already covered: you walked West Thumb on the way in (Sep 14), so today skips the Fishing Bridge / Lake Hotel spur and its ~50-mile round trip.",
         "Hayden Valley is best in the last two hours of light — that’s your wildlife session, no alarm required. Bison are guaranteed; grizzlies and wolves are a real chance at dusk.",
-        "Brink of the Lower Falls is the only real climb this week — keep it steady; no need for more.",
-        "Hayden Valley ‘bison jams’ can stop traffic for 20 min — enjoy it, don’t honk or get out.",
-        "West Thumb was done on the way in (Sep 14), so today skips the lake’s west shore and returns via Norris."
+        "Brink of the Lower Falls is the only real climb this week — keep it steady. And ‘bison jams’ can stop traffic for 20 min: enjoy it, don’t honk or get out."
       ]
     },
     {
@@ -144,27 +145,28 @@ const TRIP = {
       tips: [
         "⚠️ Road work at the Yellowstone River Bridge by Tower Junction: single lane with a signal, up to 30-min waits, through Sep 30 — budget it both directions (including after dark).",
         "Dusk is the second-best wolf window after dawn, and you don’t need an alarm for it. Binoculars are the difference between ‘saw a wolf’ and ‘saw a dot’.",
-        "The drive home is ~2.5–3 hrs in the dark — 45 mph, watch for bison on the road, and don’t plan anything for tomorrow morning.",
+        "Home the way you came (Tower → Mammoth → Norris) rather than looping over Dunraven Pass: it repeats ~36 miles, but it avoids an 8,859-ft mountain pass in the dark two days before the race. ~2.5–3 hrs, 45 mph, watch for bison on the road — and don’t plan anything for tomorrow morning.",
         "Taper day: driving + boardwalks only. Stretch / foam-roll before bed, or when you wake up late tomorrow."
       ]
     },
     {
       date: "2026-09-18",
       city: "West Yellowstone",
-      title: "Yellowstone Day 4 · Norris Geyser Basin & an easy taper day",
-      summary: "Sleep in after last night’s late return. A relaxed final park day two days before the race: Norris (the hottest, oldest basin, home to Steamboat), a couple of short stops, an afternoon rest, and one last sunset — then pack and start proper carb-loading.",
+      title: "Yellowstone Day 4 · An easy local day in West Yellowstone",
+      summary: "Sleep in after last night’s late return, then stay close to home: the two short stops on the road you’ve driven past all week, grizzlies and wolves at the Discovery Center in town, and an afternoon of rest, carb-loading and packing. Two days out from the race, this is the day that keeps your legs fresh.",
       blocks: [
-        { time: "~10:30 AM", title: "♨️ Norris Geyser Basin — Porcelain & Back Basin", detail: "Two boardwalk loops (~2 hrs, flat): Porcelain Basin’s milky-blue pools and Back Basin with Steamboat, the world’s tallest active geyser (unpredictable, but it steams impressively).", map: "Norris Geyser Basin" },
-        { time: "~1:00 PM", title: "🎨 Artists Paintpots & Gibbon Falls", detail: "A 1.6 km loop to colourful mud pots, then Gibbon Falls from the roadside pullout on the way home.", map: "Artists Paintpots" },
-        { time: "~2:30 PM", title: "🏠 Lunch & rest at the motel", detail: "Big carb lunch, feet up. Tidy the room and start packing — checkout is tomorrow morning.", map: "Dude and Roundup Motel West Yellowstone" },
-        { time: "~4:30 PM", title: "🥾 Optional: Mystic Falls short hike or a last geyser", detail: "Mystic Falls from Biscuit Basin is a gentle 3.5 km round trip — or just revisit Old Faithful for Grand / Riverside if you missed them. Skip Mount Washburn (1,400 ft of climbing) — wrong week for it.", map: "Biscuit Basin" },
-        { time: "Evening", title: "🌇 Sunset at Madison, then pack", detail: "Last light on the Madison meadows (sunset ~7:30). Home for a carb-heavy dinner (rice, noodles, steamed buns), pack the car, early-ish night — tomorrow leaves at 11am, no alarm needed.", map: "Madison Junction" }
+        { time: "~10:30 AM", title: "🎨 Gibbon Falls & Artists Paintpots", detail: "The two stops on the Madison–Norris road you’ve driven past all week, finally done properly: Gibbon Falls from the roadside pullout, then the 1.6 km loop up to the colourful bubbling mud at Artists Paintpots. 15–25 min from the motel, back by lunchtime.", map: "Artists Paintpots" },
+        { time: "~12:30 PM", title: "🐻 Grizzly & Wolf Discovery Center (in town)", detail: "201 S Canyon St, a few blocks from the motel. Resident grizzlies, a wolf pack and raptors at close range — the guaranteed version of everything you’ve been scanning for through binoculars, with no driving at all. ~1.5 hrs, and a good indoor option if the forecast thundershowers arrive.", map: "Grizzly and Wolf Discovery Center West Yellowstone" },
+        { time: "~2:30 PM", title: "🏠 Lunch, rest & pack at the motel", detail: "Big carb lunch, feet up. Tidy the room, pack the car, and put the trail gear away — you’re done with the park. Drop the rented bear spray at Freeheel & Wheel (40 Yellowstone Ave, 24/7 box) while you’re in town.", map: "Dude and Roundup Motel West Yellowstone" },
+        { time: "~5:00 PM", title: "🏃 D-2 shakeout in town", detail: "15–20 min easy jog on the quiet streets + 4 × 15s strides, then a light rehearsal of the stations (10 air-squat-to-press, 20 walking lunges, a few burpees) — technique only, nothing hard. Stretch and foam-roll afterwards." },
+        { time: "Evening", title: "🌇 Sunset at Madison, then an early night", detail: "Your last bit of the park: the Madison meadows at last light, 14 mi in (sunset ~7:30). Home for a carb-heavy dinner (rice, noodles, steamed buns), then an early-ish night — tomorrow leaves at 11am, no alarm needed.", map: "Madison Junction" }
       ],
-      eat: "Carb-loading starts in earnest: rice / noodles / buns at every meal, lean protein, easy on fat and fibre.",
+      eat: "Carb-loading in earnest: rice / noodles / buns at every meal, lean protein, easy on fat and fibre.",
       tips: [
-        "D-2 shakeout: 15–20 min easy jog + 4 × 15s strides + a light rehearsal of the stations (10 air-squat-to-press, 20 walking lunges, a few burpees) — technique only, nothing hard. Any time of day.",
+        "Today is deliberately local. Norris moved to Sep 16 (it’s on that day’s road anyway), so there’s no 2-hour park drive two days before the race.",
         "Carb target today and tomorrow: ~6–8 g per kg bodyweight. Rice cakes, bananas, honey water and juice fill the gaps.",
-        "Put the trail gear away tonight — you won’t need it again; bear spray can’t fly, so leave it at the motel or gift it."
+        "Return the bear spray today — Freeheel & Wheel, 40 Yellowstone Ave, 24/7 drop box. It can’t fly home, and it’s a rental.",
+        "Thundershowers are in the forecast today, which is another reason the Discovery Center and an afternoon indoors work well."
       ]
     },
     {
@@ -231,7 +233,7 @@ const TRIP = {
     "📦 Whole Foods package pickup (Sep 14 morning) — have the pickup code ready",
     "📡 Starlink Mini pickup (Sep 14 morning) — account activated & app signed in",
     "🎫 Park entry: Grand Teton $35 + Yellowstone $35 per vehicle (7 days), or the $80 America the Beautiful annual pass",
-    "🐻 Bear spray — buy in Jackson or West Yellowstone (~$45–50); it cannot fly",
+    "🐻 Bear spray — RENT it, don’t buy it. Bear Aware / Teton Backcountry Rentals in Jackson: $16 for the first two days then $4/day, capped at $28. Pick up Sep 14 in Jackson, drop at Freeheel & Wheel, 40 Yellowstone Ave, West Yellowstone (24/7 box) on Sep 18 — one-way across their 12 pickup / 19 drop-off locations. Buying is ~$45–50 and it can’t fly home",
     "🛒 Grocery list for Chinatown Supermarket (Sep 13, Sunday till 10pm) — you have a fridge, microwave and rice cooker: rice, congee fixings, noodles, mantou/baozi, frozen dumplings, eggs, pre-cooked/braised meats, tofu, leafy greens, sauces, bananas, honey",
     "🍳 Target or Walmart list: ELECTRIC RICE COOKER, bowls, chopsticks, utensils, small knife + cutting board, thermos, cooler bag (for the long park days), dish soap + sponge, fleece, beanie, gloves (no pots or pans — there’s no stove)",
     "📲 Download before losing signal: NPS Yellowstone app (geyser predictions), offline Google Maps for the park, GeyserTimes",
@@ -244,7 +246,7 @@ const TRIP = {
   packing: {
     "Essentials": ["ID / driver’s licence (for the rental car)", "Credit cards + a little cash", "Phone + car charger + power bank", "Starlink Mini + power (12V / USB-C) + app signed in", "Offline maps + NPS app downloaded", "Park pass / receipt", "Water bottles (2+) — altitude & dry air", "Sunscreen, sunglasses, lip balm (strong sun at 7,000 ft)", "Headlamp (after-dark drives home from Hayden & Lamar)", "Binoculars 🐺"],
     "Cold-weather layers": ["Fleece / down mid-layer", "Waterproof, windproof shell", "Beanie + gloves (mornings ~30°F)", "Thermal base layer", "Warm socks", "Comfortable broken-in walking / hiking shoes", "Rain pants or quick-dry pants"],
-    "Hiking & wildlife": ["🐻 Bear spray (buy on arrival — cannot fly)", "Day pack", "Trail snacks", "Thermos (congee / hot tea for the sunset wildlife sessions)", "Blister plasters / small first-aid kit", "Camera / phone lens wipe (geyser steam)"],
+    "Hiking & wildlife": ["🐻 Bear spray — rented in Jackson, dropped in West Yellowstone (cannot fly)", "Day pack", "Trail snacks", "Thermos (congee / hot tea for the sunset wildlife sessions)", "Blister plasters / small first-aid kit", "Camera / phone lens wipe (geyser steam)"],
     "Cooking & food": ["Electric rice cooker (buy Sep 13 — for rice & congee)", "Bowls, chopsticks, utensils, small knife + cutting board", "Cooler bag + ice for the long park days (the room has a fridge)", "Dish soap + sponge + a few food containers", "Rice, congee fixings, noodles, mantou/baozi (race-week carbs)", "Eggs, frozen dumplings, pre-cooked meats, tofu, leafy greens, sauces", "Bananas, honey, juice, rice cakes (carb-load fillers)", "Electrolyte tabs / sports drink"],
     "HYROX race kit": ["Race shoes (broken in) + socks", "Race top / shorts + a change of clothes", "Gels / chews (tested before) + electrolytes", "Chalk (if allowed) + wrist wraps / grips if you use them", "Race bib / packet confirmation", "Foam roller or massage ball", "Compression socks for the flight home"]
   }
@@ -280,17 +282,16 @@ const PLACES = {
   "Old Faithful": [44.4605, -110.8281],
   "Morning Glory Pool": [44.4750, -110.8437],
   "Biscuit Basin": [44.4848, -110.8530],
-  "Canyon Village": [44.7340, -110.4900],
   "Brink of the Lower Falls": [44.7185, -110.4990],
   "Artist Point": [44.7202, -110.4795],
   "Hayden Valley": [44.6500, -110.4700],
   "Mud Volcano": [44.6248, -110.4336],
-  "Lake Yellowstone Hotel": [44.5498, -110.3990],
   "Lamar Valley": [44.8985, -110.2280],
   "Tower Fall": [44.8920, -110.3873],
   "Mammoth Hot Springs": [44.9766, -110.7027],
   "Norris Geyser Basin": [44.7263, -110.7027],
   "Artists Paintpots": [44.6963, -110.7398],
+  "Grizzly and Wolf Discovery Center West Yellowstone": [44.6580, -111.1013],
   // ---- Drive home ----
   "Idaho Falls Idaho": [43.4917, -112.0339]
 };
@@ -317,9 +318,19 @@ const WEATHER = {
     "2026-09-20": "Salt Lake City"
   },
   normals: {
-    "Salt Lake City":   { hi: 80, lo: 56, code: 0, rainChance: 10 },
-    "Grand Teton":      { hi: 67, lo: 33, code: 1, rainChance: 15 },
-    "West Yellowstone": { hi: 61, lo: 29, code: 1, rainChance: 20 }
+    "Salt Lake City":   { hi: 85, lo: 60, code: 0, rainChance: 10 },
+    "Grand Teton":      { hi: 68, lo: 32, code: 1, rainChance: 15 },
+    "West Yellowstone": { hi: 66, lo: 30, code: 1, rainChance: 20 }
+  },
+  // Forecast captured Sep 12, 2026 — the trip is now inside forecast range.
+  // app.js still re-fetches Open-Meteo when online and overrides these.
+  byDate: {
+    "2026-09-15": { hi: 67, lo: 33, code: 0,  rainChance: 5 },
+    "2026-09-16": { hi: 69, lo: 30, code: 2,  rainChance: 10 },
+    "2026-09-17": { hi: 68, lo: 33, code: 95, rainChance: 40 },
+    "2026-09-18": { hi: 66, lo: 33, code: 95, rainChance: 45 },
+    "2026-09-19": { hi: 85, lo: 60, code: 80, rainChance: 30 },
+    "2026-09-20": { hi: 84, lo: 61, code: 95, rainChance: 69 }
   },
   coords: {
     "Salt Lake City": [40.7608, -111.8910],
