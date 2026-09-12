@@ -22,7 +22,7 @@ const TRIP = {
     "🛣 All park roads are open, including Dunraven Pass (closes Oct 12) — but the Yellowstone River Bridge at Tower Junction has single-lane work with up to 30-min waits through Sep 30, right on your Lamar Valley day.",
     "🏋️ It’s HYROX taper week: Yellowstone is active recovery (boardwalks, one short hike), not training — and there are no predawn starts: every day leaves around 9:30–10am and wildlife is scheduled at sunset instead. The hard work is done; carb-loading starts Sep 17.",
     "📡 No cell service inside the park. The Starlink Mini works with a clear sky — from the motel parking lot, trailhead lots and turnouts — so download offline maps and geyser predictions too.",
-    "🍚 The motel room has NO kitchen, so one electric rice cooker (bought Sep 13) is your stove all week: rice, congee, noodles, steamed buns, boiled eggs, blanched greens. Chinatown Supermarket on night one stocks the rest, and a thermos of congee makes the sunset wildlife sessions and dark drives home civilised."
+    "🍚 No kitchen at the motel, but they’re providing a fridge and microwave, and a rice cooker (bought Sep 13) covers rice, congee, noodles, steamed buns, boiled eggs and blanched greens. Chinatown Supermarket on night one stocks the week, and a thermos of congee makes the sunset wildlife sessions and dark drives home civilised."
   ],
 
   cities: [
@@ -34,7 +34,7 @@ const TRIP = {
   // ---- Where you're staying ----
   stays: [
     { hotel: "Hyatt Place Salt Lake City / Downtown / The Gateway", city: "Salt Lake City", dates: "Sep 13 & Sep 19", nights: 2, area: "55 N 400 W, at The Gateway — ~15 min from the airport, and a ~0.5 mi (10-min) walk to the Salt Palace, so race morning needs no car or Uber. Free hot breakfast (weekdays 6:30–9:00, later at weekends) and a mini-fridge in the room." },
-    { hotel: "Dude & Roundup Motel, West Yellowstone", city: "West Yellowstone", dates: "Sep 14–19", nights: 5, area: "3 Madison Ave, Double Deluxe room with multiple beds — ONE BLOCK from Yellowstone’s West Entrance, so every park day starts immediately (14 mi to Madison Junction) and the after-dark drives home end fast. NO kitchen, and rooms vary on fridge/microwave — an electric rice cooker is your stove for the week. Starlink Mini works from the parking lot." }
+    { hotel: "Dude & Roundup Motel, West Yellowstone", city: "West Yellowstone", dates: "Sep 14–19", nights: 5, area: "3 Madison Ave, Double Deluxe room with multiple beds — ONE BLOCK from Yellowstone’s West Entrance, so every park day starts immediately (14 mi to Madison Junction) and the after-dark drives home end fast. No kitchen, but the motel is providing a FRIDGE and MICROWAVE (confirmed by phone); add the rice cooker for rice and congee and you have a workable little kitchen. Starlink Mini works from the parking lot." }
   ],
 
   // ---- Day-by-day itinerary ----
@@ -44,11 +44,11 @@ const TRIP = {
       date: "2026-09-13",
       city: "Salt Lake City",
       title: "Fly to Salt Lake City · Night car pickup & supply run",
-      summary: "Travel day. Land in the evening, grab the rental car, then a one-stop-shop night northbound: Chinese groceries for the week at Chinatown Supermarket (open till 10pm Sunday), then an electric rice cooker and warm layers — your motel room has no kitchen, so that cooker is the whole kitchen.",
+      summary: "Travel day. Land in the evening, grab the rental car, then a one-stop-shop night northbound: Chinese groceries for the week at Chinatown Supermarket (open till 10pm Sunday), then an electric rice cooker and warm layers — with the motel’s fridge and microwave, that cooker completes a workable little kitchen.",
       blocks: [
         { time: "Evening", title: "✈️ Land at SLC → pick up the rental car", detail: "Rental counters are in the terminal / Rental Car Center. Note the mileage — you return the car Sep 19 afternoon. Check the trunk fits a week of food plus gear.", map: "Salt Lake City International Airport" },
-        { time: "~8:00 PM", title: "🛒 Chinatown Supermarket — groceries for the week", detail: "3390 S State St (Sunday hours till 10pm, ~20 min from the airport). Buy for a rice cooker, not a stove: rice, congee fixings, noodles, mantou/baozi (race-week carbs), frozen dumplings, eggs, pre-cooked or braised meats, tofu, leafy greens, sauces, bananas and honey. Add a cooler bag — the room may not have a fridge.", map: "Chinatown Supermarket Salt Lake City" },
-        { time: "~9:00 PM", title: "🍳 Target / Walmart — rice cooker & warm layers", detail: "The one essential: an ELECTRIC RICE COOKER (the motel has no kitchen — this cooks rice, congee, noodles, steams buns and dumplings, boils eggs, blanches greens). Plus bowls, chopsticks, utensils, a small knife + cutting board, a thermos, dish soap + sponge, and fleece / beanie / gloves — Yellowstone mornings are near freezing. Skip pots and pans; there’s no stove. Most stores close 10–11pm, so this is the last stop.", map: "Target Salt Lake City Central" },
+        { time: "~8:00 PM", title: "🛒 Chinatown Supermarket — groceries for the week", detail: "3390 S State St (Sunday hours till 10pm, ~20 min from the airport). You’ll have a fridge, a microwave and a rice cooker, so shop properly: rice, congee fixings, noodles, mantou/baozi (race-week carbs), frozen dumplings, eggs, pre-cooked or braised meats, tofu, leafy greens, sauces, bananas and honey. A cooler bag is still worth it for the long park days.", map: "Chinatown Supermarket Salt Lake City" },
+        { time: "~9:00 PM", title: "🍳 Target / Walmart — rice cooker & warm layers", detail: "The one thing worth buying: an ELECTRIC RICE COOKER. The motel’s microwave reheats and steams, but only the cooker does proper rice and congee — and congee in a thermos is what makes the sunset wildlife sessions pleasant. Plus bowls, chopsticks, utensils, a small knife + cutting board, a thermos, dish soap + sponge, and fleece / beanie / gloves — Yellowstone mornings are near freezing. Skip pots and pans; there’s no stove. Most stores close 10–11pm, so this is the last stop.", map: "Target Salt Lake City Central" },
         { time: "Night", title: "🏨 Check in: Hyatt Place Downtown / The Gateway", detail: "55 N 400 W. No rush tomorrow — you leave at 10, and the free hot breakfast runs 6:30–9:00 on weekdays, so eat here before the errands. Charge everything.", map: "Hyatt Place Salt Lake City Downtown" }
       ],
       eat: "Grab something quick near the stores or at The Gateway; the rice cooker starts earning its keep tomorrow night.",
@@ -73,7 +73,7 @@ const TRIP = {
         { time: "~4:10 PM", title: "🏞 Jenny Lake — only if you’re ahead of schedule", detail: "The prettiest lake in the park, but it’s a ~20-min detour each way. Do a short lakeshore stroll only if you reached Mormon Row by 3:15; otherwise skip it — the light at Oxbow and getting through the park before dark matter more.", map: "Jenny Lake" },
         { time: "~4:30 PM", title: "🦌 Oxbow Bend", detail: "Mount Moran reflected in the Snake River; moose and elk in the afternoon light. Northernmost stop — from here it’s straight north to Yellowstone.", map: "Oxbow Bend Turnout" },
         { time: "4:45 PM", title: "🚗 North through the South Entrance → West Thumb", detail: "Leave Oxbow by 4:45pm. Yellowstone’s South Entrance is ~40 min, then West Thumb Geyser Basin (20–30 min: lakeside geysers, Fishing Cone) — you won’t need to come back here later. Then west past Old Faithful → Madison → West Yellowstone. Sunset ~7:35pm; the last stretch is at dusk, so drive slowly — animals are on the road.", map: "West Thumb Geyser Basin" },
-        { time: "~8:00 PM", title: "🏠 Check in: Dude & Roundup Motel", detail: "3 Madison Ave, one block from the West Entrance — your base for 5 nights. Set up the rice cooker (ask the front desk where it’s fine to use it), get rice or congee going, and put the Starlink Mini somewhere with a clear view of the sky. Grab a bucket of ice for the cooler.", map: "Dude and Roundup Motel West Yellowstone" }
+        { time: "~8:00 PM", title: "🏠 Check in: Dude & Roundup Motel", detail: "3 Madison Ave, one block from the West Entrance — your base for 5 nights. Load the fridge, set up the rice cooker, get rice or congee going for tomorrow’s thermos, and put the Starlink Mini somewhere with a clear view of the sky.", map: "Dude and Roundup Motel West Yellowstone" }
       ],
       eat: "Hotel breakfast in SLC; lunch in Jackson (fuel stop); first rice-cooker dinner at the motel.",
       tips: [
@@ -225,15 +225,15 @@ const TRIP = {
     "TODO — Flight SLC → LAX (Sep 20, evening)",
     "TODO — Rental car: SLC Sep 13 night → Sep 19 afternoon (confirm one location, or airport pickup / downtown return)",
     "✅ Hyatt Place Salt Lake City / Downtown / The Gateway (55 N 400 W) — Sep 13 & Sep 19, both SLC nights. Free breakfast, mini-fridge, ~10-min walk to the Salt Palace",
-    "✅ Dude & Roundup Motel, West Yellowstone (3 Madison Ave) — Double Deluxe, multiple beds, Sep 14–19. ⚠️ NO kitchen: call ahead and ask (a) whether your room has a fridge and microwave, and (b) whether an in-room rice cooker is allowed",
-    "🍚 BUY AN ELECTRIC RICE COOKER on Sep 13 — with no kitchen it is your stove all week: rice, congee, noodles, steamed buns and dumplings, boiled eggs, blanched greens",
+    "✅ Dude & Roundup Motel, West Yellowstone (3 Madison Ave) — Double Deluxe, multiple beds, Sep 14–19. No kitchen, but a FRIDGE and MICROWAVE are confirmed by phone — just mention the rice cooker at check-in",
+    "🍚 Buy an ELECTRIC RICE COOKER on Sep 13 — the fridge and microwave cover storage and reheating, but only the cooker does proper rice and congee (thermos fuel for the sunset wildlife sessions)",
     "✅ HYROX Salt Lake City registration (Sep 20) — confirm your wave time in the app",
     "📦 Whole Foods package pickup (Sep 14 morning) — have the pickup code ready",
     "📡 Starlink Mini pickup (Sep 14 morning) — account activated & app signed in",
     "🎫 Park entry: Grand Teton $35 + Yellowstone $35 per vehicle (7 days), or the $80 America the Beautiful annual pass",
     "🐻 Bear spray — buy in Jackson or West Yellowstone (~$45–50); it cannot fly",
-    "🛒 Grocery list for Chinatown Supermarket (Sep 13, Sunday till 10pm) — rice-cooker friendly: rice, congee fixings, noodles, mantou/baozi, frozen dumplings, eggs, pre-cooked/braised meats, tofu, leafy greens, sauces, bananas, honey",
-    "🍳 Target or Walmart list: ELECTRIC RICE COOKER, bowls, chopsticks, utensils, small knife + cutting board, thermos, cooler bag, dish soap + sponge, fleece, beanie, gloves (no pots or pans — there’s no stove)",
+    "🛒 Grocery list for Chinatown Supermarket (Sep 13, Sunday till 10pm) — you have a fridge, microwave and rice cooker: rice, congee fixings, noodles, mantou/baozi, frozen dumplings, eggs, pre-cooked/braised meats, tofu, leafy greens, sauces, bananas, honey",
+    "🍳 Target or Walmart list: ELECTRIC RICE COOKER, bowls, chopsticks, utensils, small knife + cutting board, thermos, cooler bag (for the long park days), dish soap + sponge, fleece, beanie, gloves (no pots or pans — there’s no stove)",
     "📲 Download before losing signal: NPS Yellowstone app (geyser predictions), offline Google Maps for the park, GeyserTimes",
     "── ROAD & PARK STATUS ──────────────",
     "🛣 Check NPS road status the night before each park day (early snow can close Dunraven Pass); Tower Junction bridge work means up to 30-min single-lane waits through Sep 30",
@@ -245,7 +245,7 @@ const TRIP = {
     "Essentials": ["ID / driver’s licence (for the rental car)", "Credit cards + a little cash", "Phone + car charger + power bank", "Starlink Mini + power (12V / USB-C) + app signed in", "Offline maps + NPS app downloaded", "Park pass / receipt", "Water bottles (2+) — altitude & dry air", "Sunscreen, sunglasses, lip balm (strong sun at 7,000 ft)", "Headlamp (after-dark drives home from Hayden & Lamar)", "Binoculars 🐺"],
     "Cold-weather layers": ["Fleece / down mid-layer", "Waterproof, windproof shell", "Beanie + gloves (mornings ~30°F)", "Thermal base layer", "Warm socks", "Comfortable broken-in walking / hiking shoes", "Rain pants or quick-dry pants"],
     "Hiking & wildlife": ["🐻 Bear spray (buy on arrival — cannot fly)", "Day pack", "Trail snacks", "Thermos (congee / hot tea for the sunset wildlife sessions)", "Blister plasters / small first-aid kit", "Camera / phone lens wipe (geyser steam)"],
-    "Cooking & food": ["Electric rice cooker (buy Sep 13 — no kitchen at the motel)", "Bowls, chopsticks, utensils, small knife + cutting board", "Cooler bag + ice from the motel machine (room may have no fridge)", "Dish soap + sponge + a few food containers", "Rice, congee fixings, noodles, mantou/baozi (race-week carbs)", "Eggs, frozen dumplings, pre-cooked meats, tofu, leafy greens, sauces", "Bananas, honey, juice, rice cakes (carb-load fillers)", "Electrolyte tabs / sports drink"],
+    "Cooking & food": ["Electric rice cooker (buy Sep 13 — for rice & congee)", "Bowls, chopsticks, utensils, small knife + cutting board", "Cooler bag + ice for the long park days (the room has a fridge)", "Dish soap + sponge + a few food containers", "Rice, congee fixings, noodles, mantou/baozi (race-week carbs)", "Eggs, frozen dumplings, pre-cooked meats, tofu, leafy greens, sauces", "Bananas, honey, juice, rice cakes (carb-load fillers)", "Electrolyte tabs / sports drink"],
     "HYROX race kit": ["Race shoes (broken in) + socks", "Race top / shorts + a change of clothes", "Gels / chews (tested before) + electrolytes", "Chalk (if allowed) + wrist wraps / grips if you use them", "Race bib / packet confirmation", "Foam roller or massage ball", "Compression socks for the flight home"]
   }
 };
