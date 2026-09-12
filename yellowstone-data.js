@@ -21,8 +21,8 @@ const TRIP = {
     "🧥 Mid-September Yellowstone: days 55–65°F, mornings 25–35°F, snow possible any day at 6,600–8,900 ft. Fleece + shell + beanie every morning; strong sun at altitude.",
     "🛣 All park roads are open, including Dunraven Pass (closes Oct 12) — but the Yellowstone River Bridge at Tower Junction has single-lane work with up to 30-min waits through Sep 30, right on your Lamar Valley day.",
     "🏋️ It’s HYROX taper week: Yellowstone is active recovery (boardwalks, one short hike), not training — and there are no predawn starts: every day leaves around 9:30–10am and wildlife is scheduled at sunset instead. The hard work is done; carb-loading starts Sep 17.",
-    "📡 No cell service inside the park. The Starlink Mini works with a clear sky — from the rental’s driveway, parking lots and turnouts — so download offline maps and geyser predictions too.",
-    "🍚 You’re self-catering: Chinatown Supermarket on night one stocks the week, and a thermos of congee makes the sunset wildlife sessions and the long drives home civilised."
+    "📡 No cell service inside the park. The Starlink Mini works with a clear sky — from the motel parking lot, trailhead lots and turnouts — so download offline maps and geyser predictions too.",
+    "🍚 The motel room has NO kitchen, so one electric rice cooker (bought Sep 13) is your stove all week: rice, congee, noodles, steamed buns, boiled eggs, blanched greens. Chinatown Supermarket on night one stocks the rest, and a thermos of congee makes the sunset wildlife sessions and dark drives home civilised."
   ],
 
   cities: [
@@ -33,9 +33,8 @@ const TRIP = {
 
   // ---- Where you're staying ----
   stays: [
-    { hotel: "Salt Lake City hotel (night 1)", city: "Salt Lake City", dates: "Sep 13", nights: 1, area: "Late-evening arrival — near the airport or the South State St shops is easiest." },
-    { hotel: "Dude & Roundup Motel, West Yellowstone", city: "West Yellowstone", dates: "Sep 14–19", nights: 5, area: "3 Madison Ave — ONE BLOCK from Yellowstone’s West Entrance, so every park day starts immediately (14 mi to Madison Junction) and the after-dark drives home end fast. Kitchens are available here but not in every room — confirm yours has one, since you’re cooking all week. Starlink Mini works from the parking lot." },
-    { hotel: "Downtown Salt Lake City hotel (race eve)", city: "Salt Lake City", dates: "Sep 19", nights: 1, area: "Walking distance to the Salt Palace Convention Center (90 S West Temple) — you have no car after the Sep 19 return." }
+    { hotel: "Hyatt Place Salt Lake City / Downtown / The Gateway", city: "Salt Lake City", dates: "Sep 13 & Sep 19", nights: 2, area: "55 N 400 W, at The Gateway — ~15 min from the airport, and a ~0.5 mi (10-min) walk to the Salt Palace, so race morning needs no car or Uber. Free hot breakfast (weekdays 6:30–9:00, later at weekends) and a mini-fridge in the room." },
+    { hotel: "Dude & Roundup Motel, West Yellowstone", city: "West Yellowstone", dates: "Sep 14–19", nights: 5, area: "3 Madison Ave, Double Deluxe room with multiple beds — ONE BLOCK from Yellowstone’s West Entrance, so every park day starts immediately (14 mi to Madison Junction) and the after-dark drives home end fast. NO kitchen, and rooms vary on fridge/microwave — an electric rice cooker is your stove for the week. Starlink Mini works from the parking lot." }
   ],
 
   // ---- Day-by-day itinerary ----
@@ -45,14 +44,14 @@ const TRIP = {
       date: "2026-09-13",
       city: "Salt Lake City",
       title: "Fly to Salt Lake City · Night car pickup & supply run",
-      summary: "Travel day. Land in the evening, grab the rental, then a one-stop-shop night: Chinese groceries for the week at Chinatown Supermarket (open till 10pm Sunday), plus cookware and warm layers nearby.",
+      summary: "Travel day. Land in the evening, grab the rental car, then a one-stop-shop night northbound: Chinese groceries for the week at Chinatown Supermarket (open till 10pm Sunday), then an electric rice cooker and warm layers — your motel room has no kitchen, so that cooker is the whole kitchen.",
       blocks: [
         { time: "Evening", title: "✈️ Land at SLC → pick up the rental car", detail: "Rental counters are in the terminal / Rental Car Center. Note the mileage — you return the car Sep 19 afternoon. Check the trunk fits a week of food plus gear.", map: "Salt Lake City International Airport" },
-        { time: "~8:00 PM", title: "🛒 Chinatown Supermarket — groceries for the week", detail: "3390 S State St (Sunday hours till 10pm, ~20 min from the airport). Stock rice, noodles, rice noodles, mantou/baozi (race-week carbs), eggs, chicken breast, tofu, fish, veg, sauces and congee fixings. Buy a small cooler bag if you don’t have one.", map: "Chinatown Supermarket Salt Lake City" },
-        { time: "~9:00 PM", title: "🍳 Target / Walmart — cookware & warm layers", detail: "Pot, pan, a rice cooker if the rental has none, utensils, a thermos, plus fleece / beanie / gloves — Yellowstone mornings are near freezing. Most stores close 10–11pm, so this is the last stop.", map: "Target Salt Lake City Central" },
-        { time: "Night", title: "🏨 Check in for the night", detail: "Keep it simple — you have an early errand run and a 5-hour drive tomorrow. Charge everything.", map: "Downtown Salt Lake City" }
+        { time: "~8:00 PM", title: "🛒 Chinatown Supermarket — groceries for the week", detail: "3390 S State St (Sunday hours till 10pm, ~20 min from the airport). Buy for a rice cooker, not a stove: rice, congee fixings, noodles, mantou/baozi (race-week carbs), frozen dumplings, eggs, pre-cooked or braised meats, tofu, leafy greens, sauces, bananas and honey. Add a cooler bag — the room may not have a fridge.", map: "Chinatown Supermarket Salt Lake City" },
+        { time: "~9:00 PM", title: "🍳 Target / Walmart — rice cooker & warm layers", detail: "The one essential: an ELECTRIC RICE COOKER (the motel has no kitchen — this cooks rice, congee, noodles, steams buns and dumplings, boils eggs, blanches greens). Plus bowls, chopsticks, utensils, a small knife + cutting board, a thermos, dish soap + sponge, and fleece / beanie / gloves — Yellowstone mornings are near freezing. Skip pots and pans; there’s no stove. Most stores close 10–11pm, so this is the last stop.", map: "Target Salt Lake City Central" },
+        { time: "Night", title: "🏨 Check in: Hyatt Place Downtown / The Gateway", detail: "55 N 400 W. No rush tomorrow — you leave at 10, and the free hot breakfast runs 6:30–9:00 on weekdays, so eat here before the errands. Charge everything.", map: "Hyatt Place Salt Lake City Downtown" }
       ],
-      eat: "Grab something quick near the stores; you’ll be cooking from tomorrow.",
+      eat: "Grab something quick near the stores or at The Gateway; the rice cooker starts earning its keep tomorrow night.",
       tips: [
         "If you land after ~9pm, move the Chinese grocery run to Sep 14 morning (opens 8am) — it’s on the way from Whole Foods.",
         "Bear spray can’t fly — you’ll buy it in Jackson or West Yellowstone tomorrow (~$45–50). Don’t look for it tonight.",
@@ -66,7 +65,7 @@ const TRIP = {
       title: "Pickups → Grand Teton → into Yellowstone",
       summary: "No alarm needed: a 9am errand run (Whole Foods package, Starlink Mini), on the road by 10, the ~5-hour drive to Grand Teton for the quick classic stops, then north through Yellowstone’s South Entrance to your West Yellowstone base by dark.",
       blocks: [
-        { time: "~9:00 AM", title: "📦 Whole Foods — package pickup", detail: "Sleep in, then grab the package at the customer-service / Amazon counter. Coffee and breakfast here too.", map: "Whole Foods Market Salt Lake City" },
+        { time: "~9:00 AM", title: "📦 Whole Foods — package pickup", detail: "Eat the free hotel breakfast first (6:30–9:00 on weekdays), then grab the package at the customer-service / Amazon counter.", map: "Whole Foods Market Salt Lake City" },
         { time: "~9:45 AM", title: "📡 Pick up the Starlink Mini", detail: "Power it up in the car and make sure the app is signed in before you leave cell coverage — there’s almost no service inside the park." },
         { time: "10:00 AM", title: "🚗 Depart SLC → Grand Teton (~5 hrs)", detail: "I-15 North → US-89 through Star Valley into Jackson (scenic), or I-15 → Idaho Falls → US-26 (a touch faster). Fuel up in Jackson and buy BEAR SPRAY here (~$45–50) — it’s grizzly country from here on. Aim to be in Jackson by ~3pm.", map: "Jackson Wyoming" },
         { time: "~3:15 PM", title: "🏔 Mormon Row — the Moulton barns", detail: "The postcard: weathered barns with the Teton range behind. 20 minutes, right off Antelope Flats Road. Bison often graze nearby — stay 25 yards back.", map: "Mormon Row Historic District" },
@@ -74,9 +73,9 @@ const TRIP = {
         { time: "~4:10 PM", title: "🏞 Jenny Lake — only if you’re ahead of schedule", detail: "The prettiest lake in the park, but it’s a ~20-min detour each way. Do a short lakeshore stroll only if you reached Mormon Row by 3:15; otherwise skip it — the light at Oxbow and getting through the park before dark matter more.", map: "Jenny Lake" },
         { time: "~4:30 PM", title: "🦌 Oxbow Bend", detail: "Mount Moran reflected in the Snake River; moose and elk in the afternoon light. Northernmost stop — from here it’s straight north to Yellowstone.", map: "Oxbow Bend Turnout" },
         { time: "4:45 PM", title: "🚗 North through the South Entrance → West Thumb", detail: "Leave Oxbow by 4:45pm. Yellowstone’s South Entrance is ~40 min, then West Thumb Geyser Basin (20–30 min: lakeside geysers, Fishing Cone) — you won’t need to come back here later. Then west past Old Faithful → Madison → West Yellowstone. Sunset ~7:35pm; the last stretch is at dusk, so drive slowly — animals are on the road.", map: "West Thumb Geyser Basin" },
-        { time: "~8:00 PM", title: "🏠 Check in: Dude & Roundup Motel", detail: "3 Madison Ave, one block from the West Entrance — your base for 5 nights. Unpack the kitchen, cook a simple dinner, and set the Starlink Mini somewhere with a clear view of the sky.", map: "Dude and Roundup Motel West Yellowstone" }
+        { time: "~8:00 PM", title: "🏠 Check in: Dude & Roundup Motel", detail: "3 Madison Ave, one block from the West Entrance — your base for 5 nights. Set up the rice cooker (ask the front desk where it’s fine to use it), get rice or congee going, and put the Starlink Mini somewhere with a clear view of the sky. Grab a bucket of ice for the cooler.", map: "Dude and Roundup Motel West Yellowstone" }
       ],
-      eat: "Breakfast at Whole Foods; lunch in Jackson (fuel stop); cook dinner at the rental.",
+      eat: "Hotel breakfast in SLC; lunch in Jackson (fuel stop); first rice-cooker dinner at the motel.",
       tips: [
         "Leaving Oxbow after ~5:15pm? Take the Idaho route instead: Jackson → Teton Pass → Victor → Ashton → Island Park → West Yellowstone (~2h45, no wildlife jams, lit highway) — you’d skip West Thumb, which is fine.",
         "Park passes: Grand Teton $35 + Yellowstone $35 per vehicle (7 days each) = $70; buy the $80 America the Beautiful annual pass only if you’ll visit another park within a year.",
@@ -99,7 +98,7 @@ const TRIP = {
         { time: "~5:00 PM", title: "🧿 Biscuit Basin & Black Sand Basin", detail: "Two small, colourful basins on the way back — Sapphire Pool and Emerald Pool. 20 minutes each.", map: "Biscuit Basin" },
         { time: "~6:30 PM", title: "🦬 Madison meadows at dusk — bison & elk", detail: "Your first sunset wildlife session, 15 min from home: bison and elk graze the Madison River meadows in the last light (sunset ~7:35). Pull over at the turnouts; stay in or beside the car.", map: "Madison Junction" }
       ],
-      eat: "Late breakfast at the rental; packed lunch (rice + protein) at Old Faithful; dinner at the rental after dusk.",
+      eat: "Late rice-cooker breakfast at the motel; packed lunch (rice + protein) at Old Faithful; dinner back at the motel after dusk.",
       tips: [
         "Old Faithful predictions: NPS app or geysertimes.org. Riverside and Grand are the two other predictable ones — check the board.",
         "Boardwalks only — the crust is thin and the water is boiling. Keep phones and hats secured; nothing can be retrieved.",
@@ -119,9 +118,9 @@ const TRIP = {
         { time: "~2:30 PM", title: "🌋 Mud Volcano & Dragon’s Mouth Spring", detail: "Drive south straight through Hayden Valley (a quick look — you’re coming back for the sunset) to the sulphurous, churning mud features on a short boardwalk loop. 30 minutes.", map: "Mud Volcano" },
         { time: "~3:15 PM", title: "🏞 Fishing Bridge & Lake Yellowstone Hotel", detail: "The huge alpine lake (7,733 ft). Walk the shore, peek into the 1891 Lake Hotel sunroom. 45 minutes.", map: "Lake Yellowstone Hotel" },
         { time: "~4:30 PM", title: "🌅 Hayden Valley — the sunset wildlife session", detail: "Back north into Hayden Valley for the last three hours of light (sunset ~7:30). Drive it slowly, then settle at a turnout (Grizzly Overlook or the Alum Creek pullouts) with binoculars and a thermos: bison herds, elk, and this is when grizzlies and wolves come out. Never approach; 25 yards from bison, 100 from bears.", map: "Hayden Valley" },
-        { time: "~7:45 PM", title: "🌙 Home in the dark via Canyon → Norris → Madison", detail: "~2 hrs. Drive slowly (45 mph max), high beams when the road is empty — bison stand on the asphalt for the warmth. Late dinner at the rental." }
+        { time: "~7:45 PM", title: "🌙 Home in the dark via Canyon → Norris → Madison", detail: "~2 hrs. Drive slowly (45 mph max), high beams when the road is empty — bison stand on the asphalt for the warmth. Late dinner at the motel." }
       ],
-      eat: "Lunch at the Canyon Village picnic area; thermos + buns at Hayden Valley; late dinner at the rental.",
+      eat: "Lunch at the Canyon Village picnic area; thermos + buns at Hayden Valley; late dinner at the motel.",
       tips: [
         "Hayden Valley is best in the last two hours of light — that’s your wildlife session, no alarm required. Bison are guaranteed; grizzlies and wolves are a real chance at dusk.",
         "Brink of the Lower Falls is the only real climb this week — keep it steady; no need for more.",
@@ -141,7 +140,7 @@ const TRIP = {
         { time: "~3:30 PM", title: "🐺 Lamar Valley — afternoon into sunset", detail: "America’s Serengeti, from mid-afternoon to sunset (~7:30). Bison herds and pronghorn all afternoon; the last two hours of light are when wolves and bears show. Work the turnouts between Slough Creek and Soda Butte with binoculars, and join anyone with a spotting scope — the wolf-watchers know where the packs are.", map: "Lamar Valley" },
         { time: "~7:45 PM", title: "🌙 Drive home after dark — the way you came", detail: "Lamar → Tower → Mammoth → Norris → West Yellowstone, ~2.5–3 hrs on the lower, familiar road (skip Dunraven Pass in the dark). Slow and steady; home ~10:30pm. Thermos and buns for the road, then a light supper or straight to bed." }
       ],
-      eat: "Late breakfast at the rental; lunch at Mammoth; thermos of congee + buns for Lamar and the drive home; a light late supper.",
+      eat: "Late rice-cooker breakfast at the motel; lunch at Mammoth; thermos of congee + buns for Lamar and the drive home; a light late supper.",
       tips: [
         "⚠️ Road work at the Yellowstone River Bridge by Tower Junction: single lane with a signal, up to 30-min waits, through Sep 30 — budget it both directions (including after dark).",
         "Dusk is the second-best wolf window after dawn, and you don’t need an alarm for it. Binoculars are the difference between ‘saw a wolf’ and ‘saw a dot’.",
@@ -165,7 +164,7 @@ const TRIP = {
       tips: [
         "D-2 shakeout: 15–20 min easy jog + 4 × 15s strides + a light rehearsal of the stations (10 air-squat-to-press, 20 walking lunges, a few burpees) — technique only, nothing hard. Any time of day.",
         "Carb target today and tomorrow: ~6–8 g per kg bodyweight. Rice cakes, bananas, honey water and juice fill the gaps.",
-        "Put the trail gear away tonight — you won’t need it again; bear spray can’t fly, so leave it with the rental or gift it."
+        "Put the trail gear away tonight — you won’t need it again; bear spray can’t fly, so leave it at the motel or gift it."
       ]
     },
     {
@@ -173,12 +172,12 @@ const TRIP = {
       city: "Salt Lake City",
       multiCity: true,
       title: "Drive back to Salt Lake City · Returns & race eve",
-      summary: "Out at 11am, the easy 5-hour run down US-20 and I-15 to Salt Lake City, return the car and everything else in the afternoon, check in downtown near the Salt Palace, and do the race-eve routine.",
+      summary: "Out at 11am, the easy 5-hour run down US-20 and I-15 to Salt Lake City, return the car and everything else in the afternoon, back into the Hyatt Place downtown, and the race-eve routine.",
       blocks: [
         { time: "11:00 AM", title: "🚗 Check out & depart West Yellowstone", detail: "US-20 south through Island Park and Ashton → Idaho Falls → I-15 south. ~320 miles, ~5 hrs with a stop. Descending from 6,600 ft to 4,300 ft — you’ll feel lighter.", map: "Dude and Roundup Motel West Yellowstone" },
         { time: "~1:00 PM", title: "⛽ Fuel & stretch at Idaho Falls", detail: "Halfway. Gas, restroom, a 10-minute walk, refill water. Lunch from the cooler (rice + chicken) — keep it familiar and low-fibre.", map: "Idaho Falls Idaho" },
-        { time: "~4:00 PM", title: "🔁 Arrive SLC — return the car & everything else", detail: "Return the rental (airport or a downtown branch), plus the Starlink Mini and anything else you planned to return — keep receipts and packaging together. Then Uber downtown.", map: "Salt Lake City International Airport" },
-        { time: "~5:30 PM", title: "🏨 Check in downtown near the Salt Palace", detail: "Walking distance to 90 S West Temple means no logistics on race morning. Pick up your race packet if it’s available today.", map: "Salt Palace Convention Center" },
+        { time: "~4:00 PM", title: "🔁 Arrive SLC — return the car & everything else", detail: "Return the rental car (airport or a downtown branch), plus the Starlink Mini and anything else you planned to return — keep receipts and packaging together. The rice cooker has done its job: leave it, gift it, or check it in your bag. Then Uber to the hotel.", map: "Salt Lake City International Airport" },
+        { time: "~5:30 PM", title: "🏨 Check in: Hyatt Place Downtown / The Gateway", detail: "55 N 400 W — a ~0.5 mi, 10-minute walk to the Salt Palace, so race morning needs no transport at all. Pick up your race packet if it’s available today.", map: "Hyatt Place Salt Lake City Downtown" },
         { time: "Evening", title: "🏁 Race-eve routine", detail: "15–20 min walk or very easy jog + 10 min mobility (or full rest). Dinner: white rice + steamed chicken/fish + a little veg + clear soup — nothing new, fried, spicy or high-fibre, no alcohol. Lay out the kit, fill the bottles, set the alarm, in bed early." }
       ],
       eat: "Cooler lunch at Idaho Falls; carb-heavy, low-fibre, familiar dinner downtown (rice-based).",
@@ -194,7 +193,7 @@ const TRIP = {
       title: "HYROX Salt Lake City · Fly to LAX",
       summary: "Race day at the Salt Palace Convention Center, downtown. Familiar breakfast 2.5–3 hours before your wave, a proper warm-up, race, recover — then an Uber to the airport and the evening flight to LAX.",
       blocks: [
-        { time: "Wave −3h", title: "🍚 Race breakfast", detail: "Congee / white rice / oats + a banana + a little egg or chicken, 2.5–3 hrs before your start. Coffee as usual if you drink it. 45–60 min before: a banana or a gel + sports drink." },
+        { time: "Wave −3h", title: "🍚 Race breakfast", detail: "Congee / white rice / oats + a banana + a little egg or chicken, 2.5–3 hrs before your start. Coffee as usual if you drink it. ⚠️ The hotel’s free breakfast opens later at weekends (~7:00am), so for an early wave keep your own breakfast in the room fridge the night before; a midday wave can eat downstairs. 45–60 min before: a banana or a gel + sports drink." },
         { time: "Wave −25min", title: "🔥 Warm-up", detail: "8–10 min easy jog → dynamic mobility → 3 × 20s builds → a light touch of each station (30s row / 30s ski, a few sled steps, 5 wall balls) → 5 quiet minutes before the start." },
         { time: "Your wave", title: "🏁 HYROX Salt Lake City — Salt Palace Convention Center", detail: "90 S West Temple, downtown. Pacing: first 1 km 10–15 s/km slower than goal; sled push low hips + short steps; farmers carry unbroken; wall balls in planned sets (e.g. 25/25/25/25) with short rests; long, low-rate strokes on ski and row. Sip electrolytes at the stations; a gel around station 4 if you’ll be over 60 min.", map: "Salt Palace Convention Center" },
         { time: "After", title: "🥤 Recovery meal & shower", detail: "Carbs + protein within an hour (rice + chicken or a recovery shake), keep walking, then shower at the hotel and check out." },
@@ -216,7 +215,7 @@ const TRIP = {
     { label: "SLC → Grand Teton", value: "Sep 14: ~280 miles / ~5 hrs via I-15 → US-89 (Star Valley → Jackson) or I-15 → Idaho Falls → US-26. Then north through Yellowstone’s South Entrance to West Yellowstone (~3 hrs incl. West Thumb)." },
     { label: "Yellowstone base", value: "Dude & Roundup Motel, 3 Madison Ave, West Yellowstone — one block from the West Entrance, 5 nights Sep 14–19. Madison Junction is 14 miles in; Old Faithful ~45 min, Canyon ~1h15, Mammoth ~1h30, Lamar Valley ~2.5 hrs." },
     { label: "West Yellowstone → SLC", value: "Sep 19: 11am departure, ~320 miles / ~5 hrs via US-20 → I-15 (Idaho Falls stop). Return the car + everything else in the afternoon." },
-    { label: "HYROX", value: "Sep 20 (Sun) at the Salt Palace Convention Center, 90 S West Temple, downtown SLC. Waves 07:00–16:40 by category — confirm yours. No car: walk from the hotel, Uber to the airport (~15 min)." },
+    { label: "HYROX", value: "Sep 20 (Sun) at the Salt Palace Convention Center, 90 S West Temple, downtown SLC. Waves 07:00–16:40 by category — confirm yours. No car needed: a ~0.5 mi (10-min) walk from the Hyatt Place, then Uber to the airport (~15 min)." },
     { label: "Flight home", value: "Sep 20 (Sun) evening: SLC → LAX. Be at the airport 2 hrs before departure." }
   ],
 
@@ -225,16 +224,16 @@ const TRIP = {
     "TODO — Flight SFO → SLC (Sep 13, evening arrival)",
     "TODO — Flight SLC → LAX (Sep 20, evening)",
     "TODO — Rental car: SLC Sep 13 night → Sep 19 afternoon (confirm one location, or airport pickup / downtown return)",
-    "TODO — Salt Lake City hotel, Sep 13 (1 night)",
-    "✅ Dude & Roundup Motel, West Yellowstone (3 Madison Ave), Sep 14–19 — ⚠️ confirm your room has a KITCHEN (they’re available but not in every room) since you’re cooking all week",
-    "TODO — Downtown SLC hotel near the Salt Palace, Sep 19 (1 night)",
+    "✅ Hyatt Place Salt Lake City / Downtown / The Gateway (55 N 400 W) — Sep 13 & Sep 19, both SLC nights. Free breakfast, mini-fridge, ~10-min walk to the Salt Palace",
+    "✅ Dude & Roundup Motel, West Yellowstone (3 Madison Ave) — Double Deluxe, multiple beds, Sep 14–19. ⚠️ NO kitchen: call ahead and ask (a) whether your room has a fridge and microwave, and (b) whether an in-room rice cooker is allowed",
+    "🍚 BUY AN ELECTRIC RICE COOKER on Sep 13 — with no kitchen it is your stove all week: rice, congee, noodles, steamed buns and dumplings, boiled eggs, blanched greens",
     "✅ HYROX Salt Lake City registration (Sep 20) — confirm your wave time in the app",
     "📦 Whole Foods package pickup (Sep 14 morning) — have the pickup code ready",
     "📡 Starlink Mini pickup (Sep 14 morning) — account activated & app signed in",
     "🎫 Park entry: Grand Teton $35 + Yellowstone $35 per vehicle (7 days), or the $80 America the Beautiful annual pass",
     "🐻 Bear spray — buy in Jackson or West Yellowstone (~$45–50); it cannot fly",
-    "🛒 Grocery list for Chinatown Supermarket (Sep 13, Sunday till 10pm): rice, noodles, rice noodles, mantou/baozi, eggs, chicken breast, tofu, fish, veg, sauces, congee fixings, bananas, honey",
-    "🍳 Cookware / clothes list for Target or Walmart: pot, pan, rice cooker (if needed), utensils, thermos, cooler bag, fleece, beanie, gloves",
+    "🛒 Grocery list for Chinatown Supermarket (Sep 13, Sunday till 10pm) — rice-cooker friendly: rice, congee fixings, noodles, mantou/baozi, frozen dumplings, eggs, pre-cooked/braised meats, tofu, leafy greens, sauces, bananas, honey",
+    "🍳 Target or Walmart list: ELECTRIC RICE COOKER, bowls, chopsticks, utensils, small knife + cutting board, thermos, cooler bag, dish soap + sponge, fleece, beanie, gloves (no pots or pans — there’s no stove)",
     "📲 Download before losing signal: NPS Yellowstone app (geyser predictions), offline Google Maps for the park, GeyserTimes",
     "── ROAD & PARK STATUS ──────────────",
     "🛣 Check NPS road status the night before each park day (early snow can close Dunraven Pass); Tower Junction bridge work means up to 30-min single-lane waits through Sep 30",
@@ -243,10 +242,10 @@ const TRIP = {
 
   // ---- Packing list ----
   packing: {
-    "Essentials": ["ID / driver’s licence (for the rental)", "Credit cards + a little cash", "Phone + car charger + power bank", "Starlink Mini + power (12V / USB-C) + app signed in", "Offline maps + NPS app downloaded", "Park pass / receipt", "Water bottles (2+) — altitude & dry air", "Sunscreen, sunglasses, lip balm (strong sun at 7,000 ft)", "Headlamp (after-dark drives home from Hayden & Lamar)", "Binoculars 🐺"],
+    "Essentials": ["ID / driver’s licence (for the rental car)", "Credit cards + a little cash", "Phone + car charger + power bank", "Starlink Mini + power (12V / USB-C) + app signed in", "Offline maps + NPS app downloaded", "Park pass / receipt", "Water bottles (2+) — altitude & dry air", "Sunscreen, sunglasses, lip balm (strong sun at 7,000 ft)", "Headlamp (after-dark drives home from Hayden & Lamar)", "Binoculars 🐺"],
     "Cold-weather layers": ["Fleece / down mid-layer", "Waterproof, windproof shell", "Beanie + gloves (mornings ~30°F)", "Thermal base layer", "Warm socks", "Comfortable broken-in walking / hiking shoes", "Rain pants or quick-dry pants"],
     "Hiking & wildlife": ["🐻 Bear spray (buy on arrival — cannot fly)", "Day pack", "Trail snacks", "Thermos (congee / hot tea for the sunset wildlife sessions)", "Blister plasters / small first-aid kit", "Camera / phone lens wipe (geyser steam)"],
-    "Cooking & food": ["Pot + pan + rice cooker (buy Sep 13)", "Utensils, cutting board, knife", "Cooler bag + ice packs", "Dish soap + sponge", "Rice, noodles, mantou/baozi, congee fixings (race-week carbs)", "Eggs, chicken breast, tofu, fish, veg, sauces", "Bananas, honey, juice, rice cakes (carb-load fillers)", "Electrolyte tabs / sports drink"],
+    "Cooking & food": ["Electric rice cooker (buy Sep 13 — no kitchen at the motel)", "Bowls, chopsticks, utensils, small knife + cutting board", "Cooler bag + ice from the motel machine (room may have no fridge)", "Dish soap + sponge + a few food containers", "Rice, congee fixings, noodles, mantou/baozi (race-week carbs)", "Eggs, frozen dumplings, pre-cooked meats, tofu, leafy greens, sauces", "Bananas, honey, juice, rice cakes (carb-load fillers)", "Electrolyte tabs / sports drink"],
     "HYROX race kit": ["Race shoes (broken in) + socks", "Race top / shorts + a change of clothes", "Gels / chews (tested before) + electrolytes", "Chalk (if allowed) + wrist wraps / grips if you use them", "Race bib / packet confirmation", "Foam roller or massage ball", "Compression socks for the flight home"]
   }
 };
@@ -261,7 +260,7 @@ const PLACES = {
   "Salt Lake City International Airport": [40.7899, -111.9791],
   "Chinatown Supermarket Salt Lake City": [40.6985, -111.8885],
   "Target Salt Lake City Central": [40.7433, -111.8990],
-  "Downtown Salt Lake City": [40.7608, -111.8910],
+  "Hyatt Place Salt Lake City Downtown": [40.7700, -111.9017],
   "Whole Foods Market Salt Lake City": [40.7607, -111.8710],
   "Salt Palace Convention Center": [40.7677, -111.8940],
   // ---- Grand Teton ----
