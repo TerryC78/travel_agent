@@ -350,11 +350,13 @@
   const WX = { byDate: {}, anyLive: false, updatedAt: null };
 
   // Seed WX from seasonal normals (available immediately, works offline).
+  // A trip may also ship `WEATHER.byDate` with captured per-day forecast
+  // numbers, which take precedence over the city-level normals.
   function seedWeatherNormals() {
     if (typeof WEATHER === "undefined") return;
     weatherDates().forEach((iso) => {
       const city = WEATHER.dayCity[iso];
-      const n = WEATHER.normals[city] || {};
+      const n = (WEATHER.byDate && WEATHER.byDate[iso]) || WEATHER.normals[city] || {};
       WX.byDate[iso] = { hi: n.hi, lo: n.lo, code: n.code, rainChance: n.rainChance, live: false, city };
     });
   }
