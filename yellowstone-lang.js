@@ -103,9 +103,9 @@ const TRIP_ZH = {
     "🐻 灰熊区：任何步道都要带熊喷雾（在 Jackson 或西黄石买——不能上飞机），离熊/狼 100 码、野牛/麋鹿 25 码。9月 Mammoth 的麋鹿发情期是亮点——但公鹿会冲人。",
     "🧥 9月中旬的黄石：白天 13–18°C，清晨 −4～2°C，海拔 2,000–2,700m 随时可能下雪。每天早上抓绒 + 防风雨外套 + 帽子；高原日晒强。",
     "🛣 园内道路全开，含 Dunraven Pass（10月12日关闭）——但 Tower Junction 的 Yellowstone River 桥施工到 9月30日，单车道最多等 30 分钟，正好在你的拉马尔谷那天。",
-    "🏋️ 这周是 HYROX 减量周：黄石是主动恢复（木栈道、一条短步道），不是训练。苦练已经完成；这里每天都让腿轻松，9月17日开始碳水加载。",
+    "🏋️ 这周是 HYROX 减量周：黄石是主动恢复（木栈道、一条短步道），不是训练——而且没有天亮前出发：每天 9:30–10 点才出门，看动物改到日落。苦练已经完成；9月17日开始碳水加载。",
     "📡 园内几乎无信号。Starlink Mini 需要开阔天空——住处车道、停车场、观景点都能用；同时也把离线地图和间歇泉预测下载好。",
-    "🍚 全程自己做饭：第一晚在中国城超市把一周食材买齐，保温壶里的粥让清晨看动物变得舒服。"
+    "🍚 全程自己做饭：第一晚在中国城超市把一周食材买齐，一壶粥让日落观兽和摸黑回家的长途都舒服起来。"
   ],
 
   cities: [
@@ -139,21 +139,21 @@ const TRIP_ZH = {
     },
     {
       title: "取件 → 大提顿 → 进黄石",
-      summary: "早上办事（Whole Foods 取件、Starlink Mini），然后约5小时车程到大提顿走经典的下午环线，再从黄石南门一路向北，天黑前到西黄石的住处。",
+      summary: "不用定闹钟：9点去办事（Whole Foods 取件、Starlink Mini），10点上路，约5小时车程到大提顿看几个经典点，再从黄石南门一路向北，天黑前到西黄石的住处。",
       blocks: [
-        { time: "约上午7:30", title: "📦 Whole Foods——取快递", detail: "一开门就去客服/Amazon 柜台取件。顺便在这儿买咖啡和早餐。" },
-        { time: "约上午8:15", title: "📡 取 Starlink Mini", detail: "在车里通电测试、确认 App 已登录，再离开有信号的地方——园内几乎没有服务。" },
-        { time: "上午9:00", title: "🚗 从 SLC 出发 → 大提顿（约5小时）", detail: "I-15 北 → US-89 经 Star Valley 进 Jackson（风景好），或 I-15 → Idaho Falls → US-26（稍快）。在 Jackson 加油，并在这儿买熊喷雾（约$45–50）——从这里起就是灰熊区。" },
-        { time: "约下午2:00", title: "🏔 Mormon Row——Moulton 谷仓", detail: "明信片画面：斑驳的谷仓背后是提顿山脉。20分钟，就在 Antelope Flats Road 边。附近常有野牛——保持25码。" },
-        { time: "约下午2:45", title: "📸 Snake River Overlook", detail: "安塞尔·亚当斯的机位——河湾与远处群峰。北上 US-89 路边快停。" },
-        { time: "约下午3:15", title: "🏞 Jenny Lake——湖边散步", detail: "园里最美的湖。从游客中心沿湖边轻松走30分钟足够（减量周——不爬大山）。" },
-        { time: "约下午4:00", title: "🦌 Oxbow Bend", detail: "Moran 山倒映在 Snake River 里；黄昏有驼鹿和麋鹿。最北的一站——从这儿直接北上黄石。" },
-        { time: "下午4:30", title: "🚗 穿黄石南门北上 → West Thumb", detail: "4:30pm 前离开 Oxbow。黄石南门约40分钟，然后 West Thumb 间歇泉盆地（30分钟：湖边间歇泉、Fishing Cone）——之后就不用再绕回来了。再往西经老忠实 → Madison → 西黄石。日落约7:35pm；黄昏慢开，路上有动物。" },
+        { time: "约上午9:00", title: "📦 Whole Foods——取快递", detail: "睡到自然醒，再去客服/Amazon 柜台取件。顺便在这儿买咖啡和早餐。" },
+        { time: "约上午9:45", title: "📡 取 Starlink Mini", detail: "在车里通电测试、确认 App 已登录，再离开有信号的地方——园内几乎没有服务。" },
+        { time: "上午10:00", title: "🚗 从 SLC 出发 → 大提顿（约5小时）", detail: "I-15 北 → US-89 经 Star Valley 进 Jackson（风景好），或 I-15 → Idaho Falls → US-26（稍快）。在 Jackson 加油，并在这儿买熊喷雾（约$45–50）——从这里起就是灰熊区。争取3点前到 Jackson。" },
+        { time: "约下午3:15", title: "🏔 Mormon Row——Moulton 谷仓", detail: "明信片画面：斑驳的谷仓背后是提顿山脉。20分钟，就在 Antelope Flats Road 边。附近常有野牛——保持25码。" },
+        { time: "约下午3:50", title: "📸 Snake River Overlook", detail: "安塞尔·亚当斯的机位——河湾与远处群峰。北上 US-89 路边快停。" },
+        { time: "约下午4:10", title: "🏞 Jenny Lake——只在时间充裕时去", detail: "园里最美的湖，但来回各要绕约20分钟。只有3:15前到了 Mormon Row 才去湖边短走一下；否则跳过——Oxbow 的光线和天黑前穿过公园更重要。" },
+        { time: "约下午4:30", title: "🦌 Oxbow Bend", detail: "Moran 山倒映在 Snake River 里；午后光线下有驼鹿和麋鹿。最北的一站——从这儿直接北上黄石。" },
+        { time: "下午4:45", title: "🚗 穿黄石南门北上 → West Thumb", detail: "4:45pm 前离开 Oxbow。黄石南门约40分钟，然后 West Thumb 间歇泉盆地（20–30分钟：湖边间歇泉、Fishing Cone）——之后就不用再绕回来了。再往西经老忠实 → Madison → 西黄石。日落约7:35pm；最后一段在黄昏，慢开——路上有动物。" },
         { time: "约晚上8:00", title: "🏠 入住西黄石", detail: "5晚的大本营，就在西门外。打开厨房，简单做个晚饭，把 Starlink Mini 架在能看到开阔天空的地方。" }
       ],
       eat: "早餐在 Whole Foods；午餐在 Jackson（加油站）；晚餐在住处做。",
       tips: [
-        "来不及了（5:30pm 后才离开提顿）？改走爱达荷线：Jackson → Teton Pass → Victor → Ashton → Island Park → 西黄石（约2h45，没有动物堵车，公路照明好）。",
+        "5:15pm 后才离开 Oxbow？改走爱达荷线：Jackson → Teton Pass → Victor → Ashton → Island Park → 西黄石（约2h45，没有动物堵车，公路照明好）——West Thumb 就跳过，没关系。",
         "门票：大提顿 $35 + 黄石 $35（每车7天）= $70；一年内还去别的国家公园再买 $80 年票。",
         "在 Jackson 买熊喷雾，从此每条步道都带着。",
         "减量周：今天只轻松走走——开车就是运动量。"
@@ -161,75 +161,76 @@ const TRIP_ZH = {
     },
     {
       title: "黄石 Day 1 · 间歇泉之乡：老忠实与大棱镜",
-      summary: "最近、回报最高的一天：Firehole 河沿线的间歇泉盆地、从观景台看大棱镜、一次老忠实喷发，再走 Upper Geyser Basin 木栈道。8–10 公里平坦木栈道——完美的主动恢复。",
+      summary: "最近、回报最高的一天，晚出发：Firehole 河沿线的间歇泉盆地、从观景台看大棱镜、一次老忠实喷发、Upper Geyser Basin 木栈道，黄昏在 Madison 草甸看野牛。8–10 公里平坦木栈道——完美的主动恢复。",
       blocks: [
-        { time: "上午8:00", title: "🌊 Firehole Canyon Drive 与 Firehole 瀑布", detail: "刚过 Madison Junction——2英里单行景观支路，到一个12米的瀑布。10分钟。" },
-        { time: "上午9:00", title: "🫧 Fountain Paint Pot", detail: "一条短环线看全四种地热景观：泥泉、喷气孔、温泉和间歇泉（Clepsydra 几乎一直在喷）。30分钟。" },
-        { time: "上午9:45", title: "🌈 Midway Geyser Basin——近看大棱镜", detail: "木栈道经过 Excelsior 间歇泉冒着蒸汽的坑，到大棱镜边缘。清晨凉的时候蒸汽最大——接下来的观景台才能看到完整的颜色。" },
-        { time: "上午10:45", title: "🥾 Fairy Falls 步道 → 大棱镜观景台", detail: "从 Fairy Falls 停车场，平路 1.2 公里再短爬一段到观景台——彩虹圈的俯瞰角度就是这里。往返约1小时。" },
-        { time: "中午12:30", title: "⛲ 老忠实 + Old Faithful Inn", detail: "在游客中心或 NPS App 查下一次预测喷发（约每90分钟，±10分钟）。提前15分钟占个长椅。然后去隔壁的历史旅馆大厅。" },
-        { time: "下午1:30", title: "🚶 Upper Geyser Basin 木栈道——Morning Glory Pool", detail: "2.4 公里木栈道，经过 Castle、Grand、Riverside 间歇泉到 Morning Glory Pool。Grand 的预测时段在游客中心的板上——30分钟内的话值得等。" },
-        { time: "下午4:00", title: "🧿 Biscuit Basin 与 Black Sand Basin", detail: "回程路上两个色彩鲜艳的小盆地——Sapphire Pool 和 Emerald Pool。各20分钟。" },
-        { time: "下午5:30", title: "🦬 经 Madison 回程——黄昏看动物", detail: "傍晚野牛和麋鹿在 Madison 河草甸吃草。在观景停车位停下；待在车里或车边。" }
+        { time: "约上午10:00", title: "🌊 Firehole Canyon Drive 与 Firehole 瀑布", detail: "慢慢吃完早饭，刚过 Madison Junction——2英里单行景观支路，到一个12米的瀑布。10分钟。" },
+        { time: "约上午10:45", title: "🫧 Fountain Paint Pot", detail: "一条短环线看全四种地热景观：泥泉、喷气孔、温泉和间歇泉（Clepsydra 几乎一直在喷）。30分钟。" },
+        { time: "约上午11:30", title: "🌈 Midway Geyser Basin——近看大棱镜", detail: "木栈道经过 Excelsior 间歇泉冒着蒸汽的坑，到大棱镜边缘。上午晚些正好——蒸汽比清晨少，颜色看得见。" },
+        { time: "约中午12:30", title: "🥾 Fairy Falls 步道 → 大棱镜观景台", detail: "从 Fairy Falls 停车场，平路 1.2 公里再短爬一段到观景台——彩虹圈的俯瞰角度就是这里，正午太阳在头顶时最好看。往返约1小时。" },
+        { time: "约下午2:00", title: "⛲ 老忠实 + Old Faithful Inn（在这儿吃午饭）", detail: "在游客中心或 NPS App 查下一次预测喷发（约每90分钟，±10分钟）。提前15分钟占个长椅。吃带的午饭，然后去隔壁的历史旅馆大厅。" },
+        { time: "约下午3:00", title: "🚶 Upper Geyser Basin 木栈道——Morning Glory Pool", detail: "2.4 公里木栈道，经过 Castle、Grand、Riverside 间歇泉到 Morning Glory Pool。Grand 的预测时段在游客中心的板上——30分钟内的话值得等。" },
+        { time: "约下午5:00", title: "🧿 Biscuit Basin 与 Black Sand Basin", detail: "回程路上两个色彩鲜艳的小盆地——Sapphire Pool 和 Emerald Pool。各20分钟。" },
+        { time: "约下午6:30", title: "🦬 黄昏的 Madison 草甸——野牛与麋鹿", detail: "你的第一场日落观兽，离家15分钟：最后的光线里野牛和麋鹿在 Madison 河草甸吃草（日落约7:35）。在观景停车位停下；待在车里或车边。" }
       ],
-      eat: "自己做早餐；带午饭（米饭+蛋白质）在老忠实吃；晚餐回住处做。",
+      eat: "在住处吃晚一点的早餐；带午饭（米饭+蛋白质）在老忠实吃；黄昏后回住处吃晚饭。",
       tips: [
         "老忠实预测：NPS App 或 geysertimes.org。Riverside 和 Grand 是另外两个可预测的——看板子。",
         "只走木栈道——地壳很薄、水是沸腾的。手机帽子拿稳，掉下去什么都捡不回来。",
-        "减量：早上在西黄石轻松跑 25–30 分钟 + 6×20 秒加速跑，之后木栈道就是你的恢复散步。",
-        "清晨约 −1°C：抓绒 + 外壳 + 帽子；11点前就会脱掉几层。"
+        "减量：出门前轻松跑 25–30 分钟 + 6×20 秒加速跑（上午晚些也行），之后木栈道就是你的恢复散步。",
+        "10点出发躲过了结冰的那一小时，但 2,000 米海拔中午前还是 5–13°C——抓绒 + 外壳，下午早些再脱。"
       ]
     },
     {
-      title: "黄石 Day 2 · 大峡谷、海登谷与黄石湖",
-      summary: "往东到黄石大峡谷，从两岸看下瀑布，然后慢慢穿过海登谷看野牛、泥火山，再到黄石湖——傍晚再经海登谷回来，那时动物最多。",
+      title: "黄石 Day 2 · 大峡谷、黄石湖与日落的海登谷",
+      summary: "往东到黄石大峡谷，从两岸看下瀑布，南下到泥火山和黄石湖，然后回到海登谷看重头戏——日落观兽——再小心地摸黑开回家。",
       blocks: [
-        { time: "上午7:30", title: "🚗 出发 → Canyon Village", detail: "Madison → Norris → Canyon，约1.5小时。Norris 留到 Day 4 单独看，今天路过。" },
-        { time: "上午9:15", title: "💦 北岸——Brink of the Lower Falls 与 Lookout Point", detail: "Brink of the Lower Falls：陡峭的往返1公里（下180米再上来），站到94米瀑布的顶端——今天唯一的腿部训练。然后沿岸边路看 Lookout Point 和 Grand View。" },
-        { time: "上午11:00", title: "🎨 南岸——Artist Point", detail: "经典油画视角：下瀑布和黄色峡谷壁。从停车场走5分钟。" },
-        { time: "下午1:00", title: "🦬 海登谷——野牛与野生动物", detail: "慢开，用观景停车位。野牛群、麋鹿，有时远处有灰熊和狼——用望远镜。绝不靠近；离野牛25码、离熊100码。" },
-        { time: "下午2:00", title: "🌋 泥火山与 Dragon’s Mouth 温泉", detail: "短木栈道环线上翻滚的硫磺泥景观。30分钟。" },
-        { time: "下午2:45", title: "🏞 Fishing Bridge 与 Lake Yellowstone Hotel", detail: "巨大的高山湖（海拔2,357米）。沿湖走走，看看1891年的 Lake Hotel 阳光房。45分钟。" },
-        { time: "下午3:45", title: "🌅 黄昏再穿海登谷 → 回家", detail: "原路北上穿过海登谷——傍晚动物最活跃——再 Canyon → Norris → Madison → 西黄石（约2小时）。" }
+        { time: "约上午9:30", title: "🚗 出发 → Canyon Village", detail: "Madison → Norris → Canyon，约1.5小时。Norris 留到 Day 4 单独看，今天路过。" },
+        { time: "约上午11:00", title: "💦 北岸——Brink of the Lower Falls 与 Lookout Point", detail: "Brink of the Lower Falls：陡峭的往返1公里（下180米再上来），站到94米瀑布的顶端——今天唯一的腿部训练。然后沿岸边路看 Lookout Point 和 Grand View。" },
+        { time: "约中午12:45", title: "🎨 南岸——Artist Point（在 Canyon Village 吃午饭）", detail: "经典油画视角：下瀑布和黄色峡谷壁。从停车场走5分钟。之后在 Canyon Village 野餐区吃午饭。" },
+        { time: "约下午2:30", title: "🌋 泥火山与 Dragon’s Mouth 温泉", detail: "往南直接穿过海登谷（快速看一眼——日落时会回来），到短木栈道环线上翻滚的硫磺泥景观。30分钟。" },
+        { time: "约下午3:15", title: "🏞 Fishing Bridge 与 Lake Yellowstone Hotel", detail: "巨大的高山湖（海拔2,357米）。沿湖走走，看看1891年的 Lake Hotel 阳光房。45分钟。" },
+        { time: "约下午4:30", title: "🌅 海登谷——日落观兽", detail: "回到北边的海登谷，用最后三小时的光线（日落约7:30）。先慢慢开一遍，再在观景停车位（Grizzly Overlook 或 Alum Creek 一带）安顿下来，带着望远镜和保温壶：野牛群、麋鹿，灰熊和狼就在这个时段出来。绝不靠近；离野牛25码、离熊100码。" },
+        { time: "约晚上7:45", title: "🌙 摸黑回家：Canyon → Norris → Madison", detail: "约2小时。慢开（最多45英里/小时），路上没车就开远光——野牛会站在柏油路上取暖。回住处吃晚一点的晚饭。" }
       ],
-      eat: "在 Canyon Village 野餐区吃带的午饭；晚餐回住处。",
+      eat: "午餐在 Canyon Village 野餐区；海登谷吃保温壶 + 包子；回住处吃晚一点的晚饭。",
       tips: [
-        "West Thumb 进园那天（9/14）已经看过，今天不绕湖西岸，直接经 Norris 回——更短。",
+        "海登谷在天黑前的最后两小时最好——这就是你的观兽时段，不用闹钟。野牛必看到；黄昏时灰熊和狼很有机会。",
         "Brink of the Lower Falls 是这周唯一真正的爬升——稳着来；不需要再加。",
-        "海登谷的“野牛堵车”能停20分钟——享受它，别按喇叭、别下车。"
+        "海登谷的“野牛堵车”能停20分钟——享受它，别按喇叭、别下车。",
+        "West Thumb 进园那天（9/14）已经看过，今天不绕湖西岸，直接经 Norris 回。"
       ]
     },
     {
-      title: "黄石 Day 3 · 拉马尔谷观兽、塔瀑与猛犸热泉",
-      summary: "观兽大日：天亮前赶到拉马尔谷看狼和野牛，然后塔瀑，再到猛犸热泉看台地和9月的麋鹿发情期。约250英里——主要是开车和观看，腿很轻松。",
+      title: "黄石 Day 3 · 猛犸热泉、塔瀑与日落的拉马尔谷",
+      summary: "不用天亮前出发：上午晚些出门，中午看猛犸热泉的台地和吼叫的麋鹿，然后塔瀑，再到拉马尔谷待到日落——仅次于黎明的看狼时段，野牛必看到。长长的一天、回得晚（约10:30pm）；明天是睡懒觉的日子。",
       blocks: [
-        { time: "上午5:30", title: "🌄 天亮前出发 → 翻 Dunraven Pass", detail: "Madison → Norris → Canyon → Dunraven Pass（海拔2,700米，看 Washburn 山日出）→ Tower Junction。约2.5小时。这周更看重睡眠的话 6:30 出发也行——9月动物到 9–10 点仍然活跃。" },
-        { time: "上午8:00", title: "🐺 拉马尔谷——狼、野牛、叉角羚", detail: "美洲的塞伦盖蒂。在 Tower 到 Soda Butte 之间的观景停车位停车，用望远镜扫谷地；看到观狼者的单筒望远镜就凑过去。野牛不停地横穿马路。" },
-        { time: "上午11:00", title: "🏞 塔瀑与 Roosevelt", detail: "40米瀑布观景点，离停车场5分钟。在 Roosevelt Lodge 一带喝杯咖啡。" },
-        { time: "下午1:30", title: "🪨 猛犸热泉——台地与麋鹿发情期", detail: "上下两段木栈道看石灰华台地（约1.5小时）。9月公麋鹿在 Mammoth 的草坪上吼叫——很壮观，但它们会冲人：保持25码以上，让车挡在你和它之间。" },
-        { time: "下午4:00", title: "🚗 经 Norris 回家", detail: "Mammoth → Norris → Madison → 西黄石，约1小时45分。早点吃晚饭、泡沫轴、睡觉——离比赛还有三天。" }
+        { time: "约上午9:30", title: "🚗 出发 → Norris → Mammoth", detail: "好好吃完早饭约9:30出发。Madison → Norris → Mammoth，约1.5小时（Norris 的木栈道留到明天）。" },
+        { time: "约上午11:00", title: "🪨 猛犸热泉——台地与麋鹿发情期", detail: "上下两段木栈道看石灰华台地（约1.5小时），然后在 Mammoth 吃午饭。9月公麋鹿整天在 Mammoth 的草坪上吼叫——很壮观，但它们会冲人：保持25码以上，让车挡在你和它之间。" },
+        { time: "约下午2:00", title: "🏞 塔瀑与 Roosevelt", detail: "沿北线往东18英里（约40分钟，加上等桥）。40米瀑布观景点，离停车场5分钟。在 Roosevelt Lodge 一带喝杯咖啡。" },
+        { time: "约下午3:30", title: "🐺 拉马尔谷——下午一直待到日落", detail: "美洲的塞伦盖蒂，从下午一直看到日落（约7:30）。整个下午都有野牛群和叉角羚；天黑前的最后两小时是狼和熊出现的时候。在 Slough Creek 到 Soda Butte 之间的观景停车位用望远镜扫，看到有人架着单筒望远镜就凑过去——观狼者知道狼群在哪。" },
+        { time: "约晚上7:45", title: "🌙 天黑后原路回家", detail: "拉马尔 → Tower → Mammoth → Norris → 西黄石，走低处熟悉的路约2.5–3小时（黑天别走 Dunraven Pass）。稳稳地开；约10:30pm 到家。路上吃保温壶和包子，回去吃点清淡宵夜或直接睡。" }
       ],
-      eat: "早餐在车上吃（保温壶里的粥 + 包子）；午餐在 Roosevelt/Mammoth；晚餐回住处——今晚开始加碳水。",
+      eat: "在住处吃晚一点的早餐；午餐在 Mammoth；保温壶里的粥 + 包子留给拉马尔谷和回程；回来吃点清淡宵夜。",
       tips: [
-        "⚠️ Tower Junction 旁 Yellowstone River 桥施工：单车道信号灯，最多等30分钟，到9月30日——来回都留出时间。",
-        "望远镜决定你是“看到了狼”还是“看到了一个点”。一壶热粥让天亮前的等待舒服很多。",
-        "减量日：只开车和走木栈道。今晚拉伸/泡沫轴10分钟；睡眠优先。",
-        "Dunraven Pass 开放中（10月12日关闭）——前一晚查一下 NPS 路况，以防早雪。"
+        "⚠️ Tower Junction 旁 Yellowstone River 桥施工：单车道信号灯，最多等30分钟，到9月30日——来回都留出时间（天黑后也一样）。",
+        "黄昏是仅次于黎明的看狼时段，而且不用定闹钟。望远镜决定你是“看到了狼”还是“看到了一个点”。",
+        "回程摸黑开约2.5–3小时——45英里/小时，留意路上的野牛，明天早上什么都别安排。",
+        "减量日：只开车和走木栈道。睡前或明天睡醒后拉伸/泡沫轴。"
       ]
     },
     {
       title: "黄石 Day 4 · Norris 间歇泉盆地与轻松的减量日",
-      summary: "赛前两天的轻松收尾：Norris（最热、最古老的盆地，Steamboat 所在），两个短停，下午休息，一场日落——然后打包，正式开始碳水加载。",
+      summary: "昨晚回得晚，今天睡到自然醒。赛前两天的轻松收尾：Norris（最热、最古老的盆地，Steamboat 所在），两个短停，下午休息，最后一场日落——然后打包，正式开始碳水加载。",
       blocks: [
-        { time: "上午9:00", title: "♨️ Norris 间歇泉盆地——Porcelain 与 Back Basin", detail: "两条木栈道环线（约2小时，平路）：Porcelain Basin 的乳蓝色池子，和 Back Basin 里的 Steamboat——世界最高的活跃间歇泉（无法预测，但蒸汽很壮观）。" },
-        { time: "上午11:30", title: "🎨 Artists Paintpots 与 Gibbon 瀑布", detail: "1.6公里环线看彩色泥泉，回程在路边停车位看 Gibbon 瀑布。" },
-        { time: "下午1:00", title: "🏠 回西黄石吃午饭、休息", detail: "大份碳水午餐，把脚翘起来。收拾住处、开始打包——明早退房。" },
-        { time: "下午3:00", title: "🥾 可选：Mystic Falls 短步道或最后一个间歇泉", detail: "从 Biscuit Basin 到 Mystic Falls 往返3.5公里很平缓——或者回老忠实补看错过的 Grand/Riverside。别爬 Mount Washburn（爬升430米）——这周不合适。" },
-        { time: "傍晚", title: "🌇 Madison 看日落，然后打包", detail: "Madison 草甸的最后一抹光。回家吃碳水大餐（米饭、面、馒头），把车装好，早睡——明天11点出发。" }
+        { time: "约上午10:30", title: "♨️ Norris 间歇泉盆地——Porcelain 与 Back Basin", detail: "两条木栈道环线（约2小时，平路）：Porcelain Basin 的乳蓝色池子，和 Back Basin 里的 Steamboat——世界最高的活跃间歇泉（无法预测，但蒸汽很壮观）。" },
+        { time: "约下午1:00", title: "🎨 Artists Paintpots 与 Gibbon 瀑布", detail: "1.6公里环线看彩色泥泉，回程在路边停车位看 Gibbon 瀑布。" },
+        { time: "约下午2:30", title: "🏠 回西黄石吃午饭、休息", detail: "大份碳水午餐，把脚翘起来。收拾住处、开始打包——明早退房。" },
+        { time: "约下午4:30", title: "🥾 可选：Mystic Falls 短步道或最后一个间歇泉", detail: "从 Biscuit Basin 到 Mystic Falls 往返3.5公里很平缓——或者回老忠实补看错过的 Grand/Riverside。别爬 Mount Washburn（爬升430米）——这周不合适。" },
+        { time: "傍晚", title: "🌇 Madison 看日落，然后打包", detail: "Madison 草甸的最后一抹光（日落约7:30）。回家吃碳水大餐（米饭、面、馒头），把车装好，别太晚睡——明天11点出发，不用闹钟。" }
       ],
       eat: "碳水加载正式开始：每餐米饭/面/馒头，瘦肉蛋白，少油少纤维。",
       tips: [
-        "D-2 唤醒：15–20分钟轻松慢跑 + 4×15秒加速 + 轻量过一遍站点动作（10个徒手深蹲上举、20步弓步、几个波比）——只找技术，不发力。",
+        "D-2 唤醒：15–20分钟轻松慢跑 + 4×15秒加速 + 轻量过一遍站点动作（10个徒手深蹲上举、20步弓步、几个波比）——只找技术，不发力。一天里什么时候做都行。",
         "今明两天碳水目标：每公斤体重约6–8克。米饼、香蕉、蜂蜜水和果汁补空档。",
         "今晚把徒步装备收进包里——用不上了；熊喷雾不能上飞机，留给住处或送人。"
       ]
@@ -301,9 +302,9 @@ const TRIP_ZH = {
   ],
 
   packing: {
-    "Essentials": ["证件/驾照（租车用）", "银行卡 + 少量现金", "手机 + 车充 + 充电宝", "Starlink Mini + 供电（12V/USB-C）+ App 已登录", "离线地图 + NPS App 已下载", "公园门票/收据", "水瓶（2个以上）——高原、干燥", "防晒霜、墨镜、润唇膏（2,000米高原日晒强）", "头灯（拉马尔谷天亮前出发）", "望远镜 🐺"],
+    "Essentials": ["证件/驾照（租车用）", "银行卡 + 少量现金", "手机 + 车充 + 充电宝", "Starlink Mini + 供电（12V/USB-C）+ App 已登录", "离线地图 + NPS App 已下载", "公园门票/收据", "水瓶（2个以上）——高原、干燥", "防晒霜、墨镜、润唇膏（2,000米高原日晒强）", "头灯（从海登谷和拉马尔谷摸黑回家）", "望远镜 🐺"],
     "Cold-weather layers": ["抓绒/羽绒中间层", "防水防风外壳", "帽子 + 手套（清晨约 −1°C）", "保暖内层", "厚袜子", "穿惯的舒适步行/徒步鞋", "雨裤或速干裤"],
-    "Hiking & wildlife": ["🐻 熊喷雾（到了再买——不能上飞机）", "日用背包", "路上零食", "保温壶（天亮前开车路上喝粥）", "水泡贴/小急救包", "相机/手机镜头布（间歇泉蒸汽）"],
+    "Hiking & wildlife": ["🐻 熊喷雾（到了再买——不能上飞机）", "日用背包", "路上零食", "保温壶（日落观兽时喝粥/热茶）", "水泡贴/小急救包", "相机/手机镜头布（间歇泉蒸汽）"],
     "Cooking & food": ["锅 + 平底锅 + 电饭煲（9月13日买）", "餐具、砧板、刀", "保温袋 + 冰袋", "洗洁精 + 海绵", "米、面、馒头/包子、粥料（赛前碳水）", "鸡蛋、鸡胸、豆腐、鱼、蔬菜、调料", "香蕉、蜂蜜、果汁、米饼（碳水加载补充）", "电解质片/运动饮料"],
     "HYROX race kit": ["比赛鞋（穿惯的）+ 袜子", "比赛上衣/短裤 + 一套换洗", "能量胶/咀嚼糖（试过的）+ 电解质", "镁粉（允许的话）+ 护腕/握力带（用的话）", "号码布/参赛包确认", "泡沫轴或按摩球", "回程飞机穿的压缩袜"]
   }

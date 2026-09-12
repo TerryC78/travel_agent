@@ -339,9 +339,9 @@ const TRIP = {
     "🐻 Grizzly country: carry bear spray on every trail (buy it in Jackson or West Yellowstone — it can’t fly) and keep 100 yards from bears/wolves, 25 from bison and elk. The September elk rut at Mammoth is a highlight — and the bulls charge.",
     "🧥 Mid-September Yellowstone: days 55–65°F, mornings 25–35°F, snow possible any day at 6,600–8,900 ft. Fleece + shell + beanie every morning; strong sun at altitude.",
     "🛣 All park roads are open, including Dunraven Pass (closes Oct 12) — but the Yellowstone River Bridge at Tower Junction has single-lane work with up to 30-min waits through Sep 30, right on your Lamar Valley day.",
-    "🏋️ It’s HYROX taper week: Yellowstone is active recovery (boardwalks, one short hike), not training. The hard work is done; every day here is kept easy on the legs, and carb-loading starts Sep 17.",
+    "🏋️ It’s HYROX taper week: Yellowstone is active recovery (boardwalks, one short hike), not training — and there are no predawn starts: every day leaves around 9:30–10am and wildlife is scheduled at sunset instead. The hard work is done; carb-loading starts Sep 17.",
     "📡 No cell service inside the park. The Starlink Mini works with a clear sky — from the rental’s driveway, parking lots and turnouts — so download offline maps and geyser predictions too.",
-    "🍚 You’re self-catering: Chinatown Supermarket on night one stocks the week, and congee in a thermos makes predawn wildlife mornings civilised."
+    "🍚 You’re self-catering: Chinatown Supermarket on night one stocks the week, and a thermos of congee makes the sunset wildlife sessions and the long drives home civilised."
   ],
 
   cities: [
@@ -383,21 +383,21 @@ const TRIP = {
       city: "Grand Teton",
       multiCity: true,
       title: "Pickups → Grand Teton → into Yellowstone",
-      summary: "Morning errands (Whole Foods package, Starlink Mini), then the ~5-hour drive to Grand Teton for the classic afternoon loop, and north through Yellowstone’s South Entrance to your West Yellowstone base by dark.",
+      summary: "No alarm needed: a 9am errand run (Whole Foods package, Starlink Mini), on the road by 10, the ~5-hour drive to Grand Teton for the quick classic stops, then north through Yellowstone’s South Entrance to your West Yellowstone base by dark.",
       blocks: [
-        { time: "~7:30 AM", title: "📦 Whole Foods — package pickup", detail: "Grab the package at the customer-service / Amazon counter as soon as they open. Coffee and breakfast here too.", map: "Whole Foods Market Salt Lake City" },
-        { time: "~8:15 AM", title: "📡 Pick up the Starlink Mini", detail: "Power it up in the car and make sure the app is signed in before you leave cell coverage — there’s almost no service inside the park." },
-        { time: "9:00 AM", title: "🚗 Depart SLC → Grand Teton (~5 hrs)", detail: "I-15 North → US-89 through Star Valley into Jackson (scenic), or I-15 → Idaho Falls → US-26 (a touch faster). Fuel up in Jackson and buy BEAR SPRAY here (~$45–50) — it’s grizzly country from here on.", map: "Jackson Wyoming" },
-        { time: "~2:00 PM", title: "🏔 Mormon Row — the Moulton barns", detail: "The postcard: weathered barns with the Teton range behind. 20 minutes, right off Antelope Flats Road. Bison often graze nearby — stay 25 yards back.", map: "Mormon Row Historic District" },
-        { time: "~2:45 PM", title: "📸 Snake River Overlook", detail: "Ansel Adams’ viewpoint — the river bend with the peaks beyond. A quick stop on US-89 heading north.", map: "Snake River Overlook" },
-        { time: "~3:15 PM", title: "🏞 Jenny Lake — lakeshore walk", detail: "The prettiest lake in the park. A 30-min easy walk along the shore from the visitor center is plenty (taper week — no big hikes).", map: "Jenny Lake" },
-        { time: "~4:00 PM", title: "🦌 Oxbow Bend", detail: "Mount Moran reflected in the Snake River; moose and elk at dusk. Northernmost stop — from here it’s straight north to Yellowstone.", map: "Oxbow Bend Turnout" },
-        { time: "4:30 PM", title: "🚗 North through the South Entrance → West Thumb", detail: "Leave Oxbow by 4:30pm. Yellowstone’s South Entrance is ~40 min, then West Thumb Geyser Basin (30 min: lakeside geysers, Fishing Cone) — you won’t need to come back here later. Then west past Old Faithful → Madison → West Yellowstone. Sunset ~7:35pm; drive slowly at dusk, animals are on the road.", map: "West Thumb Geyser Basin" },
+        { time: "~9:00 AM", title: "📦 Whole Foods — package pickup", detail: "Sleep in, then grab the package at the customer-service / Amazon counter. Coffee and breakfast here too.", map: "Whole Foods Market Salt Lake City" },
+        { time: "~9:45 AM", title: "📡 Pick up the Starlink Mini", detail: "Power it up in the car and make sure the app is signed in before you leave cell coverage — there’s almost no service inside the park." },
+        { time: "10:00 AM", title: "🚗 Depart SLC → Grand Teton (~5 hrs)", detail: "I-15 North → US-89 through Star Valley into Jackson (scenic), or I-15 → Idaho Falls → US-26 (a touch faster). Fuel up in Jackson and buy BEAR SPRAY here (~$45–50) — it’s grizzly country from here on. Aim to be in Jackson by ~3pm.", map: "Jackson Wyoming" },
+        { time: "~3:15 PM", title: "🏔 Mormon Row — the Moulton barns", detail: "The postcard: weathered barns with the Teton range behind. 20 minutes, right off Antelope Flats Road. Bison often graze nearby — stay 25 yards back.", map: "Mormon Row Historic District" },
+        { time: "~3:50 PM", title: "📸 Snake River Overlook", detail: "Ansel Adams’ viewpoint — the river bend with the peaks beyond. A quick stop on US-89 heading north.", map: "Snake River Overlook" },
+        { time: "~4:10 PM", title: "🏞 Jenny Lake — only if you’re ahead of schedule", detail: "The prettiest lake in the park, but it’s a ~20-min detour each way. Do a short lakeshore stroll only if you reached Mormon Row by 3:15; otherwise skip it — the light at Oxbow and getting through the park before dark matter more.", map: "Jenny Lake" },
+        { time: "~4:30 PM", title: "🦌 Oxbow Bend", detail: "Mount Moran reflected in the Snake River; moose and elk in the afternoon light. Northernmost stop — from here it’s straight north to Yellowstone.", map: "Oxbow Bend Turnout" },
+        { time: "4:45 PM", title: "🚗 North through the South Entrance → West Thumb", detail: "Leave Oxbow by 4:45pm. Yellowstone’s South Entrance is ~40 min, then West Thumb Geyser Basin (20–30 min: lakeside geysers, Fishing Cone) — you won’t need to come back here later. Then west past Old Faithful → Madison → West Yellowstone. Sunset ~7:35pm; the last stretch is at dusk, so drive slowly — animals are on the road.", map: "West Thumb Geyser Basin" },
         { time: "~8:00 PM", title: "🏠 Check in at West Yellowstone", detail: "Your base for 5 nights, right outside the West Entrance. Unpack the kitchen, cook a simple dinner, set up the Starlink Mini with a clear view of the sky.", map: "West Yellowstone Montana" }
       ],
       eat: "Breakfast at Whole Foods; lunch in Jackson (fuel stop); cook dinner at the rental.",
       tips: [
-        "Running late (leaving Teton after ~5:30pm)? Take the Idaho route instead: Jackson → Teton Pass → Victor → Ashton → Island Park → West Yellowstone (~2h45, no wildlife jams, lit highway).",
+        "Leaving Oxbow after ~5:15pm? Take the Idaho route instead: Jackson → Teton Pass → Victor → Ashton → Island Park → West Yellowstone (~2h45, no wildlife jams, lit highway) — you’d skip West Thumb, which is fine.",
         "Park passes: Grand Teton $35 + Yellowstone $35 per vehicle (7 days each) = $70; buy the $80 America the Beautiful annual pass only if you’ll visit another park within a year.",
         "Buy bear spray in Jackson and carry it on every trail from now on.",
         "Taper week: keep today to easy walking — the drive is the workout."
@@ -407,81 +407,82 @@ const TRIP = {
       date: "2026-09-15",
       city: "West Yellowstone",
       title: "Yellowstone Day 1 · Geyser country: Old Faithful & Grand Prismatic",
-      summary: "The closest, highest-payoff day: the Firehole River geyser basins, Grand Prismatic from the overlook, an Old Faithful eruption, and the Upper Geyser Basin boardwalks. 8–10 km of flat boardwalk — perfect active recovery.",
+      summary: "The closest, highest-payoff day, started late: the Firehole River geyser basins, Grand Prismatic from the overlook, an Old Faithful eruption, the Upper Geyser Basin boardwalks, and bison in the Madison meadows at dusk. 8–10 km of flat boardwalk — perfect active recovery.",
       blocks: [
-        { time: "8:00 AM", title: "🌊 Firehole Canyon Drive & Firehole Falls", detail: "Just past Madison Junction — a 2-mile one-way scenic side road to a 40-ft waterfall. 10 minutes.", map: "Firehole Falls" },
-        { time: "9:00 AM", title: "🫧 Fountain Paint Pot", detail: "All four thermal features on one short loop: mud pots, fumaroles, hot springs and geysers (Clepsydra erupts almost constantly). 30 minutes.", map: "Fountain Paint Pot" },
-        { time: "9:45 AM", title: "🌈 Midway Geyser Basin — Grand Prismatic up close", detail: "Boardwalk past Excelsior Geyser’s steaming crater to the rim of Grand Prismatic. Steam is heaviest on cool mornings — the overlook next gives you the full colours.", map: "Grand Prismatic Spring" },
-        { time: "10:45 AM", title: "🥾 Fairy Falls Trail → Grand Prismatic Overlook", detail: "From the Fairy Falls trailhead, 1.2 km each way on a flat trail then a short climb to the overlook — THE aerial view of the rainbow rings. ~1 hour round trip.", map: "Fairy Falls Trailhead" },
-        { time: "12:30 PM", title: "⛲ Old Faithful + Old Faithful Inn", detail: "Check the next predicted eruption at the visitor center or in the NPS app (every ~90 min, ±10). Grab a bench 15 min early. Then the historic Inn lobby next door.", map: "Old Faithful" },
-        { time: "1:30 PM", title: "🚶 Upper Geyser Basin boardwalk — Morning Glory Pool", detail: "The 2.4 km boardwalk past Castle, Grand and Riverside geysers to Morning Glory Pool. Grand Geyser’s predicted window is on the visitor-center board — worth waiting if it’s within 30 min.", map: "Morning Glory Pool" },
-        { time: "4:00 PM", title: "🧿 Biscuit Basin & Black Sand Basin", detail: "Two small, colourful basins on the way back — Sapphire Pool and Emerald Pool. 20 minutes each.", map: "Biscuit Basin" },
-        { time: "5:30 PM", title: "🦬 Back via Madison — dusk wildlife", detail: "Bison and elk graze the Madison River meadows in the evening. Pull over at the turnouts; stay in or beside the car.", map: "Madison Junction" }
+        { time: "~10:00 AM", title: "🌊 Firehole Canyon Drive & Firehole Falls", detail: "Slow breakfast, then just past Madison Junction — a 2-mile one-way scenic side road to a 40-ft waterfall. 10 minutes.", map: "Firehole Falls" },
+        { time: "~10:45 AM", title: "🫧 Fountain Paint Pot", detail: "All four thermal features on one short loop: mud pots, fumaroles, hot springs and geysers (Clepsydra erupts almost constantly). 30 minutes.", map: "Fountain Paint Pot" },
+        { time: "~11:30 AM", title: "🌈 Midway Geyser Basin — Grand Prismatic up close", detail: "Boardwalk past Excelsior Geyser’s steaming crater to the rim of Grand Prismatic. Late morning is ideal — less steam than at dawn, so the colours show.", map: "Grand Prismatic Spring" },
+        { time: "~12:30 PM", title: "🥾 Fairy Falls Trail → Grand Prismatic Overlook", detail: "From the Fairy Falls trailhead, 1.2 km each way on a flat trail then a short climb to the overlook — THE aerial view of the rainbow rings, best with the midday sun overhead. ~1 hour round trip.", map: "Fairy Falls Trailhead" },
+        { time: "~2:00 PM", title: "⛲ Old Faithful + Old Faithful Inn (lunch here)", detail: "Check the next predicted eruption at the visitor center or in the NPS app (every ~90 min, ±10). Grab a bench 15 min early. Eat your packed lunch, then the historic Inn lobby next door.", map: "Old Faithful" },
+        { time: "~3:00 PM", title: "🚶 Upper Geyser Basin boardwalk — Morning Glory Pool", detail: "The 2.4 km boardwalk past Castle, Grand and Riverside geysers to Morning Glory Pool. Grand Geyser’s predicted window is on the visitor-center board — worth waiting if it’s within 30 min.", map: "Morning Glory Pool" },
+        { time: "~5:00 PM", title: "🧿 Biscuit Basin & Black Sand Basin", detail: "Two small, colourful basins on the way back — Sapphire Pool and Emerald Pool. 20 minutes each.", map: "Biscuit Basin" },
+        { time: "~6:30 PM", title: "🦬 Madison meadows at dusk — bison & elk", detail: "Your first sunset wildlife session, 15 min from home: bison and elk graze the Madison River meadows in the last light (sunset ~7:35). Pull over at the turnouts; stay in or beside the car.", map: "Madison Junction" }
       ],
-      eat: "Cook breakfast; pack lunch (rice + protein) and eat it at Old Faithful; dinner at the rental.",
+      eat: "Late breakfast at the rental; packed lunch (rice + protein) at Old Faithful; dinner at the rental after dusk.",
       tips: [
         "Old Faithful predictions: NPS app or geysertimes.org. Riverside and Grand are the two other predictable ones — check the board.",
         "Boardwalks only — the crust is thin and the water is boiling. Keep phones and hats secured; nothing can be retrieved.",
-        "Taper: a 25–30 min easy run in West Yellowstone this morning + 6 × 20s strides, then the boardwalks are your recovery walk.",
-        "Mornings are ~30°F: fleece + shell + beanie; you’ll shed layers by 11am."
+        "Taper: a 25–30 min easy run + 6 × 20s strides before you head out (late morning is fine), then the boardwalks are your recovery walk.",
+        "Starting at 10 skips the freezing hour, but it’s still 40–55°F till noon at 7,000 ft — fleece + shell, shed layers by early afternoon."
       ]
     },
     {
       date: "2026-09-16",
       city: "West Yellowstone",
-      title: "Yellowstone Day 2 · Grand Canyon, Hayden Valley & the Lake",
-      summary: "East to the Grand Canyon of the Yellowstone for the Lower Falls from both rims, then slowly through Hayden Valley for bison, the Mud Volcano, and Yellowstone Lake — returning through Hayden at dusk when wildlife is out.",
+      title: "Yellowstone Day 2 · Grand Canyon, the Lake & Hayden Valley at sunset",
+      summary: "East to the Grand Canyon of the Yellowstone for the Lower Falls from both rims, down to the Mud Volcano and Yellowstone Lake, then back into Hayden Valley for the main event — the sunset wildlife session — and a careful drive home in the dark.",
       blocks: [
-        { time: "7:30 AM", title: "🚗 Depart → Canyon Village", detail: "Madison → Norris → Canyon, ~1.5 hrs. Norris gets its own morning on Day 4, so pass it today.", map: "Canyon Village" },
-        { time: "9:15 AM", title: "💦 North Rim — Brink of the Lower Falls & Lookout Point", detail: "Brink of the Lower Falls: a steep 1 km round trip (180 m down and back up) to stand at the lip of the 94 m waterfall — today’s one leg workout. Then Lookout Point and Grand View from the rim road.", map: "Brink of the Lower Falls" },
-        { time: "11:00 AM", title: "🎨 South Rim — Artist Point", detail: "The classic painting view of the Lower Falls and the yellow canyon walls. A 5-minute walk from the parking lot.", map: "Artist Point" },
-        { time: "1:00 PM", title: "🦬 Hayden Valley — bison & wildlife", detail: "Drive slowly, use the turnouts. Bison herds, elk, sometimes grizzlies and wolves in the distance — binoculars. Never approach; 25 yards from bison, 100 from bears.", map: "Hayden Valley" },
-        { time: "2:00 PM", title: "🌋 Mud Volcano & Dragon’s Mouth Spring", detail: "Sulphurous, churning mud features on a short boardwalk loop. 30 minutes.", map: "Mud Volcano" },
-        { time: "2:45 PM", title: "🏞 Fishing Bridge & Lake Yellowstone Hotel", detail: "The huge alpine lake (7,733 ft). Walk the shore, peek into the 1891 Lake Hotel sunroom. 45 minutes.", map: "Lake Yellowstone Hotel" },
-        { time: "3:45 PM", title: "🌅 Back through Hayden Valley at dusk → home", detail: "Retrace north through Hayden Valley — animals are most active late afternoon — then Canyon → Norris → Madison → West Yellowstone (~2 hrs)." }
+        { time: "~9:30 AM", title: "🚗 Depart → Canyon Village", detail: "Madison → Norris → Canyon, ~1.5 hrs. Norris gets its own morning on Day 4, so pass it today.", map: "Canyon Village" },
+        { time: "~11:00 AM", title: "💦 North Rim — Brink of the Lower Falls & Lookout Point", detail: "Brink of the Lower Falls: a steep 1 km round trip (180 m down and back up) to stand at the lip of the 94 m waterfall — today’s one leg workout. Then Lookout Point and Grand View from the rim road.", map: "Brink of the Lower Falls" },
+        { time: "~12:45 PM", title: "🎨 South Rim — Artist Point (lunch at Canyon Village)", detail: "The classic painting view of the Lower Falls and the yellow canyon walls. A 5-minute walk from the parking lot. Lunch at the Canyon Village picnic area after.", map: "Artist Point" },
+        { time: "~2:30 PM", title: "🌋 Mud Volcano & Dragon’s Mouth Spring", detail: "Drive south straight through Hayden Valley (a quick look — you’re coming back for the sunset) to the sulphurous, churning mud features on a short boardwalk loop. 30 minutes.", map: "Mud Volcano" },
+        { time: "~3:15 PM", title: "🏞 Fishing Bridge & Lake Yellowstone Hotel", detail: "The huge alpine lake (7,733 ft). Walk the shore, peek into the 1891 Lake Hotel sunroom. 45 minutes.", map: "Lake Yellowstone Hotel" },
+        { time: "~4:30 PM", title: "🌅 Hayden Valley — the sunset wildlife session", detail: "Back north into Hayden Valley for the last three hours of light (sunset ~7:30). Drive it slowly, then settle at a turnout (Grizzly Overlook or the Alum Creek pullouts) with binoculars and a thermos: bison herds, elk, and this is when grizzlies and wolves come out. Never approach; 25 yards from bison, 100 from bears.", map: "Hayden Valley" },
+        { time: "~7:45 PM", title: "🌙 Home in the dark via Canyon → Norris → Madison", detail: "~2 hrs. Drive slowly (45 mph max), high beams when the road is empty — bison stand on the asphalt for the warmth. Late dinner at the rental." }
       ],
-      eat: "Packed lunch at the Canyon Village picnic area; dinner at the rental.",
+      eat: "Lunch at the Canyon Village picnic area; thermos + buns at Hayden Valley; late dinner at the rental.",
       tips: [
-        "West Thumb was done on the way in (Sep 14), so today skips the lake’s west-shore loop and returns via Norris — shorter.",
+        "Hayden Valley is best in the last two hours of light — that’s your wildlife session, no alarm required. Bison are guaranteed; grizzlies and wolves are a real chance at dusk.",
         "Brink of the Lower Falls is the only real climb this week — keep it steady; no need for more.",
-        "Hayden Valley ‘bison jams’ can stop traffic for 20 min — enjoy it, don’t honk or get out."
+        "Hayden Valley ‘bison jams’ can stop traffic for 20 min — enjoy it, don’t honk or get out.",
+        "West Thumb was done on the way in (Sep 14), so today skips the lake’s west shore and returns via Norris."
       ]
     },
     {
       date: "2026-09-17",
       city: "West Yellowstone",
-      title: "Yellowstone Day 3 · Lamar Valley wildlife, Tower Fall & Mammoth",
-      summary: "The big wildlife day: a predawn run to Lamar Valley for wolves and bison, then Tower Fall, and Mammoth Hot Springs’ terraces with the September elk rut. ~250 miles — mostly driving and watching, so it’s a light day on the legs.",
+      title: "Yellowstone Day 3 · Mammoth, Tower Fall & Lamar Valley at sunset",
+      summary: "No predawn start: a late-morning departure, Mammoth’s terraces and bugling elk midday, Tower Fall, then Lamar Valley for the afternoon and sunset — the second-best wolf window and guaranteed bison. A long day with a late return (~10:30pm); tomorrow is the sleep-in day.",
       blocks: [
-        { time: "5:30 AM", title: "🌄 Predawn departure → over Dunraven Pass", detail: "Madison → Norris → Canyon → Dunraven Pass (8,859 ft, sunrise views of Mount Washburn) → Tower Junction. ~2.5 hrs. If sleep matters more this week, leave at 6:30 — animals are still active until 9–10am in September.", map: "Dunraven Pass" },
-        { time: "8:00 AM", title: "🐺 Lamar Valley — wolves, bison, pronghorn", detail: "America’s Serengeti. Park at the turnouts between Tower and Soda Butte and glass the valley with binoculars; watch for the wolf-watchers’ spotting scopes and join them. Bison cross the road constantly.", map: "Lamar Valley" },
-        { time: "11:00 AM", title: "🏞 Tower Fall & Roosevelt", detail: "132-ft waterfall viewpoint, 5 minutes from the parking lot. Coffee at the Roosevelt Lodge area.", map: "Tower Fall" },
-        { time: "1:30 PM", title: "🪨 Mammoth Hot Springs — terraces & the elk rut", detail: "Travertine terraces on the Upper and Lower boardwalks (~1.5 hrs). In September bull elk bugle on the Mammoth lawns — spectacular, but they charge: stay 25+ yards and keep the car between you and them.", map: "Mammoth Hot Springs" },
-        { time: "4:00 PM", title: "🚗 Home via Norris", detail: "Mammoth → Norris → Madison → West Yellowstone, ~1h45. Early dinner, foam-roll, sleep — you’re three days out from the race." }
+        { time: "~9:30 AM", title: "🚗 Depart → Norris → Mammoth", detail: "Leave around 9:30 after a proper breakfast. Madison → Norris → Mammoth, ~1.5 hrs (save the Norris boardwalks for tomorrow)." },
+        { time: "~11:00 AM", title: "🪨 Mammoth Hot Springs — terraces & the elk rut", detail: "Travertine terraces on the Upper and Lower boardwalks (~1.5 hrs), then lunch at Mammoth. In September bull elk bugle on the Mammoth lawns all day — spectacular, but they charge: stay 25+ yards and keep the car between you and them.", map: "Mammoth Hot Springs" },
+        { time: "~2:00 PM", title: "🏞 Tower Fall & Roosevelt", detail: "18 miles east along the northern road (~40 min plus the bridge wait). 132-ft waterfall viewpoint, 5 minutes from the parking lot. Coffee at the Roosevelt Lodge area.", map: "Tower Fall" },
+        { time: "~3:30 PM", title: "🐺 Lamar Valley — afternoon into sunset", detail: "America’s Serengeti, from mid-afternoon to sunset (~7:30). Bison herds and pronghorn all afternoon; the last two hours of light are when wolves and bears show. Work the turnouts between Slough Creek and Soda Butte with binoculars, and join anyone with a spotting scope — the wolf-watchers know where the packs are.", map: "Lamar Valley" },
+        { time: "~7:45 PM", title: "🌙 Drive home after dark — the way you came", detail: "Lamar → Tower → Mammoth → Norris → West Yellowstone, ~2.5–3 hrs on the lower, familiar road (skip Dunraven Pass in the dark). Slow and steady; home ~10:30pm. Thermos and buns for the road, then a light supper or straight to bed." }
       ],
-      eat: "Breakfast in the car (congee in a thermos + buns); lunch at Roosevelt / Mammoth; dinner at the rental — start upping the carbs tonight.",
+      eat: "Late breakfast at the rental; lunch at Mammoth; thermos of congee + buns for Lamar and the drive home; a light late supper.",
       tips: [
-        "⚠️ Road work at the Yellowstone River Bridge by Tower Junction: single lane with a signal, up to 30-min waits, through Sep 30 — budget it both directions.",
-        "Binoculars are the difference between ‘saw a wolf’ and ‘saw a dot’. A thermos of hot congee makes the predawn wait pleasant.",
-        "Taper day: driving + boardwalks only. 10 min of stretching / foam rolling tonight; sleep is the priority.",
-        "Dunraven Pass is open (closes Oct 12) — check the NPS road status the night before in case of early snow."
+        "⚠️ Road work at the Yellowstone River Bridge by Tower Junction: single lane with a signal, up to 30-min waits, through Sep 30 — budget it both directions (including after dark).",
+        "Dusk is the second-best wolf window after dawn, and you don’t need an alarm for it. Binoculars are the difference between ‘saw a wolf’ and ‘saw a dot’.",
+        "The drive home is ~2.5–3 hrs in the dark — 45 mph, watch for bison on the road, and don’t plan anything for tomorrow morning.",
+        "Taper day: driving + boardwalks only. Stretch / foam-roll before bed, or when you wake up late tomorrow."
       ]
     },
     {
       date: "2026-09-18",
       city: "West Yellowstone",
       title: "Yellowstone Day 4 · Norris Geyser Basin & an easy taper day",
-      summary: "A relaxed last park day two days before the race: Norris (the hottest, oldest basin, home to Steamboat), a couple of short stops, an afternoon rest, and a sunset — then pack and start proper carb-loading.",
+      summary: "Sleep in after last night’s late return. A relaxed final park day two days before the race: Norris (the hottest, oldest basin, home to Steamboat), a couple of short stops, an afternoon rest, and one last sunset — then pack and start proper carb-loading.",
       blocks: [
-        { time: "9:00 AM", title: "♨️ Norris Geyser Basin — Porcelain & Back Basin", detail: "Two boardwalk loops (~2 hrs, flat): Porcelain Basin’s milky-blue pools and Back Basin with Steamboat, the world’s tallest active geyser (unpredictable, but it steams impressively).", map: "Norris Geyser Basin" },
-        { time: "11:30 AM", title: "🎨 Artists Paintpots & Gibbon Falls", detail: "A 1.6 km loop to colourful mud pots, then Gibbon Falls from the roadside pullout on the way home.", map: "Artists Paintpots" },
-        { time: "1:00 PM", title: "🏠 Lunch & rest in West Yellowstone", detail: "Big carb lunch, feet up. Tidy the rental and start packing — checkout is tomorrow morning.", map: "West Yellowstone Montana" },
-        { time: "3:00 PM", title: "🥾 Optional: Mystic Falls short hike or a last geyser", detail: "Mystic Falls from Biscuit Basin is a gentle 3.5 km round trip — or just revisit Old Faithful for Grand / Riverside if you missed them. Skip Mount Washburn (1,400 ft of climbing) — wrong week for it.", map: "Biscuit Basin" },
-        { time: "Evening", title: "🌇 Sunset at Madison, then pack", detail: "Last light on the Madison meadows. Home for a carb-heavy dinner (rice, noodles, steamed buns), pack the car, early night — tomorrow leaves at 11am.", map: "Madison Junction" }
+        { time: "~10:30 AM", title: "♨️ Norris Geyser Basin — Porcelain & Back Basin", detail: "Two boardwalk loops (~2 hrs, flat): Porcelain Basin’s milky-blue pools and Back Basin with Steamboat, the world’s tallest active geyser (unpredictable, but it steams impressively).", map: "Norris Geyser Basin" },
+        { time: "~1:00 PM", title: "🎨 Artists Paintpots & Gibbon Falls", detail: "A 1.6 km loop to colourful mud pots, then Gibbon Falls from the roadside pullout on the way home.", map: "Artists Paintpots" },
+        { time: "~2:30 PM", title: "🏠 Lunch & rest in West Yellowstone", detail: "Big carb lunch, feet up. Tidy the rental and start packing — checkout is tomorrow morning.", map: "West Yellowstone Montana" },
+        { time: "~4:30 PM", title: "🥾 Optional: Mystic Falls short hike or a last geyser", detail: "Mystic Falls from Biscuit Basin is a gentle 3.5 km round trip — or just revisit Old Faithful for Grand / Riverside if you missed them. Skip Mount Washburn (1,400 ft of climbing) — wrong week for it.", map: "Biscuit Basin" },
+        { time: "Evening", title: "🌇 Sunset at Madison, then pack", detail: "Last light on the Madison meadows (sunset ~7:30). Home for a carb-heavy dinner (rice, noodles, steamed buns), pack the car, early-ish night — tomorrow leaves at 11am, no alarm needed.", map: "Madison Junction" }
       ],
       eat: "Carb-loading starts in earnest: rice / noodles / buns at every meal, lean protein, easy on fat and fibre.",
       tips: [
-        "D-2 shakeout: 15–20 min easy jog + 4 × 15s strides + a light rehearsal of the stations (10 air-squat-to-press, 20 walking lunges, a few burpees) — technique only, nothing hard.",
+        "D-2 shakeout: 15–20 min easy jog + 4 × 15s strides + a light rehearsal of the stations (10 air-squat-to-press, 20 walking lunges, a few burpees) — technique only, nothing hard. Any time of day.",
         "Carb target today and tomorrow: ~6–8 g per kg bodyweight. Rice cakes, bananas, honey water and juice fill the gaps.",
         "Put the trail gear away tonight — you won’t need it again; bear spray can’t fly, so leave it with the rental or gift it."
       ]
@@ -561,9 +562,9 @@ const TRIP = {
 
   // ---- Packing list ----
   packing: {
-    "Essentials": ["ID / driver’s licence (for the rental)", "Credit cards + a little cash", "Phone + car charger + power bank", "Starlink Mini + power (12V / USB-C) + app signed in", "Offline maps + NPS app downloaded", "Park pass / receipt", "Water bottles (2+) — altitude & dry air", "Sunscreen, sunglasses, lip balm (strong sun at 7,000 ft)", "Headlamp (predawn Lamar start)", "Binoculars 🐺"],
+    "Essentials": ["ID / driver’s licence (for the rental)", "Credit cards + a little cash", "Phone + car charger + power bank", "Starlink Mini + power (12V / USB-C) + app signed in", "Offline maps + NPS app downloaded", "Park pass / receipt", "Water bottles (2+) — altitude & dry air", "Sunscreen, sunglasses, lip balm (strong sun at 7,000 ft)", "Headlamp (after-dark drives home from Hayden & Lamar)", "Binoculars 🐺"],
     "Cold-weather layers": ["Fleece / down mid-layer", "Waterproof, windproof shell", "Beanie + gloves (mornings ~30°F)", "Thermal base layer", "Warm socks", "Comfortable broken-in walking / hiking shoes", "Rain pants or quick-dry pants"],
-    "Hiking & wildlife": ["🐻 Bear spray (buy on arrival — cannot fly)", "Day pack", "Trail snacks", "Thermos (congee for the predawn drive)", "Blister plasters / small first-aid kit", "Camera / phone lens wipe (geyser steam)"],
+    "Hiking & wildlife": ["🐻 Bear spray (buy on arrival — cannot fly)", "Day pack", "Trail snacks", "Thermos (congee / hot tea for the sunset wildlife sessions)", "Blister plasters / small first-aid kit", "Camera / phone lens wipe (geyser steam)"],
     "Cooking & food": ["Pot + pan + rice cooker (buy Sep 13)", "Utensils, cutting board, knife", "Cooler bag + ice packs", "Dish soap + sponge", "Rice, noodles, mantou/baozi, congee fixings (race-week carbs)", "Eggs, chicken breast, tofu, fish, veg, sauces", "Bananas, honey, juice, rice cakes (carb-load fillers)", "Electrolyte tabs / sports drink"],
     "HYROX race kit": ["Race shoes (broken in) + socks", "Race top / shorts + a change of clothes", "Gels / chews (tested before) + electrolytes", "Chalk (if allowed) + wrist wraps / grips if you use them", "Race bib / packet confirmation", "Foam roller or massage ball", "Compression socks for the flight home"]
   }
@@ -605,7 +606,6 @@ const PLACES = {
   "Hayden Valley": [44.6500, -110.4700],
   "Mud Volcano": [44.6248, -110.4336],
   "Lake Yellowstone Hotel": [44.5498, -110.3990],
-  "Dunraven Pass": [44.7873, -110.4560],
   "Lamar Valley": [44.8985, -110.2280],
   "Tower Fall": [44.8920, -110.3873],
   "Mammoth Hot Springs": [44.9766, -110.7027],
@@ -755,9 +755,9 @@ const TRIP_ZH = {
     "🐻 灰熊区：任何步道都要带熊喷雾（在 Jackson 或西黄石买——不能上飞机），离熊/狼 100 码、野牛/麋鹿 25 码。9月 Mammoth 的麋鹿发情期是亮点——但公鹿会冲人。",
     "🧥 9月中旬的黄石：白天 13–18°C，清晨 −4～2°C，海拔 2,000–2,700m 随时可能下雪。每天早上抓绒 + 防风雨外套 + 帽子；高原日晒强。",
     "🛣 园内道路全开，含 Dunraven Pass（10月12日关闭）——但 Tower Junction 的 Yellowstone River 桥施工到 9月30日，单车道最多等 30 分钟，正好在你的拉马尔谷那天。",
-    "🏋️ 这周是 HYROX 减量周：黄石是主动恢复（木栈道、一条短步道），不是训练。苦练已经完成；这里每天都让腿轻松，9月17日开始碳水加载。",
+    "🏋️ 这周是 HYROX 减量周：黄石是主动恢复（木栈道、一条短步道），不是训练——而且没有天亮前出发：每天 9:30–10 点才出门，看动物改到日落。苦练已经完成；9月17日开始碳水加载。",
     "📡 园内几乎无信号。Starlink Mini 需要开阔天空——住处车道、停车场、观景点都能用；同时也把离线地图和间歇泉预测下载好。",
-    "🍚 全程自己做饭：第一晚在中国城超市把一周食材买齐，保温壶里的粥让清晨看动物变得舒服。"
+    "🍚 全程自己做饭：第一晚在中国城超市把一周食材买齐，一壶粥让日落观兽和摸黑回家的长途都舒服起来。"
   ],
 
   cities: [
@@ -791,21 +791,21 @@ const TRIP_ZH = {
     },
     {
       title: "取件 → 大提顿 → 进黄石",
-      summary: "早上办事（Whole Foods 取件、Starlink Mini），然后约5小时车程到大提顿走经典的下午环线，再从黄石南门一路向北，天黑前到西黄石的住处。",
+      summary: "不用定闹钟：9点去办事（Whole Foods 取件、Starlink Mini），10点上路，约5小时车程到大提顿看几个经典点，再从黄石南门一路向北，天黑前到西黄石的住处。",
       blocks: [
-        { time: "约上午7:30", title: "📦 Whole Foods——取快递", detail: "一开门就去客服/Amazon 柜台取件。顺便在这儿买咖啡和早餐。" },
-        { time: "约上午8:15", title: "📡 取 Starlink Mini", detail: "在车里通电测试、确认 App 已登录，再离开有信号的地方——园内几乎没有服务。" },
-        { time: "上午9:00", title: "🚗 从 SLC 出发 → 大提顿（约5小时）", detail: "I-15 北 → US-89 经 Star Valley 进 Jackson（风景好），或 I-15 → Idaho Falls → US-26（稍快）。在 Jackson 加油，并在这儿买熊喷雾（约$45–50）——从这里起就是灰熊区。" },
-        { time: "约下午2:00", title: "🏔 Mormon Row——Moulton 谷仓", detail: "明信片画面：斑驳的谷仓背后是提顿山脉。20分钟，就在 Antelope Flats Road 边。附近常有野牛——保持25码。" },
-        { time: "约下午2:45", title: "📸 Snake River Overlook", detail: "安塞尔·亚当斯的机位——河湾与远处群峰。北上 US-89 路边快停。" },
-        { time: "约下午3:15", title: "🏞 Jenny Lake——湖边散步", detail: "园里最美的湖。从游客中心沿湖边轻松走30分钟足够（减量周——不爬大山）。" },
-        { time: "约下午4:00", title: "🦌 Oxbow Bend", detail: "Moran 山倒映在 Snake River 里；黄昏有驼鹿和麋鹿。最北的一站——从这儿直接北上黄石。" },
-        { time: "下午4:30", title: "🚗 穿黄石南门北上 → West Thumb", detail: "4:30pm 前离开 Oxbow。黄石南门约40分钟，然后 West Thumb 间歇泉盆地（30分钟：湖边间歇泉、Fishing Cone）——之后就不用再绕回来了。再往西经老忠实 → Madison → 西黄石。日落约7:35pm；黄昏慢开，路上有动物。" },
+        { time: "约上午9:00", title: "📦 Whole Foods——取快递", detail: "睡到自然醒，再去客服/Amazon 柜台取件。顺便在这儿买咖啡和早餐。" },
+        { time: "约上午9:45", title: "📡 取 Starlink Mini", detail: "在车里通电测试、确认 App 已登录，再离开有信号的地方——园内几乎没有服务。" },
+        { time: "上午10:00", title: "🚗 从 SLC 出发 → 大提顿（约5小时）", detail: "I-15 北 → US-89 经 Star Valley 进 Jackson（风景好），或 I-15 → Idaho Falls → US-26（稍快）。在 Jackson 加油，并在这儿买熊喷雾（约$45–50）——从这里起就是灰熊区。争取3点前到 Jackson。" },
+        { time: "约下午3:15", title: "🏔 Mormon Row——Moulton 谷仓", detail: "明信片画面：斑驳的谷仓背后是提顿山脉。20分钟，就在 Antelope Flats Road 边。附近常有野牛——保持25码。" },
+        { time: "约下午3:50", title: "📸 Snake River Overlook", detail: "安塞尔·亚当斯的机位——河湾与远处群峰。北上 US-89 路边快停。" },
+        { time: "约下午4:10", title: "🏞 Jenny Lake——只在时间充裕时去", detail: "园里最美的湖，但来回各要绕约20分钟。只有3:15前到了 Mormon Row 才去湖边短走一下；否则跳过——Oxbow 的光线和天黑前穿过公园更重要。" },
+        { time: "约下午4:30", title: "🦌 Oxbow Bend", detail: "Moran 山倒映在 Snake River 里；午后光线下有驼鹿和麋鹿。最北的一站——从这儿直接北上黄石。" },
+        { time: "下午4:45", title: "🚗 穿黄石南门北上 → West Thumb", detail: "4:45pm 前离开 Oxbow。黄石南门约40分钟，然后 West Thumb 间歇泉盆地（20–30分钟：湖边间歇泉、Fishing Cone）——之后就不用再绕回来了。再往西经老忠实 → Madison → 西黄石。日落约7:35pm；最后一段在黄昏，慢开——路上有动物。" },
         { time: "约晚上8:00", title: "🏠 入住西黄石", detail: "5晚的大本营，就在西门外。打开厨房，简单做个晚饭，把 Starlink Mini 架在能看到开阔天空的地方。" }
       ],
       eat: "早餐在 Whole Foods；午餐在 Jackson（加油站）；晚餐在住处做。",
       tips: [
-        "来不及了（5:30pm 后才离开提顿）？改走爱达荷线：Jackson → Teton Pass → Victor → Ashton → Island Park → 西黄石（约2h45，没有动物堵车，公路照明好）。",
+        "5:15pm 后才离开 Oxbow？改走爱达荷线：Jackson → Teton Pass → Victor → Ashton → Island Park → 西黄石（约2h45，没有动物堵车，公路照明好）——West Thumb 就跳过，没关系。",
         "门票：大提顿 $35 + 黄石 $35（每车7天）= $70；一年内还去别的国家公园再买 $80 年票。",
         "在 Jackson 买熊喷雾，从此每条步道都带着。",
         "减量周：今天只轻松走走——开车就是运动量。"
@@ -813,75 +813,76 @@ const TRIP_ZH = {
     },
     {
       title: "黄石 Day 1 · 间歇泉之乡：老忠实与大棱镜",
-      summary: "最近、回报最高的一天：Firehole 河沿线的间歇泉盆地、从观景台看大棱镜、一次老忠实喷发，再走 Upper Geyser Basin 木栈道。8–10 公里平坦木栈道——完美的主动恢复。",
+      summary: "最近、回报最高的一天，晚出发：Firehole 河沿线的间歇泉盆地、从观景台看大棱镜、一次老忠实喷发、Upper Geyser Basin 木栈道，黄昏在 Madison 草甸看野牛。8–10 公里平坦木栈道——完美的主动恢复。",
       blocks: [
-        { time: "上午8:00", title: "🌊 Firehole Canyon Drive 与 Firehole 瀑布", detail: "刚过 Madison Junction——2英里单行景观支路，到一个12米的瀑布。10分钟。" },
-        { time: "上午9:00", title: "🫧 Fountain Paint Pot", detail: "一条短环线看全四种地热景观：泥泉、喷气孔、温泉和间歇泉（Clepsydra 几乎一直在喷）。30分钟。" },
-        { time: "上午9:45", title: "🌈 Midway Geyser Basin——近看大棱镜", detail: "木栈道经过 Excelsior 间歇泉冒着蒸汽的坑，到大棱镜边缘。清晨凉的时候蒸汽最大——接下来的观景台才能看到完整的颜色。" },
-        { time: "上午10:45", title: "🥾 Fairy Falls 步道 → 大棱镜观景台", detail: "从 Fairy Falls 停车场，平路 1.2 公里再短爬一段到观景台——彩虹圈的俯瞰角度就是这里。往返约1小时。" },
-        { time: "中午12:30", title: "⛲ 老忠实 + Old Faithful Inn", detail: "在游客中心或 NPS App 查下一次预测喷发（约每90分钟，±10分钟）。提前15分钟占个长椅。然后去隔壁的历史旅馆大厅。" },
-        { time: "下午1:30", title: "🚶 Upper Geyser Basin 木栈道——Morning Glory Pool", detail: "2.4 公里木栈道，经过 Castle、Grand、Riverside 间歇泉到 Morning Glory Pool。Grand 的预测时段在游客中心的板上——30分钟内的话值得等。" },
-        { time: "下午4:00", title: "🧿 Biscuit Basin 与 Black Sand Basin", detail: "回程路上两个色彩鲜艳的小盆地——Sapphire Pool 和 Emerald Pool。各20分钟。" },
-        { time: "下午5:30", title: "🦬 经 Madison 回程——黄昏看动物", detail: "傍晚野牛和麋鹿在 Madison 河草甸吃草。在观景停车位停下；待在车里或车边。" }
+        { time: "约上午10:00", title: "🌊 Firehole Canyon Drive 与 Firehole 瀑布", detail: "慢慢吃完早饭，刚过 Madison Junction——2英里单行景观支路，到一个12米的瀑布。10分钟。" },
+        { time: "约上午10:45", title: "🫧 Fountain Paint Pot", detail: "一条短环线看全四种地热景观：泥泉、喷气孔、温泉和间歇泉（Clepsydra 几乎一直在喷）。30分钟。" },
+        { time: "约上午11:30", title: "🌈 Midway Geyser Basin——近看大棱镜", detail: "木栈道经过 Excelsior 间歇泉冒着蒸汽的坑，到大棱镜边缘。上午晚些正好——蒸汽比清晨少，颜色看得见。" },
+        { time: "约中午12:30", title: "🥾 Fairy Falls 步道 → 大棱镜观景台", detail: "从 Fairy Falls 停车场，平路 1.2 公里再短爬一段到观景台——彩虹圈的俯瞰角度就是这里，正午太阳在头顶时最好看。往返约1小时。" },
+        { time: "约下午2:00", title: "⛲ 老忠实 + Old Faithful Inn（在这儿吃午饭）", detail: "在游客中心或 NPS App 查下一次预测喷发（约每90分钟，±10分钟）。提前15分钟占个长椅。吃带的午饭，然后去隔壁的历史旅馆大厅。" },
+        { time: "约下午3:00", title: "🚶 Upper Geyser Basin 木栈道——Morning Glory Pool", detail: "2.4 公里木栈道，经过 Castle、Grand、Riverside 间歇泉到 Morning Glory Pool。Grand 的预测时段在游客中心的板上——30分钟内的话值得等。" },
+        { time: "约下午5:00", title: "🧿 Biscuit Basin 与 Black Sand Basin", detail: "回程路上两个色彩鲜艳的小盆地——Sapphire Pool 和 Emerald Pool。各20分钟。" },
+        { time: "约下午6:30", title: "🦬 黄昏的 Madison 草甸——野牛与麋鹿", detail: "你的第一场日落观兽，离家15分钟：最后的光线里野牛和麋鹿在 Madison 河草甸吃草（日落约7:35）。在观景停车位停下；待在车里或车边。" }
       ],
-      eat: "自己做早餐；带午饭（米饭+蛋白质）在老忠实吃；晚餐回住处做。",
+      eat: "在住处吃晚一点的早餐；带午饭（米饭+蛋白质）在老忠实吃；黄昏后回住处吃晚饭。",
       tips: [
         "老忠实预测：NPS App 或 geysertimes.org。Riverside 和 Grand 是另外两个可预测的——看板子。",
         "只走木栈道——地壳很薄、水是沸腾的。手机帽子拿稳，掉下去什么都捡不回来。",
-        "减量：早上在西黄石轻松跑 25–30 分钟 + 6×20 秒加速跑，之后木栈道就是你的恢复散步。",
-        "清晨约 −1°C：抓绒 + 外壳 + 帽子；11点前就会脱掉几层。"
+        "减量：出门前轻松跑 25–30 分钟 + 6×20 秒加速跑（上午晚些也行），之后木栈道就是你的恢复散步。",
+        "10点出发躲过了结冰的那一小时，但 2,000 米海拔中午前还是 5–13°C——抓绒 + 外壳，下午早些再脱。"
       ]
     },
     {
-      title: "黄石 Day 2 · 大峡谷、海登谷与黄石湖",
-      summary: "往东到黄石大峡谷，从两岸看下瀑布，然后慢慢穿过海登谷看野牛、泥火山，再到黄石湖——傍晚再经海登谷回来，那时动物最多。",
+      title: "黄石 Day 2 · 大峡谷、黄石湖与日落的海登谷",
+      summary: "往东到黄石大峡谷，从两岸看下瀑布，南下到泥火山和黄石湖，然后回到海登谷看重头戏——日落观兽——再小心地摸黑开回家。",
       blocks: [
-        { time: "上午7:30", title: "🚗 出发 → Canyon Village", detail: "Madison → Norris → Canyon，约1.5小时。Norris 留到 Day 4 单独看，今天路过。" },
-        { time: "上午9:15", title: "💦 北岸——Brink of the Lower Falls 与 Lookout Point", detail: "Brink of the Lower Falls：陡峭的往返1公里（下180米再上来），站到94米瀑布的顶端——今天唯一的腿部训练。然后沿岸边路看 Lookout Point 和 Grand View。" },
-        { time: "上午11:00", title: "🎨 南岸——Artist Point", detail: "经典油画视角：下瀑布和黄色峡谷壁。从停车场走5分钟。" },
-        { time: "下午1:00", title: "🦬 海登谷——野牛与野生动物", detail: "慢开，用观景停车位。野牛群、麋鹿，有时远处有灰熊和狼——用望远镜。绝不靠近；离野牛25码、离熊100码。" },
-        { time: "下午2:00", title: "🌋 泥火山与 Dragon’s Mouth 温泉", detail: "短木栈道环线上翻滚的硫磺泥景观。30分钟。" },
-        { time: "下午2:45", title: "🏞 Fishing Bridge 与 Lake Yellowstone Hotel", detail: "巨大的高山湖（海拔2,357米）。沿湖走走，看看1891年的 Lake Hotel 阳光房。45分钟。" },
-        { time: "下午3:45", title: "🌅 黄昏再穿海登谷 → 回家", detail: "原路北上穿过海登谷——傍晚动物最活跃——再 Canyon → Norris → Madison → 西黄石（约2小时）。" }
+        { time: "约上午9:30", title: "🚗 出发 → Canyon Village", detail: "Madison → Norris → Canyon，约1.5小时。Norris 留到 Day 4 单独看，今天路过。" },
+        { time: "约上午11:00", title: "💦 北岸——Brink of the Lower Falls 与 Lookout Point", detail: "Brink of the Lower Falls：陡峭的往返1公里（下180米再上来），站到94米瀑布的顶端——今天唯一的腿部训练。然后沿岸边路看 Lookout Point 和 Grand View。" },
+        { time: "约中午12:45", title: "🎨 南岸——Artist Point（在 Canyon Village 吃午饭）", detail: "经典油画视角：下瀑布和黄色峡谷壁。从停车场走5分钟。之后在 Canyon Village 野餐区吃午饭。" },
+        { time: "约下午2:30", title: "🌋 泥火山与 Dragon’s Mouth 温泉", detail: "往南直接穿过海登谷（快速看一眼——日落时会回来），到短木栈道环线上翻滚的硫磺泥景观。30分钟。" },
+        { time: "约下午3:15", title: "🏞 Fishing Bridge 与 Lake Yellowstone Hotel", detail: "巨大的高山湖（海拔2,357米）。沿湖走走，看看1891年的 Lake Hotel 阳光房。45分钟。" },
+        { time: "约下午4:30", title: "🌅 海登谷——日落观兽", detail: "回到北边的海登谷，用最后三小时的光线（日落约7:30）。先慢慢开一遍，再在观景停车位（Grizzly Overlook 或 Alum Creek 一带）安顿下来，带着望远镜和保温壶：野牛群、麋鹿，灰熊和狼就在这个时段出来。绝不靠近；离野牛25码、离熊100码。" },
+        { time: "约晚上7:45", title: "🌙 摸黑回家：Canyon → Norris → Madison", detail: "约2小时。慢开（最多45英里/小时），路上没车就开远光——野牛会站在柏油路上取暖。回住处吃晚一点的晚饭。" }
       ],
-      eat: "在 Canyon Village 野餐区吃带的午饭；晚餐回住处。",
+      eat: "午餐在 Canyon Village 野餐区；海登谷吃保温壶 + 包子；回住处吃晚一点的晚饭。",
       tips: [
-        "West Thumb 进园那天（9/14）已经看过，今天不绕湖西岸，直接经 Norris 回——更短。",
+        "海登谷在天黑前的最后两小时最好——这就是你的观兽时段，不用闹钟。野牛必看到；黄昏时灰熊和狼很有机会。",
         "Brink of the Lower Falls 是这周唯一真正的爬升——稳着来；不需要再加。",
-        "海登谷的“野牛堵车”能停20分钟——享受它，别按喇叭、别下车。"
+        "海登谷的“野牛堵车”能停20分钟——享受它，别按喇叭、别下车。",
+        "West Thumb 进园那天（9/14）已经看过，今天不绕湖西岸，直接经 Norris 回。"
       ]
     },
     {
-      title: "黄石 Day 3 · 拉马尔谷观兽、塔瀑与猛犸热泉",
-      summary: "观兽大日：天亮前赶到拉马尔谷看狼和野牛，然后塔瀑，再到猛犸热泉看台地和9月的麋鹿发情期。约250英里——主要是开车和观看，腿很轻松。",
+      title: "黄石 Day 3 · 猛犸热泉、塔瀑与日落的拉马尔谷",
+      summary: "不用天亮前出发：上午晚些出门，中午看猛犸热泉的台地和吼叫的麋鹿，然后塔瀑，再到拉马尔谷待到日落——仅次于黎明的看狼时段，野牛必看到。长长的一天、回得晚（约10:30pm）；明天是睡懒觉的日子。",
       blocks: [
-        { time: "上午5:30", title: "🌄 天亮前出发 → 翻 Dunraven Pass", detail: "Madison → Norris → Canyon → Dunraven Pass（海拔2,700米，看 Washburn 山日出）→ Tower Junction。约2.5小时。这周更看重睡眠的话 6:30 出发也行——9月动物到 9–10 点仍然活跃。" },
-        { time: "上午8:00", title: "🐺 拉马尔谷——狼、野牛、叉角羚", detail: "美洲的塞伦盖蒂。在 Tower 到 Soda Butte 之间的观景停车位停车，用望远镜扫谷地；看到观狼者的单筒望远镜就凑过去。野牛不停地横穿马路。" },
-        { time: "上午11:00", title: "🏞 塔瀑与 Roosevelt", detail: "40米瀑布观景点，离停车场5分钟。在 Roosevelt Lodge 一带喝杯咖啡。" },
-        { time: "下午1:30", title: "🪨 猛犸热泉——台地与麋鹿发情期", detail: "上下两段木栈道看石灰华台地（约1.5小时）。9月公麋鹿在 Mammoth 的草坪上吼叫——很壮观，但它们会冲人：保持25码以上，让车挡在你和它之间。" },
-        { time: "下午4:00", title: "🚗 经 Norris 回家", detail: "Mammoth → Norris → Madison → 西黄石，约1小时45分。早点吃晚饭、泡沫轴、睡觉——离比赛还有三天。" }
+        { time: "约上午9:30", title: "🚗 出发 → Norris → Mammoth", detail: "好好吃完早饭约9:30出发。Madison → Norris → Mammoth，约1.5小时（Norris 的木栈道留到明天）。" },
+        { time: "约上午11:00", title: "🪨 猛犸热泉——台地与麋鹿发情期", detail: "上下两段木栈道看石灰华台地（约1.5小时），然后在 Mammoth 吃午饭。9月公麋鹿整天在 Mammoth 的草坪上吼叫——很壮观，但它们会冲人：保持25码以上，让车挡在你和它之间。" },
+        { time: "约下午2:00", title: "🏞 塔瀑与 Roosevelt", detail: "沿北线往东18英里（约40分钟，加上等桥）。40米瀑布观景点，离停车场5分钟。在 Roosevelt Lodge 一带喝杯咖啡。" },
+        { time: "约下午3:30", title: "🐺 拉马尔谷——下午一直待到日落", detail: "美洲的塞伦盖蒂，从下午一直看到日落（约7:30）。整个下午都有野牛群和叉角羚；天黑前的最后两小时是狼和熊出现的时候。在 Slough Creek 到 Soda Butte 之间的观景停车位用望远镜扫，看到有人架着单筒望远镜就凑过去——观狼者知道狼群在哪。" },
+        { time: "约晚上7:45", title: "🌙 天黑后原路回家", detail: "拉马尔 → Tower → Mammoth → Norris → 西黄石，走低处熟悉的路约2.5–3小时（黑天别走 Dunraven Pass）。稳稳地开；约10:30pm 到家。路上吃保温壶和包子，回去吃点清淡宵夜或直接睡。" }
       ],
-      eat: "早餐在车上吃（保温壶里的粥 + 包子）；午餐在 Roosevelt/Mammoth；晚餐回住处——今晚开始加碳水。",
+      eat: "在住处吃晚一点的早餐；午餐在 Mammoth；保温壶里的粥 + 包子留给拉马尔谷和回程；回来吃点清淡宵夜。",
       tips: [
-        "⚠️ Tower Junction 旁 Yellowstone River 桥施工：单车道信号灯，最多等30分钟，到9月30日——来回都留出时间。",
-        "望远镜决定你是“看到了狼”还是“看到了一个点”。一壶热粥让天亮前的等待舒服很多。",
-        "减量日：只开车和走木栈道。今晚拉伸/泡沫轴10分钟；睡眠优先。",
-        "Dunraven Pass 开放中（10月12日关闭）——前一晚查一下 NPS 路况，以防早雪。"
+        "⚠️ Tower Junction 旁 Yellowstone River 桥施工：单车道信号灯，最多等30分钟，到9月30日——来回都留出时间（天黑后也一样）。",
+        "黄昏是仅次于黎明的看狼时段，而且不用定闹钟。望远镜决定你是“看到了狼”还是“看到了一个点”。",
+        "回程摸黑开约2.5–3小时——45英里/小时，留意路上的野牛，明天早上什么都别安排。",
+        "减量日：只开车和走木栈道。睡前或明天睡醒后拉伸/泡沫轴。"
       ]
     },
     {
       title: "黄石 Day 4 · Norris 间歇泉盆地与轻松的减量日",
-      summary: "赛前两天的轻松收尾：Norris（最热、最古老的盆地，Steamboat 所在），两个短停，下午休息，一场日落——然后打包，正式开始碳水加载。",
+      summary: "昨晚回得晚，今天睡到自然醒。赛前两天的轻松收尾：Norris（最热、最古老的盆地，Steamboat 所在），两个短停，下午休息，最后一场日落——然后打包，正式开始碳水加载。",
       blocks: [
-        { time: "上午9:00", title: "♨️ Norris 间歇泉盆地——Porcelain 与 Back Basin", detail: "两条木栈道环线（约2小时，平路）：Porcelain Basin 的乳蓝色池子，和 Back Basin 里的 Steamboat——世界最高的活跃间歇泉（无法预测，但蒸汽很壮观）。" },
-        { time: "上午11:30", title: "🎨 Artists Paintpots 与 Gibbon 瀑布", detail: "1.6公里环线看彩色泥泉，回程在路边停车位看 Gibbon 瀑布。" },
-        { time: "下午1:00", title: "🏠 回西黄石吃午饭、休息", detail: "大份碳水午餐，把脚翘起来。收拾住处、开始打包——明早退房。" },
-        { time: "下午3:00", title: "🥾 可选：Mystic Falls 短步道或最后一个间歇泉", detail: "从 Biscuit Basin 到 Mystic Falls 往返3.5公里很平缓——或者回老忠实补看错过的 Grand/Riverside。别爬 Mount Washburn（爬升430米）——这周不合适。" },
-        { time: "傍晚", title: "🌇 Madison 看日落，然后打包", detail: "Madison 草甸的最后一抹光。回家吃碳水大餐（米饭、面、馒头），把车装好，早睡——明天11点出发。" }
+        { time: "约上午10:30", title: "♨️ Norris 间歇泉盆地——Porcelain 与 Back Basin", detail: "两条木栈道环线（约2小时，平路）：Porcelain Basin 的乳蓝色池子，和 Back Basin 里的 Steamboat——世界最高的活跃间歇泉（无法预测，但蒸汽很壮观）。" },
+        { time: "约下午1:00", title: "🎨 Artists Paintpots 与 Gibbon 瀑布", detail: "1.6公里环线看彩色泥泉，回程在路边停车位看 Gibbon 瀑布。" },
+        { time: "约下午2:30", title: "🏠 回西黄石吃午饭、休息", detail: "大份碳水午餐，把脚翘起来。收拾住处、开始打包——明早退房。" },
+        { time: "约下午4:30", title: "🥾 可选：Mystic Falls 短步道或最后一个间歇泉", detail: "从 Biscuit Basin 到 Mystic Falls 往返3.5公里很平缓——或者回老忠实补看错过的 Grand/Riverside。别爬 Mount Washburn（爬升430米）——这周不合适。" },
+        { time: "傍晚", title: "🌇 Madison 看日落，然后打包", detail: "Madison 草甸的最后一抹光（日落约7:30）。回家吃碳水大餐（米饭、面、馒头），把车装好，别太晚睡——明天11点出发，不用闹钟。" }
       ],
       eat: "碳水加载正式开始：每餐米饭/面/馒头，瘦肉蛋白，少油少纤维。",
       tips: [
-        "D-2 唤醒：15–20分钟轻松慢跑 + 4×15秒加速 + 轻量过一遍站点动作（10个徒手深蹲上举、20步弓步、几个波比）——只找技术，不发力。",
+        "D-2 唤醒：15–20分钟轻松慢跑 + 4×15秒加速 + 轻量过一遍站点动作（10个徒手深蹲上举、20步弓步、几个波比）——只找技术，不发力。一天里什么时候做都行。",
         "今明两天碳水目标：每公斤体重约6–8克。米饼、香蕉、蜂蜜水和果汁补空档。",
         "今晚把徒步装备收进包里——用不上了；熊喷雾不能上飞机，留给住处或送人。"
       ]
@@ -953,9 +954,9 @@ const TRIP_ZH = {
   ],
 
   packing: {
-    "Essentials": ["证件/驾照（租车用）", "银行卡 + 少量现金", "手机 + 车充 + 充电宝", "Starlink Mini + 供电（12V/USB-C）+ App 已登录", "离线地图 + NPS App 已下载", "公园门票/收据", "水瓶（2个以上）——高原、干燥", "防晒霜、墨镜、润唇膏（2,000米高原日晒强）", "头灯（拉马尔谷天亮前出发）", "望远镜 🐺"],
+    "Essentials": ["证件/驾照（租车用）", "银行卡 + 少量现金", "手机 + 车充 + 充电宝", "Starlink Mini + 供电（12V/USB-C）+ App 已登录", "离线地图 + NPS App 已下载", "公园门票/收据", "水瓶（2个以上）——高原、干燥", "防晒霜、墨镜、润唇膏（2,000米高原日晒强）", "头灯（从海登谷和拉马尔谷摸黑回家）", "望远镜 🐺"],
     "Cold-weather layers": ["抓绒/羽绒中间层", "防水防风外壳", "帽子 + 手套（清晨约 −1°C）", "保暖内层", "厚袜子", "穿惯的舒适步行/徒步鞋", "雨裤或速干裤"],
-    "Hiking & wildlife": ["🐻 熊喷雾（到了再买——不能上飞机）", "日用背包", "路上零食", "保温壶（天亮前开车路上喝粥）", "水泡贴/小急救包", "相机/手机镜头布（间歇泉蒸汽）"],
+    "Hiking & wildlife": ["🐻 熊喷雾（到了再买——不能上飞机）", "日用背包", "路上零食", "保温壶（日落观兽时喝粥/热茶）", "水泡贴/小急救包", "相机/手机镜头布（间歇泉蒸汽）"],
     "Cooking & food": ["锅 + 平底锅 + 电饭煲（9月13日买）", "餐具、砧板、刀", "保温袋 + 冰袋", "洗洁精 + 海绵", "米、面、馒头/包子、粥料（赛前碳水）", "鸡蛋、鸡胸、豆腐、鱼、蔬菜、调料", "香蕉、蜂蜜、果汁、米饼（碳水加载补充）", "电解质片/运动饮料"],
     "HYROX race kit": ["比赛鞋（穿惯的）+ 袜子", "比赛上衣/短裤 + 一套换洗", "能量胶/咀嚼糖（试过的）+ 电解质", "镁粉（允许的话）+ 护腕/握力带（用的话）", "号码布/参赛包确认", "泡沫轴或按摩球", "回程飞机穿的压缩袜"]
   }
