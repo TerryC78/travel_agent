@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="黄石之旅行程：盐湖城 → 大提顿 → 黄石 → HYROX 盐湖城 → 洛杉矶，2026年9月13日 – 20日。" />
+  <title>黄石之旅 2026 · 行程</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <style>
+/* East Coast 2026 itinerary - styling */
+:root {
+  --bg: #0f1424;
+  --bg-soft: #171d33;
+  --card: #1d2440;
+  --card-2: #232c4f;
+  --ink: #eef1fb;
+  --muted: #a4adcf;
+  --line: #2c355c;
+  --accent: #5b8cff;
+  --accent-2: #ff5d73;
+  --gold: #f5c451;
+  --green: #36d399;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 80% -10%, #21306b 0%, transparent 60%), var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 18px 80px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: 56px 18px 30px;
+  text-align: center;
+  background:
+    radial-gradient(800px 300px at 50% -40%, rgba(91,140,255,.35), transparent 70%);
+}
+
+/* Language switch (EN / 中文) */
+.lang-switch {
+  position: absolute; top: 14px; right: 14px; z-index: 30;
+  display: inline-flex; gap: 2px; padding: 3px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+.lang-switch button {
+  background: transparent; color: var(--muted); border: none; cursor: pointer;
+  font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; line-height: 1;
+}
+.lang-switch button.active { background: var(--accent); color: #fff; }
+.lang-switch button:hover:not(.active) { color: var(--ink); }
+
+/* Trip switch (link to the other trip page: East Coast <-> Yellowstone) */
+.trip-switch {
+  position: absolute; top: 14px; left: 14px; z-index: 30;
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+  box-shadow: var(--shadow); color: var(--muted); font-size: 13px; font-weight: 700;
+  text-decoration: none; line-height: 1;
+}
+.trip-switch:hover { color: var(--ink); }
+.hero .flag { font-size: 40px; letter-spacing: 4px; }
+.hero h1 { font-size: clamp(28px, 6vw, 52px); margin: 8px 0 6px; line-height: 1.05; }
+.hero .route { color: var(--gold); font-weight: 700; font-size: clamp(15px, 3.4vw, 22px); }
+.hero .dates { color: var(--muted); margin-top: 6px; font-size: 15px; }
+
+/* Countdown */
+.countdown { display: flex; gap: 10px; justify-content: center; margin: 22px 0 6px; flex-wrap: wrap; }
+.cd-box {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 16px; min-width: 78px; box-shadow: var(--shadow);
+}
+.cd-box .num { font-size: 26px; font-weight: 800; color: var(--accent); }
+.cd-box .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+.cd-msg { color: var(--gold); font-weight: 700; margin-top: 6px; }
+
+/* ---------- Nav ---------- */
+nav.tabs {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; gap: 6px; overflow-x: auto; padding: 10px;
+  background: rgba(15,20,36,.85); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+nav.tabs button {
+  flex: 0 0 auto; background: transparent; color: var(--muted);
+  border: 1px solid transparent; border-radius: 999px; padding: 8px 16px;
+  font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+nav.tabs button:hover { color: var(--ink); }
+nav.tabs button.active { color: #fff; background: var(--accent); }
+
+/* ---------- Sections / cards ---------- */
+section { display: none; padding-top: 26px; }
+section.active { display: block; animation: fade .25s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+h2.sec-title { font-size: 24px; margin: 6px 0 4px; }
+p.sec-sub { color: var(--muted); margin: 0 0 18px; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 20px; margin: 14px 0; box-shadow: var(--shadow);
+}
+
+/* Highlights */
+.highlight { display: flex; gap: 12px; align-items: flex-start; }
+.highlight + .highlight { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+
+.city-chips { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0 0; }
+.chip {
+  background: var(--card-2); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 16px; flex: 1 1 180px;
+}
+.chip .city { font-weight: 800; font-size: 17px; }
+.chip .meta { color: var(--muted); font-size: 13px; }
+
+/* ---------- Itinerary day ---------- */
+.day { margin: 16px 0; }
+.day-head {
+  display: flex; align-items: center; gap: 14px; cursor: pointer;
+  padding: 16px 18px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.day-head:hover { border-color: var(--accent); }
+.day-num {
+  flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #3b63c9);
+  display: grid; place-items: center; font-weight: 800; font-size: 18px; color: #fff;
+}
+.day-head .dh-main { flex: 1; min-width: 0; }
+.day-head .dh-date { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+.day-head .dh-title { font-weight: 700; font-size: 16px; }
+.day-head .dh-city { font-size: 12px; color: var(--muted); }
+.day-head .caret { color: var(--muted); transition: transform .2s; }
+.day.open .day-head .caret { transform: rotate(90deg); }
+
+.day-body { display: none; padding: 4px 6px 6px; }
+.day.open .day-body { display: block; }
+
+.block { display: flex; gap: 14px; padding: 14px 4px; border-bottom: 1px dashed var(--line); }
+.block:last-of-type { border-bottom: none; }
+.block .when {
+  flex: 0 0 86px; font-weight: 800; font-size: 12px; text-transform: uppercase;
+  letter-spacing: .5px; color: var(--accent); padding-top: 2px;
+}
+.block .what { flex: 1; }
+.block .what .bt { font-weight: 700; }
+.block .what .bd { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.map-link {
+  display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 600;
+  background: var(--card-2); border: 1px solid var(--line); border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.eat, .tips { margin-top: 12px; font-size: 14px; }
+.eat { color: var(--ink); }
+.tips ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); }
+
+.decision {
+  background: linear-gradient(180deg, rgba(245,196,81,.12), rgba(245,196,81,.04));
+  border: 1px solid var(--gold); border-radius: 12px; padding: 14px 16px; margin: 10px 0 14px;
+}
+.decision .dt { font-weight: 800; color: var(--gold); }
+.decision ol { margin: 8px 0 0; padding-left: 18px; }
+.decision li { margin: 4px 0; }
+
+/* ---------- Tables ---------- */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr.total td { font-weight: 800; border-top: 2px solid var(--accent); border-bottom: none; font-size: 15px; }
+
+/* ---------- Weather ---------- */
+.wx-list { margin-top: 6px; }
+.wx-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 4px; border-bottom: 1px solid var(--line);
+}
+.wx-row:last-child { border-bottom: none; }
+.wx-emoji { font-size: 30px; flex: 0 0 auto; width: 40px; text-align: center; }
+.wx-main { flex: 1; min-width: 0; }
+.wx-date { font-weight: 700; font-size: 14px; }
+.wx-cond { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.wx-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 999px;
+  background: var(--card-2); color: var(--muted); border: 1px solid var(--line); margin-left: 4px;
+}
+.wx-tag.live { background: rgba(54,211,153,.15); color: var(--green); border-color: var(--green); }
+.wx-temps { flex: 0 0 auto; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.wx-hi { font-weight: 800; font-size: 17px; }
+.wx-lo { color: var(--muted); font-size: 15px; margin-left: 6px; }
+.wx-rain { color: var(--accent); font-size: 12px; margin-left: 8px; }
+.wx-updated { color: var(--muted); font-size: 12px; margin-top: 12px; }
+.wx-status { color: var(--muted); font-size: 12px; margin-top: 4px; min-height: 1em; }
+.wx-advice { margin: 6px 0 0; padding-left: 20px; }
+.wx-advice li { margin: 6px 0; font-size: 14px; }
+
+/* Small weather chip in each itinerary day header */
+.wx-badge {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 6px;
+  padding: 2px 9px; border-radius: 999px; font-size: 12px;
+  background: var(--card-2); border: 1px solid var(--line); color: var(--muted);
+}
+.wx-badge.live { border-color: var(--green); }
+.wxb-emoji { font-size: 14px; }
+.wxb-temp { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.wxb-rain { color: var(--accent); }
+
+/* ---------- Checklists ---------- */
+.check { display: flex; align-items: flex-start; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.check:last-child { border-bottom: none; }
+.check input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--green); flex: 0 0 auto; }
+.check.done span { color: var(--muted); text-decoration: line-through; }
+.pack-group h3 { margin: 16px 0 2px; font-size: 15px; color: var(--gold); }
+.reset-btn {
+  background: transparent; color: var(--muted); border: 1px solid var(--line);
+  border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer; margin-top: 10px;
+}
+.reset-btn:hover { color: var(--ink); border-color: var(--accent); }
+.progress { color: var(--muted); font-size: 13px; margin: 2px 0 10px; }
+
+/* ---------- Per-day map ---------- */
+.daymap {
+  margin: 14px 4px 4px; padding: 14px; border: 1px solid var(--line);
+  border-radius: 12px; background: var(--card-2);
+}
+.daymap-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.daymap-title { font-weight: 800; font-size: 14px; }
+.daymap-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.route-btn {
+  background: var(--accent); color: #fff; border-radius: 8px; padding: 6px 12px;
+  font-size: 13px; font-weight: 700; white-space: nowrap;
+}
+.route-btn:hover { text-decoration: none; filter: brightness(1.08); }
+.route-btn.nav-btn { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.route-btn.nav-btn:hover { background: rgba(91,140,255,.12); filter: none; }
+.daymap-legend { margin: 10px 0 12px; padding-left: 26px; }
+.daymap-legend li { margin: 3px 0; font-size: 14px; }
+.daymap-legend .leg { color: var(--muted); font-size: 12px; }
+.leaflet-day { height: 300px; width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.leaflet-day .leaflet-container { background: #aad3df; }
+.pin-icon { background: transparent; border: none; }
+.pin {
+  width: 28px; height: 28px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  background: var(--accent); border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.4);
+  display: grid; place-items: center;
+}
+.pin > span { transform: rotate(45deg); color: #fff; font-weight: 800; font-size: 13px; }
+
+footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 0 0; }
+
+@media (max-width: 560px) {
+  .block { flex-direction: column; gap: 4px; }
+  .block .when { flex-basis: auto; }
+  .day-head { padding: 12px; }
+}
+
+@media print {
+  nav.tabs, .countdown, .reset-btn, .leaflet-day, .lang-switch { display: none !important; }
+  section { display: block !important; page-break-inside: avoid; }
+  body { background: #fff; color: #000; }
+  .card, .day-head { box-shadow: none; }
+}
+
+</style>
+</head>
+<body>
+  <header class="hero">
+    <a class="trip-switch" href="index.html" title="East Coast 2026">🗽 美东之旅</a>
+    <div class="lang-switch" id="langSwitch">
+      <button data-lang="en">EN</button>
+      <button data-lang="zh" class="active">中文</button>
+    </div>
+    <div class="flag">🏔🐻</div>
+    <h1 id="hero-title">黄石之旅 2026</h1>
+    <div class="route" id="hero-route">盐湖城 → 大提顿 → 黄石 → HYROX 盐湖城 → 洛杉矶</div>
+    <div class="dates" id="hero-dates">2026年 9月13日 – 9月20日</div>
+  </header>
+
+  <nav class="tabs">
+    <button class="active" data-target="overview">概览</button>
+    <button data-target="itinerary">行程</button>
+    <button data-target="stays">住宿</button>
+    <button data-target="weather">天气</button>
+    <button data-target="bookings">预订清单</button>
+    <button data-target="packing">行李</button>
+  </nav>
+
+  <main class="wrap">
+    <section id="overview" class="active"></section>
+    <section id="itinerary"></section>
+    <section id="stays"></section>
+    <section id="weather"></section>
+    <section id="bookings"></section>
+    <section id="packing"></section>
+  </main>
+
+  <footer class="wrap" id="siteFooter">你的专属旅行助手 · 黄石篇</footer>
+
+  <script>
+/*
+ * Trip data for the Yellowstone + HYROX trip:
+ *   Salt Lake City -> Grand Teton -> Yellowstone (West Yellowstone base) -> Salt Lake City (HYROX) -> LAX
+ * Dates: Sunday Sep 13 - Sunday Sep 20, 2026 (7 nights)
+ *
+ * Same schema as data.js (East Coast). English here is the SOURCE OF TRUTH;
+ * yellowstone-lang.js overlays Chinese. app.js renders both trips unchanged.
+ * ✅ = confirmed/booked.  TODO = still needs doing.
+ */
+
+const TRIP = {
+  storeKey: "ys2026", // separate checklist storage from the East Coast trip (language choice is shared)
+  title: "Yellowstone 2026",
+  subtitle: "Salt Lake City → Grand Teton → Yellowstone → HYROX SLC → LAX",
+  startDate: "2026-09-13", // Sunday
+  endDate: "2026-09-20",   // Sunday (race day)
+
+  // Big-picture context worth knowing before you go.
+  highlights: [
+    "🐻 Grizzly country: carry bear spray on every trail (buy it in Jackson or West Yellowstone — it can’t fly) and keep 100 yards from bears/wolves, 25 from bison and elk. The September elk rut at Mammoth is a highlight — and the bulls charge.",
+    "🧥 Mid-September Yellowstone: days 55–65°F, mornings 25–35°F, snow possible any day at 6,600–8,900 ft. Fleece + shell + beanie every morning; strong sun at altitude.",
+    "🛣 All park roads are open, including Dunraven Pass (closes Oct 12) — but the Yellowstone River Bridge at Tower Junction has single-lane work with up to 30-min waits through Sep 30, right on your Lamar Valley day.",
+    "🏋️ It’s HYROX taper week: Yellowstone is active recovery (boardwalks, one short hike), not training. The hard work is done; every day here is kept easy on the legs, and carb-loading starts Sep 17.",
+    "📡 No cell service inside the park. The Starlink Mini works with a clear sky — from the rental’s driveway, parking lots and turnouts — so download offline maps and geyser predictions too.",
+    "🍚 You’re self-catering: Chinatown Supermarket on night one stocks the week, and congee in a thermos makes predawn wildlife mornings civilised."
+  ],
+
+  cities: [
+    { name: "Salt Lake City", nights: 2, dates: "Sep 13 & Sep 19" },
+    { name: "Grand Teton", nights: 0, dates: "Sep 14 (afternoon)" },
+    { name: "West Yellowstone", nights: 5, dates: "Sep 14–19" }
+  ],
+
+  // ---- Where you're staying ----
+  stays: [
+    { hotel: "Salt Lake City hotel (night 1)", city: "Salt Lake City", dates: "Sep 13", nights: 1, area: "Late-evening arrival — near the airport or the South State St shops is easiest." },
+    { hotel: "West Yellowstone rental with kitchen", city: "West Yellowstone", dates: "Sep 14–19", nights: 5, area: "Right outside the West Entrance (14 mi to Madison Junction). You’re cooking, so confirm the place has a kitchen. Starlink Mini works from the driveway / parking lot." },
+    { hotel: "Downtown Salt Lake City hotel (race eve)", city: "Salt Lake City", dates: "Sep 19", nights: 1, area: "Walking distance to the Salt Palace Convention Center (90 S West Temple) — you have no car after the Sep 19 return." }
+  ],
+
+  // ---- Day-by-day itinerary ----
+  // Each block's "map" key is looked up in PLACES for the day map + Google Maps links.
+  days: [
+    {
+      date: "2026-09-13",
+      city: "Salt Lake City",
+      title: "Fly to Salt Lake City · Night car pickup & supply run",
+      summary: "Travel day. Land in the evening, grab the rental, then a one-stop-shop night: Chinese groceries for the week at Chinatown Supermarket (open till 10pm Sunday), plus cookware and warm layers nearby.",
+      blocks: [
+        { time: "Evening", title: "✈️ Land at SLC → pick up the rental car", detail: "Rental counters are in the terminal / Rental Car Center. Note the mileage — you return the car Sep 19 afternoon. Check the trunk fits a week of food plus gear.", map: "Salt Lake City International Airport" },
+        { time: "~8:00 PM", title: "🛒 Chinatown Supermarket — groceries for the week", detail: "3390 S State St (Sunday hours till 10pm, ~20 min from the airport). Stock rice, noodles, rice noodles, mantou/baozi (race-week carbs), eggs, chicken breast, tofu, fish, veg, sauces and congee fixings. Buy a small cooler bag if you don’t have one.", map: "Chinatown Supermarket Salt Lake City" },
+        { time: "~9:00 PM", title: "🍳 Target / Walmart — cookware & warm layers", detail: "Pot, pan, a rice cooker if the rental has none, utensils, a thermos, plus fleece / beanie / gloves — Yellowstone mornings are near freezing. Most stores close 10–11pm, so this is the last stop.", map: "Target Salt Lake City Central" },
+        { time: "Night", title: "🏨 Check in for the night", detail: "Keep it simple — you have an early errand run and a 5-hour drive tomorrow. Charge everything.", map: "Downtown Salt Lake City" }
+      ],
+      eat: "Grab something quick near the stores; you’ll be cooking from tomorrow.",
+      tips: [
+        "If you land after ~9pm, move the Chinese grocery run to Sep 14 morning (opens 8am) — it’s on the way from Whole Foods.",
+        "Bear spray can’t fly — you’ll buy it in Jackson or West Yellowstone tomorrow (~$45–50). Don’t look for it tonight.",
+        "Hydrate on the flight: Utah is dry and you’re heading to 6,600–8,900 ft."
+      ]
+    },
+    {
+      date: "2026-09-14",
+      city: "Grand Teton",
+      multiCity: true,
+      title: "Pickups → Grand Teton → into Yellowstone",
+      summary: "Morning errands (Whole Foods package, Starlink Mini), then the ~5-hour drive to Grand Teton for the classic afternoon loop, and north through Yellowstone’s South Entrance to your West Yellowstone base by dark.",
+      blocks: [
+        { time: "~7:30 AM", title: "📦 Whole Foods — package pickup", detail: "Grab the package at the customer-service / Amazon counter as soon as they open. Coffee and breakfast here too.", map: "Whole Foods Market Salt Lake City" },
+        { time: "~8:15 AM", title: "📡 Pick up the Starlink Mini", detail: "Power it up in the car and make sure the app is signed in before you leave cell coverage — there’s almost no service inside the park." },
+        { time: "9:00 AM", title: "🚗 Depart SLC → Grand Teton (~5 hrs)", detail: "I-15 North → US-89 through Star Valley into Jackson (scenic), or I-15 → Idaho Falls → US-26 (a touch faster). Fuel up in Jackson and buy BEAR SPRAY here (~$45–50) — it’s grizzly country from here on.", map: "Jackson Wyoming" },
+        { time: "~2:00 PM", title: "🏔 Mormon Row — the Moulton barns", detail: "The postcard: weathered barns with the Teton range behind. 20 minutes, right off Antelope Flats Road. Bison often graze nearby — stay 25 yards back.", map: "Mormon Row Historic District" },
+        { time: "~2:45 PM", title: "📸 Snake River Overlook", detail: "Ansel Adams’ viewpoint — the river bend with the peaks beyond. A quick stop on US-89 heading north.", map: "Snake River Overlook" },
+        { time: "~3:15 PM", title: "🏞 Jenny Lake — lakeshore walk", detail: "The prettiest lake in the park. A 30-min easy walk along the shore from the visitor center is plenty (taper week — no big hikes).", map: "Jenny Lake" },
+        { time: "~4:00 PM", title: "🦌 Oxbow Bend", detail: "Mount Moran reflected in the Snake River; moose and elk at dusk. Northernmost stop — from here it’s straight north to Yellowstone.", map: "Oxbow Bend Turnout" },
+        { time: "4:30 PM", title: "🚗 North through the South Entrance → West Thumb", detail: "Leave Oxbow by 4:30pm. Yellowstone’s South Entrance is ~40 min, then West Thumb Geyser Basin (30 min: lakeside geysers, Fishing Cone) — you won’t need to come back here later. Then west past Old Faithful → Madison → West Yellowstone. Sunset ~7:35pm; drive slowly at dusk, animals are on the road.", map: "West Thumb Geyser Basin" },
+        { time: "~8:00 PM", title: "🏠 Check in at West Yellowstone", detail: "Your base for 5 nights, right outside the West Entrance. Unpack the kitchen, cook a simple dinner, set up the Starlink Mini with a clear view of the sky.", map: "West Yellowstone Montana" }
+      ],
+      eat: "Breakfast at Whole Foods; lunch in Jackson (fuel stop); cook dinner at the rental.",
+      tips: [
+        "Running late (leaving Teton after ~5:30pm)? Take the Idaho route instead: Jackson → Teton Pass → Victor → Ashton → Island Park → West Yellowstone (~2h45, no wildlife jams, lit highway).",
+        "Park passes: Grand Teton $35 + Yellowstone $35 per vehicle (7 days each) = $70; buy the $80 America the Beautiful annual pass only if you’ll visit another park within a year.",
+        "Buy bear spray in Jackson and carry it on every trail from now on.",
+        "Taper week: keep today to easy walking — the drive is the workout."
+      ]
+    },
+    {
+      date: "2026-09-15",
+      city: "West Yellowstone",
+      title: "Yellowstone Day 1 · Geyser country: Old Faithful & Grand Prismatic",
+      summary: "The closest, highest-payoff day: the Firehole River geyser basins, Grand Prismatic from the overlook, an Old Faithful eruption, and the Upper Geyser Basin boardwalks. 8–10 km of flat boardwalk — perfect active recovery.",
+      blocks: [
+        { time: "8:00 AM", title: "🌊 Firehole Canyon Drive & Firehole Falls", detail: "Just past Madison Junction — a 2-mile one-way scenic side road to a 40-ft waterfall. 10 minutes.", map: "Firehole Falls" },
+        { time: "9:00 AM", title: "🫧 Fountain Paint Pot", detail: "All four thermal features on one short loop: mud pots, fumaroles, hot springs and geysers (Clepsydra erupts almost constantly). 30 minutes.", map: "Fountain Paint Pot" },
+        { time: "9:45 AM", title: "🌈 Midway Geyser Basin — Grand Prismatic up close", detail: "Boardwalk past Excelsior Geyser’s steaming crater to the rim of Grand Prismatic. Steam is heaviest on cool mornings — the overlook next gives you the full colours.", map: "Grand Prismatic Spring" },
+        { time: "10:45 AM", title: "🥾 Fairy Falls Trail → Grand Prismatic Overlook", detail: "From the Fairy Falls trailhead, 1.2 km each way on a flat trail then a short climb to the overlook — THE aerial view of the rainbow rings. ~1 hour round trip.", map: "Fairy Falls Trailhead" },
+        { time: "12:30 PM", title: "⛲ Old Faithful + Old Faithful Inn", detail: "Check the next predicted eruption at the visitor center or in the NPS app (every ~90 min, ±10). Grab a bench 15 min early. Then the historic Inn lobby next door.", map: "Old Faithful" },
+        { time: "1:30 PM", title: "🚶 Upper Geyser Basin boardwalk — Morning Glory Pool", detail: "The 2.4 km boardwalk past Castle, Grand and Riverside geysers to Morning Glory Pool. Grand Geyser’s predicted window is on the visitor-center board — worth waiting if it’s within 30 min.", map: "Morning Glory Pool" },
+        { time: "4:00 PM", title: "🧿 Biscuit Basin & Black Sand Basin", detail: "Two small, colourful basins on the way back — Sapphire Pool and Emerald Pool. 20 minutes each.", map: "Biscuit Basin" },
+        { time: "5:30 PM", title: "🦬 Back via Madison — dusk wildlife", detail: "Bison and elk graze the Madison River meadows in the evening. Pull over at the turnouts; stay in or beside the car.", map: "Madison Junction" }
+      ],
+      eat: "Cook breakfast; pack lunch (rice + protein) and eat it at Old Faithful; dinner at the rental.",
+      tips: [
+        "Old Faithful predictions: NPS app or geysertimes.org. Riverside and Grand are the two other predictable ones — check the board.",
+        "Boardwalks only — the crust is thin and the water is boiling. Keep phones and hats secured; nothing can be retrieved.",
+        "Taper: a 25–30 min easy run in West Yellowstone this morning + 6 × 20s strides, then the boardwalks are your recovery walk.",
+        "Mornings are ~30°F: fleece + shell + beanie; you’ll shed layers by 11am."
+      ]
+    },
+    {
+      date: "2026-09-16",
+      city: "West Yellowstone",
+      title: "Yellowstone Day 2 · Grand Canyon, Hayden Valley & the Lake",
+      summary: "East to the Grand Canyon of the Yellowstone for the Lower Falls from both rims, then slowly through Hayden Valley for bison, the Mud Volcano, and Yellowstone Lake — returning through Hayden at dusk when wildlife is out.",
+      blocks: [
+        { time: "7:30 AM", title: "🚗 Depart → Canyon Village", detail: "Madison → Norris → Canyon, ~1.5 hrs. Norris gets its own morning on Day 4, so pass it today.", map: "Canyon Village" },
+        { time: "9:15 AM", title: "💦 North Rim — Brink of the Lower Falls & Lookout Point", detail: "Brink of the Lower Falls: a steep 1 km round trip (180 m down and back up) to stand at the lip of the 94 m waterfall — today’s one leg workout. Then Lookout Point and Grand View from the rim road.", map: "Brink of the Lower Falls" },
+        { time: "11:00 AM", title: "🎨 South Rim — Artist Point", detail: "The classic painting view of the Lower Falls and the yellow canyon walls. A 5-minute walk from the parking lot.", map: "Artist Point" },
+        { time: "1:00 PM", title: "🦬 Hayden Valley — bison & wildlife", detail: "Drive slowly, use the turnouts. Bison herds, elk, sometimes grizzlies and wolves in the distance — binoculars. Never approach; 25 yards from bison, 100 from bears.", map: "Hayden Valley" },
+        { time: "2:00 PM", title: "🌋 Mud Volcano & Dragon’s Mouth Spring", detail: "Sulphurous, churning mud features on a short boardwalk loop. 30 minutes.", map: "Mud Volcano" },
+        { time: "2:45 PM", title: "🏞 Fishing Bridge & Lake Yellowstone Hotel", detail: "The huge alpine lake (7,733 ft). Walk the shore, peek into the 1891 Lake Hotel sunroom. 45 minutes.", map: "Lake Yellowstone Hotel" },
+        { time: "3:45 PM", title: "🌅 Back through Hayden Valley at dusk → home", detail: "Retrace north through Hayden Valley — animals are most active late afternoon — then Canyon → Norris → Madison → West Yellowstone (~2 hrs)." }
+      ],
+      eat: "Packed lunch at the Canyon Village picnic area; dinner at the rental.",
+      tips: [
+        "West Thumb was done on the way in (Sep 14), so today skips the lake’s west-shore loop and returns via Norris — shorter.",
+        "Brink of the Lower Falls is the only real climb this week — keep it steady; no need for more.",
+        "Hayden Valley ‘bison jams’ can stop traffic for 20 min — enjoy it, don’t honk or get out."
+      ]
+    },
+    {
+      date: "2026-09-17",
+      city: "West Yellowstone",
+      title: "Yellowstone Day 3 · Lamar Valley wildlife, Tower Fall & Mammoth",
+      summary: "The big wildlife day: a predawn run to Lamar Valley for wolves and bison, then Tower Fall, and Mammoth Hot Springs’ terraces with the September elk rut. ~250 miles — mostly driving and watching, so it’s a light day on the legs.",
+      blocks: [
+        { time: "5:30 AM", title: "🌄 Predawn departure → over Dunraven Pass", detail: "Madison → Norris → Canyon → Dunraven Pass (8,859 ft, sunrise views of Mount Washburn) → Tower Junction. ~2.5 hrs. If sleep matters more this week, leave at 6:30 — animals are still active until 9–10am in September.", map: "Dunraven Pass" },
+        { time: "8:00 AM", title: "🐺 Lamar Valley — wolves, bison, pronghorn", detail: "America’s Serengeti. Park at the turnouts between Tower and Soda Butte and glass the valley with binoculars; watch for the wolf-watchers’ spotting scopes and join them. Bison cross the road constantly.", map: "Lamar Valley" },
+        { time: "11:00 AM", title: "🏞 Tower Fall & Roosevelt", detail: "132-ft waterfall viewpoint, 5 minutes from the parking lot. Coffee at the Roosevelt Lodge area.", map: "Tower Fall" },
+        { time: "1:30 PM", title: "🪨 Mammoth Hot Springs — terraces & the elk rut", detail: "Travertine terraces on the Upper and Lower boardwalks (~1.5 hrs). In September bull elk bugle on the Mammoth lawns — spectacular, but they charge: stay 25+ yards and keep the car between you and them.", map: "Mammoth Hot Springs" },
+        { time: "4:00 PM", title: "🚗 Home via Norris", detail: "Mammoth → Norris → Madison → West Yellowstone, ~1h45. Early dinner, foam-roll, sleep — you’re three days out from the race." }
+      ],
+      eat: "Breakfast in the car (congee in a thermos + buns); lunch at Roosevelt / Mammoth; dinner at the rental — start upping the carbs tonight.",
+      tips: [
+        "⚠️ Road work at the Yellowstone River Bridge by Tower Junction: single lane with a signal, up to 30-min waits, through Sep 30 — budget it both directions.",
+        "Binoculars are the difference between ‘saw a wolf’ and ‘saw a dot’. A thermos of hot congee makes the predawn wait pleasant.",
+        "Taper day: driving + boardwalks only. 10 min of stretching / foam rolling tonight; sleep is the priority.",
+        "Dunraven Pass is open (closes Oct 12) — check the NPS road status the night before in case of early snow."
+      ]
+    },
+    {
+      date: "2026-09-18",
+      city: "West Yellowstone",
+      title: "Yellowstone Day 4 · Norris Geyser Basin & an easy taper day",
+      summary: "A relaxed last park day two days before the race: Norris (the hottest, oldest basin, home to Steamboat), a couple of short stops, an afternoon rest, and a sunset — then pack and start proper carb-loading.",
+      blocks: [
+        { time: "9:00 AM", title: "♨️ Norris Geyser Basin — Porcelain & Back Basin", detail: "Two boardwalk loops (~2 hrs, flat): Porcelain Basin’s milky-blue pools and Back Basin with Steamboat, the world’s tallest active geyser (unpredictable, but it steams impressively).", map: "Norris Geyser Basin" },
+        { time: "11:30 AM", title: "🎨 Artists Paintpots & Gibbon Falls", detail: "A 1.6 km loop to colourful mud pots, then Gibbon Falls from the roadside pullout on the way home.", map: "Artists Paintpots" },
+        { time: "1:00 PM", title: "🏠 Lunch & rest in West Yellowstone", detail: "Big carb lunch, feet up. Tidy the rental and start packing — checkout is tomorrow morning.", map: "West Yellowstone Montana" },
+        { time: "3:00 PM", title: "🥾 Optional: Mystic Falls short hike or a last geyser", detail: "Mystic Falls from Biscuit Basin is a gentle 3.5 km round trip — or just revisit Old Faithful for Grand / Riverside if you missed them. Skip Mount Washburn (1,400 ft of climbing) — wrong week for it.", map: "Biscuit Basin" },
+        { time: "Evening", title: "🌇 Sunset at Madison, then pack", detail: "Last light on the Madison meadows. Home for a carb-heavy dinner (rice, noodles, steamed buns), pack the car, early night — tomorrow leaves at 11am.", map: "Madison Junction" }
+      ],
+      eat: "Carb-loading starts in earnest: rice / noodles / buns at every meal, lean protein, easy on fat and fibre.",
+      tips: [
+        "D-2 shakeout: 15–20 min easy jog + 4 × 15s strides + a light rehearsal of the stations (10 air-squat-to-press, 20 walking lunges, a few burpees) — technique only, nothing hard.",
+        "Carb target today and tomorrow: ~6–8 g per kg bodyweight. Rice cakes, bananas, honey water and juice fill the gaps.",
+        "Put the trail gear away tonight — you won’t need it again; bear spray can’t fly, so leave it with the rental or gift it."
+      ]
+    },
+    {
+      date: "2026-09-19",
+      city: "Salt Lake City",
+      multiCity: true,
+      title: "Drive back to Salt Lake City · Returns & race eve",
+      summary: "Out at 11am, the easy 5-hour run down US-20 and I-15 to Salt Lake City, return the car and everything else in the afternoon, check in downtown near the Salt Palace, and do the race-eve routine.",
+      blocks: [
+        { time: "11:00 AM", title: "🚗 Depart West Yellowstone", detail: "US-20 south through Island Park and Ashton → Idaho Falls → I-15 south. ~320 miles, ~5 hrs with a stop. Descending from 6,600 ft to 4,300 ft — you’ll feel lighter.", map: "West Yellowstone Montana" },
+        { time: "~1:00 PM", title: "⛽ Fuel & stretch at Idaho Falls", detail: "Halfway. Gas, restroom, a 10-minute walk, refill water. Lunch from the cooler (rice + chicken) — keep it familiar and low-fibre.", map: "Idaho Falls Idaho" },
+        { time: "~4:00 PM", title: "🔁 Arrive SLC — return the car & everything else", detail: "Return the rental (airport or a downtown branch), plus the Starlink Mini and anything else you planned to return — keep receipts and packaging together. Then Uber downtown.", map: "Salt Lake City International Airport" },
+        { time: "~5:30 PM", title: "🏨 Check in downtown near the Salt Palace", detail: "Walking distance to 90 S West Temple means no logistics on race morning. Pick up your race packet if it’s available today.", map: "Salt Palace Convention Center" },
+        { time: "Evening", title: "🏁 Race-eve routine", detail: "15–20 min walk or very easy jog + 10 min mobility (or full rest). Dinner: white rice + steamed chicken/fish + a little veg + clear soup — nothing new, fried, spicy or high-fibre, no alcohol. Lay out the kit, fill the bottles, set the alarm, in bed early." }
+      ],
+      eat: "Cooler lunch at Idaho Falls; carb-heavy, low-fibre, familiar dinner downtown (rice-based).",
+      tips: [
+        "Confirm your Sep 20 wave time tonight — the day runs 07:00–16:40 across categories — and check it against the evening LAX flight (finish + shower + 15-min Uber to SLC + 2 hrs at the airport).",
+        "Hydrate + electrolytes all afternoon — a week at altitude in dry air leaves you behind on fluids.",
+        "Sleep beats everything tonight; the sleep two nights out matters more than the night before, so you’ve already banked it."
+      ]
+    },
+    {
+      date: "2026-09-20",
+      city: "Salt Lake City",
+      title: "HYROX Salt Lake City · Fly to LAX",
+      summary: "Race day at the Salt Palace Convention Center, downtown. Familiar breakfast 2.5–3 hours before your wave, a proper warm-up, race, recover — then an Uber to the airport and the evening flight to LAX.",
+      blocks: [
+        { time: "Wave −3h", title: "🍚 Race breakfast", detail: "Congee / white rice / oats + a banana + a little egg or chicken, 2.5–3 hrs before your start. Coffee as usual if you drink it. 45–60 min before: a banana or a gel + sports drink." },
+        { time: "Wave −25min", title: "🔥 Warm-up", detail: "8–10 min easy jog → dynamic mobility → 3 × 20s builds → a light touch of each station (30s row / 30s ski, a few sled steps, 5 wall balls) → 5 quiet minutes before the start." },
+        { time: "Your wave", title: "🏁 HYROX Salt Lake City — Salt Palace Convention Center", detail: "90 S West Temple, downtown. Pacing: first 1 km 10–15 s/km slower than goal; sled push low hips + short steps; farmers carry unbroken; wall balls in planned sets (e.g. 25/25/25/25) with short rests; long, low-rate strokes on ski and row. Sip electrolytes at the stations; a gel around station 4 if you’ll be over 60 min.", map: "Salt Palace Convention Center" },
+        { time: "After", title: "🥤 Recovery meal & shower", detail: "Carbs + protein within an hour (rice + chicken or a recovery shake), keep walking, then shower at the hotel and check out." },
+        { time: "Evening", title: "✈️ Uber to SLC → fly to LAX", detail: "Salt Palace → SLC airport is ~15 min. Be there 2 hours before departure. Compression socks and water on the flight — you’ve earned the window seat.", map: "Salt Lake City International Airport" }
+      ],
+      eat: "Race breakfast at the hotel; recovery meal downtown; snacks for the flight.",
+      tips: [
+        "Bring: race bib/packet, ID, familiar shoes (broken in), chalk if allowed, a change of clothes, and your own fuel — don’t try anything new on the day.",
+        "Wave schedule on Sep 20: Doubles Women 07:00–11:50 · Women/Adaptive 12:20–14:20 · Doubles Men 14:50–16:40 — check yours in the HYROX app.",
+        "Post-race: no sitting still for hours — walk the terminal, hydrate, and keep the protein coming."
+      ]
+    }
+  ],
+
+  // ---- Logistics ----
+  logistics: [
+    { label: "Flight out", value: "Sep 13 (Sun): fly to Salt Lake City, evening arrival. Rental car pickup at SLC that night." },
+    { label: "Rental car", value: "SLC pickup Sep 13 night → return Sep 19 afternoon (6 days). Round trip ~900 miles: SLC → Grand Teton → West Yellowstone (park loops) → SLC." },
+    { label: "SLC → Grand Teton", value: "Sep 14: ~280 miles / ~5 hrs via I-15 → US-89 (Star Valley → Jackson) or I-15 → Idaho Falls → US-26. Then north through Yellowstone’s South Entrance to West Yellowstone (~3 hrs incl. West Thumb)." },
+    { label: "Yellowstone base", value: "West Yellowstone (West Entrance), 5 nights Sep 14–19. Madison Junction is 14 miles in; Old Faithful ~45 min, Canyon ~1h15, Mammoth ~1h30, Lamar Valley ~2.5 hrs." },
+    { label: "West Yellowstone → SLC", value: "Sep 19: 11am departure, ~320 miles / ~5 hrs via US-20 → I-15 (Idaho Falls stop). Return the car + everything else in the afternoon." },
+    { label: "HYROX", value: "Sep 20 (Sun) at the Salt Palace Convention Center, 90 S West Temple, downtown SLC. Waves 07:00–16:40 by category — confirm yours. No car: walk from the hotel, Uber to the airport (~15 min)." },
+    { label: "Flight home", value: "Sep 20 (Sun) evening: SLC → LAX. Be at the airport 2 hrs before departure." }
+  ],
+
+  // ---- Booking / to-do checklist ----
+  bookings: [
+    "TODO — Flight SFO → SLC (Sep 13, evening arrival)",
+    "TODO — Flight SLC → LAX (Sep 20, evening)",
+    "TODO — Rental car: SLC Sep 13 night → Sep 19 afternoon (confirm one location, or airport pickup / downtown return)",
+    "TODO — Salt Lake City hotel, Sep 13 (1 night)",
+    "TODO — West Yellowstone rental WITH KITCHEN, Sep 14–19 (5 nights) — confirm the reservation",
+    "TODO — Downtown SLC hotel near the Salt Palace, Sep 19 (1 night)",
+    "✅ HYROX Salt Lake City registration (Sep 20) — confirm your wave time in the app",
+    "📦 Whole Foods package pickup (Sep 14 morning) — have the pickup code ready",
+    "📡 Starlink Mini pickup (Sep 14 morning) — account activated & app signed in",
+    "🎫 Park entry: Grand Teton $35 + Yellowstone $35 per vehicle (7 days), or the $80 America the Beautiful annual pass",
+    "🐻 Bear spray — buy in Jackson or West Yellowstone (~$45–50); it cannot fly",
+    "🛒 Grocery list for Chinatown Supermarket (Sep 13, Sunday till 10pm): rice, noodles, rice noodles, mantou/baozi, eggs, chicken breast, tofu, fish, veg, sauces, congee fixings, bananas, honey",
+    "🍳 Cookware / clothes list for Target or Walmart: pot, pan, rice cooker (if needed), utensils, thermos, cooler bag, fleece, beanie, gloves",
+    "📲 Download before losing signal: NPS Yellowstone app (geyser predictions), offline Google Maps for the park, GeyserTimes",
+    "── ROAD & PARK STATUS ──────────────",
+    "🛣 Check NPS road status the night before each park day (early snow can close Dunraven Pass); Tower Junction bridge work means up to 30-min single-lane waits through Sep 30",
+    "🔁 Sep 19 returns: rental car, Starlink Mini, and anything else you’re returning — keep receipts + packaging together in one bag"
+  ],
+
+  // ---- Packing list ----
+  packing: {
+    "Essentials": ["ID / driver’s licence (for the rental)", "Credit cards + a little cash", "Phone + car charger + power bank", "Starlink Mini + power (12V / USB-C) + app signed in", "Offline maps + NPS app downloaded", "Park pass / receipt", "Water bottles (2+) — altitude & dry air", "Sunscreen, sunglasses, lip balm (strong sun at 7,000 ft)", "Headlamp (predawn Lamar start)", "Binoculars 🐺"],
+    "Cold-weather layers": ["Fleece / down mid-layer", "Waterproof, windproof shell", "Beanie + gloves (mornings ~30°F)", "Thermal base layer", "Warm socks", "Comfortable broken-in walking / hiking shoes", "Rain pants or quick-dry pants"],
+    "Hiking & wildlife": ["🐻 Bear spray (buy on arrival — cannot fly)", "Day pack", "Trail snacks", "Thermos (congee for the predawn drive)", "Blister plasters / small first-aid kit", "Camera / phone lens wipe (geyser steam)"],
+    "Cooking & food": ["Pot + pan + rice cooker (buy Sep 13)", "Utensils, cutting board, knife", "Cooler bag + ice packs", "Dish soap + sponge", "Rice, noodles, mantou/baozi, congee fixings (race-week carbs)", "Eggs, chicken breast, tofu, fish, veg, sauces", "Bananas, honey, juice, rice cakes (carb-load fillers)", "Electrolyte tabs / sports drink"],
+    "HYROX race kit": ["Race shoes (broken in) + socks", "Race top / shorts + a change of clothes", "Gels / chews (tested before) + electrolytes", "Chalk (if allowed) + wrist wraps / grips if you use them", "Race bib / packet confirmation", "Foam roller or massage ball", "Compression socks for the flight home"]
+  }
+};
+
+/*
+ * Coordinates for every "map" key above — drives the per-day Leaflet maps,
+ * the numbered pins, the dashed route line and the Google Maps route button.
+ * [latitude, longitude]
+ */
+const PLACES = {
+  // ---- Salt Lake City ----
+  "Salt Lake City International Airport": [40.7899, -111.9791],
+  "Chinatown Supermarket Salt Lake City": [40.6985, -111.8885],
+  "Target Salt Lake City Central": [40.7433, -111.8990],
+  "Downtown Salt Lake City": [40.7608, -111.8910],
+  "Whole Foods Market Salt Lake City": [40.7607, -111.8710],
+  "Salt Palace Convention Center": [40.7677, -111.8940],
+  // ---- Grand Teton ----
+  "Jackson Wyoming": [43.4799, -110.7624],
+  "Mormon Row Historic District": [43.6603, -110.6653],
+  "Snake River Overlook": [43.7414, -110.6360],
+  "Jenny Lake": [43.7515, -110.7220],
+  "Oxbow Bend Turnout": [43.8665, -110.5520],
+  // ---- Yellowstone ----
+  "West Thumb Geyser Basin": [44.4163, -110.5727],
+  "West Yellowstone Montana": [44.6621, -111.1041],
+  "Madison Junction": [44.6425, -110.8590],
+  "Firehole Falls": [44.6296, -110.8620],
+  "Fountain Paint Pot": [44.5498, -110.8085],
+  "Grand Prismatic Spring": [44.5251, -110.8382],
+  "Fairy Falls Trailhead": [44.5152, -110.8330],
+  "Old Faithful": [44.4605, -110.8281],
+  "Morning Glory Pool": [44.4750, -110.8437],
+  "Biscuit Basin": [44.4848, -110.8530],
+  "Canyon Village": [44.7340, -110.4900],
+  "Brink of the Lower Falls": [44.7185, -110.4990],
+  "Artist Point": [44.7202, -110.4795],
+  "Hayden Valley": [44.6500, -110.4700],
+  "Mud Volcano": [44.6248, -110.4336],
+  "Lake Yellowstone Hotel": [44.5498, -110.3990],
+  "Dunraven Pass": [44.7873, -110.4560],
+  "Lamar Valley": [44.8985, -110.2280],
+  "Tower Fall": [44.8920, -110.3873],
+  "Mammoth Hot Springs": [44.9766, -110.7027],
+  "Norris Geyser Basin": [44.7263, -110.7027],
+  "Artists Paintpots": [44.6963, -110.7398],
+  // ---- Drive home ----
+  "Idaho Falls Idaho": [43.4917, -112.0339]
+};
+
+/*
+ * Weather for the trip window (Sep 13 – 20, 2026).
+ *  - `normals`: typical mid-September averages per area (offline baseline).
+ *  - Live upgrade: app.js calls Open-Meteo for any date within forecast range
+ *    and replaces the normals with the real forecast. `coords` drive that lookup.
+ * Temps in °F. Mountain time.
+ */
+const WEATHER = {
+  startDate: "2026-09-13",
+  endDate: "2026-09-20",
+  timezone: "America/Denver",
+  dayCity: {
+    "2026-09-13": "Salt Lake City",
+    "2026-09-14": "Grand Teton",
+    "2026-09-15": "West Yellowstone",
+    "2026-09-16": "West Yellowstone",
+    "2026-09-17": "West Yellowstone",
+    "2026-09-18": "West Yellowstone",
+    "2026-09-19": "Salt Lake City",
+    "2026-09-20": "Salt Lake City"
+  },
+  normals: {
+    "Salt Lake City":   { hi: 80, lo: 56, code: 0, rainChance: 10 },
+    "Grand Teton":      { hi: 67, lo: 33, code: 1, rainChance: 15 },
+    "West Yellowstone": { hi: 61, lo: 29, code: 1, rainChance: 20 }
+  },
+  coords: {
+    "Salt Lake City": [40.7608, -111.8910],
+    "Grand Teton": [43.6553, -110.7181],
+    "West Yellowstone": [44.6621, -111.1041]
+  }
+};
+
+</script>
+  <script>
+/*
+ * Chinese (Simplified) localization overlay + UI dictionary for the
+ * Yellowstone 2026 page (yellowstone.html).
+ *
+ * Same contract as lang.js: English (yellowstone-data.js) is the source of
+ * truth; TRIP_ZH is an OVERLAY that app.js deep-merges onto TRIP field by
+ * field, falling back to English wherever a Chinese string is missing.
+ * Array order / lengths must mirror yellowstone-data.js exactly.
+ * Proper nouns (place names, "HYROX", "Starlink") are kept in English so
+ * maps and signage still match.
+ */
+
+// ---- Interface chrome ----
+const UICOPY = {
+  en: {
+    tab_overview: "Overview", tab_itinerary: "Itinerary", tab_stays: "Stays",
+    tab_weather: "Weather", tab_bookings: "Bookings", tab_packing: "Packing",
+    ov_glance: "Trip at a glance", ov_where: "Where you’ll be", ov_logistics: "Logistics",
+    stays_title: "Where you’re staying", stays_sub: "Tap a place to open it in Maps. Confirm the ones still marked TODO.",
+    night: "night", nights: "nights",
+    itin_title: "Day by day", itin_sub: "Tap any day to expand. Each stop has an “Open in Maps” link and a numbered pin on the day map.",
+    daymap_places: "🗺 Places this day", daymap_route: "↗ Route in Google Maps", daymap_nav: "🧭 Navigate to start",
+    leg_nextdoor: "next door", eat_label: "Eat", tips_label: "Tips",
+    openMaps: "🗺 Open in Maps", openGoogleMaps: "Open in Google Maps",
+    weather_title: "Weather", weather_high: "High", weather_low: "Low", weather_rain: "Rain",
+    weather_live: "live forecast", weather_normal: "seasonal average",
+    weather_sub: "Sep 13 – 20. Shows typical mid-September averages until the dates come within forecast range (~16 days out), then auto-updates to the live forecast when online. Yellowstone mornings sit near freezing — watch the lows.",
+    weather_loading: "Checking for a live forecast…",
+    weather_offline: "Showing seasonal averages (no live forecast — offline or dates still too far out).",
+    weather_packTitle: "What to pack for this weather",
+    weather_updated: (t) => `Updated ${t} · live forecast`,
+    weather_updatedNormal: "Seasonal averages — no live forecast yet",
+    wxAdvice: {
+      rain: "☔ Rain likely — waterproof shell, and a dry layer in the car",
+      storm: "⛈ Thunderstorms possible — get off exposed boardwalks and ridges when they roll in",
+      hot: "🥵 Hot days — light clothes, a hat, sunscreen & extra water",
+      mild: "🌤 Pleasant daytime stretches — a light layer for the evenings",
+      sun: "🧴 Strong high-altitude sun — sunglasses, hat, sunscreen & lip balm",
+      cold: "🧤 Freezing mornings — fleece, shell, beanie & gloves; layer up and shed by noon",
+      snow: "🌨 Snow possible — waterproof shell, warm layers, and check the park road status each morning"
+    },
+    book_title: "Bookings & to-dos", book_sub: "Confirm these before you leave — mid-September lodging near the park fills up, and a few items can only be bought on arrival.",
+    pack_title: "Packing list", pack_sub: "Cold mornings, big sun, a lot of driving, and a race at the end. Check items off as you pack.",
+    reset: "Reset list",
+    progress: (d, t) => `${d} of ${t} done`,
+    leg_from: (i, mi) => `${mi} mi from #${i}`,
+    heroDates: (fs, fe) => `${fs} – ${fe}, 2026`,
+    docTitle: " · Itinerary",
+    footer: "Your personal travel agent · Yellowstone edition",
+    packGroups: {}
+  },
+  zh: {
+    tab_overview: "概览", tab_itinerary: "行程", tab_stays: "住宿",
+    tab_weather: "天气", tab_bookings: "预订清单", tab_packing: "行李",
+    ov_glance: "行程速览", ov_where: "你会去的地方", ov_logistics: "交通与衔接",
+    stays_title: "住宿安排", stays_sub: "点住处名可在地图中打开。标着“待办”的记得确认。",
+    night: "晚", nights: "晚",
+    itin_title: "逐日行程", itin_sub: "点任意一天展开。每个地点都有“在地图中打开”的链接，并在当天地图上有编号标记。",
+    daymap_places: "🗺 当天地点", daymap_route: "↗ 在 Google 地图看路线", daymap_nav: "🧭 导航到第一站",
+    leg_nextdoor: "就在隔壁", eat_label: "吃", tips_label: "小贴士",
+    openMaps: "🗺 在地图中打开", openGoogleMaps: "在 Google 地图中打开",
+    weather_title: "天气", weather_high: "最高", weather_low: "最低", weather_rain: "降雨",
+    weather_live: "实时预报", weather_normal: "常年平均",
+    weather_sub: "9月13日 – 20日。在日期进入可预报范围（约提前16天）之前显示9月中旬的常年平均值，之后联网时会自动更新为实时预报。黄石清晨接近零度——注意最低温。",
+    weather_loading: "正在获取实时预报…",
+    weather_offline: "显示常年同期平均值（暂无实时预报——可能离线，或日期还太远）。",
+    weather_packTitle: "针对天气的行李建议",
+    weather_updated: (t) => `更新于 ${t} · 实时预报`,
+    weather_updatedNormal: "常年同期平均值——暂无实时预报",
+    wxAdvice: {
+      rain: "☔ 大概率有雨——防水外壳，车里备一套干的",
+      storm: "⛈ 可能有雷阵雨——雷雨来时离开开阔的木栈道和山脊",
+      hot: "🥵 天气炎热——轻薄衣物、帽子、防晒、多带水",
+      mild: "🌤 白天有舒适时段——晚上备一件薄外套",
+      sun: "🧴 高原日晒很强——墨镜、帽子、防晒霜、润唇膏",
+      cold: "🧤 清晨结冰——抓绒、外壳、帽子、手套；层层穿好、中午再脱",
+      snow: "🌨 可能下雪——防水外壳、保暖层，每天早上查公园路况"
+    },
+    book_title: "预订与待办", book_sub: "出发前确认这些——9月中旬公园附近的住宿很紧张，有几样东西只能到了再买。",
+    pack_title: "行李清单", pack_sub: "清晨很冷、日晒强、开车多，最后还有比赛。一边收拾一边打勾。",
+    reset: "重置清单",
+    progress: (d, t) => `已完成 ${d}/${t}`,
+    leg_from: (i, mi) => `距第${i}站 ${mi} 英里`,
+    heroDates: (fs, fe) => `2026年 ${fs} – ${fe}`,
+    docTitle: " · 行程",
+    footer: "你的专属旅行助手 · 黄石篇",
+    packGroups: {
+      "Essentials": "必备物品",
+      "Cold-weather layers": "保暖衣物",
+      "Hiking & wildlife": "徒步与观兽",
+      "Cooking & food": "厨具与食材",
+      "HYROX race kit": "HYROX 比赛装备"
+    }
+  }
+};
+
+// ---- Trip content overlay (mirrors TRIP in yellowstone-data.js) ----
+const TRIP_ZH = {
+  title: "黄石之旅 2026",
+  subtitle: "盐湖城 → 大提顿 → 黄石 → HYROX 盐湖城 → 洛杉矶",
+
+  highlights: [
+    "🐻 灰熊区：任何步道都要带熊喷雾（在 Jackson 或西黄石买——不能上飞机），离熊/狼 100 码、野牛/麋鹿 25 码。9月 Mammoth 的麋鹿发情期是亮点——但公鹿会冲人。",
+    "🧥 9月中旬的黄石：白天 13–18°C，清晨 −4～2°C，海拔 2,000–2,700m 随时可能下雪。每天早上抓绒 + 防风雨外套 + 帽子；高原日晒强。",
+    "🛣 园内道路全开，含 Dunraven Pass（10月12日关闭）——但 Tower Junction 的 Yellowstone River 桥施工到 9月30日，单车道最多等 30 分钟，正好在你的拉马尔谷那天。",
+    "🏋️ 这周是 HYROX 减量周：黄石是主动恢复（木栈道、一条短步道），不是训练。苦练已经完成；这里每天都让腿轻松，9月17日开始碳水加载。",
+    "📡 园内几乎无信号。Starlink Mini 需要开阔天空——住处车道、停车场、观景点都能用；同时也把离线地图和间歇泉预测下载好。",
+    "🍚 全程自己做饭：第一晚在中国城超市把一周食材买齐，保温壶里的粥让清晨看动物变得舒服。"
+  ],
+
+  cities: [
+    { name: "盐湖城", dates: "9月13日 & 19日" },
+    { name: "大提顿", dates: "9月14日（下午）" },
+    { name: "西黄石", dates: "9月14–19日" }
+  ],
+
+  stays: [
+    { hotel: "盐湖城酒店（第一晚）", city: "盐湖城", dates: "9月13日", area: "傍晚到达——住机场附近或 South State St 商店一带最方便。" },
+    { hotel: "西黄石带厨房的民宿/小屋", city: "西黄石", dates: "9月14–19日", area: "就在西门外（到 Madison Junction 14 英里）。你要做饭，确认住处有厨房。Starlink Mini 在车道/停车场能用。" },
+    { hotel: "盐湖城市中心酒店（赛前夜）", city: "盐湖城", dates: "9月19日", area: "步行可到 Salt Palace 会展中心（90 S West Temple）——9月19日还车后就没车了。" }
+  ],
+
+  days: [
+    {
+      title: "飞抵盐湖城 · 夜里取车 + 采购",
+      summary: "旅行日。傍晚落地、取租车，然后一站式夜购：在中国城超市（周日开到10pm）买齐一周的中餐食材，附近再买厨具和保暖衣物。",
+      blocks: [
+        { time: "傍晚", title: "✈️ 落地 SLC → 取租车", detail: "租车柜台在航站楼/租车中心。记一下里程——9月19日下午还车。确认后备箱装得下一周的食物和装备。" },
+        { time: "约晚上8:00", title: "🛒 中国城超市——买一周食材", detail: "3390 S State St（周日开到10pm，离机场约20分钟）。备齐米、面、米粉、馒头/包子（赛前碳水）、鸡蛋、鸡胸、豆腐、鱼、蔬菜、调料、粥料。没有保温袋的话买一个。" },
+        { time: "约晚上9:00", title: "🍳 Target / Walmart——厨具和保暖衣物", detail: "锅、平底锅、住处没有的话买个电饭煲、餐具、保温壶，再加抓绒、帽子、手套——黄石清晨接近零度。多数店 10–11pm 关门，这是最后一站。" },
+        { time: "夜里", title: "🏨 入住过夜", detail: "简单点——明早要跑腿，还有5小时车程。把所有设备充满电。" }
+      ],
+      eat: "在商店附近随便吃点快的；明天起自己做饭。",
+      tips: [
+        "如果晚于9点落地，把中国超市挪到9月14日早上（8am 开门）——从 Whole Foods 过去顺路。",
+        "熊喷雾不能上飞机——明天在 Jackson 或西黄石买（约$45–50），今晚不用找。",
+        "飞机上多喝水：犹他很干，而且你要去 2,000–2,700m 的高原。"
+      ]
+    },
+    {
+      title: "取件 → 大提顿 → 进黄石",
+      summary: "早上办事（Whole Foods 取件、Starlink Mini），然后约5小时车程到大提顿走经典的下午环线，再从黄石南门一路向北，天黑前到西黄石的住处。",
+      blocks: [
+        { time: "约上午7:30", title: "📦 Whole Foods——取快递", detail: "一开门就去客服/Amazon 柜台取件。顺便在这儿买咖啡和早餐。" },
+        { time: "约上午8:15", title: "📡 取 Starlink Mini", detail: "在车里通电测试、确认 App 已登录，再离开有信号的地方——园内几乎没有服务。" },
+        { time: "上午9:00", title: "🚗 从 SLC 出发 → 大提顿（约5小时）", detail: "I-15 北 → US-89 经 Star Valley 进 Jackson（风景好），或 I-15 → Idaho Falls → US-26（稍快）。在 Jackson 加油，并在这儿买熊喷雾（约$45–50）——从这里起就是灰熊区。" },
+        { time: "约下午2:00", title: "🏔 Mormon Row——Moulton 谷仓", detail: "明信片画面：斑驳的谷仓背后是提顿山脉。20分钟，就在 Antelope Flats Road 边。附近常有野牛——保持25码。" },
+        { time: "约下午2:45", title: "📸 Snake River Overlook", detail: "安塞尔·亚当斯的机位——河湾与远处群峰。北上 US-89 路边快停。" },
+        { time: "约下午3:15", title: "🏞 Jenny Lake——湖边散步", detail: "园里最美的湖。从游客中心沿湖边轻松走30分钟足够（减量周——不爬大山）。" },
+        { time: "约下午4:00", title: "🦌 Oxbow Bend", detail: "Moran 山倒映在 Snake River 里；黄昏有驼鹿和麋鹿。最北的一站——从这儿直接北上黄石。" },
+        { time: "下午4:30", title: "🚗 穿黄石南门北上 → West Thumb", detail: "4:30pm 前离开 Oxbow。黄石南门约40分钟，然后 West Thumb 间歇泉盆地（30分钟：湖边间歇泉、Fishing Cone）——之后就不用再绕回来了。再往西经老忠实 → Madison → 西黄石。日落约7:35pm；黄昏慢开，路上有动物。" },
+        { time: "约晚上8:00", title: "🏠 入住西黄石", detail: "5晚的大本营，就在西门外。打开厨房，简单做个晚饭，把 Starlink Mini 架在能看到开阔天空的地方。" }
+      ],
+      eat: "早餐在 Whole Foods；午餐在 Jackson（加油站）；晚餐在住处做。",
+      tips: [
+        "来不及了（5:30pm 后才离开提顿）？改走爱达荷线：Jackson → Teton Pass → Victor → Ashton → Island Park → 西黄石（约2h45，没有动物堵车，公路照明好）。",
+        "门票：大提顿 $35 + 黄石 $35（每车7天）= $70；一年内还去别的国家公园再买 $80 年票。",
+        "在 Jackson 买熊喷雾，从此每条步道都带着。",
+        "减量周：今天只轻松走走——开车就是运动量。"
+      ]
+    },
+    {
+      title: "黄石 Day 1 · 间歇泉之乡：老忠实与大棱镜",
+      summary: "最近、回报最高的一天：Firehole 河沿线的间歇泉盆地、从观景台看大棱镜、一次老忠实喷发，再走 Upper Geyser Basin 木栈道。8–10 公里平坦木栈道——完美的主动恢复。",
+      blocks: [
+        { time: "上午8:00", title: "🌊 Firehole Canyon Drive 与 Firehole 瀑布", detail: "刚过 Madison Junction——2英里单行景观支路，到一个12米的瀑布。10分钟。" },
+        { time: "上午9:00", title: "🫧 Fountain Paint Pot", detail: "一条短环线看全四种地热景观：泥泉、喷气孔、温泉和间歇泉（Clepsydra 几乎一直在喷）。30分钟。" },
+        { time: "上午9:45", title: "🌈 Midway Geyser Basin——近看大棱镜", detail: "木栈道经过 Excelsior 间歇泉冒着蒸汽的坑，到大棱镜边缘。清晨凉的时候蒸汽最大——接下来的观景台才能看到完整的颜色。" },
+        { time: "上午10:45", title: "🥾 Fairy Falls 步道 → 大棱镜观景台", detail: "从 Fairy Falls 停车场，平路 1.2 公里再短爬一段到观景台——彩虹圈的俯瞰角度就是这里。往返约1小时。" },
+        { time: "中午12:30", title: "⛲ 老忠实 + Old Faithful Inn", detail: "在游客中心或 NPS App 查下一次预测喷发（约每90分钟，±10分钟）。提前15分钟占个长椅。然后去隔壁的历史旅馆大厅。" },
+        { time: "下午1:30", title: "🚶 Upper Geyser Basin 木栈道——Morning Glory Pool", detail: "2.4 公里木栈道，经过 Castle、Grand、Riverside 间歇泉到 Morning Glory Pool。Grand 的预测时段在游客中心的板上——30分钟内的话值得等。" },
+        { time: "下午4:00", title: "🧿 Biscuit Basin 与 Black Sand Basin", detail: "回程路上两个色彩鲜艳的小盆地——Sapphire Pool 和 Emerald Pool。各20分钟。" },
+        { time: "下午5:30", title: "🦬 经 Madison 回程——黄昏看动物", detail: "傍晚野牛和麋鹿在 Madison 河草甸吃草。在观景停车位停下；待在车里或车边。" }
+      ],
+      eat: "自己做早餐；带午饭（米饭+蛋白质）在老忠实吃；晚餐回住处做。",
+      tips: [
+        "老忠实预测：NPS App 或 geysertimes.org。Riverside 和 Grand 是另外两个可预测的——看板子。",
+        "只走木栈道——地壳很薄、水是沸腾的。手机帽子拿稳，掉下去什么都捡不回来。",
+        "减量：早上在西黄石轻松跑 25–30 分钟 + 6×20 秒加速跑，之后木栈道就是你的恢复散步。",
+        "清晨约 −1°C：抓绒 + 外壳 + 帽子；11点前就会脱掉几层。"
+      ]
+    },
+    {
+      title: "黄石 Day 2 · 大峡谷、海登谷与黄石湖",
+      summary: "往东到黄石大峡谷，从两岸看下瀑布，然后慢慢穿过海登谷看野牛、泥火山，再到黄石湖——傍晚再经海登谷回来，那时动物最多。",
+      blocks: [
+        { time: "上午7:30", title: "🚗 出发 → Canyon Village", detail: "Madison → Norris → Canyon，约1.5小时。Norris 留到 Day 4 单独看，今天路过。" },
+        { time: "上午9:15", title: "💦 北岸——Brink of the Lower Falls 与 Lookout Point", detail: "Brink of the Lower Falls：陡峭的往返1公里（下180米再上来），站到94米瀑布的顶端——今天唯一的腿部训练。然后沿岸边路看 Lookout Point 和 Grand View。" },
+        { time: "上午11:00", title: "🎨 南岸——Artist Point", detail: "经典油画视角：下瀑布和黄色峡谷壁。从停车场走5分钟。" },
+        { time: "下午1:00", title: "🦬 海登谷——野牛与野生动物", detail: "慢开，用观景停车位。野牛群、麋鹿，有时远处有灰熊和狼——用望远镜。绝不靠近；离野牛25码、离熊100码。" },
+        { time: "下午2:00", title: "🌋 泥火山与 Dragon’s Mouth 温泉", detail: "短木栈道环线上翻滚的硫磺泥景观。30分钟。" },
+        { time: "下午2:45", title: "🏞 Fishing Bridge 与 Lake Yellowstone Hotel", detail: "巨大的高山湖（海拔2,357米）。沿湖走走，看看1891年的 Lake Hotel 阳光房。45分钟。" },
+        { time: "下午3:45", title: "🌅 黄昏再穿海登谷 → 回家", detail: "原路北上穿过海登谷——傍晚动物最活跃——再 Canyon → Norris → Madison → 西黄石（约2小时）。" }
+      ],
+      eat: "在 Canyon Village 野餐区吃带的午饭；晚餐回住处。",
+      tips: [
+        "West Thumb 进园那天（9/14）已经看过，今天不绕湖西岸，直接经 Norris 回——更短。",
+        "Brink of the Lower Falls 是这周唯一真正的爬升——稳着来；不需要再加。",
+        "海登谷的“野牛堵车”能停20分钟——享受它，别按喇叭、别下车。"
+      ]
+    },
+    {
+      title: "黄石 Day 3 · 拉马尔谷观兽、塔瀑与猛犸热泉",
+      summary: "观兽大日：天亮前赶到拉马尔谷看狼和野牛，然后塔瀑，再到猛犸热泉看台地和9月的麋鹿发情期。约250英里——主要是开车和观看，腿很轻松。",
+      blocks: [
+        { time: "上午5:30", title: "🌄 天亮前出发 → 翻 Dunraven Pass", detail: "Madison → Norris → Canyon → Dunraven Pass（海拔2,700米，看 Washburn 山日出）→ Tower Junction。约2.5小时。这周更看重睡眠的话 6:30 出发也行——9月动物到 9–10 点仍然活跃。" },
+        { time: "上午8:00", title: "🐺 拉马尔谷——狼、野牛、叉角羚", detail: "美洲的塞伦盖蒂。在 Tower 到 Soda Butte 之间的观景停车位停车，用望远镜扫谷地；看到观狼者的单筒望远镜就凑过去。野牛不停地横穿马路。" },
+        { time: "上午11:00", title: "🏞 塔瀑与 Roosevelt", detail: "40米瀑布观景点，离停车场5分钟。在 Roosevelt Lodge 一带喝杯咖啡。" },
+        { time: "下午1:30", title: "🪨 猛犸热泉——台地与麋鹿发情期", detail: "上下两段木栈道看石灰华台地（约1.5小时）。9月公麋鹿在 Mammoth 的草坪上吼叫——很壮观，但它们会冲人：保持25码以上，让车挡在你和它之间。" },
+        { time: "下午4:00", title: "🚗 经 Norris 回家", detail: "Mammoth → Norris → Madison → 西黄石，约1小时45分。早点吃晚饭、泡沫轴、睡觉——离比赛还有三天。" }
+      ],
+      eat: "早餐在车上吃（保温壶里的粥 + 包子）；午餐在 Roosevelt/Mammoth；晚餐回住处——今晚开始加碳水。",
+      tips: [
+        "⚠️ Tower Junction 旁 Yellowstone River 桥施工：单车道信号灯，最多等30分钟，到9月30日——来回都留出时间。",
+        "望远镜决定你是“看到了狼”还是“看到了一个点”。一壶热粥让天亮前的等待舒服很多。",
+        "减量日：只开车和走木栈道。今晚拉伸/泡沫轴10分钟；睡眠优先。",
+        "Dunraven Pass 开放中（10月12日关闭）——前一晚查一下 NPS 路况，以防早雪。"
+      ]
+    },
+    {
+      title: "黄石 Day 4 · Norris 间歇泉盆地与轻松的减量日",
+      summary: "赛前两天的轻松收尾：Norris（最热、最古老的盆地，Steamboat 所在），两个短停，下午休息，一场日落——然后打包，正式开始碳水加载。",
+      blocks: [
+        { time: "上午9:00", title: "♨️ Norris 间歇泉盆地——Porcelain 与 Back Basin", detail: "两条木栈道环线（约2小时，平路）：Porcelain Basin 的乳蓝色池子，和 Back Basin 里的 Steamboat——世界最高的活跃间歇泉（无法预测，但蒸汽很壮观）。" },
+        { time: "上午11:30", title: "🎨 Artists Paintpots 与 Gibbon 瀑布", detail: "1.6公里环线看彩色泥泉，回程在路边停车位看 Gibbon 瀑布。" },
+        { time: "下午1:00", title: "🏠 回西黄石吃午饭、休息", detail: "大份碳水午餐，把脚翘起来。收拾住处、开始打包——明早退房。" },
+        { time: "下午3:00", title: "🥾 可选：Mystic Falls 短步道或最后一个间歇泉", detail: "从 Biscuit Basin 到 Mystic Falls 往返3.5公里很平缓——或者回老忠实补看错过的 Grand/Riverside。别爬 Mount Washburn（爬升430米）——这周不合适。" },
+        { time: "傍晚", title: "🌇 Madison 看日落，然后打包", detail: "Madison 草甸的最后一抹光。回家吃碳水大餐（米饭、面、馒头），把车装好，早睡——明天11点出发。" }
+      ],
+      eat: "碳水加载正式开始：每餐米饭/面/馒头，瘦肉蛋白，少油少纤维。",
+      tips: [
+        "D-2 唤醒：15–20分钟轻松慢跑 + 4×15秒加速 + 轻量过一遍站点动作（10个徒手深蹲上举、20步弓步、几个波比）——只找技术，不发力。",
+        "今明两天碳水目标：每公斤体重约6–8克。米饼、香蕉、蜂蜜水和果汁补空档。",
+        "今晚把徒步装备收进包里——用不上了；熊喷雾不能上飞机，留给住处或送人。"
+      ]
+    },
+    {
+      title: "开回盐湖城 · 退还物品与赛前夜",
+      summary: "11点出发，沿 US-20 和 I-15 轻松5小时到盐湖城，下午还车并退还所有东西，入住 Salt Palace 附近的市中心，做赛前夜的例行准备。",
+      blocks: [
+        { time: "上午11:00", title: "🚗 离开西黄石", detail: "US-20 南下经 Island Park、Ashton → Idaho Falls → I-15 南。约320英里，含一次停车约5小时。从2,000米降到1,300米——会觉得轻松。" },
+        { time: "约下午1:00", title: "⛽ Idaho Falls 加油、伸展", detail: "半程。加油、洗手间、走10分钟、补水。午饭吃保温袋里的（米饭+鸡肉）——熟悉、低纤维。" },
+        { time: "约下午4:00", title: "🔁 到达 SLC——还车和退还所有东西", detail: "还租车（机场或市中心网点），还有 Starlink Mini 和其它计划退回的东西——收据和包装放在一起。然后打 Uber 去市中心。" },
+        { time: "约下午5:30", title: "🏨 入住 Salt Palace 附近的市中心酒店", detail: "步行能到 90 S West Temple，比赛早上就不用操心交通。今天能领的话把参赛包领了。" },
+        { time: "晚上", title: "🏁 赛前夜例行", detail: "15–20分钟散步或极轻慢跑 + 10分钟活动度（或完全休息）。晚餐：白米饭 + 清蒸鸡/鱼 + 少量蔬菜 + 清汤——不吃新的、油炸、辣的、高纤维的，不喝酒。摆好装备、灌满水瓶、定好闹钟，早睡。" }
+      ],
+      eat: "Idaho Falls 吃保温袋里的午饭；市中心吃碳水为主、低纤维、熟悉的晚餐（米饭类）。",
+      tips: [
+        "今晚确认你9月20日的出发波次——当天各组别从 07:00 到 16:40——并对照晚上飞 LAX 的航班（完赛 + 冲澡 + 15分钟 Uber 到机场 + 提前2小时）。",
+        "整个下午补水 + 电解质——在高原干燥环境待了一周，你的水分是欠着的。",
+        "今晚睡眠压倒一切；赛前两晚的睡眠比前一晚更重要，所以你已经存好了。"
+      ]
+    },
+    {
+      title: "HYROX 盐湖城 · 飞洛杉矶",
+      summary: "在市中心 Salt Palace 会展中心比赛。出发前 2.5–3 小时吃熟悉的早餐，好好热身，比赛，恢复——然后 Uber 去机场，晚上飞 LAX。",
+      blocks: [
+        { time: "出发前3小时", title: "🍚 赛前早餐", detail: "粥/白饭/燕麦 + 一根香蕉 + 少量蛋或鸡肉，出发前 2.5–3 小时吃。平时喝咖啡就照常。出发前 45–60 分钟：一根香蕉或一支胶 + 运动饮料。" },
+        { time: "出发前25分钟", title: "🔥 热身", detail: "8–10分钟轻松跑 → 动态活动度 → 3×20秒渐进加速 → 每个站点轻碰一下（划船30秒/SkiErg 30秒、几步雪橇、5个 wall ball）→ 出发前安静5分钟。" },
+        { time: "你的波次", title: "🏁 HYROX 盐湖城——Salt Palace 会展中心", detail: "90 S West Temple，市中心。配速：第一个1公里比目标慢10–15秒/公里；雪橇推低髋小步；农夫行走不放手；wall ball 按计划分组（如25/25/25/25）短歇；Ski 和划船用长桨低桨频。在站点抿电解质；预计超过60分钟就在第4站前后来一支胶。" },
+        { time: "赛后", title: "🥤 恢复餐与冲澡", detail: "一小时内碳水 + 蛋白（米饭+鸡肉或恢复奶昔），继续走动，然后回酒店冲澡、退房。" },
+        { time: "晚上", title: "✈️ Uber 去 SLC → 飞 LAX", detail: "Salt Palace 到 SLC 机场约15分钟。提前2小时到。飞机上穿压缩袜、多喝水——靠窗的位置是你应得的。" }
+      ],
+      eat: "赛前早餐在酒店；恢复餐在市中心；飞机上的零食。",
+      tips: [
+        "带上：号码布/参赛包、证件、穿惯的鞋、允许的话带镁粉、一套换洗衣服、自己的补给——比赛当天不试任何新东西。",
+        "9月20日波次：女子双人 07:00–11:50 · 女子/适应组 12:20–14:20 · 男子双人 14:50–16:40——在 HYROX App 里确认你的。",
+        "赛后：别一坐几个小时——在航站楼走走、补水、继续补蛋白。"
+      ]
+    }
+  ],
+
+  logistics: [
+    { label: "去程航班", value: "9月13日（周日）：飞盐湖城，傍晚到达。当晚在 SLC 取租车。" },
+    { label: "租车", value: "9月13日夜在 SLC 取车 → 9月19日下午还车（6天）。往返约900英里：SLC → 大提顿 → 西黄石（园内环线）→ SLC。" },
+    { label: "SLC → 大提顿", value: "9月14日：约280英里/约5小时，走 I-15 → US-89（Star Valley → Jackson）或 I-15 → Idaho Falls → US-26。然后从黄石南门北上到西黄石（含 West Thumb 约3小时）。" },
+    { label: "黄石大本营", value: "西黄石（西门），9月14–19日共5晚。Madison Junction 在园内14英里；老忠实约45分钟、Canyon 约1小时15分、Mammoth 约1.5小时、拉马尔谷约2.5小时。" },
+    { label: "西黄石 → SLC", value: "9月19日：11点出发，约320英里/约5小时，走 US-20 → I-15（Idaho Falls 停一次）。下午还车并退还所有东西。" },
+    { label: "HYROX", value: "9月20日（周日）在 Salt Palace 会展中心，90 S West Temple，盐湖城市中心。各组别波次 07:00–16:40——确认你的。没有车：从酒店步行，去机场打 Uber（约15分钟）。" },
+    { label: "回程航班", value: "9月20日（周日）晚上：SLC → LAX。提前2小时到机场。" }
+  ],
+
+  bookings: [
+    "待办 — 机票 SFO → SLC（9月13日，傍晚到）",
+    "待办 — 机票 SLC → LAX（9月20日晚）",
+    "待办 — 租车：9月13日夜 SLC 取 → 9月19日下午还（确认同一网点，或机场取/市中心还）",
+    "待办 — 盐湖城酒店，9月13日（1晚）",
+    "待办 — 西黄石带厨房的住处，9月14–19日（5晚）——确认预订",
+    "待办 — Salt Palace 附近的市中心酒店，9月19日（1晚）",
+    "✅ HYROX 盐湖城报名（9月20日）——在 App 里确认波次时间",
+    "📦 Whole Foods 取快递（9月14日早上）——准备好取件码",
+    "📡 Starlink Mini 取货（9月14日早上）——账号已激活、App 已登录",
+    "🎫 门票：大提顿 $35 + 黄石 $35（每车7天），或 $80 America the Beautiful 年票",
+    "🐻 熊喷雾——在 Jackson 或西黄石买（约$45–50）；不能上飞机",
+    "🛒 中国城超市购物清单（9月13日，周日开到10pm）：米、面、米粉、馒头/包子、鸡蛋、鸡胸、豆腐、鱼、蔬菜、调料、粥料、香蕉、蜂蜜",
+    "🍳 Target/Walmart 厨具衣物清单：锅、平底锅、电饭煲（需要的话）、餐具、保温壶、保温袋、抓绒、帽子、手套",
+    "📲 失去信号前下载：NPS 黄石 App（间歇泉预测）、公园离线 Google 地图、GeyserTimes",
+    "── 道路与公园状态 ──────────────",
+    "🛣 每个公园日的前一晚查 NPS 路况（早雪可能关闭 Dunraven Pass）；Tower Junction 桥施工：单车道最多等30分钟，到9月30日",
+    "🔁 9月19日退还：租车、Starlink Mini，以及其它要退的东西——收据 + 包装放在一个袋子里"
+  ],
+
+  packing: {
+    "Essentials": ["证件/驾照（租车用）", "银行卡 + 少量现金", "手机 + 车充 + 充电宝", "Starlink Mini + 供电（12V/USB-C）+ App 已登录", "离线地图 + NPS App 已下载", "公园门票/收据", "水瓶（2个以上）——高原、干燥", "防晒霜、墨镜、润唇膏（2,000米高原日晒强）", "头灯（拉马尔谷天亮前出发）", "望远镜 🐺"],
+    "Cold-weather layers": ["抓绒/羽绒中间层", "防水防风外壳", "帽子 + 手套（清晨约 −1°C）", "保暖内层", "厚袜子", "穿惯的舒适步行/徒步鞋", "雨裤或速干裤"],
+    "Hiking & wildlife": ["🐻 熊喷雾（到了再买——不能上飞机）", "日用背包", "路上零食", "保温壶（天亮前开车路上喝粥）", "水泡贴/小急救包", "相机/手机镜头布（间歇泉蒸汽）"],
+    "Cooking & food": ["锅 + 平底锅 + 电饭煲（9月13日买）", "餐具、砧板、刀", "保温袋 + 冰袋", "洗洁精 + 海绵", "米、面、馒头/包子、粥料（赛前碳水）", "鸡蛋、鸡胸、豆腐、鱼、蔬菜、调料", "香蕉、蜂蜜、果汁、米饼（碳水加载补充）", "电解质片/运动饮料"],
+    "HYROX race kit": ["比赛鞋（穿惯的）+ 袜子", "比赛上衣/短裤 + 一套换洗", "能量胶/咀嚼糖（试过的）+ 电解质", "镁粉（允许的话）+ 护腕/握力带（用的话）", "号码布/参赛包确认", "泡沫轴或按摩球", "回程飞机穿的压缩袜"]
+  }
+};
+
+</script>
+  <script>
+/*
+ * Renders the trip and wires up interactivity: tabs, collapsible
+ * days, per-day maps, and checklists (persisted in localStorage).
+ *
+ * Localization: English (TRIP in data.js) is the SOURCE OF TRUTH. When the
+ * language is set to Chinese, we deep-merge TRIP_ZH (lang.js) onto TRIP with
+ * per-field fallback to English, so any untranslated field still shows in
+ * English. UI chrome (labels/buttons) comes from UICOPY. No framework, no build.
+ */
+(function () {
+  "use strict";
+
+  // --- tiny helpers ---
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const el = (tag, attrs = {}, html = "") => {
+    const n = document.createElement(tag);
+    for (const k in attrs) {
+      if (k === "class") n.className = attrs[k];
+      else if (k === "dataset") Object.assign(n.dataset, attrs[k]);
+      else n.setAttribute(k, attrs[k]);
+    }
+    if (html) n.innerHTML = html;
+    return n;
+  };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const mapUrl = (q) => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+  const money = (n) => "$" + n.toLocaleString("en-US");
+  const kmBetween = (a, b) => {
+    const R = 6371, toR = (x) => (x * Math.PI) / 180;
+    const dLat = toR(b[0] - a[0]), dLng = toR(b[1] - a[1]);
+    const s = Math.sin(dLat / 2) ** 2 + Math.cos(toR(a[0])) * Math.cos(toR(b[0])) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(s));
+  };
+
+  // Per-trip localStorage namespace so the two trip pages (index.html = East
+  // Coast, yellowstone.html = Yellowstone) keep separate checklists. The
+  // language choice ("ec2026_lang") is deliberately shared across pages.
+  const STORE = (typeof TRIP !== "undefined" && TRIP.storeKey) || "ec2026";
+
+  // --- language state ---
+  // Default language is CHINESE. The actual starting language at boot is:
+  //   (1) the user's saved explicit toggle choice, else (2) Chinese.
+  let LANG = "zh";
+  let T = TRIP;          // active (possibly merged) trip data
+  let UI = UICOPY.zh;    // active UI dictionary
+
+  const locale = () => (LANG === "zh" ? "zh-CN" : "en-US");
+  const fmtDate = (iso) => new Date(iso + "T00:00:00").toLocaleDateString(locale(), { weekday: "long", month: "long", day: "numeric" });
+  const fmtShort = (iso) => new Date(iso + "T00:00:00").toLocaleDateString(locale(), { weekday: "short", month: "short", day: "numeric" });
+
+  // Deep-merge an English base with a Chinese overlay, falling back to English
+  // for any missing/empty field. English is always the structural source.
+  function deepMerge(en, zh) {
+    if (zh === undefined || zh === null) return en;
+    if (Array.isArray(en)) {
+      if (!Array.isArray(zh)) return en;
+      return en.map((item, i) => deepMerge(item, zh[i]));
+    }
+    if (en && typeof en === "object") {
+      const out = {};
+      for (const k in en) out[k] = deepMerge(en[k], zh[k]);
+      return out;
+    }
+    if (typeof en === "string") return (typeof zh === "string" && zh.trim() !== "") ? zh : en;
+    return zh !== undefined ? zh : en;
+  }
+
+  // Localize an English city name (e.g. day.city, weather city) by reusing the
+  // already-translated `cities` array, so it never falls back to English.
+  function cityLabel(enCity) {
+    if (typeof TRIP === "undefined" || !TRIP.cities) return enCity;
+    const idx = TRIP.cities.findIndex((c) => c.name === enCity);
+    return (idx >= 0 && T.cities && T.cities[idx]) ? T.cities[idx].name : enCity;
+  }
+
+  // persist=true records an explicit user choice; auto-detected values are not
+  // saved, so detection keeps running each visit until the user picks via the toggle.
+  function applyLang(lang, persist) {
+    LANG = lang === "zh" ? "zh" : "en";
+    if (persist) localStorage.setItem("ec2026_lang", LANG);
+    UI = UICOPY[LANG];
+    T = (LANG === "zh" && typeof TRIP_ZH !== "undefined") ? deepMerge(TRIP, TRIP_ZH) : TRIP;
+  }
+
+  // Leaflet map instances per day index, lazily initialized when a day opens.
+  const dayMapRecs = [];
+
+  // --- overview ---
+  function renderOverview() {
+    const root = $("#overview");
+    root.innerHTML = "";
+
+    const hl = el("div", { class: "card" });
+    hl.appendChild(el("h2", { class: "sec-title" }, esc(UI.ov_glance)));
+    T.highlights.forEach((h) => hl.appendChild(el("div", { class: "highlight" }, `<div>${esc(h)}</div>`)));
+    root.appendChild(hl);
+
+    const cityCard = el("div", { class: "card" });
+    cityCard.appendChild(el("h2", { class: "sec-title" }, esc(UI.ov_where)));
+    const chips = el("div", { class: "city-chips" });
+    T.cities.forEach((c) => {
+      chips.appendChild(el("div", { class: "chip" },
+        `<div class="city">${esc(c.name)}</div><div class="meta">${esc(c.dates)}${c.nights > 0 ? " · " + c.nights + " " + esc(c.nights > 1 ? UI.nights : UI.night) : ""}</div>`));
+    });
+    cityCard.appendChild(chips);
+    root.appendChild(cityCard);
+
+    const logi = el("div", { class: "card" });
+    logi.appendChild(el("h2", { class: "sec-title" }, esc(UI.ov_logistics)));
+    T.logistics.forEach((l) => {
+      logi.appendChild(el("div", { class: "highlight" },
+        `<div><strong>${esc(l.label)}:</strong> <span style="color:var(--muted)">${esc(l.value)}</span></div>`));
+    });
+    root.appendChild(logi);
+  }
+
+  // --- stays ---
+  function renderStays() {
+    const root = $("#stays");
+    root.innerHTML = "";
+    if (!T.stays) return;
+    const card = el("div", { class: "card" });
+    card.appendChild(el("h2", { class: "sec-title" }, esc(UI.stays_title)));
+    card.appendChild(el("p", { class: "sec-sub" }, esc(UI.stays_sub)));
+    T.stays.forEach((s) => {
+      const row = el("div", { class: "highlight" });
+      row.innerHTML =
+        `<div>
+           <div style="font-weight:700">🏨 <a href="${mapUrl(s.hotel + " " + s.city)}" target="_blank" rel="noopener">${esc(s.hotel)}</a></div>
+           <div style="color:var(--gold);font-size:13px">${esc(s.dates)} · ${s.nights} ${esc(s.nights > 1 ? UI.nights : UI.night)} · ${esc(s.city)}</div>
+           <div style="color:var(--muted);font-size:14px;margin-top:2px">${esc(s.area)}</div>
+         </div>`;
+      card.appendChild(row);
+    });
+    root.appendChild(card);
+  }
+
+  // --- per-day map ---
+  // A short label for a stop, derived from its block title (strip dash-suffix + lead markers).
+  const stopLabel = (title) => title.replace(/\s*—.*$/, "").replace(/^[✅⚠️]\s*/, "");
+
+  function dayStops(d) {
+    const seen = new Set();
+    let stops = [];
+    d.blocks.forEach((b) => {
+      if (!b.map || seen.has(b.map) || !PLACES[b.map]) return;
+      seen.add(b.map);
+      stops.push({ label: stopLabel(b.title), query: b.map, coord: PLACES[b.map] });
+    });
+    // Drop cross-city outliers (e.g. the DC departure point on the NYC arrival
+    // day) so each day's map stays focused on that day's city. Uses the median
+    // point as the anchor, then keeps stops within ~1.2° (~80 mi).
+    // Days flagged `multiCity` (e.g. the DC→Baltimore→Philly→NYC drive) keep
+    // every stop so the road-trip route renders end to end.
+    if (stops.length > 2 && !d.multiCity) {
+      const median = (xs) => { const s = [...xs].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
+      const mlat = median(stops.map((s) => s.coord[0]));
+      const mlng = median(stops.map((s) => s.coord[1]));
+      const near = stops.filter((s) => Math.abs(s.coord[0] - mlat) < 1.2 && Math.abs(s.coord[1] - mlng) < 1.2);
+      if (near.length >= 2) stops = near;
+    }
+    return stops;
+  }
+
+  function googleRouteUrl(stops) {
+    if (stops.length < 2) return mapUrl(stops[0].query);
+    const pts = stops.map((s) => s.coord[0] + "," + s.coord[1]);
+    return "https://www.google.com/maps/dir/?api=1&travelmode=walking" +
+      "&origin=" + encodeURIComponent(pts[0]) +
+      "&destination=" + encodeURIComponent(pts[pts.length - 1]) +
+      (pts.length > 2 ? "&waypoints=" + encodeURIComponent(pts.slice(1, -1).join("|")) : "");
+  }
+
+  function initLeafletMap(container, stops) {
+    if (!window.L || !stops.length) return null;
+    const map = L.map(container, { scrollWheelZoom: false });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap", maxZoom: 19
+    }).addTo(map);
+
+    const latlngs = [];
+    stops.forEach((s, i) => {
+      latlngs.push(s.coord);
+      const icon = L.divIcon({
+        className: "pin-icon",
+        html: `<div class="pin"><span>${i + 1}</span></div>`,
+        iconSize: [28, 28], iconAnchor: [14, 26]
+      });
+      L.marker(s.coord, { icon })
+        .addTo(map)
+        .bindPopup(`<strong>${i + 1}. ${esc(s.label)}</strong><br><a href="${mapUrl(s.query)}" target="_blank" rel="noopener">${esc(UI.openGoogleMaps)}</a>`);
+    });
+    if (latlngs.length > 1) {
+      L.polyline(latlngs, { color: "#5b8cff", weight: 3, opacity: 0.7, dashArray: "6 6" }).addTo(map);
+      map.fitBounds(latlngs, { padding: [34, 34] });
+    } else {
+      map.setView(latlngs[0], 14);
+    }
+    return map;
+  }
+
+  function renderDayMap(body, d, idx) {
+    const stops = dayStops(d);
+    if (stops.length < 1) return;
+
+    const wrap = el("div", { class: "daymap" });
+    const header = el("div", { class: "daymap-head" });
+    header.appendChild(el("div", { class: "daymap-title" }, esc(UI.daymap_places)));
+    const btns = el("div", { class: "daymap-btns" });
+    // One-tap navigation to the day's first stop (from the user's current location)
+    btns.appendChild(el("a", {
+      class: "route-btn nav-btn",
+      href: "https://www.google.com/maps/dir/?api=1&destination=" + stops[0].coord[0] + "," + stops[0].coord[1],
+      target: "_blank", rel: "noopener"
+    }, esc(UI.daymap_nav)));
+    if (stops.length >= 2) {
+      btns.appendChild(el("a", {
+        class: "route-btn", href: googleRouteUrl(stops), target: "_blank", rel: "noopener"
+      }, esc(UI.daymap_route)));
+    }
+    header.appendChild(btns);
+    wrap.appendChild(header);
+
+    const legend = el("ol", { class: "daymap-legend" });
+    stops.forEach((s, i) => {
+      let extra = "";
+      if (i > 0) {
+        const mi = kmBetween(stops[i - 1].coord, s.coord) * 0.621371;
+        extra = ` <span class="leg">· ${mi < 0.1 ? esc(UI.leg_nextdoor) : esc(UI.leg_from(i, mi.toFixed(1)))}</span>`;
+      }
+      const li = el("li", {});
+      li.innerHTML = `<a href="${mapUrl(s.query)}" target="_blank" rel="noopener">${esc(s.label)}</a>${extra}`;
+      legend.appendChild(li);
+    });
+    wrap.appendChild(legend);
+
+    const mapDiv = el("div", { class: "leaflet-day", id: "map-day-" + idx });
+    wrap.appendChild(mapDiv);
+    body.appendChild(wrap);
+
+    dayMapRecs[idx] = { mapDiv, stops, map: null };
+  }
+
+  function ensureDayMap(idx) {
+    const rec = dayMapRecs[idx];
+    if (!rec || rec.map) return;
+    rec.map = initLeafletMap(rec.mapDiv, rec.stops);
+    if (rec.map) setTimeout(() => rec.map.invalidateSize(), 60);
+  }
+
+  // --- itinerary ---
+  function renderItinerary() {
+    const root = $("#itinerary");
+    root.innerHTML = "";
+    root.appendChild(el("h2", { class: "sec-title" }, esc(UI.itin_title)));
+    root.appendChild(el("p", { class: "sec-sub" }, esc(UI.itin_sub)));
+
+    T.days.forEach((d, i) => {
+      const day = el("div", { class: "day" + (i === 0 ? " open" : "") });
+
+      const head = el("div", { class: "day-head", dataset: { date: d.date } });
+      head.appendChild(el("div", { class: "day-num" }, String(i + 1)));
+      const dhMain = el("div", { class: "dh-main" },
+        `<div class="dh-date">${esc(fmtDate(d.date))}</div>
+         <div class="dh-title">${esc(d.title)}</div>
+         <div class="dh-city">📍 ${esc(cityLabel(d.city))}</div>`);
+      const badge = wxBadge(d.date); // small weather chip, synced with the Weather tab
+      if (badge) dhMain.appendChild(badge);
+      head.appendChild(dhMain);
+      head.appendChild(el("div", { class: "caret" }, "▶"));
+      head.addEventListener("click", () => {
+        day.classList.toggle("open");
+        if (day.classList.contains("open")) ensureDayMap(i);
+      });
+      day.appendChild(head);
+
+      const body = el("div", { class: "day-body" });
+      if (d.summary) body.appendChild(el("p", { class: "sec-sub" }, esc(d.summary)));
+
+      if (d.decision) {
+        const dec = el("div", { class: "decision" });
+        dec.appendChild(el("div", { class: "dt" }, esc(d.decision.title)));
+        dec.appendChild(el("div", {}, esc(d.decision.body)));
+        const ol = el("ol");
+        d.decision.options.forEach((o) => ol.appendChild(el("li", {}, esc(o))));
+        dec.appendChild(ol);
+        body.appendChild(dec);
+      }
+
+      d.blocks.forEach((b) => {
+        const blk = el("div", { class: "block" });
+        blk.appendChild(el("div", { class: "when" }, esc(b.time)));
+        const what = el("div", { class: "what" });
+        what.appendChild(el("div", { class: "bt" }, esc(b.title)));
+        what.appendChild(el("div", { class: "bd" }, esc(b.detail)));
+        if (b.map) {
+          what.appendChild(el("a", { class: "map-link", href: mapUrl(b.map), target: "_blank", rel: "noopener" }, esc(UI.openMaps)));
+        }
+        blk.appendChild(what);
+        body.appendChild(blk);
+      });
+
+      renderDayMap(body, d, i);
+
+      if (d.eat) body.appendChild(el("div", { class: "eat" }, `🍴 <strong>${esc(UI.eat_label)}:</strong> ${esc(d.eat)}`));
+      if (d.tips && d.tips.length) {
+        const t = el("div", { class: "tips" }, `💡 <strong>${esc(UI.tips_label)}</strong>`);
+        const ul = el("ul");
+        d.tips.forEach((tip) => ul.appendChild(el("li", {}, esc(tip))));
+        t.appendChild(ul);
+        body.appendChild(t);
+      }
+
+      day.appendChild(body);
+      root.appendChild(day);
+    });
+  }
+
+  // --- weather ---
+  // Map a WMO weather code (Open-Meteo / our normals) to an emoji + label.
+  function wxIcon(code) {
+    const en = LANG === "en";
+    if (code === 0) return { emoji: "☀️", label: en ? "Clear" : "晴" };
+    if (code <= 2) return { emoji: "🌤", label: en ? "Mostly sunny" : "晴间多云" };
+    if (code === 3) return { emoji: "☁️", label: en ? "Cloudy" : "多云" };
+    if (code >= 45 && code <= 48) return { emoji: "🌫", label: en ? "Fog" : "雾" };
+    if (code >= 51 && code <= 57) return { emoji: "🌦", label: en ? "Drizzle" : "毛毛雨" };
+    if (code >= 61 && code <= 67) return { emoji: "🌧", label: en ? "Rain" : "有雨" };
+    if (code >= 71 && code <= 77) return { emoji: "🌨", label: en ? "Snow" : "雪" };
+    if (code >= 80 && code <= 82) return { emoji: "🌦", label: en ? "Showers" : "阵雨" };
+    if (code >= 95) return { emoji: "⛈", label: en ? "Thunderstorms" : "雷阵雨" };
+    return { emoji: "🌡", label: en ? "Mixed" : "多变" };
+  }
+
+  // Build the list of trip dates from WEATHER.startDate..endDate (inclusive).
+  function weatherDates() {
+    const out = [];
+    const d = new Date(WEATHER.startDate + "T00:00:00");
+    const end = new Date(WEATHER.endDate + "T00:00:00");
+    while (d <= end) {
+      out.push(d.toISOString().slice(0, 10));
+      d.setDate(d.getDate() + 1);
+    }
+    return out;
+  }
+
+  // Shared weather state: per-date {hi, lo, code, rainChance, live, city}, plus
+  // whether any live data arrived and when. The itinerary badges, packing advice,
+  // and Weather tab all read from here so they stay in sync.
+  const WX = { byDate: {}, anyLive: false, updatedAt: null };
+
+  // Seed WX from seasonal normals (available immediately, works offline).
+  function seedWeatherNormals() {
+    if (typeof WEATHER === "undefined") return;
+    weatherDates().forEach((iso) => {
+      const city = WEATHER.dayCity[iso];
+      const n = WEATHER.normals[city] || {};
+      WX.byDate[iso] = { hi: n.hi, lo: n.lo, code: n.code, rainChance: n.rainChance, live: false, city };
+    });
+  }
+
+  // Turn a day's weather into packing advice keys (rain/storm/hot/sun/mild).
+  function wxAdviceKeys(w) {
+    if (!w) return [];
+    const keys = [];
+    if (w.code >= 71 && w.code <= 77) keys.push("snow");
+    else if (w.code >= 95) keys.push("storm");
+    else if ((w.code >= 51 && w.code <= 82) || (w.rainChance != null && w.rainChance >= 40)) keys.push("rain");
+    if (w.hi != null && w.hi >= 85) keys.push("hot");
+    if (w.lo != null && w.lo <= 38) keys.push("cold");
+    if (w.code <= 1 && w.hi != null && w.hi >= 80) keys.push("sun");
+    if (!keys.length) keys.push("mild");
+    return keys;
+  }
+
+  // A tiny inline badge (emoji + hi/lo + optional rain%) for the itinerary header.
+  function wxBadge(iso) {
+    const w = WX.byDate[iso];
+    if (!w || w.hi == null) return null;
+    const ic = wxIcon(w.code);
+    const badge = el("div", { class: "wx-badge" + (w.live ? " live" : "") });
+    badge.title = ic.label + (w.live ? "" : " · " + UI.weather_normal);
+    badge.innerHTML =
+      `<span class="wxb-emoji">${ic.emoji}</span>` +
+      `<span class="wxb-temp">${Math.round(w.hi)}°/${Math.round(w.lo)}°</span>` +
+      (w.rainChance != null && w.rainChance >= 30 ? `<span class="wxb-rain">💧${Math.round(w.rainChance)}%</span>` : "");
+    return badge;
+  }
+
+  // Format the "last updated" time in the active locale.
+  function fmtUpdated(d) {
+    return d.toLocaleString(locale(), { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  }
+
+  // Render one day's weather row. `data` has {hi, lo, code, rainChance, live}.
+  function weatherRow(iso, city, data) {
+    const ic = wxIcon(data.code);
+    const row = el("div", { class: "wx-row" });
+    const tag = data.live
+      ? `<span class="wx-tag live">${esc(UI.weather_live)}</span>`
+      : `<span class="wx-tag">${esc(UI.weather_normal)}</span>`;
+    row.innerHTML =
+      `<div class="wx-emoji">${ic.emoji}</div>
+       <div class="wx-main">
+         <div class="wx-date">${esc(fmtDate(iso))} · ${esc(city)}</div>
+         <div class="wx-cond">${esc(ic.label)} ${tag}</div>
+       </div>
+       <div class="wx-temps">
+         <span class="wx-hi">${Math.round(data.hi)}°</span>
+         <span class="wx-lo">${Math.round(data.lo)}°</span>
+         ${data.rainChance != null ? `<span class="wx-rain">💧${Math.round(data.rainChance)}%</span>` : ""}
+       </div>`;
+    return row;
+  }
+
+  // Render the Weather tab from shared WX state (seeded with normals, possibly
+  // upgraded to live), plus a "last updated" line and weather-based packing tips.
+  function renderWeather() {
+    const root = $("#weather");
+    root.innerHTML = "";
+    if (typeof WEATHER === "undefined") return;
+    const dates = weatherDates();
+
+    const card = el("div", { class: "card" });
+    card.appendChild(el("h2", { class: "sec-title" }, "🌦 " + esc(UI.weather_title)));
+    card.appendChild(el("p", { class: "sec-sub" }, esc(UI.weather_sub)));
+
+    const list = el("div", { class: "wx-list" });
+    dates.forEach((iso) => list.appendChild(weatherRow(iso, cityLabel(WX.byDate[iso].city), WX.byDate[iso])));
+    card.appendChild(list);
+
+    // "Last updated" line: live timestamp, or a note that these are averages.
+    const updated = el("p", { class: "wx-updated" },
+      WX.anyLive && WX.updatedAt ? esc(UI.weather_updated(fmtUpdated(WX.updatedAt))) : esc(UI.weather_updatedNormal));
+    card.appendChild(updated);
+
+    const status = el("p", { class: "wx-status" }, WX.anyLive ? "" : esc(UI.weather_loading));
+    card.appendChild(status);
+    root.appendChild(card);
+
+    // Weather-driven packing advice (deduped across the whole trip window).
+    const adviceCard = el("div", { class: "card" });
+    adviceCard.appendChild(el("h2", { class: "sec-title" }, "🎒 " + esc(UI.weather_packTitle)));
+    const seen = new Set();
+    const ul = el("ul", { class: "wx-advice" });
+    dates.forEach((iso) => wxAdviceKeys(WX.byDate[iso]).forEach((k) => {
+      if (seen.has(k) || !UI.wxAdvice[k]) return; // skip keys a trip's UI dictionary doesn't define
+      seen.add(k);
+      ul.appendChild(el("li", {}, esc(UI.wxAdvice[k])));
+    }));
+    adviceCard.appendChild(ul);
+    root.appendChild(adviceCard);
+
+    if (!WX.anyLive) fetchLiveWeather();
+  }
+
+  // Try Open-Meteo (free, no key). On success, update shared WX state and refresh
+  // every weather-dependent view; on failure/offline, the normals already shown stay.
+  function fetchLiveWeather() {
+    const status = $("#weather .wx-status");
+    if (!navigator.onLine) { if (status) status.textContent = UI.weather_offline; return; }
+
+    const dates = weatherDates();
+    const cities = Array.from(new Set(dates.map((iso) => WEATHER.dayCity[iso])));
+    const reqs = cities.map((city) => {
+      const [lat, lon] = WEATHER.coords[city];
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+        `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
+        `&temperature_unit=fahrenheit&timezone=${encodeURIComponent(WEATHER.timezone || "America/New_York")}` +
+        `&start_date=${WEATHER.startDate}&end_date=${WEATHER.endDate}`;
+      return fetch(url).then((r) => r.json()).then((j) => ({ city, j }));
+    });
+
+    Promise.all(reqs).then((results) => {
+      const byCity = {};
+      results.forEach(({ city, j }) => { if (j && j.daily && j.daily.time) byCity[city] = j.daily; });
+
+      let liveCount = 0;
+      dates.forEach((iso) => {
+        const daily = byCity[WEATHER.dayCity[iso]];
+        if (!daily) return;
+        const di = daily.time.indexOf(iso);
+        if (di < 0) return;
+        const hi = daily.temperature_2m_max[di], lo = daily.temperature_2m_min[di];
+        if (hi == null || lo == null) return;
+        WX.byDate[iso] = {
+          hi, lo,
+          code: daily.weather_code[di],
+          rainChance: daily.precipitation_probability_max ? daily.precipitation_probability_max[di] : null,
+          live: true, city: WEATHER.dayCity[iso]
+        };
+        liveCount++;
+      });
+
+      if (liveCount > 0) {
+        WX.anyLive = true;
+        WX.updatedAt = new Date();
+        renderWeather();         // redraw tab with live rows + timestamp + advice
+        refreshItineraryBadges(); // sync the per-day badges in the Itinerary tab
+      } else if (status) {
+        status.textContent = UI.weather_offline;
+      }
+    }).catch(() => { if (status) status.textContent = UI.weather_offline; });
+  }
+
+  // Update the small weather badge in each itinerary day header in place.
+  function refreshItineraryBadges() {
+    document.querySelectorAll(".day-head").forEach((head) => {
+      const iso = head.dataset.date;
+      if (!iso) return;
+      const old = head.querySelector(".wx-badge");
+      const fresh = wxBadge(iso);
+      if (old && fresh) old.replaceWith(fresh);
+      else if (old && !fresh) old.remove();
+      else if (!old && fresh) head.querySelector(".dh-main").appendChild(fresh);
+    });
+  }
+
+  // --- checklists with localStorage (keys are index-based, so state survives language switches) ---
+  function checklist(rootSel, storeKey, makeItems) {
+    const root = $(rootSel);
+    root.innerHTML = "";
+    const saved = JSON.parse(localStorage.getItem(storeKey) || "{}");
+    const progress = el("div", { class: "progress" });
+    const boxes = [];
+
+    const updateProgress = () => { progress.textContent = UI.progress(boxes.filter((b) => b.checked).length, boxes.length); };
+    const save = () => {
+      const state = {};
+      boxes.forEach((b) => (state[b.dataset.key] = b.checked));
+      localStorage.setItem(storeKey, JSON.stringify(state));
+      updateProgress();
+    };
+
+    makeItems(root, (label, key, groupRoot) => {
+      const row = el("label", { class: "check" });
+      const cb = el("input", { type: "checkbox" });
+      cb.dataset.key = key;
+      cb.checked = !!saved[key];
+      if (cb.checked) row.classList.add("done");
+      cb.addEventListener("change", () => { row.classList.toggle("done", cb.checked); save(); });
+      row.appendChild(cb);
+      row.appendChild(el("span", {}, esc(label)));
+      (groupRoot || root).appendChild(row);
+      boxes.push(cb);
+    });
+
+    root.appendChild(progress);
+    const reset = el("button", { class: "reset-btn" }, esc(UI.reset));
+    reset.addEventListener("click", () => {
+      boxes.forEach((b) => { b.checked = false; b.closest(".check").classList.remove("done"); });
+      save();
+    });
+    root.appendChild(reset);
+    updateProgress();
+  }
+
+  function renderBookings() {
+    checklist("#bookings", STORE + "_bookings", (root, add) => {
+      const card = el("div", { class: "card" });
+      card.appendChild(el("h2", { class: "sec-title" }, esc(UI.book_title)));
+      card.appendChild(el("p", { class: "sec-sub" }, esc(UI.book_sub)));
+      root.appendChild(card);
+      T.bookings.forEach((b, i) => add(b, "bk" + i, card));
+    });
+  }
+
+  function renderPacking() {
+    checklist("#packing", STORE + "_packing", (root, add) => {
+      const card = el("div", { class: "card" });
+      card.appendChild(el("h2", { class: "sec-title" }, esc(UI.pack_title)));
+      card.appendChild(el("p", { class: "sec-sub" }, esc(UI.pack_sub)));
+      root.appendChild(card);
+      let gi = 0;
+      for (const group in T.packing) {
+        const heading = (UI.packGroups && UI.packGroups[group]) || group;
+        card.appendChild(el("h3", {}, esc(heading)));
+        T.packing[group].forEach((item, j) => add(item, "pk" + gi + "_" + j, card));
+        gi++;
+      }
+    });
+  }
+
+  // --- tabs (listeners attached once; labels refreshed per render) ---
+  function setupTabs() {
+    const buttons = document.querySelectorAll("nav.tabs button");
+    const sections = document.querySelectorAll("main section");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("active"));
+        sections.forEach((s) => s.classList.remove("active"));
+        btn.classList.add("active");
+        $("#" + btn.dataset.target).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  }
+
+  function labelTabs() {
+    document.querySelectorAll("nav.tabs button").forEach((btn) => {
+      const key = "tab_" + btn.dataset.target;
+      if (UI[key]) btn.textContent = UI[key];
+    });
+  }
+
+  // --- language switch ---
+  function setupLangSwitch() {
+    document.querySelectorAll("#langSwitch button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (btn.dataset.lang === LANG) return;
+        applyLang(btn.dataset.lang, true); // explicit choice — persist it
+        renderAll();
+      });
+    });
+  }
+  function updateLangButtons() {
+    document.querySelectorAll("#langSwitch button").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.lang === LANG);
+    });
+  }
+
+  // --- render everything (called on boot and on language switch) ---
+  function renderAll() {
+    // tear down old map instances before rebuilding the DOM
+    dayMapRecs.forEach((r) => { if (r && r.map) r.map.remove(); });
+    dayMapRecs.length = 0;
+
+    document.documentElement.lang = LANG === "zh" ? "zh-CN" : "en";
+    document.title = T.title + UI.docTitle;
+    $("#hero-title").textContent = T.title;
+    $("#hero-route").textContent = T.subtitle;
+    $("#hero-dates").textContent = UI.heroDates(fmtShort(T.startDate), fmtShort(T.endDate));
+    const footer = $("#siteFooter");
+    if (footer && UI.footer) footer.textContent = UI.footer;
+
+    labelTabs();
+    updateLangButtons();
+    renderOverview();
+    renderStays();
+    renderItinerary();
+    renderWeather();
+    renderBookings();
+    renderPacking();
+    ensureDayMap(0); // first day is open by default
+  }
+
+  // --- boot ---
+  document.addEventListener("DOMContentLoaded", () => {
+    // Default to Chinese; a saved explicit toggle choice still wins.
+    const saved = localStorage.getItem("ec2026_lang");
+    applyLang(saved || "zh");
+    seedWeatherNormals(); // populate WX with averages before first render
+    setupTabs();
+    setupLangSwitch();
+    renderAll();
+  });
+})();
+
+</script>
+</body>
+</html>

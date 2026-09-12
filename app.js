@@ -32,6 +32,11 @@
     return 2 * R * Math.asin(Math.sqrt(s));
   };
 
+  // Per-trip localStorage namespace so the two trip pages (index.html = East
+  // Coast, yellowstone.html = Yellowstone) keep separate checklists. The
+  // language choice ("ec2026_lang") is deliberately shared across pages.
+  const STORE = (typeof TRIP !== "undefined" && TRIP.storeKey) || "ec2026";
+
   // --- language state ---
   // Default language is CHINESE. The actual starting language at boot is:
   //   (1) the user's saved explicit toggle choice, else (2) Chinese.
@@ -95,7 +100,7 @@
     const chips = el("div", { class: "city-chips" });
     T.cities.forEach((c) => {
       chips.appendChild(el("div", { class: "chip" },
-        `<div class="city">${esc(c.name)}</div><div class="meta">${esc(c.dates)} · ${c.nights} ${esc(c.nights > 1 ? UI.nights : UI.night)}</div>`));
+        `<div class="city">${esc(c.name)}</div><div class="meta">${esc(c.dates)}${c.nights > 0 ? " · " + c.nights + " " + esc(c.nights > 1 ? UI.nights : UI.night) : ""}</div>`));
     });
     cityCard.appendChild(chips);
     root.appendChild(cityCard);
@@ -358,9 +363,11 @@
   function wxAdviceKeys(w) {
     if (!w) return [];
     const keys = [];
-    if (w.code >= 95) keys.push("storm");
+    if (w.code >= 71 && w.code <= 77) keys.push("snow");
+    else if (w.code >= 95) keys.push("storm");
     else if ((w.code >= 51 && w.code <= 82) || (w.rainChance != null && w.rainChance >= 40)) keys.push("rain");
     if (w.hi != null && w.hi >= 85) keys.push("hot");
+    if (w.lo != null && w.lo <= 38) keys.push("cold");
     if (w.code <= 1 && w.hi != null && w.hi >= 80) keys.push("sun");
     if (!keys.length) keys.push("mild");
     return keys;
@@ -437,7 +444,7 @@
     const seen = new Set();
     const ul = el("ul", { class: "wx-advice" });
     dates.forEach((iso) => wxAdviceKeys(WX.byDate[iso]).forEach((k) => {
-      if (seen.has(k)) return;
+      if (seen.has(k) || !UI.wxAdvice[k]) return; // skip keys a trip's UI dictionary doesn't define
       seen.add(k);
       ul.appendChild(el("li", {}, esc(UI.wxAdvice[k])));
     }));
@@ -459,7 +466,7 @@
       const [lat, lon] = WEATHER.coords[city];
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
         `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
-        `&temperature_unit=fahrenheit&timezone=America%2FNew_York` +
+        `&temperature_unit=fahrenheit&timezone=${encodeURIComponent(WEATHER.timezone || "America/New_York")}` +
         `&start_date=${WEATHER.startDate}&end_date=${WEATHER.endDate}`;
       return fetch(url).then((r) => r.json()).then((j) => ({ city, j }));
     });
@@ -549,7 +556,7 @@
   }
 
   function renderBookings() {
-    checklist("#bookings", "ec2026_bookings", (root, add) => {
+    checklist("#bookings", STORE + "_bookings", (root, add) => {
       const card = el("div", { class: "card" });
       card.appendChild(el("h2", { class: "sec-title" }, esc(UI.book_title)));
       card.appendChild(el("p", { class: "sec-sub" }, esc(UI.book_sub)));
@@ -559,7 +566,7 @@
   }
 
   function renderPacking() {
-    checklist("#packing", "ec2026_packing", (root, add) => {
+    checklist("#packing", STORE + "_packing", (root, add) => {
       const card = el("div", { class: "card" });
       card.appendChild(el("h2", { class: "sec-title" }, esc(UI.pack_title)));
       card.appendChild(el("p", { class: "sec-sub" }, esc(UI.pack_sub)));
