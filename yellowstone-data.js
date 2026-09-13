@@ -17,7 +17,9 @@ const TRIP = {
 
   // Big-picture context worth knowing before you go.
   highlights: [
+    "⚠️ CHECK YOUR HYROX DIVISION FIRST. Sunday Sep 20 runs only three: Doubles Women 07:00–11:50, Women/Adaptive Women 12:20–14:20, Doubles Men 14:50–16:40. Individual HYROX Men races Friday 08:00–09:00 or Saturday 08:00–11:20, and Doubles Mixed is Saturday 11:50–17:40 — if you’re in any of those, the Sep 19 drive back is far too late and the whole week has to move. Confirm the division and start time in the HYROX app before you fly.",
     "🐻 Grizzly country: carry bear spray on every trail. RENT it in Jackson on the way in (~$28 for the 5 days) and drop it in West Yellowstone — cheaper than buying, and it can’t fly home anyway. Keep 100 yards from bears and wolves, 25 from bison and elk; the September elk rut at Mammoth is a highlight, and the bulls charge.",
+    "🎫 Park entry: Yellowstone is $35 per vehicle for 7 days. Grand Teton has always been charged separately (another $35), though some 2026 sources now say one pass covers both — the $80 America the Beautiful annual pass settles it for at most $10 more and lasts a year. ⚠️ New for 2026: non-US residents aged 16+ pay a $100 per-person surcharge unless they hold an annual pass (the non-resident version is $250). If everyone in the car is a US resident this doesn’t apply.",
     "🛣 Four park days, each on its own arm of the figure-8, so you rarely drive the same road twice: geyser basins south of Madison (Sep 15), Norris + Canyon + Hayden to the east (Sep 16), Mammoth + Tower + Lamar in the north (Sep 17), and a short local day near town (Sep 18). Every ‘extra’ sight sits on a road you already have to drive.",
     "🧥 Mid-September Yellowstone: days 55–65°F, mornings 25–35°F, snow possible any day at 6,600–8,900 ft. Fleece + shell + beanie every morning; strong sun at altitude.",
     "🛣 All park roads are open, but two bridge projects sit on your routes: the Madison River Bridge between the West Entrance and Madison Junction (up to 15-min delays, through Nov 1) — that’s your commute EVERY day, both ways — and the Yellowstone River Bridge at Tower Junction on the NE Entrance road (up to 30-min delays), which is your Sep 17 Lamar day. Add the buffer and check the live road status each morning.",
@@ -80,7 +82,7 @@ const TRIP = {
       eat: "Hotel breakfast in SLC; lunch in Jackson (fuel stop); first rice-cooker dinner at the motel.",
       tips: [
         "Leaving Oxbow after ~5:15pm? Take the Idaho route instead: Jackson → Teton Pass → Victor → Ashton → Island Park → West Yellowstone (~2h45, no wildlife jams, lit highway) — you’d skip West Thumb, which is fine.",
-        "Park passes: Grand Teton $35 + Yellowstone $35 per vehicle (7 days each) = $70; buy the $80 America the Beautiful annual pass only if you’ll visit another park within a year.",
+        "Park passes: Yellowstone is $35 per vehicle (7 days); Grand Teton is normally a separate $35. Sources disagree for 2026 on whether one covers both — the $80 America the Beautiful pass removes the question. Non-US residents: see the $100 surcharge note in the overview.",
         "Rent bear spray in Jackson (Bear Aware, ~$28 for 5 days) and carry it on every trail from now on — you can drop it in West Yellowstone, so there’s no backtrack.",
         "Taper week: keep today to easy walking — the drive is the workout."
       ]
@@ -186,7 +188,8 @@ const TRIP = {
       ],
       eat: "Cooler lunch at Idaho Falls; carb-heavy, low-fibre, familiar dinner downtown (rice-based).",
       tips: [
-        "Confirm your Sep 20 wave time tonight — the day runs 07:00–16:40 across categories — and check it against the evening LAX flight (finish + shower + 15-min Uber to SLC + 2 hrs at the airport).",
+        "⚠️ This whole plan assumes you race SUNDAY. Sunday only runs Doubles Women, Women/Adaptive Women and Doubles Men. If you’re in individual HYROX Men (Fri 08:00–09:00 or Sat 08:00–11:20) or Doubles Mixed (Sat 11:50–17:40), today’s 11am departure is too late — you’d need to leave West Yellowstone a day earlier.",
+        "Check your start time against the evening LAX flight: finish + shower + a 15-min Uber to SLC + 2 hrs at the airport. The 14:50–16:40 Doubles Men wave is the tight one.",
         "Hydrate + electrolytes all afternoon — a week at altitude in dry air leaves you behind on fluids.",
         "Sleep beats everything tonight; the sleep two nights out matters more than the night before, so you’ve already banked it."
       ]
@@ -206,7 +209,7 @@ const TRIP = {
       eat: "Race breakfast at the hotel; recovery meal downtown; snacks for the flight.",
       tips: [
         "Bring: race bib/packet, ID, familiar shoes (broken in), chalk if allowed, a change of clothes, and your own fuel — don’t try anything new on the day.",
-        "Wave schedule on Sep 20: Doubles Women 07:00–11:50 · Women/Adaptive 12:20–14:20 · Doubles Men 14:50–16:40 — check yours in the HYROX app.",
+        "Sunday Sep 20 wave schedule: Doubles Women 07:00–11:50 · Women/Adaptive Women 12:20–14:20 · Doubles Men 14:50–16:40. Those are the ONLY three divisions racing Sunday — confirm yours in the HYROX app.",
         "Post-race: no sitting still for hours — walk the terminal, hydrate, and keep the protein coming."
       ]
     }
@@ -290,7 +293,7 @@ const TRIP = {
     { label: "SLC → Grand Teton", value: "Sep 14: ~280 miles / ~5 hrs via I-15 → US-89 (Star Valley → Jackson) or I-15 → Idaho Falls → US-26. Then north through Yellowstone’s South Entrance to West Yellowstone (~3 hrs incl. West Thumb)." },
     { label: "Yellowstone base", value: "Dude & Roundup Motel, 3 Madison Ave, West Yellowstone — one block from the West Entrance, 5 nights Sep 14–19. Madison Junction is 14 miles in; Old Faithful ~45 min, Canyon ~1h15, Mammoth ~1h30, Lamar Valley ~2.5 hrs." },
     { label: "West Yellowstone → SLC", value: "Sep 19: 11am departure, ~320 miles / ~5 hrs via US-20 → I-15 (Idaho Falls stop). Return the car + everything else in the afternoon." },
-    { label: "HYROX", value: "Sep 20 (Sun) at the Salt Palace Convention Center, 90 S West Temple, downtown SLC. Waves 07:00–16:40 by category — confirm yours. No car needed: a ~0.5 mi (10-min) walk from the Hyatt Place, then Uber to the airport (~15 min)." },
+    { label: "HYROX", value: "InBody HYROX Salt Lake City runs Fri Sep 18 – Sun Sep 20 at the Salt Palace Convention Center, 90 S West Temple. SUNDAY has only three divisions: Doubles Women 07:00–11:50, Women/Adaptive Women 12:20–14:20, Doubles Men 14:50–16:40. Individual Men is Fri 08:00–09:00 or Sat 08:00–11:20; Doubles Mixed is Sat 11:50–17:40. No car needed: a ~0.5 mi (10-min) walk from the Hyatt Place, then Uber to the airport (~15 min)." },
     { label: "Flight home", value: "Sep 20 (Sun) evening: SLC → LAX. Be at the airport 2 hrs before departure." }
   ],
 
@@ -302,10 +305,10 @@ const TRIP = {
     "✅ Hyatt Place Salt Lake City / Downtown / The Gateway (55 N 400 W) — Sep 13 & Sep 19, both SLC nights. Free breakfast, mini-fridge, ~10-min walk to the Salt Palace",
     "✅ Dude & Roundup Motel, West Yellowstone (3 Madison Ave) — Double Deluxe, multiple beds, Sep 14–19. No kitchen, but a FRIDGE and MICROWAVE are confirmed by phone — just mention the rice cooker at check-in",
     "🍚 Buy an ELECTRIC RICE COOKER on Sep 13 — the fridge and microwave cover storage and reheating, but only the cooker does proper rice and congee (thermos fuel for the sunset wildlife sessions)",
-    "✅ HYROX Salt Lake City registration (Sep 20) — confirm your wave time in the app",
+    "⚠️ HYROX — CONFIRM YOUR DIVISION AND DAY IN THE APP. Sunday Sep 20 only runs Doubles Women, Women/Adaptive Women and Doubles Men. Individual Men is Fri or Sat; Doubles Mixed is Sat afternoon. Anything but Sunday breaks the Sep 19 drive back",
+    "🎫 Park entry: Yellowstone $35/vehicle (7 days); Grand Teton normally a separate $35. 2026 sources conflict on whether one covers both — the $80 America the Beautiful pass settles it. Non-US residents 16+: extra $100 per person unless on an annual pass ($250 non-resident version)",
     "📦 Whole Foods package pickup (Sep 14 morning) — have the pickup code ready",
     "📡 Starlink Mini pickup (Sep 14 morning) — account activated & app signed in",
-    "🎫 Park entry: Grand Teton $35 + Yellowstone $35 per vehicle (7 days), or the $80 America the Beautiful annual pass",
     "🐻 Bear spray — RENT it, don’t buy it. Bear Aware / Teton Backcountry Rentals in Jackson: $16 for the first two days then $4/day, capped at $28. Pick up Sep 14 in Jackson, drop at Freeheel & Wheel, 40 Yellowstone Ave, West Yellowstone (24/7 box) on Sep 18 — one-way across their 12 pickup / 19 drop-off locations. Buying is ~$45–50 and it can’t fly home",
     "🛒 Grocery list for Chinatown Supermarket (Sep 13, Sunday till 10pm) — you have a fridge, microwave and rice cooker: rice, congee fixings, noodles, mantou/baozi, frozen dumplings, eggs, pre-cooked/braised meats, tofu, leafy greens, sauces, bananas, honey",
     "🍳 Target or Walmart list: ELECTRIC RICE COOKER, bowls, chopsticks, utensils, small knife + cutting board, thermos, cooler bag (for the long park days), dish soap + sponge, fleece, beanie, gloves (no pots or pans — there’s no stove)",
