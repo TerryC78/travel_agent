@@ -14,7 +14,7 @@
 const UICOPY = {
   en: {
     tab_overview: "Overview", tab_itinerary: "Itinerary", tab_stays: "Stays",
-    tab_weather: "Weather", tab_bookings: "Bookings", tab_packing: "Packing",
+    tab_weather: "Weather", tab_food: "Food", tab_bookings: "Bookings", tab_packing: "Packing",
     ov_glance: "Trip at a glance", ov_where: "Where you’ll be", ov_logistics: "Logistics",
     stays_title: "Where you’re staying", stays_sub: "Tap a place to open it in Maps. Confirm the ones still marked TODO.",
     night: "night", nights: "nights",
@@ -40,6 +40,7 @@ const UICOPY = {
       snow: "🌨 Snow possible — waterproof shell, warm layers, and check the park road status each morning"
     },
     book_title: "Bookings & to-dos", book_sub: "Confirm these before you leave — mid-September lodging near the park fills up, and a few items can only be bought on arrival.",
+    food_title: "Food, cooking & race nutrition", food_sub: "What to buy in Salt Lake, what the rice cooker makes, where to eat in the park and in town — all lined up against the HYROX carb load.",
     pack_title: "Packing list", pack_sub: "Cold mornings, big sun, a lot of driving, and a race at the end. Check items off as you pack.",
     reset: "Reset list",
     progress: (d, t) => `${d} of ${t} done`,
@@ -51,7 +52,7 @@ const UICOPY = {
   },
   zh: {
     tab_overview: "概览", tab_itinerary: "行程", tab_stays: "住宿",
-    tab_weather: "天气", tab_bookings: "预订清单", tab_packing: "行李",
+    tab_weather: "天气", tab_food: "吃饭", tab_bookings: "预订清单", tab_packing: "行李",
     ov_glance: "行程速览", ov_where: "你会去的地方", ov_logistics: "交通与衔接",
     stays_title: "住宿安排", stays_sub: "点住处名可在地图中打开。标着“待办”的记得确认。",
     night: "晚", nights: "晚",
@@ -77,6 +78,7 @@ const UICOPY = {
       snow: "🌨 可能下雪——防水外壳、保暖层，每天早上查公园路况"
     },
     book_title: "预订与待办", book_sub: "出发前确认这些——9月中旬公园附近的住宿很紧张，有几样东西只能到了再买。",
+    food_title: "吃饭、做饭与比赛饮食", food_sub: "在盐湖城买什么、电饭煲能做什么、园里和镇上去哪吃——全部对齐 HYROX 的碳水加载节奏。",
     pack_title: "行李清单", pack_sub: "清晨很冷、日晒强、开车多，最后还有比赛。一边收拾一边打勾。",
     reset: "重置清单",
     progress: (d, t) => `已完成 ${d}/${t}`,
@@ -103,7 +105,8 @@ const TRIP_ZH = {
     "🐻 灰熊区：任何步道都要带熊喷雾。要租、不要买——进园路上在 Jackson 租（5天约$28），最后在西黄石还掉，比买便宜，而且反正不能带上飞机。离熊/狼 100 码、野牛/麋鹿 25 码；9月 Mammoth 的麋鹿发情期是亮点，但公鹿会冲人。",
     "🛣 四个公园日各走「8字形」的一条臂，尽量不重复走同一段路：9/15 走 Madison 以南的间歇泉群，9/16 往东走 Norris + 大峡谷 + 海登谷，9/17 往北走猛犸 + 塔瀑 + 拉马尔谷，9/18 就在镇子附近轻松一天。所有「额外」的景点都安排在你本来就要开的路上。",
     "🧥 9月中旬的黄石：白天 13–18°C，清晨 −4～2°C，海拔 2,000–2,700m 随时可能下雪。每天早上抓绒 + 防风雨外套 + 帽子；高原日晒强。",
-    "🛣 园内道路全开，含 Dunraven Pass（10月12日关闭）——但 Tower Junction 的 Yellowstone River 桥施工到 9月30日，单车道最多等 30 分钟，正好在你的拉马尔谷那天。",
+    "🛣 园内主干道全开，但有两处桥梁施工正好在你的路线上：西门到 Madison Junction 之间的 Madison River 桥（最多等15分钟，持续到11月1日）——这是你每天进出园的必经路；还有 Tower Junction 东北门方向的 Yellowstone River 桥（最多等30分钟），正是你9月17日去拉马尔谷那天。留出缓冲，每天早上查一下实时路况。",
+    "🔥 本区域有火情：两个公园的主干道都开放，但部分区域和步道封闭，下午可能起烟霾。每个开车日出发前查一下 NPS 的道路/封闭页面；烟大的话查 AirNow。",
     "🏋️ 这周是 HYROX 减量周：黄石是主动恢复（木栈道、一条短步道），不是训练——而且没有天亮前出发：每天 9:30–10 点才出门，看动物改到日落。苦练已经完成；9月17日开始碳水加载。",
     "📡 园内几乎无信号。Starlink Mini 需要开阔天空——酒店停车场、步道口停车场、观景点都能用；同时也把离线地图和间歇泉预测下载好。",
     "🍚 酒店没有厨房，但会配冰箱和微波炉，再加一个电饭煲（9月13日买）：煮饭、煮粥、煮面、蒸馒头包子、煮蛋、焯青菜都能搞定。食材第一晚在中国城超市买齐；一壶粥让日落观兽和摸黑回家的长途都舒服起来。"
@@ -177,7 +180,8 @@ const TRIP_ZH = {
         "老忠实预测：NPS App 或 geysertimes.org。Riverside 和 Grand 是另外两个可预测的——看板子。",
         "只走木栈道——地壳很薄、水是沸腾的。手机帽子拿稳，掉下去什么都捡不回来。",
         "减量：出门前轻松跑 25–30 分钟 + 6×20 秒加速跑（上午晚些也行），之后木栈道就是你的恢复散步。",
-        "10点出发躲过了结冰的那一小时，但 2,000 米海拔中午前还是 5–13°C——抓绒 + 外壳，下午早些再脱。"
+        "全程最冷的一个早上：最低约 −4°C（24°F）。10点出发已经躲过最冷的时段，但上午后半段仍只有 2–7°C——记得刮挡风玻璃，抓绒 + 外壳 + 手套，下午早些再脱。",
+        "结霜的清晨意味着盆地上蒸汽特别大。所以大棱镜的颜色要等到中午蒸汽变薄时、从 Fairy Falls 观景台看最好——今天的安排正好就是这样。"
       ]
     },
     {
@@ -212,7 +216,7 @@ const TRIP_ZH = {
       ],
       eat: "在酒店用电饭煲吃晚一点的早餐；午餐在 Mammoth；保温壶里的粥 + 包子留给拉马尔谷和回程；回来吃点清淡宵夜。",
       tips: [
-        "⚠️ Tower Junction 旁 Yellowstone River 桥施工：单车道信号灯，最多等30分钟，到9月30日——来回都留出时间（天黑后也一样）。",
+        "⚠️ Tower Junction 旁 Yellowstone River 桥施工：单车道信号灯，最多等30分钟，一直持续到11月——来回都留出时间（天黑后也一样）。",
         "黄昏是仅次于黎明的看狼时段，而且不用定闹钟。望远镜决定你是“看到了狼”还是“看到了一个点”。",
         "回程走来时的路（Tower → Mammoth → Norris），而不是绕 Dunraven Pass 走一圈：这样会重复约36英里，但避免了赛前两天在黑夜里翻2,700米的山口。约2.5–3小时，45英里/小时，留意路上的野牛——明天早上什么都别安排。",
         "减量日：只开车和走木栈道。睡前或明天睡醒后拉伸/泡沫轴。"
@@ -272,6 +276,76 @@ const TRIP_ZH = {
     }
   ],
 
+  food: [
+    {
+      title: "🛒 中国城超市——9月13日采购清单",
+      note: "3390 S State St，周日开到10pm，离机场约20分钟。你有冰箱、微波炉和电饭煲，可以正常买做饭的食材。比赛周一条原则：油大的、辣的、粗纤维多的，都要在9月16日之前吃完——最后三天要刻意吃清淡。",
+      items: [
+        "大米——5–10磅的短粒米。每顿饭和碳水加载都靠它",
+        "粥料：小米、燕麦、几颗红枣。睡前用电饭煲焖上，早上灌进保温壶带去海登谷和拉马尔谷看日落",
+        "面条：细挂面 + 米粉——晚归时最快的一顿热饭",
+        "馒头、花卷、豆沙包——微波炉60秒，比赛周最省事的碳水",
+        "速冻饺子、烧麦——电饭煲煮或微波；9月17日晚上10点半到家就靠它",
+        "鸡蛋——用电饭煲一次煮十几个，车上当早饭",
+        "熟食柜的现成蛋白：卤牛肉、酱油鸡、烧鸭。不用做，切了就吃",
+        "豆腐、鱼豆腐、速冻虾仁——丢进面里或粥里的快手蛋白",
+        "耐放的蔬菜：上海青、菠菜、娃娃菜、胡萝卜、番茄、金针菇——电饭煲焯两分钟就好",
+        "调料只买小瓶：生抽、香油、盐、鸡精、海苔、榨菜",
+        "车上零食：香蕉、苹果、橘子、坚果、牛肉干、米饼、豆奶、乌龙茶",
+        "比赛专用：蜂蜜、白吐司、运动饮料粉，以及补电解质用的盐"
+      ]
+    },
+    {
+      title: "🍚 一个电饭煲能做出什么",
+      note: "没有灶，但电饭煲 + 微波炉 + 冰箱撑一周绰绰有余。关键是睡前把粥焖上，早上起来就能吃。",
+      items: [
+        "早餐：粥（前一晚焖上）+ 馒头 + 白煮蛋",
+        "车上午餐：米饭 + 卤牛肉片 + 焯青菜，装保温饭盒",
+        "一锅端晚餐：米饭上面铺鸡腿或腊肠，你去洗澡它自己蒸好",
+        "晚归的晚饭（9/16 约9:45到家、9/17 约10:30到家）：青菜鸡蛋面，或微波速冻饺子。那个点镇上餐馆全关了",
+        "保温壶：热粥或热茶，给日落观兽用——清晨 −4～1°C，黄昏也暖不到哪去"
+      ]
+    },
+    {
+      title: "🏞 园里怎么吃",
+      note: "园内餐饮选择少、贵、还要排队，而且整个黄石没有中餐。把它当备选，多数日子自己带饭。你这几天确认开放的：",
+      items: [
+        "9/15——老忠实一带选择最多（餐厅、自助餐厅、烘焙店）。是唯一适合坐下来好好吃一顿的一天",
+        "9/16——Canyon Eatery（开到10月25日）和 Canyon 杂货店（到10月18日），还有 Canyon Village 野餐区",
+        "9/17——Roosevelt Lodge（开到10月4日）可以在 Tower 附近喝咖啡，Mammoth 酒店餐厅全年开放，适合吃午饭",
+        "路线上的野餐区：Madison、Nez Perce、Canyon Village——有桌子和旱厕，没有饮用水",
+        "⚠️ 正是灰熊贴秋膘的季节：食物绝不能放在野餐桌上没人看着，离开就收回车里"
+      ]
+    },
+    {
+      title: "🍕 西黄石——不做饭的那几晚",
+      note: "住五晚，大部分自己做。适合出去吃的是 9/14（到达当晚）和 9/15。镇上多数餐馆 9–10pm 就停止供餐，所以 9/16 和 9/17 默认只能回来自己做。",
+      items: [
+        "Wild West Pizzeria & Saloon——镇上最好的披萨，有现场音乐。披萨和意面正好是比赛周需要的碳水",
+        "Pete's Rocky Mountain Pizza——披萨和意面，安静一些的选择",
+        "Firehole BBQ Co——烟熏肉，蛋白管够。早点去，热门部位会卖光",
+        "Bullwinkle's——牛排、肋排、鳟鱼、野牛和麋鹿，想正经吃一顿就来这儿",
+        "The Buffalo Bar——野牛汉堡，随意，营业到比较晚",
+        "Las Palmitas——校车改的墨西哥餐车；米饭豆子卷饼便宜、快、碳水足",
+        "镇上的 Market Place 超市——在盐湖城漏买的东西可以在这儿补"
+      ]
+    },
+    {
+      title: "🏋️ HYROX 饮食时间表",
+      note: "比赛是9月20日（周日）。这一周的吃法本来就是围着它安排的——这里把整条时间线放在一起。",
+      items: [
+        "9/13–16——正常均衡饮食，蛋白每公斤1.6–2克。每天喝3–4升水：海拔2,000–2,100米、空气极干，不刻意补就会缺水",
+        "9/17（D-3）——晚餐开始加碳水。这是最后一天吃辣油、油炸和大量粗纤维",
+        "9/18–19（D-2、D-1）——碳水加载：每公斤体重6–8克/天。每餐大份米饭、面条、馒头；蛋白适量，脂肪和纤维压到最低",
+        "9/19 晚餐——白米饭 + 清蒸鸡或鱼 + 少量蔬菜 + 清汤。不吃没吃过的、不油炸、不辣、不喝酒",
+        "9/20 出发前3小时——粥或白饭 + 一根香蕉 + 少量鸡蛋。平时喝咖啡就照常喝",
+        "9/20 出发前45分钟——一根香蕉或一支能量胶 + 运动饮料",
+        "比赛中——每个站点抿一口电解质；预计超过60分钟就在第4站前后补一支胶",
+        "完赛一小时内——碳水 + 蛋白，继续走动，然后在飞往洛杉矶的飞机上认真补水"
+      ]
+    }
+  ],
+
   logistics: [
     { label: "去程航班", value: "9月13日（周日）：飞盐湖城，傍晚到达。当晚在 SLC 取租车。" },
     { label: "租车", value: "9月13日夜在 SLC 取车 → 9月19日下午还车（6天）。往返约900英里：SLC → 大提顿 → 西黄石（园内环线）→ SLC。" },
@@ -298,7 +372,8 @@ const TRIP_ZH = {
     "🍳 Target/Walmart 清单：电饭煲、碗筷餐具、小刀+砧板、保温壶、保温袋（园里长途那几天用）、洗洁精+海绵、抓绒、帽子、手套（不用买锅——没有灶）",
     "📲 失去信号前下载：NPS 黄石 App（间歇泉预测）、公园离线 Google 地图、GeyserTimes",
     "── 道路与公园状态 ──────────────",
-    "🛣 每个公园日的前一晚查 NPS 路况（早雪可能关闭 Dunraven Pass）；Tower Junction 桥施工：单车道最多等30分钟，到9月30日",
+    "🛣 每个开车日出发前查实时路况：NPS 黄石道路页，或发短信 82190 到 888-777 订阅提醒；录音电话 (307) 344-2117。Madison River 桥（每天必经）约等15分钟；Tower 的 Yellowstone River 桥约等30分钟，在9月17日拉马尔谷路线上",
+    "🔥 9月17日去拉马尔谷前查一下火情/封闭地图（inciweb.nwcg.gov）和 AirNow 烟霾——主干道开放，但步道和局部区域可能封闭",
     "🔁 9月19日退还：租车、Starlink Mini，以及其它要退的东西——收据 + 包装放在一个袋子里"
   ],
 

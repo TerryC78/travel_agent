@@ -20,7 +20,8 @@ const TRIP = {
     "🐻 Grizzly country: carry bear spray on every trail. RENT it in Jackson on the way in (~$28 for the 5 days) and drop it in West Yellowstone — cheaper than buying, and it can’t fly home anyway. Keep 100 yards from bears and wolves, 25 from bison and elk; the September elk rut at Mammoth is a highlight, and the bulls charge.",
     "🛣 Four park days, each on its own arm of the figure-8, so you rarely drive the same road twice: geyser basins south of Madison (Sep 15), Norris + Canyon + Hayden to the east (Sep 16), Mammoth + Tower + Lamar in the north (Sep 17), and a short local day near town (Sep 18). Every ‘extra’ sight sits on a road you already have to drive.",
     "🧥 Mid-September Yellowstone: days 55–65°F, mornings 25–35°F, snow possible any day at 6,600–8,900 ft. Fleece + shell + beanie every morning; strong sun at altitude.",
-    "🛣 All park roads are open, including Dunraven Pass (closes Oct 12) — but the Yellowstone River Bridge at Tower Junction has single-lane work with up to 30-min waits through Sep 30, right on your Lamar Valley day.",
+    "🛣 All park roads are open, but two bridge projects sit on your routes: the Madison River Bridge between the West Entrance and Madison Junction (up to 15-min delays, through Nov 1) — that’s your commute EVERY day, both ways — and the Yellowstone River Bridge at Tower Junction on the NE Entrance road (up to 30-min delays), which is your Sep 17 Lamar day. Add the buffer and check the live road status each morning.",
+    "🔥 There is fire activity in the region: main roads in both parks are open, but some local areas and trails are closed and afternoons can go hazy with smoke. Check the NPS road/closure pages before each driving day, and AirNow if the haze looks heavy.",
     "🏋️ It’s HYROX taper week: Yellowstone is active recovery (boardwalks, one short hike), not training — and there are no predawn starts: every day leaves around 9:30–10am and wildlife is scheduled at sunset instead. The hard work is done; carb-loading starts Sep 17.",
     "📡 No cell service inside the park. The Starlink Mini works with a clear sky — from the motel parking lot, trailhead lots and turnouts — so download offline maps and geyser predictions too.",
     "🍚 No kitchen at the motel, but they’re providing a fridge and microwave, and a rice cooker (bought Sep 13) covers rice, congee, noodles, steamed buns, boiled eggs and blanched greens. Chinatown Supermarket on night one stocks the week, and a thermos of congee makes the sunset wildlife sessions and dark drives home civilised."
@@ -104,7 +105,8 @@ const TRIP = {
         "Old Faithful predictions: NPS app or geysertimes.org. Riverside and Grand are the two other predictable ones — check the board.",
         "Boardwalks only — the crust is thin and the water is boiling. Keep phones and hats secured; nothing can be retrieved.",
         "Taper: a 25–30 min easy run + 6 × 20s strides before you head out (late morning is fine), then the boardwalks are your recovery walk.",
-        "Starting at 10 skips the freezing hour, but it’s still 40–55°F till noon at 7,000 ft — fleece + shell, shed layers by early afternoon."
+        "Coldest morning of the trip: the low is about 24°F (−4°C). Starting at 10 skips the worst of it, but scrape the windscreen and expect 35–45°F until late morning — fleece + shell + gloves, shed by early afternoon.",
+        "A hard freeze means heavy steam on the basins first thing. That’s why Grand Prismatic’s colours are best from the Fairy Falls overlook around midday, once the steam thins — which is exactly where today puts you."
       ]
     },
     {
@@ -143,7 +145,7 @@ const TRIP = {
       ],
       eat: "Late rice-cooker breakfast at the motel; lunch at Mammoth; thermos of congee + buns for Lamar and the drive home; a light late supper.",
       tips: [
-        "⚠️ Road work at the Yellowstone River Bridge by Tower Junction: single lane with a signal, up to 30-min waits, through Sep 30 — budget it both directions (including after dark).",
+        "⚠️ Road work at the Yellowstone River Bridge by Tower Junction: single lane with a signal, up to 30-min waits, running into November — budget it in both directions, including after dark.",
         "Dusk is the second-best wolf window after dawn, and you don’t need an alarm for it. Binoculars are the difference between ‘saw a wolf’ and ‘saw a dot’.",
         "Home the way you came (Tower → Mammoth → Norris) rather than looping over Dunraven Pass: it repeats ~36 miles, but it avoids an 8,859-ft mountain pass in the dark two days before the race. ~2.5–3 hrs, 45 mph, watch for bison on the road — and don’t plan anything for tomorrow morning.",
         "Taper day: driving + boardwalks only. Stretch / foam-roll before bed, or when you wake up late tomorrow."
@@ -210,6 +212,77 @@ const TRIP = {
     }
   ],
 
+  // ---- Food, cooking & race nutrition ----
+  food: [
+    {
+      title: "🛒 Chinatown Supermarket — the Sep 13 list",
+      note: "3390 S State St, open till 10pm on Sunday, ~20 min from the airport. You’ll have a fridge, a microwave and the rice cooker, so shop for real meals. One rule for race week: anything oily, chilli-heavy or very high-fibre gets eaten by Sep 16 — the last three days are deliberately plain.",
+      items: [
+        "Rice — a 5–10 lb bag of short-grain. It’s the backbone of every meal and of the carb load",
+        "Congee base: millet, oats, a few dried dates. Set it going in the cooker before bed and thermos it for the Hayden and Lamar sunset sits",
+        "Noodles: thin wheat noodles + rice vermicelli — the fastest hot dinner after a late drive",
+        "Mantou, huajuan, red-bean buns — 60 seconds in the microwave, the single easiest carb for race week",
+        "Frozen dumplings & shumai — boil in the cooker or microwave; this is your 10:30pm dinner on Sep 17",
+        "Eggs — hard-boil a dozen in the rice cooker for car breakfasts",
+        "Ready-cooked protein from the deli counter: braised beef, soy-sauce chicken, roast duck. No cooking, just slice",
+        "Tofu, fish tofu, frozen shrimp — quick protein to drop into noodles or congee",
+        "Sturdy greens: baby bok choy, spinach, napa, carrots, tomatoes, enoki — blanched in the cooker in two minutes",
+        "Small bottles only: light soy, sesame oil, salt, chicken bouillon, seaweed, zhacai",
+        "Car snacks: bananas, apples, mandarins, nuts, beef jerky, rice crackers, soy milk, oolong tea",
+        "Race-week specifics: honey, white bread, sports-drink powder, and extra salt for electrolytes"
+      ]
+    },
+    {
+      title: "🍚 What the rice cooker actually makes",
+      note: "No stove, but cooker + microwave + fridge covers a week comfortably. The trick is starting congee before bed so it’s ready when you wake up.",
+      items: [
+        "Breakfast: congee (set the night before) + steamed buns + a boiled egg",
+        "Car lunch: rice + sliced braised beef + blanched greens in an insulated box",
+        "One-pot dinner: rice with a chicken thigh or lap cheong laid on top — it steams together while you shower",
+        "Late dinner (Sep 16 home ~9:45pm, Sep 17 home ~10:30pm): noodles with greens and egg, or microwave dumplings. Every kitchen in town is shut by then",
+        "Thermos: hot congee or tea for the sunset wildlife sits — it’s 24–33°F at dawn and not much warmer at dusk"
+      ]
+    },
+    {
+      title: "🏞 Eating inside the park",
+      note: "In-park food is limited, expensive and queued, and there is no Chinese food anywhere in Yellowstone. Treat it as backup and pack lunch most days. These are confirmed open for your dates:",
+      items: [
+        "Sep 15 — the Old Faithful area has the widest choice (dining room, cafeteria, bakery). Your one easy sit-down day",
+        "Sep 16 — Canyon Eatery (open to Oct 25) and Canyon General Store (to Oct 18), plus the Canyon Village picnic area",
+        "Sep 17 — Roosevelt Lodge (open to Oct 4) for coffee near Tower, and Mammoth Hotel dining (open year-round) for lunch",
+        "Picnic areas on your routes: Madison, Nez Perce and Canyon Village — tables and vault toilets, no water",
+        "⚠️ It’s grizzly hyperphagia season: food never sits unattended on a picnic table, and it goes back in the car between stops"
+      ]
+    },
+    {
+      title: "🍕 West Yellowstone — the nights you don’t cook",
+      note: "Five nights and you’ll cook most of them. The good nights to eat out are Sep 14 (arrival) and Sep 15. Most kitchens stop serving 9–10pm, so Sep 16 and Sep 17 are cook-at-home by default.",
+      items: [
+        "Wild West Pizzeria & Saloon — best pizza in town, live music. Pizza and pasta are ideal race-week carbs",
+        "Pete’s Rocky Mountain Pizza — pizza and pasta, quieter alternative",
+        "Firehole BBQ Co — smoked meats, big protein. Go early, popular cuts sell out",
+        "Bullwinkle’s — steaks, ribs, trout, bison and elk, if you want one proper sit-down dinner",
+        "The Buffalo Bar — bison burger, casual, later hours than most",
+        "Las Palmitas — Mexican from a converted school bus; a rice-and-bean burrito is cheap, fast and carb-dense",
+        "Market Place grocery in town for anything you forgot in Salt Lake"
+      ]
+    },
+    {
+      title: "🏋️ HYROX nutrition, day by day",
+      note: "Race day is Sunday Sep 20. The week’s eating is already built around it — this is the whole timeline in one place.",
+      items: [
+        "Sep 13–16 — normal balanced eating, protein 1.6–2 g/kg. Drink 3–4 L a day: at 6,600–7,000 ft in very dry air you fall behind on fluids without noticing",
+        "Sep 17 (D-3) — start raising carbs at dinner. Last day for chilli oil, deep-fried food and big piles of fibre",
+        "Sep 18–19 (D-2, D-1) — carb load: 6–8 g per kg bodyweight per day. Big rice, noodles and buns at every meal; protein moderate, fat and fibre right down",
+        "Sep 19 dinner — white rice + steamed chicken or fish + a little veg + clear soup. Nothing new, nothing fried, nothing spicy, no alcohol",
+        "Sep 20, wave −3h — congee or white rice + a banana + a little egg. Coffee as normal if you drink it",
+        "Sep 20, wave −45min — a banana or a gel with sports drink",
+        "During the race — sip electrolyte at the stations; a gel around station 4 if you’ll be over 60 minutes",
+        "Within an hour of finishing — carbs + protein, keep walking, then hydrate hard on the flight to LAX"
+      ]
+    }
+  ],
+
   // ---- Logistics ----
   logistics: [
     { label: "Flight out", value: "Sep 13 (Sun): fly to Salt Lake City, evening arrival. Rental car pickup at SLC that night." },
@@ -238,7 +311,8 @@ const TRIP = {
     "🍳 Target or Walmart list: ELECTRIC RICE COOKER, bowls, chopsticks, utensils, small knife + cutting board, thermos, cooler bag (for the long park days), dish soap + sponge, fleece, beanie, gloves (no pots or pans — there’s no stove)",
     "📲 Download before losing signal: NPS Yellowstone app (geyser predictions), offline Google Maps for the park, GeyserTimes",
     "── ROAD & PARK STATUS ──────────────",
-    "🛣 Check NPS road status the night before each park day (early snow can close Dunraven Pass); Tower Junction bridge work means up to 30-min single-lane waits through Sep 30",
+    "🛣 Live status before every driving day: NPS Yellowstone road page, or text 82190 to 888-777 for alerts; recorded line (307) 344-2117. Madison River Bridge (your daily commute) ~15-min delays; Yellowstone River Bridge at Tower ~30-min, on the Sep 17 Lamar route",
+    "🔥 Check fire/closure maps (inciweb.nwcg.gov) and AirNow for smoke before the Sep 17 Lamar day — main roads are open but trails and side areas can close",
     "🔁 Sep 19 returns: rental car, Starlink Mini, and anything else you’re returning — keep receipts + packaging together in one bag"
   ],
 
@@ -322,15 +396,16 @@ const WEATHER = {
     "Grand Teton":      { hi: 68, lo: 32, code: 1, rainChance: 15 },
     "West Yellowstone": { hi: 66, lo: 30, code: 1, rainChance: 20 }
   },
-  // Forecast captured Sep 12, 2026 — the trip is now inside forecast range.
+  // Forecast refreshed Sep 13, 2026 (departure day).
   // app.js still re-fetches Open-Meteo when online and overrides these.
   byDate: {
-    "2026-09-15": { hi: 67, lo: 33, code: 0,  rainChance: 5 },
-    "2026-09-16": { hi: 69, lo: 30, code: 2,  rainChance: 10 },
-    "2026-09-17": { hi: 68, lo: 33, code: 95, rainChance: 40 },
-    "2026-09-18": { hi: 66, lo: 33, code: 95, rainChance: 45 },
-    "2026-09-19": { hi: 85, lo: 60, code: 80, rainChance: 30 },
-    "2026-09-20": { hi: 84, lo: 61, code: 95, rainChance: 69 }
+    "2026-09-14": { hi: 68, lo: 32, code: 1,  rainChance: 15 },
+    "2026-09-15": { hi: 60, lo: 24, code: 1,  rainChance: 20 },
+    "2026-09-16": { hi: 61, lo: 28, code: 1,  rainChance: 20 },
+    "2026-09-17": { hi: 68, lo: 33, code: 1,  rainChance: 15 },
+    "2026-09-18": { hi: 70, lo: 31, code: 95, rainChance: 25 },
+    "2026-09-19": { hi: 86, lo: 60, code: 80, rainChance: 30 },
+    "2026-09-20": { hi: 77, lo: 57, code: 2,  rainChance: 20 }
   },
   coords: {
     "Salt Lake City": [40.7608, -111.8910],
