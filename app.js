@@ -583,6 +583,25 @@
     });
   }
 
+  // --- food & nutrition (optional tab; only trips that define TRIP.food) ---
+  function renderFood() {
+    const root = $("#food");
+    if (!root) return;               // East Coast page has no #food section
+    root.innerHTML = "";
+    if (!T.food) return;
+    root.appendChild(el("h2", { class: "sec-title" }, esc(UI.food_title)));
+    root.appendChild(el("p", { class: "sec-sub" }, esc(UI.food_sub)));
+    T.food.forEach((g) => {
+      const card = el("div", { class: "card" });
+      card.appendChild(el("h2", { class: "sec-title" }, esc(g.title)));
+      if (g.note) card.appendChild(el("p", { class: "sec-sub" }, esc(g.note)));
+      const ul = el("ul", { class: "food-list" });
+      (g.items || []).forEach((it) => ul.appendChild(el("li", {}, esc(it))));
+      card.appendChild(ul);
+      root.appendChild(card);
+    });
+  }
+
   // --- tabs (listeners attached once; labels refreshed per render) ---
   function setupTabs() {
     const buttons = document.querySelectorAll("nav.tabs button");
@@ -641,6 +660,7 @@
     renderStays();
     renderItinerary();
     renderWeather();
+    renderFood();
     renderBookings();
     renderPacking();
     ensureDayMap(0); // first day is open by default

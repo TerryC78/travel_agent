@@ -266,6 +266,9 @@ tr.total td { font-weight: 800; border-top: 2px solid var(--accent); border-bott
 }
 .pin > span { transform: rotate(45deg); color: #fff; font-weight: 800; font-size: 13px; }
 
+.food-list { margin: 6px 0 0; padding-left: 20px; }
+.food-list li { margin: 7px 0; font-size: 14.5px; line-height: 1.55; color: var(--ink); }
+
 footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 0 0; }
 
 @media (max-width: 560px) {
@@ -301,6 +304,7 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px
     <button data-target="itinerary">行程</button>
     <button data-target="stays">住宿</button>
     <button data-target="weather">天气</button>
+    <button data-target="food">吃饭</button>
     <button data-target="bookings">预订清单</button>
     <button data-target="packing">行李</button>
   </nav>
@@ -310,6 +314,7 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px
     <section id="itinerary"></section>
     <section id="stays"></section>
     <section id="weather"></section>
+    <section id="food"></section>
     <section id="bookings"></section>
     <section id="packing"></section>
   </main>
@@ -339,7 +344,8 @@ const TRIP = {
     "🐻 Grizzly country: carry bear spray on every trail. RENT it in Jackson on the way in (~$28 for the 5 days) and drop it in West Yellowstone — cheaper than buying, and it can’t fly home anyway. Keep 100 yards from bears and wolves, 25 from bison and elk; the September elk rut at Mammoth is a highlight, and the bulls charge.",
     "🛣 Four park days, each on its own arm of the figure-8, so you rarely drive the same road twice: geyser basins south of Madison (Sep 15), Norris + Canyon + Hayden to the east (Sep 16), Mammoth + Tower + Lamar in the north (Sep 17), and a short local day near town (Sep 18). Every ‘extra’ sight sits on a road you already have to drive.",
     "🧥 Mid-September Yellowstone: days 55–65°F, mornings 25–35°F, snow possible any day at 6,600–8,900 ft. Fleece + shell + beanie every morning; strong sun at altitude.",
-    "🛣 All park roads are open, including Dunraven Pass (closes Oct 12) — but the Yellowstone River Bridge at Tower Junction has single-lane work with up to 30-min waits through Sep 30, right on your Lamar Valley day.",
+    "🛣 All park roads are open, but two bridge projects sit on your routes: the Madison River Bridge between the West Entrance and Madison Junction (up to 15-min delays, through Nov 1) — that’s your commute EVERY day, both ways — and the Yellowstone River Bridge at Tower Junction on the NE Entrance road (up to 30-min delays), which is your Sep 17 Lamar day. Add the buffer and check the live road status each morning.",
+    "🔥 There is fire activity in the region: main roads in both parks are open, but some local areas and trails are closed and afternoons can go hazy with smoke. Check the NPS road/closure pages before each driving day, and AirNow if the haze looks heavy.",
     "🏋️ It’s HYROX taper week: Yellowstone is active recovery (boardwalks, one short hike), not training — and there are no predawn starts: every day leaves around 9:30–10am and wildlife is scheduled at sunset instead. The hard work is done; carb-loading starts Sep 17.",
     "📡 No cell service inside the park. The Starlink Mini works with a clear sky — from the motel parking lot, trailhead lots and turnouts — so download offline maps and geyser predictions too.",
     "🍚 No kitchen at the motel, but they’re providing a fridge and microwave, and a rice cooker (bought Sep 13) covers rice, congee, noodles, steamed buns, boiled eggs and blanched greens. Chinatown Supermarket on night one stocks the week, and a thermos of congee makes the sunset wildlife sessions and dark drives home civilised."
@@ -423,7 +429,8 @@ const TRIP = {
         "Old Faithful predictions: NPS app or geysertimes.org. Riverside and Grand are the two other predictable ones — check the board.",
         "Boardwalks only — the crust is thin and the water is boiling. Keep phones and hats secured; nothing can be retrieved.",
         "Taper: a 25–30 min easy run + 6 × 20s strides before you head out (late morning is fine), then the boardwalks are your recovery walk.",
-        "Starting at 10 skips the freezing hour, but it’s still 40–55°F till noon at 7,000 ft — fleece + shell, shed layers by early afternoon."
+        "Coldest morning of the trip: the low is about 24°F (−4°C). Starting at 10 skips the worst of it, but scrape the windscreen and expect 35–45°F until late morning — fleece + shell + gloves, shed by early afternoon.",
+        "A hard freeze means heavy steam on the basins first thing. That’s why Grand Prismatic’s colours are best from the Fairy Falls overlook around midday, once the steam thins — which is exactly where today puts you."
       ]
     },
     {
@@ -462,7 +469,7 @@ const TRIP = {
       ],
       eat: "Late rice-cooker breakfast at the motel; lunch at Mammoth; thermos of congee + buns for Lamar and the drive home; a light late supper.",
       tips: [
-        "⚠️ Road work at the Yellowstone River Bridge by Tower Junction: single lane with a signal, up to 30-min waits, through Sep 30 — budget it both directions (including after dark).",
+        "⚠️ Road work at the Yellowstone River Bridge by Tower Junction: single lane with a signal, up to 30-min waits, running into November — budget it in both directions, including after dark.",
         "Dusk is the second-best wolf window after dawn, and you don’t need an alarm for it. Binoculars are the difference between ‘saw a wolf’ and ‘saw a dot’.",
         "Home the way you came (Tower → Mammoth → Norris) rather than looping over Dunraven Pass: it repeats ~36 miles, but it avoids an 8,859-ft mountain pass in the dark two days before the race. ~2.5–3 hrs, 45 mph, watch for bison on the road — and don’t plan anything for tomorrow morning.",
         "Taper day: driving + boardwalks only. Stretch / foam-roll before bed, or when you wake up late tomorrow."
@@ -529,6 +536,77 @@ const TRIP = {
     }
   ],
 
+  // ---- Food, cooking & race nutrition ----
+  food: [
+    {
+      title: "🛒 Chinatown Supermarket — the Sep 13 list",
+      note: "3390 S State St, open till 10pm on Sunday, ~20 min from the airport. You’ll have a fridge, a microwave and the rice cooker, so shop for real meals. One rule for race week: anything oily, chilli-heavy or very high-fibre gets eaten by Sep 16 — the last three days are deliberately plain.",
+      items: [
+        "Rice — a 5–10 lb bag of short-grain. It’s the backbone of every meal and of the carb load",
+        "Congee base: millet, oats, a few dried dates. Set it going in the cooker before bed and thermos it for the Hayden and Lamar sunset sits",
+        "Noodles: thin wheat noodles + rice vermicelli — the fastest hot dinner after a late drive",
+        "Mantou, huajuan, red-bean buns — 60 seconds in the microwave, the single easiest carb for race week",
+        "Frozen dumplings & shumai — boil in the cooker or microwave; this is your 10:30pm dinner on Sep 17",
+        "Eggs — hard-boil a dozen in the rice cooker for car breakfasts",
+        "Ready-cooked protein from the deli counter: braised beef, soy-sauce chicken, roast duck. No cooking, just slice",
+        "Tofu, fish tofu, frozen shrimp — quick protein to drop into noodles or congee",
+        "Sturdy greens: baby bok choy, spinach, napa, carrots, tomatoes, enoki — blanched in the cooker in two minutes",
+        "Small bottles only: light soy, sesame oil, salt, chicken bouillon, seaweed, zhacai",
+        "Car snacks: bananas, apples, mandarins, nuts, beef jerky, rice crackers, soy milk, oolong tea",
+        "Race-week specifics: honey, white bread, sports-drink powder, and extra salt for electrolytes"
+      ]
+    },
+    {
+      title: "🍚 What the rice cooker actually makes",
+      note: "No stove, but cooker + microwave + fridge covers a week comfortably. The trick is starting congee before bed so it’s ready when you wake up.",
+      items: [
+        "Breakfast: congee (set the night before) + steamed buns + a boiled egg",
+        "Car lunch: rice + sliced braised beef + blanched greens in an insulated box",
+        "One-pot dinner: rice with a chicken thigh or lap cheong laid on top — it steams together while you shower",
+        "Late dinner (Sep 16 home ~9:45pm, Sep 17 home ~10:30pm): noodles with greens and egg, or microwave dumplings. Every kitchen in town is shut by then",
+        "Thermos: hot congee or tea for the sunset wildlife sits — it’s 24–33°F at dawn and not much warmer at dusk"
+      ]
+    },
+    {
+      title: "🏞 Eating inside the park",
+      note: "In-park food is limited, expensive and queued, and there is no Chinese food anywhere in Yellowstone. Treat it as backup and pack lunch most days. These are confirmed open for your dates:",
+      items: [
+        "Sep 15 — the Old Faithful area has the widest choice (dining room, cafeteria, bakery). Your one easy sit-down day",
+        "Sep 16 — Canyon Eatery (open to Oct 25) and Canyon General Store (to Oct 18), plus the Canyon Village picnic area",
+        "Sep 17 — Roosevelt Lodge (open to Oct 4) for coffee near Tower, and Mammoth Hotel dining (open year-round) for lunch",
+        "Picnic areas on your routes: Madison, Nez Perce and Canyon Village — tables and vault toilets, no water",
+        "⚠️ It’s grizzly hyperphagia season: food never sits unattended on a picnic table, and it goes back in the car between stops"
+      ]
+    },
+    {
+      title: "🍕 West Yellowstone — the nights you don’t cook",
+      note: "Five nights and you’ll cook most of them. The good nights to eat out are Sep 14 (arrival) and Sep 15. Most kitchens stop serving 9–10pm, so Sep 16 and Sep 17 are cook-at-home by default.",
+      items: [
+        "Wild West Pizzeria & Saloon — best pizza in town, live music. Pizza and pasta are ideal race-week carbs",
+        "Pete’s Rocky Mountain Pizza — pizza and pasta, quieter alternative",
+        "Firehole BBQ Co — smoked meats, big protein. Go early, popular cuts sell out",
+        "Bullwinkle’s — steaks, ribs, trout, bison and elk, if you want one proper sit-down dinner",
+        "The Buffalo Bar — bison burger, casual, later hours than most",
+        "Las Palmitas — Mexican from a converted school bus; a rice-and-bean burrito is cheap, fast and carb-dense",
+        "Market Place grocery in town for anything you forgot in Salt Lake"
+      ]
+    },
+    {
+      title: "🏋️ HYROX nutrition, day by day",
+      note: "Race day is Sunday Sep 20. The week’s eating is already built around it — this is the whole timeline in one place.",
+      items: [
+        "Sep 13–16 — normal balanced eating, protein 1.6–2 g/kg. Drink 3–4 L a day: at 6,600–7,000 ft in very dry air you fall behind on fluids without noticing",
+        "Sep 17 (D-3) — start raising carbs at dinner. Last day for chilli oil, deep-fried food and big piles of fibre",
+        "Sep 18–19 (D-2, D-1) — carb load: 6–8 g per kg bodyweight per day. Big rice, noodles and buns at every meal; protein moderate, fat and fibre right down",
+        "Sep 19 dinner — white rice + steamed chicken or fish + a little veg + clear soup. Nothing new, nothing fried, nothing spicy, no alcohol",
+        "Sep 20, wave −3h — congee or white rice + a banana + a little egg. Coffee as normal if you drink it",
+        "Sep 20, wave −45min — a banana or a gel with sports drink",
+        "During the race — sip electrolyte at the stations; a gel around station 4 if you’ll be over 60 minutes",
+        "Within an hour of finishing — carbs + protein, keep walking, then hydrate hard on the flight to LAX"
+      ]
+    }
+  ],
+
   // ---- Logistics ----
   logistics: [
     { label: "Flight out", value: "Sep 13 (Sun): fly to Salt Lake City, evening arrival. Rental car pickup at SLC that night." },
@@ -557,7 +635,8 @@ const TRIP = {
     "🍳 Target or Walmart list: ELECTRIC RICE COOKER, bowls, chopsticks, utensils, small knife + cutting board, thermos, cooler bag (for the long park days), dish soap + sponge, fleece, beanie, gloves (no pots or pans — there’s no stove)",
     "📲 Download before losing signal: NPS Yellowstone app (geyser predictions), offline Google Maps for the park, GeyserTimes",
     "── ROAD & PARK STATUS ──────────────",
-    "🛣 Check NPS road status the night before each park day (early snow can close Dunraven Pass); Tower Junction bridge work means up to 30-min single-lane waits through Sep 30",
+    "🛣 Live status before every driving day: NPS Yellowstone road page, or text 82190 to 888-777 for alerts; recorded line (307) 344-2117. Madison River Bridge (your daily commute) ~15-min delays; Yellowstone River Bridge at Tower ~30-min, on the Sep 17 Lamar route",
+    "🔥 Check fire/closure maps (inciweb.nwcg.gov) and AirNow for smoke before the Sep 17 Lamar day — main roads are open but trails and side areas can close",
     "🔁 Sep 19 returns: rental car, Starlink Mini, and anything else you’re returning — keep receipts + packaging together in one bag"
   ],
 
@@ -641,15 +720,16 @@ const WEATHER = {
     "Grand Teton":      { hi: 68, lo: 32, code: 1, rainChance: 15 },
     "West Yellowstone": { hi: 66, lo: 30, code: 1, rainChance: 20 }
   },
-  // Forecast captured Sep 12, 2026 — the trip is now inside forecast range.
+  // Forecast refreshed Sep 13, 2026 (departure day).
   // app.js still re-fetches Open-Meteo when online and overrides these.
   byDate: {
-    "2026-09-15": { hi: 67, lo: 33, code: 0,  rainChance: 5 },
-    "2026-09-16": { hi: 69, lo: 30, code: 2,  rainChance: 10 },
-    "2026-09-17": { hi: 68, lo: 33, code: 95, rainChance: 40 },
-    "2026-09-18": { hi: 66, lo: 33, code: 95, rainChance: 45 },
-    "2026-09-19": { hi: 85, lo: 60, code: 80, rainChance: 30 },
-    "2026-09-20": { hi: 84, lo: 61, code: 95, rainChance: 69 }
+    "2026-09-14": { hi: 68, lo: 32, code: 1,  rainChance: 15 },
+    "2026-09-15": { hi: 60, lo: 24, code: 1,  rainChance: 20 },
+    "2026-09-16": { hi: 61, lo: 28, code: 1,  rainChance: 20 },
+    "2026-09-17": { hi: 68, lo: 33, code: 1,  rainChance: 15 },
+    "2026-09-18": { hi: 70, lo: 31, code: 95, rainChance: 25 },
+    "2026-09-19": { hi: 86, lo: 60, code: 80, rainChance: 30 },
+    "2026-09-20": { hi: 77, lo: 57, code: 2,  rainChance: 20 }
   },
   coords: {
     "Salt Lake City": [40.7608, -111.8910],
@@ -676,7 +756,7 @@ const WEATHER = {
 const UICOPY = {
   en: {
     tab_overview: "Overview", tab_itinerary: "Itinerary", tab_stays: "Stays",
-    tab_weather: "Weather", tab_bookings: "Bookings", tab_packing: "Packing",
+    tab_weather: "Weather", tab_food: "Food", tab_bookings: "Bookings", tab_packing: "Packing",
     ov_glance: "Trip at a glance", ov_where: "Where you’ll be", ov_logistics: "Logistics",
     stays_title: "Where you’re staying", stays_sub: "Tap a place to open it in Maps. Confirm the ones still marked TODO.",
     night: "night", nights: "nights",
@@ -702,6 +782,7 @@ const UICOPY = {
       snow: "🌨 Snow possible — waterproof shell, warm layers, and check the park road status each morning"
     },
     book_title: "Bookings & to-dos", book_sub: "Confirm these before you leave — mid-September lodging near the park fills up, and a few items can only be bought on arrival.",
+    food_title: "Food, cooking & race nutrition", food_sub: "What to buy in Salt Lake, what the rice cooker makes, where to eat in the park and in town — all lined up against the HYROX carb load.",
     pack_title: "Packing list", pack_sub: "Cold mornings, big sun, a lot of driving, and a race at the end. Check items off as you pack.",
     reset: "Reset list",
     progress: (d, t) => `${d} of ${t} done`,
@@ -713,7 +794,7 @@ const UICOPY = {
   },
   zh: {
     tab_overview: "概览", tab_itinerary: "行程", tab_stays: "住宿",
-    tab_weather: "天气", tab_bookings: "预订清单", tab_packing: "行李",
+    tab_weather: "天气", tab_food: "吃饭", tab_bookings: "预订清单", tab_packing: "行李",
     ov_glance: "行程速览", ov_where: "你会去的地方", ov_logistics: "交通与衔接",
     stays_title: "住宿安排", stays_sub: "点住处名可在地图中打开。标着“待办”的记得确认。",
     night: "晚", nights: "晚",
@@ -739,6 +820,7 @@ const UICOPY = {
       snow: "🌨 可能下雪——防水外壳、保暖层，每天早上查公园路况"
     },
     book_title: "预订与待办", book_sub: "出发前确认这些——9月中旬公园附近的住宿很紧张，有几样东西只能到了再买。",
+    food_title: "吃饭、做饭与比赛饮食", food_sub: "在盐湖城买什么、电饭煲能做什么、园里和镇上去哪吃——全部对齐 HYROX 的碳水加载节奏。",
     pack_title: "行李清单", pack_sub: "清晨很冷、日晒强、开车多，最后还有比赛。一边收拾一边打勾。",
     reset: "重置清单",
     progress: (d, t) => `已完成 ${d}/${t}`,
@@ -765,7 +847,8 @@ const TRIP_ZH = {
     "🐻 灰熊区：任何步道都要带熊喷雾。要租、不要买——进园路上在 Jackson 租（5天约$28），最后在西黄石还掉，比买便宜，而且反正不能带上飞机。离熊/狼 100 码、野牛/麋鹿 25 码；9月 Mammoth 的麋鹿发情期是亮点，但公鹿会冲人。",
     "🛣 四个公园日各走「8字形」的一条臂，尽量不重复走同一段路：9/15 走 Madison 以南的间歇泉群，9/16 往东走 Norris + 大峡谷 + 海登谷，9/17 往北走猛犸 + 塔瀑 + 拉马尔谷，9/18 就在镇子附近轻松一天。所有「额外」的景点都安排在你本来就要开的路上。",
     "🧥 9月中旬的黄石：白天 13–18°C，清晨 −4～2°C，海拔 2,000–2,700m 随时可能下雪。每天早上抓绒 + 防风雨外套 + 帽子；高原日晒强。",
-    "🛣 园内道路全开，含 Dunraven Pass（10月12日关闭）——但 Tower Junction 的 Yellowstone River 桥施工到 9月30日，单车道最多等 30 分钟，正好在你的拉马尔谷那天。",
+    "🛣 园内主干道全开，但有两处桥梁施工正好在你的路线上：西门到 Madison Junction 之间的 Madison River 桥（最多等15分钟，持续到11月1日）——这是你每天进出园的必经路；还有 Tower Junction 东北门方向的 Yellowstone River 桥（最多等30分钟），正是你9月17日去拉马尔谷那天。留出缓冲，每天早上查一下实时路况。",
+    "🔥 本区域有火情：两个公园的主干道都开放，但部分区域和步道封闭，下午可能起烟霾。每个开车日出发前查一下 NPS 的道路/封闭页面；烟大的话查 AirNow。",
     "🏋️ 这周是 HYROX 减量周：黄石是主动恢复（木栈道、一条短步道），不是训练——而且没有天亮前出发：每天 9:30–10 点才出门，看动物改到日落。苦练已经完成；9月17日开始碳水加载。",
     "📡 园内几乎无信号。Starlink Mini 需要开阔天空——酒店停车场、步道口停车场、观景点都能用；同时也把离线地图和间歇泉预测下载好。",
     "🍚 酒店没有厨房，但会配冰箱和微波炉，再加一个电饭煲（9月13日买）：煮饭、煮粥、煮面、蒸馒头包子、煮蛋、焯青菜都能搞定。食材第一晚在中国城超市买齐；一壶粥让日落观兽和摸黑回家的长途都舒服起来。"
@@ -839,7 +922,8 @@ const TRIP_ZH = {
         "老忠实预测：NPS App 或 geysertimes.org。Riverside 和 Grand 是另外两个可预测的——看板子。",
         "只走木栈道——地壳很薄、水是沸腾的。手机帽子拿稳，掉下去什么都捡不回来。",
         "减量：出门前轻松跑 25–30 分钟 + 6×20 秒加速跑（上午晚些也行），之后木栈道就是你的恢复散步。",
-        "10点出发躲过了结冰的那一小时，但 2,000 米海拔中午前还是 5–13°C——抓绒 + 外壳，下午早些再脱。"
+        "全程最冷的一个早上：最低约 −4°C（24°F）。10点出发已经躲过最冷的时段，但上午后半段仍只有 2–7°C——记得刮挡风玻璃，抓绒 + 外壳 + 手套，下午早些再脱。",
+        "结霜的清晨意味着盆地上蒸汽特别大。所以大棱镜的颜色要等到中午蒸汽变薄时、从 Fairy Falls 观景台看最好——今天的安排正好就是这样。"
       ]
     },
     {
@@ -874,7 +958,7 @@ const TRIP_ZH = {
       ],
       eat: "在酒店用电饭煲吃晚一点的早餐；午餐在 Mammoth；保温壶里的粥 + 包子留给拉马尔谷和回程；回来吃点清淡宵夜。",
       tips: [
-        "⚠️ Tower Junction 旁 Yellowstone River 桥施工：单车道信号灯，最多等30分钟，到9月30日——来回都留出时间（天黑后也一样）。",
+        "⚠️ Tower Junction 旁 Yellowstone River 桥施工：单车道信号灯，最多等30分钟，一直持续到11月——来回都留出时间（天黑后也一样）。",
         "黄昏是仅次于黎明的看狼时段，而且不用定闹钟。望远镜决定你是“看到了狼”还是“看到了一个点”。",
         "回程走来时的路（Tower → Mammoth → Norris），而不是绕 Dunraven Pass 走一圈：这样会重复约36英里，但避免了赛前两天在黑夜里翻2,700米的山口。约2.5–3小时，45英里/小时，留意路上的野牛——明天早上什么都别安排。",
         "减量日：只开车和走木栈道。睡前或明天睡醒后拉伸/泡沫轴。"
@@ -934,6 +1018,76 @@ const TRIP_ZH = {
     }
   ],
 
+  food: [
+    {
+      title: "🛒 中国城超市——9月13日采购清单",
+      note: "3390 S State St，周日开到10pm，离机场约20分钟。你有冰箱、微波炉和电饭煲，可以正常买做饭的食材。比赛周一条原则：油大的、辣的、粗纤维多的，都要在9月16日之前吃完——最后三天要刻意吃清淡。",
+      items: [
+        "大米——5–10磅的短粒米。每顿饭和碳水加载都靠它",
+        "粥料：小米、燕麦、几颗红枣。睡前用电饭煲焖上，早上灌进保温壶带去海登谷和拉马尔谷看日落",
+        "面条：细挂面 + 米粉——晚归时最快的一顿热饭",
+        "馒头、花卷、豆沙包——微波炉60秒，比赛周最省事的碳水",
+        "速冻饺子、烧麦——电饭煲煮或微波；9月17日晚上10点半到家就靠它",
+        "鸡蛋——用电饭煲一次煮十几个，车上当早饭",
+        "熟食柜的现成蛋白：卤牛肉、酱油鸡、烧鸭。不用做，切了就吃",
+        "豆腐、鱼豆腐、速冻虾仁——丢进面里或粥里的快手蛋白",
+        "耐放的蔬菜：上海青、菠菜、娃娃菜、胡萝卜、番茄、金针菇——电饭煲焯两分钟就好",
+        "调料只买小瓶：生抽、香油、盐、鸡精、海苔、榨菜",
+        "车上零食：香蕉、苹果、橘子、坚果、牛肉干、米饼、豆奶、乌龙茶",
+        "比赛专用：蜂蜜、白吐司、运动饮料粉，以及补电解质用的盐"
+      ]
+    },
+    {
+      title: "🍚 一个电饭煲能做出什么",
+      note: "没有灶，但电饭煲 + 微波炉 + 冰箱撑一周绰绰有余。关键是睡前把粥焖上，早上起来就能吃。",
+      items: [
+        "早餐：粥（前一晚焖上）+ 馒头 + 白煮蛋",
+        "车上午餐：米饭 + 卤牛肉片 + 焯青菜，装保温饭盒",
+        "一锅端晚餐：米饭上面铺鸡腿或腊肠，你去洗澡它自己蒸好",
+        "晚归的晚饭（9/16 约9:45到家、9/17 约10:30到家）：青菜鸡蛋面，或微波速冻饺子。那个点镇上餐馆全关了",
+        "保温壶：热粥或热茶，给日落观兽用——清晨 −4～1°C，黄昏也暖不到哪去"
+      ]
+    },
+    {
+      title: "🏞 园里怎么吃",
+      note: "园内餐饮选择少、贵、还要排队，而且整个黄石没有中餐。把它当备选，多数日子自己带饭。你这几天确认开放的：",
+      items: [
+        "9/15——老忠实一带选择最多（餐厅、自助餐厅、烘焙店）。是唯一适合坐下来好好吃一顿的一天",
+        "9/16——Canyon Eatery（开到10月25日）和 Canyon 杂货店（到10月18日），还有 Canyon Village 野餐区",
+        "9/17——Roosevelt Lodge（开到10月4日）可以在 Tower 附近喝咖啡，Mammoth 酒店餐厅全年开放，适合吃午饭",
+        "路线上的野餐区：Madison、Nez Perce、Canyon Village——有桌子和旱厕，没有饮用水",
+        "⚠️ 正是灰熊贴秋膘的季节：食物绝不能放在野餐桌上没人看着，离开就收回车里"
+      ]
+    },
+    {
+      title: "🍕 西黄石——不做饭的那几晚",
+      note: "住五晚，大部分自己做。适合出去吃的是 9/14（到达当晚）和 9/15。镇上多数餐馆 9–10pm 就停止供餐，所以 9/16 和 9/17 默认只能回来自己做。",
+      items: [
+        "Wild West Pizzeria & Saloon——镇上最好的披萨，有现场音乐。披萨和意面正好是比赛周需要的碳水",
+        "Pete's Rocky Mountain Pizza——披萨和意面，安静一些的选择",
+        "Firehole BBQ Co——烟熏肉，蛋白管够。早点去，热门部位会卖光",
+        "Bullwinkle's——牛排、肋排、鳟鱼、野牛和麋鹿，想正经吃一顿就来这儿",
+        "The Buffalo Bar——野牛汉堡，随意，营业到比较晚",
+        "Las Palmitas——校车改的墨西哥餐车；米饭豆子卷饼便宜、快、碳水足",
+        "镇上的 Market Place 超市——在盐湖城漏买的东西可以在这儿补"
+      ]
+    },
+    {
+      title: "🏋️ HYROX 饮食时间表",
+      note: "比赛是9月20日（周日）。这一周的吃法本来就是围着它安排的——这里把整条时间线放在一起。",
+      items: [
+        "9/13–16——正常均衡饮食，蛋白每公斤1.6–2克。每天喝3–4升水：海拔2,000–2,100米、空气极干，不刻意补就会缺水",
+        "9/17（D-3）——晚餐开始加碳水。这是最后一天吃辣油、油炸和大量粗纤维",
+        "9/18–19（D-2、D-1）——碳水加载：每公斤体重6–8克/天。每餐大份米饭、面条、馒头；蛋白适量，脂肪和纤维压到最低",
+        "9/19 晚餐——白米饭 + 清蒸鸡或鱼 + 少量蔬菜 + 清汤。不吃没吃过的、不油炸、不辣、不喝酒",
+        "9/20 出发前3小时——粥或白饭 + 一根香蕉 + 少量鸡蛋。平时喝咖啡就照常喝",
+        "9/20 出发前45分钟——一根香蕉或一支能量胶 + 运动饮料",
+        "比赛中——每个站点抿一口电解质；预计超过60分钟就在第4站前后补一支胶",
+        "完赛一小时内——碳水 + 蛋白，继续走动，然后在飞往洛杉矶的飞机上认真补水"
+      ]
+    }
+  ],
+
   logistics: [
     { label: "去程航班", value: "9月13日（周日）：飞盐湖城，傍晚到达。当晚在 SLC 取租车。" },
     { label: "租车", value: "9月13日夜在 SLC 取车 → 9月19日下午还车（6天）。往返约900英里：SLC → 大提顿 → 西黄石（园内环线）→ SLC。" },
@@ -960,7 +1114,8 @@ const TRIP_ZH = {
     "🍳 Target/Walmart 清单：电饭煲、碗筷餐具、小刀+砧板、保温壶、保温袋（园里长途那几天用）、洗洁精+海绵、抓绒、帽子、手套（不用买锅——没有灶）",
     "📲 失去信号前下载：NPS 黄石 App（间歇泉预测）、公园离线 Google 地图、GeyserTimes",
     "── 道路与公园状态 ──────────────",
-    "🛣 每个公园日的前一晚查 NPS 路况（早雪可能关闭 Dunraven Pass）；Tower Junction 桥施工：单车道最多等30分钟，到9月30日",
+    "🛣 每个开车日出发前查实时路况：NPS 黄石道路页，或发短信 82190 到 888-777 订阅提醒；录音电话 (307) 344-2117。Madison River 桥（每天必经）约等15分钟；Tower 的 Yellowstone River 桥约等30分钟，在9月17日拉马尔谷路线上",
+    "🔥 9月17日去拉马尔谷前查一下火情/封闭地图（inciweb.nwcg.gov）和 AirNow 烟霾——主干道开放，但步道和局部区域可能封闭",
     "🔁 9月19日退还：租车、Starlink Mini，以及其它要退的东西——收据 + 包装放在一个袋子里"
   ],
 
@@ -1560,6 +1715,25 @@ const TRIP_ZH = {
     });
   }
 
+  // --- food & nutrition (optional tab; only trips that define TRIP.food) ---
+  function renderFood() {
+    const root = $("#food");
+    if (!root) return;               // East Coast page has no #food section
+    root.innerHTML = "";
+    if (!T.food) return;
+    root.appendChild(el("h2", { class: "sec-title" }, esc(UI.food_title)));
+    root.appendChild(el("p", { class: "sec-sub" }, esc(UI.food_sub)));
+    T.food.forEach((g) => {
+      const card = el("div", { class: "card" });
+      card.appendChild(el("h2", { class: "sec-title" }, esc(g.title)));
+      if (g.note) card.appendChild(el("p", { class: "sec-sub" }, esc(g.note)));
+      const ul = el("ul", { class: "food-list" });
+      (g.items || []).forEach((it) => ul.appendChild(el("li", {}, esc(it))));
+      card.appendChild(ul);
+      root.appendChild(card);
+    });
+  }
+
   // --- tabs (listeners attached once; labels refreshed per render) ---
   function setupTabs() {
     const buttons = document.querySelectorAll("nav.tabs button");
@@ -1618,6 +1792,7 @@ const TRIP_ZH = {
     renderStays();
     renderItinerary();
     renderWeather();
+    renderFood();
     renderBookings();
     renderPacking();
     ensureDayMap(0); // first day is open by default
