@@ -148,7 +148,7 @@ const TRIP_ZH = {
       blocks: [
         { time: "约上午9:00", title: "📦 Whole Foods——取快递", detail: "先在酒店吃免费早餐（平日 6:30–9:00），再去客服/Amazon 柜台取件。" },
         { time: "约上午9:45", title: "📡 取 Starlink Mini", detail: "在车里通电测试、确认 App 已登录，再离开有信号的地方——园内几乎没有服务。" },
-        { time: "上午10:00", title: "🚗 从 SLC 出发 → 大提顿（约5小时）", detail: "I-15 北 → US-89 经 Star Valley 进 Jackson（风景好），或 I-15 → Idaho Falls → US-26（稍快）。在 Jackson 加油，并在这儿租一罐熊喷雾（Bear Aware / Teton Backcountry Rentals，5天约$28）——从这里起就是灰熊区，而且可以在西黄石还，不用折回来。争取3点前到 Jackson。" },
+        { time: "上午10:00", title: "🚗 从 SLC 出发 → 大提顿（约5小时）", detail: "I-15 北 → US-89 经 Star Valley 进 Jackson（风景好），或 I-15 → Idaho Falls → US-26（稍快）。在 Jackson 加油，并在 Bear Aware / Teton Backcountry Rentals 租熊喷雾——地址 565 N Cache St，每天 8am–6pm，电话 (307) 828-1885。N Cache 街就是 US-89 本身，北上顺路经过，不用绕。5天约$28，最后在西黄石还。争取3点前到 Jackson。" },
         { time: "约下午3:15", title: "🏔 Mormon Row——Moulton 谷仓", detail: "明信片画面：斑驳的谷仓背后是提顿山脉。20分钟，就在 Antelope Flats Road 边。附近常有野牛——保持25码。" },
         { time: "约下午3:50", title: "📸 Snake River Overlook", detail: "安塞尔·亚当斯的机位——河湾与远处群峰。北上 US-89 路边快停。" },
         { time: "约下午4:10", title: "🏞 Jenny Lake——只在时间充裕时去", detail: "园里最美的湖，但来回各要绕约20分钟。只有3:15前到了 Mormon Row 才去湖边短走一下；否则跳过——Oxbow 的光线和天黑前穿过公园更重要。" },
@@ -370,7 +370,7 @@ const TRIP_ZH = {
     "📦 Whole Foods 取快递（9月14日早上）——准备好取件码",
     "📡 Starlink Mini 取货（9月14日早上）——账号已激活、App 已登录",
     "🎫 门票：黄石每车 $35（7天）；大提顿通常单独再收 $35。2026年资料说法不一，买 $80 的 America the Beautiful 年票最省心。16岁以上非美国居民：每人另加 $100，除非持年票（非居民版 $250）",
-    "🐻 熊喷雾——建议租，别买。Jackson 的 Bear Aware / Teton Backcountry Rentals：前两天$16，之后每天$4，上限$28。9月14日在 Jackson 取，9月18日还到西黄石的 Freeheel & Wheel（40 Yellowstone Ave，24小时投递箱）——他们有12个取货点、19个还货点，可以异地还。买要约$45–50，而且不能带上飞机",
+    "🐻 熊喷雾——建议租，别买。取：Bear Aware @ Teton Backcountry Rentals，565 N Cache St, Jackson，每天 8am–6pm，(307) 828-1885——N Cache 就是 US-89，北上顺路。备选：Jackson Hole 机场 3 号行李转盘旁的自助点，9am–6pm。还：Freeheel & Wheel，40 Yellowstone Ave, West Yellowstone，24小时投递箱。前两天$16，之后每天$4，上限$28。买要约$45–50，而且不能带上飞机",
     "🛒 中国城超市购物清单（9月13日，周日开到10pm）——你有冰箱、微波炉和电饭煲：米、粥料、面条、馒头/包子、速冻饺子、鸡蛋、熟食/卤味、豆腐、叶菜、调料、香蕉、蜂蜜",
     "🍳 Target/Walmart 清单：电饭煲、碗筷餐具、小刀+砧板、保温壶、保温袋（园里长途那几天用）、洗洁精+海绵、抓绒、帽子、手套（不用买锅——没有灶）",
     "📲 失去信号前下载：NPS 黄石 App（间歇泉预测）、公园离线 Google 地图、GeyserTimes",
