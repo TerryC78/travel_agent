@@ -21,7 +21,7 @@ const TRIP = {
     "🐻 Grizzly country: carry bear spray on every trail. RENT it in Jackson on the way in (~$28 for the 5 days) and drop it in West Yellowstone — cheaper than buying, and it can’t fly home anyway. Keep 100 yards from bears and wolves, 25 from bison and elk; the September elk rut at Mammoth is a highlight, and the bulls charge.",
     "🎫 Park entry: Yellowstone is $35 per vehicle for 7 days. Grand Teton has always been charged separately (another $35), though some 2026 sources now say one pass covers both — the $80 America the Beautiful annual pass settles it for at most $10 more and lasts a year. ⚠️ New for 2026: non-US residents aged 16+ pay a $100 per-person surcharge unless they hold an annual pass (the non-resident version is $250). If everyone in the car is a US resident this doesn’t apply.",
     "🛣 Four park days, each on its own arm of the figure-8, so you rarely drive the same road twice: geyser basins south of Madison (Sep 15), Norris + Canyon + Hayden to the east (Sep 16), Mammoth + Tower + Lamar in the north (Sep 17), and a short local day near town (Sep 18). Every ‘extra’ sight sits on a road you already have to drive.",
-    "🧥 Mid-September Yellowstone: days 55–65°F, mornings 25–35°F, snow possible any day at 6,600–8,900 ft. Fleece + shell + beanie every morning; strong sun at altitude.",
+    "❄️ A cold front has arrived: snow showers in West Yellowstone on Sep 18 (high ~50°F, night 23°F) and again on the Sep 19 drive (high ~45°F, under half an inch). Targhee Pass sits ten minutes out of town — check Montana 511 and Idaho 511 before leaving, and delay an hour or two if it’s actively snowing. Then Salt Lake is 86–87°F, so pack a fleece within reach and shorts on top.",
     "🛣 All park roads are open, but two bridge projects sit on your routes: the Madison River Bridge between the West Entrance and Madison Junction (up to 15-min delays, through Nov 1) — that’s your commute EVERY day, both ways — and the Yellowstone River Bridge at Tower Junction on the NE Entrance road (up to 30-min delays), which is your Sep 17 Lamar day. Add the buffer and check the live road status each morning.",
     "🔥 There is fire activity in the region: main roads in both parks are open, but some local areas and trails are closed and afternoons can go hazy with smoke. Check the NPS road/closure pages before each driving day, and AirNow if the haze looks heavy.",
     "🏋️ It’s HYROX taper week: Yellowstone is active recovery (boardwalks, one short hike), not training — and there are no predawn starts: every day leaves around 9:30–10am and wildlife is scheduled at sunset instead. The hard work is done; carb-loading starts Sep 17.",
@@ -156,41 +156,43 @@ const TRIP = {
     {
       date: "2026-09-18",
       city: "West Yellowstone",
-      title: "Yellowstone Day 4 · An easy local day in West Yellowstone",
-      summary: "Sleep in after last night’s late return, then stay close to home: the two short stops on the road you’ve driven past all week, grizzlies and wolves at the Discovery Center in town, and an afternoon of rest, carb-loading and packing. Two days out from the race, this is the day that keeps your legs fresh.",
+      title: "Yellowstone Day 4 · Snow day — indoors first, then the last stops",
+      summary: "A cold front arrived: snow showers until about 3pm and a high near 50°F. So today flips — the Discovery Center indoors while it snows, the two short roadside stops once it eases, then rest, carb-loading and packing. Two days out from the race, a low-effort day is exactly right.",
       blocks: [
-        { time: "~10:30 AM", title: "🎨 Gibbon Falls & Artists Paintpots", detail: "The two stops on the Madison–Norris road you’ve driven past all week, finally done properly: Gibbon Falls from the roadside pullout, then the 1.6 km loop up to the colourful bubbling mud at Artists Paintpots. 15–25 min from the motel, back by lunchtime.", map: "Artists Paintpots" },
-        { time: "~12:30 PM", title: "🐻 Grizzly & Wolf Discovery Center (in town)", detail: "201 S Canyon St, a few blocks from the motel. Resident grizzlies, a wolf pack and raptors at close range — the guaranteed version of everything you’ve been scanning for through binoculars, with no driving at all. ~1.5 hrs, and a good indoor option if the forecast thundershowers arrive.", map: "Grizzly and Wolf Discovery Center West Yellowstone" },
-        { time: "~2:30 PM", title: "🏠 Lunch, rest & pack at the motel", detail: "Big carb lunch, feet up. Tidy the room, pack the car, and put the trail gear away — you’re done with the park. Drop the rented bear spray at Freeheel & Wheel (40 Yellowstone Ave, 24/7 box) while you’re in town.", map: "Dude and Roundup Motel West Yellowstone" },
-        { time: "~5:00 PM", title: "🏃 D-2 shakeout in town", detail: "15–20 min easy jog on the quiet streets + 4 × 15s strides, then a light rehearsal of the stations (10 air-squat-to-press, 20 walking lunges, a few burpees) — technique only, nothing hard. Stretch and foam-roll afterwards." },
-        { time: "Evening", title: "🌇 Sunset at Madison, then an early night", detail: "Your last bit of the park: the Madison meadows at last light, 14 mi in (sunset ~7:30). Home for a carb-heavy dinner (rice, noodles, steamed buns), then an early-ish night — tomorrow leaves at 11am, no alarm needed.", map: "Madison Junction" }
+        { time: "~10:30 AM", title: "🐻 Grizzly & Wolf Discovery Center (indoors, while it snows)", detail: "201 S Canyon St, a few blocks from the motel. Moved to the morning because of the snow showers: resident grizzlies, a wolf pack and raptors at close range — the guaranteed version of everything you’ve been scanning for through binoculars, with no driving. ~1.5 hrs, and mostly under cover.", map: "Grizzly and Wolf Discovery Center West Yellowstone" },
+        { time: "~12:30 PM", title: "🔁 Return the bear spray — Freeheel & Wheel", detail: "40 Yellowstone Ave, a few blocks away, 24/7 drop box. Do this today: it can’t fly home, it’s a rental, and tomorrow morning is a weather-dependent departure you don’t want to complicate.", map: "Grizzly and Wolf Discovery Center West Yellowstone" },
+        { time: "~2:00 PM", title: "🏠 Lunch, rest & pack at the motel", detail: "Big carb lunch, feet up. Pack the car tonight rather than tomorrow — if it’s snowing in the morning you’ll want to just get in and go. Put the trail gear away; you’re done with the park.", map: "Dude and Roundup Motel West Yellowstone" },
+        { time: "~3:30 PM", title: "🎨 Gibbon Falls & Artists Paintpots (once the showers ease)", detail: "Showers are forecast to taper after ~3pm. The two stops on the Madison–Norris road you’ve driven past all week: Gibbon Falls from the roadside pullout, then the 1.6 km loop at Artists Paintpots. 15–25 min from the motel. Snow on the paintpots is genuinely worth seeing — but skip it without hesitation if the road is slushy.", map: "Artists Paintpots" },
+        { time: "Evening", title: "🏃 Shakeout, then an early night", detail: "15–20 min very easy jog + 4 × 15s strides, bundled up — or skip the run and just do 10 min of mobility if it’s sleeting. Carb-heavy dinner (rice, noodles, steamed buns), then bed. Tomorrow is a weather-dependent drive, so check the passes before you set an alarm." }
       ],
-      eat: "Carb-loading in earnest: rice / noodles / buns at every meal, lean protein, easy on fat and fibre.",
+      eat: "Carb-loading in earnest: rice / noodles / buns at every meal, lean protein, easy on fat and fibre. Hot congee is very welcome on a 50°F snow day.",
       tips: [
-        "Today is deliberately local. Norris moved to Sep 16 (it’s on that day’s road anyway), so there’s no 2-hour park drive two days before the race.",
+        "❄️ Snow showers until ~3pm, high near 50°F, tonight down to 23°F. Little or no accumulation in town, but the day is built around being indoors when it’s worst.",
+        "🔁 Return the bear spray TODAY (Freeheel & Wheel, 40 Yellowstone Ave, 24/7 box) — don’t leave it for a snowy departure morning.",
         "Carb target today and tomorrow: ~6–8 g per kg bodyweight. Rice cakes, bananas, honey water and juice fill the gaps.",
-        "Return the bear spray today — Freeheel & Wheel, 40 Yellowstone Ave, 24/7 drop box. It can’t fly home, and it’s a rental.",
-        "Thundershowers are in the forecast today, which is another reason the Discovery Center and an afternoon indoors work well."
+        "Pack the car tonight. Tomorrow you want to check road conditions, eat, and leave — not load luggage in the snow."
       ]
     },
     {
       date: "2026-09-19",
       city: "Salt Lake City",
       multiCity: true,
-      title: "Drive back to Salt Lake City · Returns & race eve",
-      summary: "Out at 11am, the easy 5-hour run down US-20 and I-15 to Salt Lake City, return the car and everything else in the afternoon, back into the Hyatt Place downtown, and the race-eve routine.",
+      title: "Drive back to Salt Lake City · Snow at the start, heat at the end",
+      summary: "A weather-dependent drive: snow showers and a high near 45°F leaving West Yellowstone, with Targhee Pass in the first ten minutes — then 40 degrees warmer by Salt Lake. Check the passes before you go, return the car and everything else, and settle in downtown for race eve.",
       blocks: [
-        { time: "11:00 AM", title: "🚗 Check out & depart West Yellowstone", detail: "US-20 south through Island Park and Ashton → Idaho Falls → I-15 south. ~320 miles, ~5 hrs with a stop. Descending from 6,600 ft to 4,300 ft — you’ll feel lighter.", map: "Dude and Roundup Motel West Yellowstone" },
-        { time: "~1:00 PM", title: "⛽ Fuel & stretch at Idaho Falls", detail: "Halfway. Gas, restroom, a 10-minute walk, refill water. Lunch from the cooler (rice + chicken) — keep it familiar and low-fibre.", map: "Idaho Falls Idaho" },
+        { time: "Before you leave", title: "❄️ Check the passes — Montana 511 & Idaho 511", detail: "50% chance of snow showers today, under half an inch expected. Targhee Pass (7,072 ft) is ten minutes out of town on US-20 and it’s the high point of the whole drive. Check mdt.mt.gov/511 and 511.idaho.gov. If it’s actively snowing at 11am, wait an hour or two — you only need to be in Salt Lake by early evening, and the road warms up fast. A rental on all-season tyres has no business being first over a slushy pass." },
+        { time: "11:00 AM", title: "🚗 Check out & depart West Yellowstone", detail: "US-20 south over Targhee Pass through Island Park and Ashton → Idaho Falls → I-15 south. ~320 miles, ~5 hrs with a stop. You drop 2,400 ft to Idaho Falls and another 900 to Salt Lake, so the weather is behind you within the first hour.", map: "Dude and Roundup Motel West Yellowstone" },
+        { time: "~1:00 PM", title: "⛽ Fuel & stretch at Idaho Falls", detail: "Halfway, and out of the snow. Gas, restroom, a 10-minute walk, refill water. Lunch from the cooler (rice + chicken) — familiar and low-fibre, two days out.", map: "Idaho Falls Idaho" },
         { time: "~4:00 PM", title: "🔁 Arrive SLC — return the car & everything else", detail: "Return the rental car (airport or a downtown branch), plus the Starlink Mini and anything else you planned to return — keep receipts and packaging together. The rice cooker has done its job: leave it, gift it, or check it in your bag. Then Uber to the hotel.", map: "Salt Lake City International Airport" },
         { time: "~5:30 PM", title: "🏨 Check in: Hyatt Place Downtown / The Gateway", detail: "55 N 400 W — a ~0.5 mi, 10-minute walk to the Salt Palace, so race morning needs no transport at all. Pick up your race packet if it’s available today.", map: "Hyatt Place Salt Lake City Downtown" },
         { time: "Evening", title: "🏁 Race-eve routine", detail: "15–20 min walk or very easy jog + 10 min mobility (or full rest). Dinner: white rice + steamed chicken/fish + a little veg + clear soup — nothing new, fried, spicy or high-fibre, no alcohol. Lay out the kit, fill the bottles, set the alarm, in bed early." }
       ],
       eat: "Cooler lunch at Idaho Falls; carb-heavy, low-fibre, familiar dinner downtown (rice-based).",
       tips: [
+        "❄️ Snow showers and ~45°F at the start, 86°F in Salt Lake by evening — a 40-degree swing in one drive. Keep a fleece reachable for the first hour and shorts for the arrival.",
         "⚠️ This whole plan assumes you race SUNDAY. Sunday only runs Doubles Women, Women/Adaptive Women and Doubles Men. If you’re in individual HYROX Men (Fri 08:00–09:00 or Sat 08:00–11:20) or Doubles Mixed (Sat 11:50–17:40), today’s 11am departure is too late — you’d need to leave West Yellowstone a day earlier.",
         "Check your start time against the evening LAX flight: finish + shower + a 15-min Uber to SLC + 2 hrs at the airport. The 14:50–16:40 Doubles Men wave is the tight one.",
-        "Hydrate + electrolytes all afternoon — a week at altitude in dry air leaves you behind on fluids.",
+        "Hydrate + electrolytes all afternoon — a week at altitude in dry air leaves you behind on fluids, and tomorrow is forecast at 87°F.",
         "Sleep beats everything tonight; the sleep two nights out matters more than the night before, so you’ve already banked it."
       ]
     },
@@ -198,7 +200,7 @@ const TRIP = {
       date: "2026-09-20",
       city: "Salt Lake City",
       title: "HYROX Salt Lake City · Fly to LAX",
-      summary: "Race day at the Salt Palace Convention Center, downtown. Familiar breakfast 2.5–3 hours before your wave, a proper warm-up, race, recover — then an Uber to the airport and the evening flight to LAX.",
+      summary: "Race day at the Salt Palace, downtown — and it’s a hot one, 87°F with a morning thunderstorm risk. Familiar breakfast 2.5–3 hours before your wave, a proper warm-up, race, recover — then an Uber to the airport and the evening flight to LAX.",
       blocks: [
         { time: "Wave −3h", title: "🍚 Race breakfast", detail: "Congee / white rice / oats + a banana + a little egg or chicken, 2.5–3 hrs before your start. Coffee as usual if you drink it. ⚠️ The hotel’s free breakfast opens later at weekends (~7:00am), so for an early wave keep your own breakfast in the room fridge the night before; a midday wave can eat downstairs. 45–60 min before: a banana or a gel + sports drink." },
         { time: "Wave −25min", title: "🔥 Warm-up", detail: "8–10 min easy jog → dynamic mobility → 3 × 20s builds → a light touch of each station (30s row / 30s ski, a few sled steps, 5 wall balls) → 5 quiet minutes before the start." },
@@ -208,6 +210,8 @@ const TRIP = {
       ],
       eat: "Race breakfast at the hotel; recovery meal downtown; snacks for the flight.",
       tips: [
+        "🥵 87°F and humid-ish after a week at 6,600 ft in the cold — respect it. Start drinking electrolyte from breakfast, not from the start line, and take the first 1 km even more conservatively than planned.",
+        "⛈ Thunderstorm risk in the morning: the race is indoors at the Salt Palace, but the 10-minute walk from the hotel isn’t. Take a light jacket and put dry socks in your bag.",
         "Bring: race bib/packet, ID, familiar shoes (broken in), chalk if allowed, a change of clothes, and your own fuel — don’t try anything new on the day.",
         "Sunday Sep 20 wave schedule: Doubles Women 07:00–11:50 · Women/Adaptive Women 12:20–14:20 · Doubles Men 14:50–16:40. Those are the ONLY three divisions racing Sunday — confirm yours in the HYROX app.",
         "Post-race: no sitting still for hours — walk the terminal, hydrate, and keep the protein coming."
@@ -399,16 +403,17 @@ const WEATHER = {
     "Grand Teton":      { hi: 68, lo: 32, code: 1, rainChance: 15 },
     "West Yellowstone": { hi: 66, lo: 30, code: 1, rainChance: 20 }
   },
-  // Forecast refreshed Sep 13, 2026 (departure day).
+  // Forecast refreshed Sep 18, 2026. A cold front moved in: snow showers in
+  // West Yellowstone today and on tomorrow's drive, then hot in Salt Lake.
   // app.js still re-fetches Open-Meteo when online and overrides these.
   byDate: {
     "2026-09-14": { hi: 68, lo: 32, code: 1,  rainChance: 15 },
     "2026-09-15": { hi: 60, lo: 24, code: 1,  rainChance: 20 },
     "2026-09-16": { hi: 61, lo: 28, code: 1,  rainChance: 20 },
     "2026-09-17": { hi: 68, lo: 33, code: 1,  rainChance: 15 },
-    "2026-09-18": { hi: 70, lo: 31, code: 95, rainChance: 25 },
-    "2026-09-19": { hi: 86, lo: 60, code: 80, rainChance: 30 },
-    "2026-09-20": { hi: 77, lo: 57, code: 2,  rainChance: 20 }
+    "2026-09-18": { hi: 50, lo: 23, code: 73, rainChance: 50 },
+    "2026-09-19": { hi: 86, lo: 45, code: 3,  rainChance: 25 },
+    "2026-09-20": { hi: 87, lo: 58, code: 95, rainChance: 30 }
   },
   coords: {
     "Salt Lake City": [40.7608, -111.8910],
