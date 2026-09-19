@@ -505,8 +505,9 @@ const TRIP = {
       summary: "A weather-dependent drive: snow showers and a high near 45°F leaving West Yellowstone, with Targhee Pass in the first ten minutes — then 40 degrees warmer by Salt Lake. Check the passes before you go, return the car and everything else, and settle in downtown for race eve.",
       blocks: [
         { time: "Before you leave", title: "❄️ Check the passes — Montana 511 & Idaho 511", detail: "50% chance of snow showers today, under half an inch expected. Targhee Pass (7,072 ft) is ten minutes out of town on US-20 and it’s the high point of the whole drive. Check mdt.mt.gov/511 and 511.idaho.gov. If it’s actively snowing at 11am, wait an hour or two — you only need to be in Salt Lake by early evening, and the road warms up fast. A rental on all-season tyres has no business being first over a slushy pass." },
-        { time: "11:00 AM", title: "🚗 Check out & depart West Yellowstone", detail: "US-20 south over Targhee Pass through Island Park and Ashton → Idaho Falls → I-15 south. ~320 miles, ~5 hrs with a stop. You drop 2,400 ft to Idaho Falls and another 900 to Salt Lake, so the weather is behind you within the first hour.", map: "Dude and Roundup Motel West Yellowstone" },
-        { time: "~1:00 PM", title: "⛽ Fuel & stretch at Idaho Falls", detail: "Halfway, and out of the snow. Gas, restroom, a 10-minute walk, refill water. Lunch from the cooler (rice + chicken) — familiar and low-fibre, two days out.", map: "Idaho Falls Idaho" },
+        { time: "Departure", title: "🚗 Check out & depart West Yellowstone", detail: "US-20 south over Targhee Pass through Island Park and Ashton → Idaho Falls → I-15 south. ~320 miles, ~5 hrs with a stop. You drop 2,400 ft to Idaho Falls and another 900 to Salt Lake, so the weather is behind you within the first hour.", map: "Dude and Roundup Motel West Yellowstone" },
+        { time: "First 45 min", title: "❄️ The snow zone — the first 35 miles only", detail: "All the snow risk on this drive is in the first stretch, because it’s the only high ground: Targhee Pass (7,072 ft) at ~10 miles, then the Island Park plateau (6,100–6,900 ft) to ~35 miles. After Ashton (5,259 ft, ~55 miles) you’ve dropped out of it, and Idaho Falls onward is dry and warm. The one later bump is Malad Summit (~5,300 ft) at the Idaho/Utah line, but it’s far south and much warmer. Idaho 511 has live cameras on US-20 at Targhee Pass and Island Park — look at the road before you commit.", map: "Targhee Pass US-20 Montana Idaho border" },
+        { time: "~2 hrs in", title: "⛽ Fuel & stretch at Idaho Falls", detail: "Halfway, and well out of the snow. Gas, restroom, a 10-minute walk, refill water. Lunch from the cooler (rice + chicken) — familiar and low-fibre.", map: "Idaho Falls Idaho" },
         { time: "~4:00 PM", title: "🔁 Arrive SLC — return the car & everything else", detail: "Return the rental car (airport or a downtown branch), plus the Starlink Mini and anything else you planned to return — keep receipts and packaging together. The rice cooker has done its job: leave it, gift it, or check it in your bag. Then Uber to the hotel.", map: "Salt Lake City International Airport" },
         { time: "~5:30 PM", title: "🏨 Check in: Hyatt Place Downtown / The Gateway", detail: "55 N 400 W — a ~0.5 mi, 10-minute walk to the Salt Palace, so race morning needs no transport at all. Pick up your race packet if it’s available today.", map: "Hyatt Place Salt Lake City Downtown" },
         { time: "Evening", title: "🏁 Race-eve routine", detail: "15–20 min walk or very easy jog + 10 min mobility (or full rest). Dinner: white rice + steamed chicken/fish + a little veg + clear soup — nothing new, fried, spicy or high-fibre, no alcohol. Lay out the kit, fill the bottles, set the alarm, in bed early." }
@@ -679,6 +680,7 @@ const PLACES = {
   // ---- Yellowstone ----
   "West Thumb Geyser Basin": [44.4163, -110.5727],
   "Dude and Roundup Motel West Yellowstone": [44.6592, -111.0951],
+  "Targhee Pass US-20 Montana Idaho border": [44.6850, -111.3100],
   "Madison Junction": [44.6425, -110.8590],
   "Firehole Falls": [44.6296, -110.8620],
   "Fountain Paint Pot": [44.5498, -110.8085],
@@ -997,8 +999,9 @@ const TRIP_ZH = {
       summary: "这是一段看天气的行程：离开西黄石时有阵雪、最高约7°C，出镇十分钟就要翻 Targhee Pass——到了盐湖城又暖了20多度。出发前先查路况，还车和退还所有东西，然后回市中心过赛前夜。",
       blocks: [
         { time: "出发前", title: "❄️ 先查路况——Montana 511 和 Idaho 511", detail: "今天50%概率有阵雪，积雪预计不到半英寸。Targhee Pass（2,155米）在出镇十分钟处的 US-20 上，是整段路的最高点。查 mdt.mt.gov/511 和 511.idaho.gov。如果11点还在下雪，就等一两个小时——你只要傍晚前到盐湖城就行，路面回暖很快。租来的车是四季胎，没必要第一个去压雪泥。" },
-        { time: "上午11:00", title: "🚗 退房、离开西黄石", detail: "US-20 南下翻 Targhee Pass，经 Island Park、Ashton → Idaho Falls → I-15 南。约320英里，含一次停车约5小时。到 Idaho Falls 下降730米，到盐湖城再降270米，所以第一个小时之后天气就甩在身后了。" },
-        { time: "约下午1:00", title: "⛽ Idaho Falls 加油、伸展", detail: "半程，也出了雪区。加油、洗手间、走10分钟、补水。午饭吃保温袋里的（米饭+鸡肉）——熟悉、低纤维，离比赛两天。" },
+        { time: "出发", title: "🚗 退房、离开西黄石", detail: "US-20 南下翻 Targhee Pass，经 Island Park、Ashton → Idaho Falls → I-15 南。约320英里，含一次停车约5小时。到 Idaho Falls 下降730米，到盐湖城再降270米，所以第一个小时之后天气就甩在身后了。" },
+        { time: "最初45分钟", title: "❄️ 下雪路段——只有最开始那35英里", detail: "这趟车所有的下雪风险都集中在最开始，因为只有那一段是高地：约10英里处的 Targhee Pass（2,155米），然后是到约35英里的 Island Park 高原（1,860–2,100米）。过了 Ashton（1,600米，约55英里）就彻底下来了，Idaho Falls 往后又干又暖。后面唯一的小高点是爱达荷/犹他州界的 Malad Summit（约1,615米），但靠南很多、暖得多。Idaho 511 在 US-20 的 Targhee Pass 和 Island Park 有实时摄像头——出发前先看一眼路面。" },
+        { time: "开约2小时", title: "⛽ Idaho Falls 加油、伸展", detail: "半程，已经完全出了雪区。加油、洗手间、走10分钟、补水。午饭吃保温袋里的（米饭+鸡肉）——熟悉、低纤维。" },
         { time: "约下午4:00", title: "🔁 到达 SLC——还车和退还所有东西", detail: "还租车（机场或市中心网点），还有 Starlink Mini 和其它计划退回的东西——收据和包装放在一起。电饭煲任务完成：留下、送人，或托运带走。然后打 Uber 去酒店。" },
         { time: "约下午5:30", title: "🏨 入住 Hyatt Place Downtown / The Gateway", detail: "55 N 400 W——步行到 Salt Palace 约0.5英里、10分钟，比赛早上完全不用操心交通。今天能领的话把参赛包领了。" },
         { time: "晚上", title: "🏁 赛前夜例行", detail: "15–20分钟散步或极轻慢跑 + 10分钟活动度（或完全休息）。晚餐：白米饭 + 清蒸鸡/鱼 + 少量蔬菜 + 清汤——不吃新的、油炸、辣的、高纤维的，不喝酒。摆好装备、灌满水瓶、定好闹钟，早睡。" }
